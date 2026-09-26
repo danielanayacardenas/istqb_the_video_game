@@ -1,0 +1,89 @@
+/* =====================================================
+   ISTQB Quest — components.css
+   Componentes reutilizables: botones, insignias, tarjetas.
+   ===================================================== */
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+  color: var(--text-100);
+  background: var(--bg-600);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.9rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  box-shadow: var(--glow-primary), var(--shadow-soft);
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 2px solid var(--bg-500);
+  color: var(--text-300);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--text-500);
+  color: var(--text-100);
+}
+
+.btn-big {
+  font-size: 1.15rem;
+  padding: 1rem 2.6rem;
+}
+
+.btn-small {
+  font-size: 0.85rem;
+  padding: 0.55rem 1.1rem;
+}
+
+/* ---------- Insignias ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondary);
+  background: rgba(0, 212, 255, 0.08);
+  border: 2px solid rgba(0, 212, 255, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.95rem;
+}
+
+/* ---------- Tarjetas ---------- */
+.card {
+  background: linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+}

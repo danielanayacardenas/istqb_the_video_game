@@ -54,25 +54,21 @@ Se desbloquea al completar las fases 1 y 2. Puntuación mínima de aprobación: 
 El proyecto usa **ES Modules**, por lo que necesita servirse desde un servidor local
 (no funciona abriendo `index.html` con doble clic).
 
-### Opción 1 — VS Code + Live Server (recomendado)
+### Opción 1 — Bun (recomendada)
+
+Requiere [Bun](https://bun.sh) instalado.
+
+```bash
+bun server.js
+```
+
+(o `bun run dev`). Luego abre **http://localhost:4173** en tu navegador.
+
+### Opción 2 — VS Code + Live Server
 
 1. Abre la carpeta del proyecto en VS Code.
 2. Instala la extensión **Live Server**.
 3. Clic derecho sobre `index.html` → **Open with Live Server**.
-
-### Opción 2 — npx serve
-
-```bash
-npx serve .
-```
-
-### Opción 3 — Python
-
-```bash
-python -m http.server 8000
-```
-
-Luego abre `http://localhost:8000` en tu navegador.
 
 ---
 
@@ -81,6 +77,7 @@ Luego abre `http://localhost:8000` en tu navegador.
 - **HTML5**
 - **CSS3** (vanilla, sin frameworks)
 - **JavaScript** (ES Modules, vanilla, sin dependencias)
+- **Bun** como runtime para el servidor de desarrollo local
 
 ---
 
@@ -89,6 +86,8 @@ Luego abre `http://localhost:8000` en tu navegador.
 ```
 ISTQB/
 ├── index.html            ← punto de entrada
+├── server.js             ← servidor de desarrollo (Bun)
+├── package.json
 ├── css/
 │   ├── base.css          ← variables, reset, tipografía
 │   ├── components.css    ← botones, tarjetas, modales, barras
@@ -123,7 +122,7 @@ ISTQB/
 | # | Etapa | Estado |
 |---|-------|--------|
 | 0 | Inicialización del repo, estructura y README | ✅ |
-| 1 | Esqueleto de la app + pantalla de inicio + router + estado | ⏳ |
+| 1 | Esqueleto de la app + pantalla de inicio + router + estado | ✅ |
 | 2 | Motor de niveles (vidas, timer, streak, feedback, resultados) | ⏳ |
 | 3 | Mapa del juego con desbloqueo progresivo | ⏳ |
 | 4 | Contenido — Mundo 1: Fundamentos de Testing | ⏳ |

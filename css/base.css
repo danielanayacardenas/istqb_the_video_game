@@ -1,0 +1,107 @@
+/* =====================================================
+   ISTQB Quest — base.css
+   Variables, reset y tipografía global.
+   ===================================================== */
+
+:root {
+  /* Paleta de fondo */
+  --bg-900: #0a0d18;
+  --bg-800: #111527;
+  --bg-700: #1a2038;
+  --bg-600: #252d4d;
+  --bg-500: #38416b;
+
+  /* Texto */
+  --text-100: #f2f4fb;
+  --text-300: #c3c8dd;
+  --text-500: #8890ad;
+
+  /* Acentos */
+  --primary: #7c5cff;
+  --primary-light: #9d7bff;
+  --secondary: #00d4ff;
+  --success: #2eea83;
+  --danger: #ff5c6c;
+  --warning: #ffb02e;
+  --star: #ffd93d;
+
+  /* Tipografía */
+  --font-main: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Formas */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 999px;
+
+  /* Sombras */
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-deep: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --glow-primary: 0 0 18px rgba(124, 92, 255, 0.55);
+  --glow-secondary: 0 0 18px rgba(0, 212, 255, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-100);
+  background-color: var(--bg-900);
+  background-image: radial-gradient(1100px 700px at 50% -10%, #1c2344 0%, var(--bg-900) 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#screen-container {
+  display: flex;
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Barra de scroll sutil */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-800);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-500);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

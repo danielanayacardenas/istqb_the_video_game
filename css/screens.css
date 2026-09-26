@@ -1,0 +1,149 @@
+/* =====================================================
+   ISTQB Quest — screens.css
+   Estilos por pantalla. Por ahora: inicio y placeholders.
+   ===================================================== */
+
+/* ---------- Estructura general de pantalla ---------- */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem;
+  animation: fade-in 0.35s ease both;
+}
+
+/* ---------- Pantalla de inicio ---------- */
+.start-screen {
+  text-align: center;
+}
+
+.start-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.start-logo {
+  font-size: 3.2rem;
+  line-height: 1;
+  animation: float 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(124, 92, 255, 0.6));
+}
+
+.start-title {
+  font-size: clamp(2.6rem, 9vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.start-subtitle {
+  max-width: 34rem;
+  color: var(--text-300);
+  font-size: 1.05rem;
+}
+
+.start-subtitle strong {
+  color: var(--text-100);
+}
+
+/* ---------- Selector de idioma ---------- */
+.lang-switch {
+  display: inline-flex;
+  gap: 0.4rem;
+  padding: 0.35rem;
+  background: var(--bg-800);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--radius-full);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-500);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-btn:hover:not(:disabled) {
+  color: var(--text-100);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--glow-primary);
+}
+
+.lang-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lang-btn .soon {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-full);
+  padding: 0.05rem 0.4rem;
+}
+
+/* ---------- Acciones del inicio ---------- */
+.start-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.start-footer {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-500);
+}
+
+/* ---------- Placeholder (pantallas en construcción) ---------- */
+.placeholder-screen {
+  text-align: center;
+}
+
+.placeholder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 26rem;
+}
+
+.placeholder-emoji {
+  font-size: 3rem;
+}
+
+.placeholder-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.placeholder-card p {
+  color: var(--text-300);
+}
+
+.placeholder-card strong {
+  color: var(--secondary);
+}
