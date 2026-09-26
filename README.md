@@ -123,7 +123,7 @@ ISTQB/
 |---|-------|--------|
 | 0 | Inicialización del repo, estructura y README | ✅ |
 | 1 | Esqueleto de la app + pantalla de inicio + router + estado | ✅ |
-| 2 | Motor de niveles (vidas, timer, streak, feedback, resultados) | ⏳ |
+| 2 | Motor de niveles (vidas, timer, streak, feedback, resultados) | ✅ |
 | 3 | Mapa del juego con desbloqueo progresivo | ⏳ |
 | 4 | Contenido — Mundo 1: Fundamentos de Testing | ⏳ |
 | 5 | Contenido — Mundo 2: Testing en el SDLC | ⏳ |

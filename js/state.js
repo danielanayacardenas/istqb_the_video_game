@@ -77,3 +77,32 @@ export function resetProgress() {
   state = structuredClone(DEFAULT_STATE);
   saveState();
 }
+
+/**
+ * Registra el resultado de un intento de nivel:
+ * conserva el mejor número de estrellas y la mejor racha,
+ * incrementa los intentos y acumula estadísticas globales.
+ */
+export function recordLevelResult(levelId, { stars = 0, bestStreak = 0, correct = 0, wrong = 0 } = {}) {
+  const prev = state.progress[levelId] || {
+    completed: false,
+    stars: 0,
+    attempts: 0,
+    bestStreak: 0,
+  };
+
+  const entry = {
+    completed: prev.completed || stars > 0,
+    stars: Math.max(prev.stars, stars),
+    attempts: prev.attempts + 1,
+    bestStreak: Math.max(prev.bestStreak, bestStreak),
+  };
+
+  state.progress = { ...state.progress, [levelId]: entry };
+  state.stats.totalCorrect += correct;
+  state.stats.totalWrong += wrong;
+  state.stats.bestStreak = Math.max(state.stats.bestStreak, bestStreak);
+  saveState();
+
+  return entry;
+}
