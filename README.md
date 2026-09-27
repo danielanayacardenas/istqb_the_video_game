@@ -147,7 +147,7 @@ ISTQB/
 | 9 | Contenido — Mundo 6: Herramientas | ✅ |
 | 10 | Desafíos cruzados | ✅ |
 | 11 | Boss Final (simulacro de examen) | ✅ |
-| 12 | Logros y pulido final | ⏳ |
+| 12 | Logros y pulido final | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 

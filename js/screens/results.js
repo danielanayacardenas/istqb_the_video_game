@@ -19,6 +19,7 @@ export function renderResults(params = {}) {
     wrong = 0,
     bestStreak = 0,
     topic = "",
+    newAchievements = [],
   } = params;
 
   const next = won ? getNextLevel(levelId) : null;
@@ -87,6 +88,20 @@ export function renderResults(params = {}) {
       }
 
       ${worldBanner}
+
+      ${
+        newAchievements.length > 0
+          ? `<div class="achievements-unlocked">
+              <h3>🏆 ¡Logros desbloqueados!</h3>
+              ${newAchievements
+                .map(
+                  (a) =>
+                    `<p class="achievement-item">${a.emoji} <strong>${esc(a.name)}</strong> — ${esc(a.description)}</p>`
+                )
+                .join("")}
+            </div>`
+          : ""
+      }
 
       <div class="results-actions">
         ${next ? `<button class="btn btn-primary" data-action="next">▶ Siguiente nivel</button>` : ""}

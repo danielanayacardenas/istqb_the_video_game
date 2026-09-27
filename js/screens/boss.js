@@ -6,6 +6,7 @@
 
 import { bossBank, bossInfo } from "../data/boss/bank.js";
 import { drawExam, scoreExam, formatTime } from "../engine/exam.js";
+import { checkAchievements } from "../engine/achievements.js";
 import { recordBossResult } from "../state.js";
 import { navigate } from "../router.js";
 import { esc } from "../utils.js";
@@ -56,6 +57,7 @@ export function renderBoss() {
   /* ---------- Examen ---------- */
   function startExam() {
     finished = false;
+    clearTimer();
     const questions = drawExam(bossBank);
     const answers = new Array(questions.length).fill(null);
     const marked = new Set();
@@ -171,7 +173,8 @@ export function renderBoss() {
       clearTimer();
       const result = scoreExam(questions, answers);
       recordBossResult({ correct: result.correct, passed: result.passed });
-      renderResults(questions, answers, result, auto);
+      const newAchievements = checkAchievements();
+      renderResults(questions, answers, result, auto, newAchievements);
     }
 
     el.querySelector('[data-action="submit"]').addEventListener("click", () => submitExam(false));
@@ -190,7 +193,7 @@ export function renderBoss() {
   }
 
   /* ---------- Resultados ---------- */
-  function renderResults(questions, answers, result, auto) {
+  function renderResults(questions, answers, result, auto, newAchievements = []) {
     const pct = Math.round(result.percent * 100);
     const chapterRows = Object.entries(result.perChapter)
       .sort(([a], [b]) => Number(a) - Number(b))
@@ -224,6 +227,19 @@ export function renderBoss() {
           <thead><tr><th>Capítulo</th><th>Aciertos</th></tr></thead>
           <tbody>${chapterRows}</tbody>
         </table>
+        ${
+          newAchievements.length > 0
+            ? `<div class="achievements-unlocked">
+                 <h3>🏆 ¡Logros desbloqueados!</h3>
+                 ${newAchievements
+                   .map(
+                     (a) =>
+                       `<p class="achievement-item">${a.emoji} <strong>${esc(a.name)}</strong> — ${esc(a.description)}</p>`
+                   )
+                   .join("")}
+               </div>`
+            : ""
+        }
         ${
           wrong.length > 0
             ? `<details class="boss-review">

@@ -17,6 +17,7 @@ import {
   worldStats,
   globalStars,
 } from "../engine/progress.js";
+import { ACHIEVEMENTS } from "../engine/achievements.js";
 
 /** Tres estrellas pequeñas: llenas según las obtenidas. */
 function miniStars(count, max = 3) {
@@ -119,7 +120,10 @@ export function renderMap() {
     <header class="map-header">
       <button class="icon-btn" data-action="home" title="Volver al inicio">🏠</button>
       <h1 class="map-title">Mapa del juego</h1>
-      <div class="map-stars" title="Estrellas conseguidas">⭐ ${globalStars(progress)}</div>
+      <div class="map-badges">
+        <div class="map-stars" title="Estrellas conseguidas">⭐ ${globalStars(progress)}</div>
+        <div class="map-stars" title="Logros desbloqueados">🏆 ${getState().achievements.length}/${ACHIEVEMENTS.length}</div>
+      </div>
     </header>
     <main class="map-body">
       ${worlds.map((world, wi) => worldCardHtml(world, wi, progress, activeWorldIndex)).join("")}

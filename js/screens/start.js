@@ -4,6 +4,8 @@
    ===================================================== */
 
 import { getState, setLanguage, hasProgress, resetProgress } from "../state.js";
+import { ACHIEVEMENTS } from "../engine/achievements.js";
+import { globalStars } from "../engine/progress.js";
 import { navigate } from "../router.js";
 
 /** Renderiza la pantalla de inicio y devuelve su elemento raíz. */
@@ -12,6 +14,7 @@ export function renderStart() {
   screen.className = "screen start-screen";
 
   const someProgress = hasProgress();
+  const state = getState();
 
   screen.innerHTML = `
     <div class="start-hero">
@@ -37,13 +40,14 @@ export function renderStart() {
       </button>
       ${
         someProgress
-          ? `<button class="btn btn-ghost btn-small" data-action="reset">🗑 Reiniciar progreso</button>`
+          ? `<button class="btn btn-ghost btn-small" data-action="reset">🗑 Reiniciar progreso</button>
+             <p class="start-progress-summary">⭐ ${globalStars()} estrellas · 🏆 ${state.achievements.length}/${ACHIEVEMENTS.length} logros</p>`
           : ""
       }
     </div>
 
     <footer class="start-footer">
-      v0.1.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
+      v1.0.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
     </footer>
   `;
 

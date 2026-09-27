@@ -6,6 +6,7 @@
 
 import { createGame } from "../engine/game.js";
 import { starsFor } from "../engine/scoring.js";
+import { checkAchievements } from "../engine/achievements.js";
 import { recordLevelResult } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
@@ -236,6 +237,7 @@ export function renderLevel({ levelId } = {}) {
       correct: game.correct,
       wrong: game.wrong,
     });
+    const newAchievements = checkAchievements();
 
     navigate("results", {
       levelId: level.id,
@@ -246,6 +248,7 @@ export function renderLevel({ levelId } = {}) {
       wrong: game.wrong,
       bestStreak: game.bestStreak,
       topic: level.topic,
+      newAchievements,
     });
   }
 
