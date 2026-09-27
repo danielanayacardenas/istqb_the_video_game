@@ -73,4 +73,11 @@ describe("integridad del banco de preguntas", () => {
     const total = world1.levels.reduce((sum, l) => sum + l.questions.length, 0);
     expect(total).toBe(37);
   });
+
+  test("el mundo 2 tiene 4 niveles y 27 preguntas", () => {
+    const world2 = worlds[1];
+    expect(world2.levels.length).toBe(4);
+    const total = world2.levels.reduce((sum, l) => sum + l.questions.length, 0);
+    expect(total).toBe(27);
+  });
 });
