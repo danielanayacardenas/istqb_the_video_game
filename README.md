@@ -139,7 +139,7 @@ ISTQB/
 | 1 | Esqueleto de la app + pantalla de inicio + router + estado | ✅ |
 | 2 | Motor de niveles (vidas, timer, streak, feedback, resultados) | ✅ |
 | 3 | Mapa del juego con desbloqueo progresivo | ✅ |
-| 4 | Contenido — Mundo 1: Fundamentos de Testing | ⏳ |
+| 4 | Contenido — Mundo 1: Fundamentos de Testing | ✅ |
 | 5 | Contenido — Mundo 2: Testing en el SDLC | ⏳ |
 | 6 | Contenido — Mundo 3: Testing Estático | ⏳ |
 | 7 | Contenido — Mundo 4: Análisis y Diseño de Pruebas | ⏳ |

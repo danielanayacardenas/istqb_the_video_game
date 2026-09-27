@@ -129,6 +129,711 @@ export const world1 = {
         },
       ],
     },
-    // Los niveles 1.2 a 1.5 se añaden en la Etapa 4.
+    {
+      id: "w1-l2",
+      number: 2,
+      title: "¿Por qué es necesario el testing?",
+      topic: "Tema 1.2 — ¿Por qué es necesario el testing?",
+      difficulty: "fácil",
+      timePerQuestion: 60,
+      lives: 3,
+      questions: [
+        {
+          id: "w1-l2-q1",
+          topic: "1.2",
+          question:
+            "Además de descubrir defectos, ¿qué otra contribución clave hace el testing al éxito de un producto?",
+          options: [
+            "Garantizar que no habrá fallos en producción.",
+            "Reducir el riesgo de fallos en producción, aportar información para decidir y generar confianza en la calidad.",
+            "Sustituir al aseguramiento de calidad (QA) de la organización.",
+            "Eliminar la necesidad de revisiones y auditorías.",
+          ],
+          correct: 1,
+          explanation:
+            "El testing contribuye a reducir riesgos evaluando la calidad, a aportar información objetiva para la toma de decisiones, a generar confianza y a verificar el cumplimiento de requisitos legales o contractuales.",
+          example:
+            "Como revisar el paracaídas antes de saltar: no elimina el riesgo, pero lo reduce drásticamente y te da confianza para saltar.",
+          useCase:
+            "En un banco, las pruebas de una transferencia verifican requisitos legales y reducen el riesgo de sanciones y pérdidas.",
+          mistake:
+            "El testing no garantiza software sin fallos: reduce riesgos y proporciona información.",
+          syllabusRef: "Tema 1.2 — El testing y el éxito del proyecto",
+        },
+        {
+          id: "w1-l2-q2",
+          topic: "1.2",
+          question: "¿Cuál es la diferencia entre el aseguramiento de la calidad (QA) y el testing?",
+          options: [
+            "La QA se centra en el producto y el testing en los procesos.",
+            "Son sinónimos: ambos consisten en ejecutar pruebas.",
+            "La QA se centra en la calidad de los procesos y el testing es una forma de control de calidad (QC) centrada en el producto.",
+            "La QA la realiza únicamente el cliente y el testing solo el equipo de desarrollo.",
+          ],
+          correct: 2,
+          explanation:
+            "El aseguramiento de calidad (QA) se ocupa de la calidad de los procesos; el testing es control de calidad (QC) y se centra en el producto. Ambos buscan la calidad, desde enfoques distintos.",
+          example:
+            "QA: verificar que el equipo sigue un proceso de despliegue seguro. Testing: comprobar que esta versión concreta funciona.",
+          useCase:
+            "En una empresa certificada, QA audita los procesos mientras el equipo de testing verifica cada entrega.",
+          mistake: "QA = procesos (prevención); testing/QC = producto (detección).",
+          syllabusRef: "Tema 1.2 — Testing y aseguramiento de calidad (QA)",
+        },
+        {
+          id: "w1-l2-q3",
+          topic: "1.2",
+          question: "¿Cuál de las siguientes es una CAUSA típica de defectos en el software?",
+          options: [
+            "Trabajar bajo presión con plazos ajustados y asumir demasiada complejidad.",
+            "Ejecutar demasiadas pruebas automatizadas.",
+            "Documentar los requisitos con claridad.",
+            "Revisar el código por pares.",
+          ],
+          correct: 0,
+          explanation:
+            "Entre las causas de defectos están: el error humano (equivocarse), la presión de tiempo, la complejidad del código, la falta de comunicación, las tecnologías nuevas y las interfaces complejas.",
+          example:
+            "Con prisa por entregar el viernes, alguien invierte una condición lógica y nadie la revisó a tiempo.",
+          useCase:
+            "En la retrospectiva, el equipo identifica que la presión de fechas causó varios defectos en el módulo de pagos.",
+          mistake:
+            "Distingue causas (error humano, contexto) de manifestaciones (defecto en el producto, fallo al ejecutar).",
+          syllabusRef: "Tema 1.2 — Errores, defectos, fallos y sus causas",
+        },
+        {
+          id: "w1-l2-q4",
+          topic: "1.2",
+          question: "¿Por qué se dice que encontrar un defecto tarde es mucho más caro?",
+          options: [
+            "Porque los defectos se multiplican como bacterias con el tiempo.",
+            "Porque cuanto más tarde se detecta, más artefactos dependen de él y mayor es el retrabajo en cascada.",
+            "Porque los testers cobran más en las fases finales del proyecto.",
+            "Porque los usuarios siempre reportan mejor que los testers.",
+          ],
+          correct: 1,
+          explanation:
+            "Cuanto más avanza el ciclo de vida, más productos de trabajo dependen de un defecto (diseño, código, pruebas, documentación). Corregirlo tarde implica cambios en cascada y mayor coste.",
+          example:
+            "Un error en un requisito detectado en la revisión se corrige con una conversación; descubierto tras el despliegue puede costar días de parches y clientes perdidos.",
+          useCase:
+            "El equipo adopta revisiones de requisitos (shift left) tras medir el alto coste de los defectos reabiertos en producción.",
+          mistake:
+            "Detectar temprano (revisiones, testing estático) reduce costes: es la base del principio del testing temprano.",
+          syllabusRef: "Tema 1.2 — El testing y el éxito del proyecto",
+        },
+        {
+          id: "w1-l2-q5",
+          topic: "1.2",
+          question:
+            "¿Cómo contribuye el testing al cumplimiento de requisitos legales o contractuales?",
+          options: [
+            "Emitiendo certificados de calidad para los clientes.",
+            "Comprobando que el producto cumple con las normativas y estándares exigidos (por ejemplo, seguridad o privacidad).",
+            "Sustituyendo al departamento legal de la empresa.",
+            "Eliminando la necesidad de auditorías externas.",
+          ],
+          correct: 1,
+          explanation:
+            "El testing puede verificar el cumplimiento de requisitos contractuales, legales o normativos (protección de datos, seguridad, accesibilidad…), lo que reduce riesgos legales y económicos.",
+          example:
+            "Como la revisión técnica del vehículo: no arregla el coche, pero certifica que cumple los requisitos para circular.",
+          useCase:
+            "Un software médico debe evidenciar pruebas de cumplimiento normativo antes de comercializarse.",
+          mistake:
+            "Las razones del testing no son solo los defectos: también el cumplimiento, la confianza y la información.",
+          syllabusRef: "Tema 1.2 — El testing y el éxito del proyecto",
+        },
+        {
+          id: "w1-l2-q6",
+          topic: "1.2",
+          question:
+            "El director pregunta: «¿Lanzamos mañana?». Tras ejecutar las pruebas de aceptación, todas pasan. ¿Qué aporta el testing en esta decisión?",
+          options: [
+            "La certeza absoluta de que no habrá ningún fallo.",
+            "Información objetiva sobre la calidad y confianza para decidir el lanzamiento.",
+            "La corrección automática de los defectos restantes.",
+            "Una excusa formal para retrasar el despliegue.",
+          ],
+          correct: 1,
+          explanation:
+            "El testing proporciona información sobre la calidad para que los interesados tomen decisiones informadas (lanzar, retrasar, priorizar). Cuando los resultados son positivos, genera confianza, pero nunca garantiza la ausencia de fallos.",
+          example:
+            "Como el informe médico antes de una operación: no garantiza el resultado, pero permite decidir con datos.",
+          useCase:
+            "En la reunión go/no-go, el equipo revisa el informe de pruebas y decide lanzar la versión con evidencias.",
+          mistake:
+            "El testing informa decisiones; no demuestra ausencia de defectos.",
+          syllabusRef: "Tema 1.2 — El testing y el éxito del proyecto",
+        },
+      ],
+    },
+    {
+      id: "w1-l3",
+      number: 3,
+      title: "Principios del testing",
+      topic: "Tema 1.3 — Principios del testing",
+      difficulty: "medio",
+      timePerQuestion: 60,
+      lives: 3,
+      questions: [
+        {
+          id: "w1-l3-q1",
+          topic: "1.3",
+          question:
+            "«El testing muestra la presencia de defectos, pero no su ausencia». ¿Qué significa exactamente?",
+          options: [
+            "Que el testing no sirve para encontrar defectos.",
+            "Que aunque no encontremos defectos, pueden seguir existiendo: el testing reduce su probabilidad, no la elimina.",
+            "Que solo se puede demostrar que hay defectos si el usuario los reporta.",
+            "Que los defectos existen únicamente antes de ejecutar pruebas.",
+          ],
+          correct: 1,
+          explanation:
+            "El testing puede demostrar que hay defectos, pero no puede demostrar que no los haya: las pruebas reducen la probabilidad de que queden defectos sin descubrir, sin garantizar su ausencia total.",
+          example:
+            "Encontrar 10 mosquitos en una habitación no prueba que no quede ninguno escondido; no encontrar ninguno tampoco prueba que esté limpia.",
+          useCase:
+            "Nunca se firma «cero defectos»: se informa «no se encontraron defectos en las pruebas ejecutadas».",
+          mistake: "Ningún conjunto de pruebas puede demostrar la ausencia total de defectos.",
+          syllabusRef: "Tema 1.3 — Principio 1: presencia de defectos, no ausencia",
+        },
+        {
+          id: "w1-l3-q2",
+          topic: "1.3",
+          question: "¿Por qué el testing exhaustivo es imposible?",
+          options: [
+            "Porque los testers no tienen suficiente formación técnica.",
+            "Porque el número de combinaciones de entradas, condiciones y escenarios es astronómico: hay que priorizar según el riesgo.",
+            "Porque las herramientas de prueba tienen límites de licencia.",
+            "Porque el software cambia cada semana.",
+          ],
+          correct: 1,
+          explanation:
+            "Salvo casos triviales, probar todas las combinaciones es inviable. En lugar de intentarlo, se aplican técnicas, priorización basada en riesgos y criterios de cobertura.",
+          example:
+            "Un formulario con 20 campos de 10 valores posibles tiene 10^20 combinaciones: nadie puede probarlas todas.",
+          useCase:
+            "El equipo prueba primero los flujos de pago y alta de usuarios (mayor riesgo) y deja para después los textos de ayuda.",
+          mistake:
+            "Exhaustivo no significa completo: se sustituye por priorización basada en el riesgo.",
+          syllabusRef: "Tema 1.3 — Principio 2: el testing exhaustivo es imposible",
+        },
+        {
+          id: "w1-l3-q3",
+          topic: "1.3",
+          question: "«Probar temprano ahorra tiempo y dinero» (shift left). ¿Cuál es un ejemplo?",
+          options: [
+            "Ejecutar todas las pruebas manuales el último día del proyecto.",
+            "Revisar requisitos y diseño antes de programar, cuando los defectos son fáciles y baratos de corregir.",
+            "Empezar a probar solo cuando el código esté completo.",
+            "Automatizar únicamente las pruebas de interfaz.",
+          ],
+          correct: 1,
+          explanation:
+            "El testing temprano (shift left) adelanta las actividades de prueba y revisión a fases iniciales, cuando los defectos son más baratos de corregir y el ahorro es mayor.",
+          example:
+            "Detectar una ambigüedad en la historia de usuario cuesta una conversación; descubrirla en producción cuesta un parche urgente.",
+          useCase:
+            "El equipo añade una revisión de requisitos al inicio del sprint; los defectos se corrigen antes de escribir código.",
+          mistake: "Shift left = adelantar las pruebas, no posponerlas.",
+          syllabusRef: "Tema 1.3 — Principio 3: el testing temprano",
+        },
+        {
+          id: "w1-l3-q4",
+          topic: "1.3",
+          question:
+            "Un análisis muestra que el 80% de los fallos provienen de 2 de los 15 módulos del sistema. ¿Qué principio ilustra esto?",
+          options: [
+            "El testing exhaustivo es imposible.",
+            "Los defectos se agrupan: pocos módulos concentran la mayoría de los defectos.",
+            "Las pruebas se desgastan con el tiempo.",
+            "El testing depende del contexto.",
+          ],
+          correct: 1,
+          explanation:
+            "El agrupamiento de defectos indica que los defectos tienden a concentrarse en pocos módulos (principio de Pareto): normalmente el 80% de los defectos está en el 20% de los componentes. Esto ayuda a priorizar el esfuerzo.",
+          example:
+            "En una casa, las goteras se agrupan: la mayoría de las filtraciones aparece en pocas tuberías.",
+          useCase:
+            "El test manager concentra más pruebas y regresiones en los módulos históricamente problemáticos.",
+          mistake:
+            "Agrupamiento = concentración desigual de defectos; no confundir con «los defectos se multiplican».",
+          syllabusRef: "Tema 1.3 — Principio 4: agrupamiento de defectos",
+        },
+        {
+          id: "w1-l3-q5",
+          topic: "1.3",
+          question:
+            "El mismo conjunto de pruebas lleva meses sin encontrar defectos nuevos, aunque el software sigue cambiando. ¿Qué principio aplica y qué se debe hacer?",
+          options: [
+            "Falacia de ausencia de defectos; dejar de probar definitivamente.",
+            "Las pruebas se desgastan: hay que revisarlas y actualizarlas, incluidos los datos, para seguir encontrando defectos.",
+            "El testing exhaustivo es imposible; hay que probar todo de nuevo cada vez.",
+            "El testing depende del contexto; hay que cambiar de metodología.",
+          ],
+          correct: 1,
+          explanation:
+            "Los conjuntos de pruebas y sus datos se desgastan: dejan de encontrar defectos nuevos. Hay que revisarlos y actualizarlos periódicamente para reflejar cambios y nuevos riesgos (paradoja del pesticida).",
+          example:
+            "Las firmas de un antivirus deben actualizarse: las de ayer ya no detectan las amenazas de hoy.",
+          useCase:
+            "Cada trimestre, el equipo revisa su plan de pruebas y renueva casos y datos de entrada obsoletos.",
+          mistake:
+            "Los mismos casos de prueba dejan de ser efectivos: hay que renovarlos.",
+          syllabusRef: "Tema 1.3 — Principio 5: las pruebas se desgastan",
+        },
+        {
+          id: "w1-l3-q6",
+          topic: "1.3",
+          question: "¿Qué significa que «el testing depende del contexto»?",
+          options: [
+            "Que el testing se ejecuta distinto según el sistema operativo.",
+            "Que el enfoque de prueba debe adaptarse al riesgo, al dominio y al modelo de desarrollo: lo óptimo para una app bancaria no lo es para un videojuego.",
+            "Que hay que usar siempre el mismo proceso para poder comparar resultados.",
+            "Que el testing solo puede hacerse en entornos de producción.",
+          ],
+          correct: 1,
+          explanation:
+            "No existe una única forma de probar: el tipo y la profundidad del testing dependen del contexto, los riesgos y el dominio. Una app de banca prioriza seguridad; un videojuego, rendimiento y experiencia.",
+          example:
+            "El mantenimiento de un avión y el de una bicicleta no siguen el mismo plan, aunque ambos requieran revisión.",
+          useCase:
+            "Un hospital prioriza pruebas de seguridad de datos; una app de fotos prioriza rendimiento y usabilidad.",
+          mistake: "No existe «la mejor manera única» de probar: el contexto manda.",
+          syllabusRef: "Tema 1.3 — Principio 6: el testing depende del contexto",
+        },
+        {
+          id: "w1-l3-q7",
+          topic: "1.3",
+          question:
+            "Un sistema fue probado a fondo y cumple todos los requisitos, pero el cliente está descontento: no cubre sus necesidades reales. ¿Qué principio explica esto?",
+          options: [
+            "La falacia de ausencia de defectos: cumplir los requisitos no garantiza satisfacer las necesidades del usuario.",
+            "El testing exhaustivo es imposible.",
+            "Las pruebas se desgastan con el tiempo.",
+            "Los defectos se agrupan en pocos módulos.",
+          ],
+          correct: 0,
+          explanation:
+            "La falacia de la ausencia de defectos: un producto sin defectos técnicos puede no satisfacer las necesidades reales del usuario, por ejemplo si los requisitos están incompletos o son incorrectos. Hay que verificar Y validar.",
+          example:
+            "Un paraguas perfectamente construido que no te protege porque llueve de lado: sin defectos, pero no resuelve tu necesidad.",
+          useCase:
+            "El equipo entregó todas las historias aceptadas, pero el flujo no sirve al usuario real: faltó validar la necesidad.",
+          mistake: "Verificación (¿bien construido?) no es lo mismo que validación (¿es lo necesario?).",
+          syllabusRef: "Tema 1.3 — Principio 7: la ausencia de errores es una falacia",
+        },
+        {
+          id: "w1-l3-q8",
+          topic: "1.3",
+          question: "¿Cuál de las siguientes afirmaciones sobre los principios del testing es CORRECTA?",
+          options: [
+            "Con suficiente automatización se puede alcanzar el testing exhaustivo.",
+            "El testing temprano solo aplica a proyectos en cascada.",
+            "Revisar y actualizar las pruebas periódicamente contrarresta el desgaste de las mismas.",
+            "Si no se encuentran defectos, el software está libre de defectos.",
+          ],
+          correct: 2,
+          explanation:
+            "El desgaste de las pruebas se combate revisándolas y actualizándolas. El testing exhaustivo es imposible incluso con automatización, y no encontrar defectos no demuestra su ausencia.",
+          example:
+            "Renovar las preguntas de un examen evita que los alumnos las memoricen y mantiene la evaluación efectiva.",
+          useCase:
+            "El equipo renueva su suite de regresión para cubrir los módulos que más cambiaron en el último trimestre.",
+          mistake:
+            "Automatizar más no vuelve exhaustivo al testing: solo ejecuta más rápido lo que ya priorizaste.",
+          syllabusRef: "Tema 1.3 — Principios del testing",
+        },
+      ],
+    },
+    {
+      id: "w1-l4",
+      number: 4,
+      title: "Actividades, testware y roles",
+      topic: "Tema 1.4 — Actividades de prueba, testware y roles",
+      difficulty: "difícil",
+      timePerQuestion: 75,
+      lives: 3,
+      questions: [
+        {
+          id: "w1-l4-q1",
+          topic: "1.4",
+          question: "¿Cuál es la primera actividad del proceso de testing?",
+          options: [
+            "Ejecutar los casos de prueba.",
+            "La planificación: definir objetivos, enfoque y estrategia de prueba.",
+            "El diseño de los casos de prueba.",
+            "El cierre y archivo del testware.",
+          ],
+          correct: 1,
+          explanation:
+            "El proceso comienza con la planificación: se definen los objetivos de prueba, el enfoque, los recursos y se decide qué se va a probar y cómo.",
+          example:
+            "Como el plan de una mudanza: antes de mover cajas, decides qué llevas, en qué orden y con qué recursos.",
+          useCase:
+            "Al inicio del proyecto, el test manager elabora el plan de pruebas con alcance, riesgos y estimaciones.",
+          mistake:
+            "Orden del proceso: planificación → monitoreo y control (continuo) → análisis → diseño → implementación → ejecución → cierre.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q2",
+          topic: "1.4",
+          question: "Durante el ANÁLISIS de pruebas, ¿qué se produce?",
+          options: [
+            "El código de los tests automatizados.",
+            "La decisión de liberar el producto al mercado.",
+            "Las condiciones de prueba: qué hay que probar, analizando las bases de prueba y los riesgos.",
+            "Los resultados de la ejecución de pruebas.",
+          ],
+          correct: 2,
+          explanation:
+            "El análisis identifica las características a probar y define las condiciones de prueba (el «qué» probar), a partir de las bases de prueba (requisitos, diseño, riesgos, informes de defectos).",
+          example:
+            "Antes de redactar las preguntas de un examen, decides qué temas entran y con qué profundidad.",
+          useCase:
+            "El tester analiza las historias del sprint y deriva condiciones de prueba ligadas a los criterios de aceptación.",
+          mistake:
+            "Análisis = condiciones (qué); diseño = casos (cómo); implementación = dejarlo listo para ejecutar.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q3",
+          topic: "1.4",
+          question: "En el DISEÑO de pruebas, los testers…",
+          options: [
+            "…transforman las condiciones de prueba en casos de prueba y conjuntos de pruebas, con datos de entrada y resultados esperados.",
+            "…ejecutan las pruebas y comparan resultados reales con los esperados.",
+            "…escriben el informe de cierre del proyecto.",
+            "…definen la estrategia comercial de la empresa.",
+          ],
+          correct: 0,
+          explanation:
+            "El diseño convierte el «qué probar» (condiciones) en el «cómo probar» (casos y conjuntos de pruebas), cubriendo requisitos y riesgos.",
+          example:
+            "Como pasar de «probar el envío de paquetes» a diseñar los pasos concretos: paquete válido, peso límite, dirección inválida.",
+          useCase:
+            "El tester diseña casos para la condición «recuperar contraseña» con entradas válidas, inválidas y valores límite.",
+          mistake: "Diseñar (crear los casos) no es ejecutar (correr los casos).",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q4",
+          topic: "1.4",
+          question:
+            "Preparar los datos de prueba, escribir scripts automatizados y organizar los casos en conjuntos de pruebas (suites) corresponde a…",
+          options: [
+            "La ejecución de pruebas.",
+            "La implementación de pruebas.",
+            "El análisis de pruebas.",
+            "El cierre de pruebas.",
+          ],
+          correct: 1,
+          explanation:
+            "La implementación prepara todo para poder ejecutar: scripts, datos, entornos, procedimientos y la organización de casos en suites según su orden de ejecución.",
+          example:
+            "Como preparar la cocina antes de cocinar: ingredientes, utensilios y la receta ordenada.",
+          useCase:
+            "El equipo automatiza suites, genera datos de prueba y prepara el entorno antes de la regresión.",
+          mistake: "Implementar es dejarlo todo listo; ejecutar es correrlo.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q5",
+          topic: "1.4",
+          question: "¿Qué ocurre durante la EJECUCIÓN de pruebas?",
+          options: [
+            "Se diseñan casos de prueba nuevos.",
+            "Se corren las pruebas según lo planeado, se registran resultados (pasó, falló, bloqueado), se comparan con los esperados y se reportan defectos.",
+            "Se archiva el testware reutilizable.",
+            "Se definen los principios del testing.",
+          ],
+          correct: 1,
+          explanation:
+            "En la ejecución se corren los casos en el orden previsto, se registra el resultado de cada uno, se documentan las anomalías y se generan reportes de defectos con evidencia suficiente.",
+          example:
+            "Como el acta de una carrera: quién pasó la meta, con qué tiempo y qué incidencias ocurrieron.",
+          useCase:
+            "Al ejecutar la regresión, 3 casos fallan: se documentan con logs y capturas y se reportan como defectos.",
+          mistake: "Ejecutar incluye registrar y reportar: no es solo hacer clic.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q6",
+          topic: "1.4",
+          question: "En el CIERRE del testing, una actividad típica es…",
+          options: [
+            "…ejecutar por primera vez el plan de pruebas.",
+            "…documentar lecciones aprendidas, conservar el testware reutilizable y comunicar el estado final del testing.",
+            "…diseñar los casos de la próxima versión.",
+            "…corregir los defectos pendientes.",
+          ],
+          correct: 1,
+          explanation:
+            "El cierre ocurre cuando el testing finaliza (liberación, hito alcanzado o proyecto cancelado): se conserva el testware útil, se documentan lecciones aprendidas y se comunica el estado final.",
+          example:
+            "Como cerrar el curso: guardas los apuntes que servirán, resumes lo aprendido y entregas el informe final.",
+          useCase:
+            "Al liberar la versión, el equipo archiva las suites exitosas para la próxima regresión y documenta qué funcionó.",
+          mistake: "El cierre no corrige defectos: preserva conocimiento y artefactos para el futuro.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q7",
+          topic: "1.4",
+          question: "¿Cuál de los siguientes es testware típico del proceso de testing?",
+          options: [
+            "El expediente académico del tester.",
+            "El plan de pruebas, los casos de prueba y los informes de defectos.",
+            "El manual de marca de la empresa.",
+            "La nómina de los empleados.",
+          ],
+          correct: 1,
+          explanation:
+            "El testware son los productos de trabajo creados durante el proceso: planes, condiciones y casos de prueba, procedimientos, datos, informes de ejecución y reportes de defectos.",
+          example:
+            "Como los utensilios y apuntes de un chef: no son el plato final, pero es lo que produce mientras cocina.",
+          useCase:
+            "Al cambiar de proveedor, el equipo traspasa el testware (planes, casos, informes) para poder continuar el testing.",
+          mistake: "No todo lo que produce el equipo es testware: solo lo que da soporte directo a las pruebas.",
+          syllabusRef: "Tema 1.4 — Testware",
+        },
+        {
+          id: "w1-l4-q8",
+          topic: "1.4",
+          question: "¿Para qué sirve la trazabilidad entre las bases de prueba y el testware?",
+          options: [
+            "Para decorar el informe final del proyecto.",
+            "Para evaluar la cobertura, medir el impacto de los cambios y proporcionar evidencia de cumplimiento.",
+            "Para aumentar automáticamente el número de defectos encontrados.",
+            "Para no tener que escribir casos de prueba.",
+          ],
+          correct: 1,
+          explanation:
+            "La trazabilidad vincula requisitos u otras bases con los casos que los cubren: permite medir cobertura, evaluar el impacto de cambios (qué re-probar) y demostrar conformidad ante auditorías.",
+          example:
+            "Como el índice de un libro: si cambias el capítulo 3, sabes exactamente qué páginas revisar.",
+          useCase:
+            "Un auditor pide evidencia de que cada requisito regulado tiene pruebas asociadas: la matriz de trazabilidad lo demuestra.",
+          mistake: "Sin trazabilidad, cualquier cambio te obliga a «reprobar todo por si acaso».",
+          syllabusRef: "Tema 1.4 — Trazabilidad",
+        },
+        {
+          id: "w1-l4-q9",
+          topic: "1.4",
+          question: "¿Qué describe mejor la diferencia entre el test manager y el tester?",
+          options: [
+            "El test manager ejecuta los casos y el tester planifica.",
+            "El test manager se enfoca en la gestión (planificación, monitoreo, liderazgo) y el tester en el trabajo técnico (análisis, diseño, ejecución y reporte).",
+            "El test manager no trabaja con personas.",
+            "El tester solo redacta documentos.",
+          ],
+          correct: 1,
+          explanation:
+            "El test manager lidera las actividades de prueba, gestionando recursos, riesgos y planes; el tester tiene el foco técnico: analiza, diseña, ejecuta y reporta. En proyectos pequeños, ambos roles pueden recaer en la misma persona.",
+          example:
+            "Como en un rodaje: producción gestiona tiempos y recursos; el equipo técnico rueda y revisa las tomas.",
+          useCase:
+            "En equipos grandes los roles se separan; en startups una misma persona planifica y ejecuta.",
+          mistake: "El tester también analiza y diseña; no solo ejecuta pruebas.",
+          syllabusRef: "Tema 1.4 — Roles en el testing",
+        },
+        {
+          id: "w1-l4-q10",
+          topic: "1.4",
+          question: "El monitoreo y control del testing…",
+          options: [
+            "…solo se realiza al final del proyecto.",
+            "…es continuo: compara el progreso real con el plan y aplica acciones correctivas.",
+            "…consiste en ejecutar casos de prueba manualmente.",
+            "…lo realiza siempre el cliente.",
+          ],
+          correct: 1,
+          explanation:
+            "Monitoreo y control acompaña todo el proceso: compara el progreso con el plan, verifica los criterios de salida y aplica acciones correctivas (ajustar alcance, prioridades o recursos).",
+          example:
+            "Como el GPS de un viaje: te compara continuamente con la ruta y te avisa si debes desviarte.",
+          useCase:
+            "A mitad del sprint, el test manager detecta retraso en la regresión, reasigna recursos y prioriza los casos críticos.",
+          mistake: "El control se ejerce durante todo el proyecto, no solo al final.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+      ],
+    },
+    {
+      id: "w1-l5",
+      number: 5,
+      title: "Habilidades y buenas prácticas del tester",
+      topic: "Tema 1.5 — Habilidades y buenas prácticas del tester",
+      difficulty: "medio",
+      timePerQuestion: 60,
+      lives: 3,
+      questions: [
+        {
+          id: "w1-l5-q1",
+          topic: "1.5",
+          question: "¿Cuál es una habilidad de comunicación clave para un tester?",
+          options: [
+            "Escribir informes largos y muy técnicos para impresionar.",
+            "Comunicar los hallazgos con precisión, de forma constructiva y adaptada a cada audiencia.",
+            "Evitar hablar con los desarrolladores para no influir en ellos.",
+            "Corregir los defectos directamente en el código sin avisar.",
+          ],
+          correct: 1,
+          explanation:
+            "La comunicación eficaz es esencial: reportar defectos con claridad y evidencia, adaptando el mensaje a audiencias técnicas y no técnicas, y manteniéndolo constructivo (sin culpabilizar personas).",
+          example:
+            "Un buen reporte dice qué se hizo, qué se esperaba y qué ocurrió; no dice «tu código está mal».",
+          useCase:
+            "En la reunión diaria, el tester resume riesgos para negocio y detalles técnicos para desarrollo.",
+          mistake: "Reportar defectos es informar sobre el producto, no atacar a las personas.",
+          syllabusRef: "Tema 1.5 — Habilidades del tester",
+        },
+        {
+          id: "w1-l5-q2",
+          topic: "1.5",
+          question:
+            "El desarrollador dice: «funciona en mi máquina». ¿Qué habilidad ayuda al tester a investigar esa afirmación?",
+          options: [
+            "La obediencia: aceptar lo que dice el desarrollador.",
+            "El pensamiento crítico y el escepticismo profesional: cuestionar supuestos y verificar con evidencia.",
+            "La creatividad: cambiar de tema para evitar el conflicto.",
+            "La atención al detalle: revisar la ortografía del mensaje.",
+          ],
+          correct: 1,
+          explanation:
+            "El pensamiento crítico y el escepticismo profesional permiten cuestionar afirmaciones («en mi máquina sí funciona») e investigar diferencias de entorno, datos o configuraciones hasta obtener evidencia.",
+          example:
+            "Como un periodista ante un rumor: no basta con que alguien lo diga, hay que verificarlo.",
+          useCase:
+            "El tester pide la versión exacta, los datos y la configuración con la que se probó para reproducir el caso.",
+          mistake: "«En mi máquina funciona» no es evidencia suficiente: hay que verificar condiciones.",
+          syllabusRef: "Tema 1.5 — Habilidades del tester",
+        },
+        {
+          id: "w1-l5-q3",
+          topic: "1.5",
+          question: "¿Por qué el conocimiento del dominio (negocio) es valioso para un tester?",
+          options: [
+            "Porque le permite sustituir al dueño del producto.",
+            "Porque le ayuda a anticipar riesgos, diseñar mejores pruebas y comunicarse con el negocio en su lenguaje.",
+            "Porque así ejecuta los clics más rápido.",
+            "Porque elimina la necesidad de leer los requisitos.",
+          ],
+          correct: 1,
+          explanation:
+            "Entender el dominio y el producto permite reconocer casos límite reales y riesgos de negocio importantes, priorizar mejor y conversar con los interesados en su propio lenguaje.",
+          example:
+            "Un tester que conoce la facturación intuye que los impuestos por región son un caso crítico que otros pasarían por alto.",
+          useCase:
+            "Antes del sprint, el tester con experiencia en seguros identifica reglas de negocio que las historias no mencionan.",
+          mistake: "Conocer el negocio no reemplaza la evidencia: sigue siendo necesario probar.",
+          syllabusRef: "Tema 1.5 — Habilidades del tester",
+        },
+        {
+          id: "w1-l5-q4",
+          topic: "1.5",
+          question: "¿Cómo ayudan la curiosidad y la atención al detalle al tester?",
+          options: [
+            "Explorando el software en busca de comportamientos inesperados y detectando inconsistencias sutiles.",
+            "Encontrando el 100% de los defectos siempre.",
+            "Terminando más rápido sin necesidad de probar.",
+            "Evitando documentar los hallazgos.",
+          ],
+          correct: 0,
+          explanation:
+            "La curiosidad impulsa a explorar más allá del guion (testing exploratorio) y la atención al detalle permite detectar anomalías pequeñas pero significativas.",
+          example:
+            "Un buen detective pregunta «¿y si…?» y revisa el detalle que todos los demás pasaron por alto.",
+          useCase:
+            "En una sesión exploratoria, el tester descubre que el carrito acepta importes negativos: nadie lo había especificado.",
+          mistake: "Curiosidad sin método puede desordenar: combínala con técnicas de prueba.",
+          syllabusRef: "Tema 1.5 — Habilidades del tester",
+        },
+        {
+          id: "w1-l5-q5",
+          topic: "1.5",
+          question:
+            "¿Cuál es una VENTAJA de la independencia del tester respecto del equipo de desarrollo?",
+          options: [
+            "Tiene menos incentivos para ignorar los errores comunes.",
+            "Ve el producto con menos sesgos que quien lo creó, aumentando la probabilidad de detectar defectos distintos.",
+            "Conoce mejor el código y por eso no necesita probar.",
+            "Trabaja más rápido porque no habla con nadie.",
+          ],
+          correct: 1,
+          explanation:
+            "La independencia (un tester fuera del equipo que creó el producto) reduce sesgos de confirmación: los autores tienden a no ver sus propios errores. Mayor independencia se asocia a mayor probabilidad de detectar defectos distintos.",
+          example:
+            "El corrector de tu examen no eres tú: ves mejor los errores ajenos que los propios.",
+          useCase:
+            "La empresa contrata una auditoría externa de seguridad para la versión anual del sistema.",
+          mistake: "Independencia no es blanco o negro: los autores también deben probar sus productos.",
+          syllabusRef: "Tema 1.5 — Independencia del testing",
+        },
+        {
+          id: "w1-l5-q6",
+          topic: "1.5",
+          question: "¿Cuál es una DESVENTAJA de la independencia total del tester?",
+          options: [
+            "Que conoce demasiado bien el negocio.",
+            "Que puede aislarlo del equipo: menos información de contexto, comunicación tardía y menor sentido de propiedad sobre el producto.",
+            "Que encuentra demasiados defectos y retrasa el proyecto.",
+            "Que no puede ejecutar pruebas de regresión.",
+          ],
+          correct: 1,
+          explanation:
+            "La independencia tiene niveles: más independencia reduce sesgos, pero puede traer desventajas como el aislamiento del equipo, información de contexto limitada y responsabilidad difusa. Hay que buscar el equilibrio.",
+          example:
+            "Un auditor externo ve con ojos frescos, pero no conoce la historia ni las decisiones del día a día.",
+          useCase:
+            "El equipo equilibra revisión cruzada diaria con auditorías externas puntuales.",
+          mistake: "Ni independencia total ni cero independencia: el nivel adecuado depende del contexto.",
+          syllabusRef: "Tema 1.5 — Independencia del testing",
+        },
+        {
+          id: "w1-l5-q7",
+          topic: "1.5",
+          question: "¿Qué implica el enfoque de equipo completo (whole team approach)?",
+          options: [
+            "Que solo el test manager se responsabiliza de la calidad.",
+            "Que la calidad es responsabilidad compartida del equipo: cualquier miembro puede realizar tareas de testing según sus habilidades.",
+            "Que los desarrolladores dejan de escribir código.",
+            "Que el testing lo realiza únicamente el cliente final.",
+          ],
+          correct: 1,
+          explanation:
+            "En el enfoque de equipo completo, cualquier miembro puede asumir tareas de prueba según su experiencia; la responsabilidad de la calidad es compartida, lo que reduce cuellos de botella y mejora la colaboración.",
+          example:
+            "Como en un equipo de fútbol: todos defienden cuando toca, no solo el portero.",
+          useCase:
+            "En el sprint, desarrollo y negocio analizan casos límite junto al tester antes de implementar.",
+          mistake: "Equipo completo no elimina el rol de tester: optimiza la colaboración.",
+          syllabusRef: "Tema 1.5 — Enfoque de equipo completo",
+        },
+        {
+          id: "w1-l5-q8",
+          topic: "1.5",
+          question:
+            "El tester propone probar el sistema en zonas sin conexión, un escenario que nadie había considerado. ¿Qué habilidad demuestra principalmente?",
+          options: [
+            "Creatividad: generar ideas, escenarios y pruebas que otros no han imaginado.",
+            "Obediencia: seguir estrictamente lo escrito en los requisitos.",
+            "Impuntualidad: perder tiempo en escenarios irrelevantes.",
+            "Rigidez metodológica: aplicar el proceso sin adaptarlo.",
+          ],
+          correct: 0,
+          explanation:
+            "La creatividad ayuda a generar escenarios, datos y pruebas novedosas que aumentan la eficacia del testing, especialmente en exploración y en situaciones poco documentadas.",
+          example:
+            "Un chef crea combinaciones nuevas con ingredientes de siempre y descubre platos que otros no ven.",
+          useCase:
+            "En la retrospectiva, el tester propone probar con conexión intermitente, escenario ausente de los requisitos.",
+          mistake: "Creatividad con foco: acompáñala siempre de análisis de riesgos para priorizar.",
+          syllabusRef: "Tema 1.5 — Habilidades del tester",
+        },
+      ],
+    },
   ],
 };
