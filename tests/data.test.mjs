@@ -108,4 +108,14 @@ describe("integridad del banco de preguntas", () => {
     const total = world6.levels.reduce((sum, l) => sum + l.questions.length, 0);
     expect(total).toBe(22);
   });
+
+  test("los 3 desafíos cruzados tienen 1 nivel y 10 preguntas cada uno", () => {
+    const challenges = worlds.slice(6);
+    expect(challenges.length).toBe(3);
+    for (const c of challenges) {
+      expect(c.type).toBe("challenge");
+      expect(c.levels.length).toBe(1);
+      expect(c.levels[0].questions.length).toBe(10);
+    }
+  });
 });

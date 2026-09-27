@@ -4,7 +4,7 @@
 // niveles secuenciales, estrellas y progreso.
 // =====================================================
 
-import { worlds } from "../data/index.js";
+import { worlds, worldLabel } from "../data/index.js";
 import { getState } from "../state.js";
 import { navigate } from "../router.js";
 import { esc } from "../utils.js";
@@ -50,7 +50,7 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
           const cls = done ? "done" : unlockedLevel ? "current" : "locked";
           return `
             <button class="level-row ${cls}" data-level="${level.id}" ${unlockedLevel ? "" : "disabled"}>
-              <span class="level-num">${world.number}.${level.number}</span>
+              <span class="level-num">${world.type === "challenge" ? `D${world.challengeNumber}` : `${world.number}.${level.number}`}</span>
               <span class="level-name">${esc(level.title)}</span>
               <span class="mini-stars">${miniStars(stars)}</span>
             </button>`;
@@ -62,7 +62,7 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
       <button class="world-header" ${unlocked && !empty ? 'data-action="toggle"' : "disabled"} aria-expanded="${expanded}">
         <span class="world-emoji">${world.emoji}</span>
         <div class="world-info">
-          <h2 class="world-title">Mundo ${world.number} · ${esc(world.title)}</h2>
+          <h2 class="world-title">${worldLabel(world)} · ${esc(world.title)}</h2>
           <div class="world-meta">
             <div class="world-progress">
               <div class="progress-fill" style="width:${pct}%"></div>

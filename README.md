@@ -145,7 +145,7 @@ ISTQB/
 | 7 | Contenido — Mundo 4: Análisis y Diseño de Pruebas | ✅ |
 | 8 | Contenido — Mundo 5: Gestión de Pruebas | ✅ |
 | 9 | Contenido — Mundo 6: Herramientas | ✅ |
-| 10 | Desafíos cruzados | ⏳ |
+| 10 | Desafíos cruzados | ✅ |
 | 11 | Boss Final (simulacro de examen) | ⏳ |
 | 12 | Logros y pulido final | ⏳ |
 

@@ -4,7 +4,7 @@
 // =====================================================
 
 import { navigate } from "../router.js";
-import { getNextLevel, worlds, findLevel } from "../data/index.js";
+import { getNextLevel, worlds, findLevel, worldLabel } from "../data/index.js";
 import { getState } from "../state.js";
 import { isWorldCompleted } from "../engine/progress.js";
 import { esc } from "../utils.js";
@@ -35,7 +35,8 @@ export function renderResults(params = {}) {
         nextWorld.levels.length > 0 &&
         isWorldCompleted(found.world, getState().progress)
       ) {
-        worldBanner = `<p class="results-world-banner">🌍 ¡Mundo ${found.world.number} completado! Se desbloqueó el <strong>Mundo ${nextWorld.number} — ${esc(nextWorld.title)}</strong></p>`;
+        const doneEmoji = found.world.type === "challenge" ? "⚔️" : "🌍";
+        worldBanner = `<p class="results-world-banner">${doneEmoji} ¡${worldLabel(found.world)} completado! Se desbloqueó el <strong>${worldLabel(nextWorld)} — ${esc(nextWorld.title)}</strong></p>`;
       }
     }
   }

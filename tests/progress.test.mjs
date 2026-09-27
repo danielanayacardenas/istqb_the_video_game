@@ -90,3 +90,16 @@ describe("estadísticas", () => {
     expect(isWorldUnlocked(0, {}, worlds)).toBe(true);
   });
 });
+
+describe("desafíos cruzados", () => {
+  test("se desbloquean al completar los 6 mundos y en orden entre ellos", () => {
+    const progress = {};
+    for (let w = 0; w < 6; w++) {
+      for (const level of worlds[w].levels) progress[level.id] = { completed: true };
+    }
+    expect(isWorldUnlocked(6, progress, worlds)).toBe(true); // Desafío 1
+    expect(isWorldUnlocked(7, progress, worlds)).toBe(false); // Desafío 2 aún bloqueado
+    progress["c1-l1"] = { completed: true };
+    expect(isWorldUnlocked(7, progress, worlds)).toBe(true);
+  });
+});
