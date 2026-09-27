@@ -5,7 +5,7 @@
 
 import "./helpers.mjs";
 import { describe, test, expect, beforeEach } from "bun:test";
-import { recordLevelResult, getState, resetProgress } from "../js/state.js";
+import { recordLevelResult, recordBossResult, getState, resetProgress } from "../js/state.js";
 
 beforeEach(() => {
   resetProgress();
@@ -32,5 +32,19 @@ describe("progreso persistente", () => {
   test("un intento perdido no marca el nivel como completado", () => {
     recordLevelResult("w1-l1", { stars: 0, bestStreak: 2, correct: 2, wrong: 3 });
     expect(getState().progress["w1-l1"].completed).toBe(false);
+  });
+
+  test("el Boss conserva el mejor resultado y solo marca aprobado al aprobar", () => {
+    recordBossResult({ correct: 20, passed: false });
+    expect(getState().stats.bossCleared).toBe(false);
+    expect(getState().stats.bossBest).toBe(20);
+
+    recordBossResult({ correct: 30, passed: true });
+    expect(getState().stats.bossCleared).toBe(true);
+    expect(getState().stats.bossBest).toBe(30);
+
+    recordBossResult({ correct: 26, passed: true });
+    expect(getState().stats.bossBest).toBe(30);
+    expect(getState().stats.bossCleared).toBe(true);
   });
 });

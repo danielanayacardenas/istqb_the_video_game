@@ -10,6 +10,7 @@ import { renderStart } from "./screens/start.js";
 import { renderMap } from "./screens/map.js";
 import { renderLevel } from "./screens/level.js";
 import { renderResults } from "./screens/results.js";
+import { renderBoss } from "./screens/boss.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   loadState();
@@ -18,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   registerScreen("map", renderMap);
   registerScreen("level", renderLevel);
   registerScreen("results", renderResults);
+  registerScreen("boss", renderBoss);
 
   initRouter(document.getElementById("screen-container"), "start");
 });

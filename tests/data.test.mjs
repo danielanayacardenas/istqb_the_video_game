@@ -7,6 +7,7 @@
 import "./helpers.mjs";
 import { describe, test, expect } from "bun:test";
 import { worlds } from "../js/data/index.js";
+import { bossBank } from "../js/data/boss/bank.js";
 
 const TEXT_FIELDS = [
   "id",
@@ -116,6 +117,30 @@ describe("integridad del banco de preguntas", () => {
       expect(c.type).toBe("challenge");
       expect(c.levels.length).toBe(1);
       expect(c.levels[0].questions.length).toBe(10);
+    }
+  });
+});
+
+describe("integridad del banco del Boss", () => {
+  test("los ids no colisionan con el resto del juego", () => {
+    const all = [...allQuestions.map((q) => q.id), ...bossBank.map((q) => q.id)];
+    expect(new Set(all).size).toBe(all.length);
+  });
+
+  test("cada pregunta tiene campos completos, opciones válidas y capítulo (1–6)", () => {
+    for (const q of bossBank) {
+      for (const field of TEXT_FIELDS) {
+        expect(q[field], `falta el campo "${field}" en ${q.id}`).toBeTruthy();
+      }
+      expect(Array.isArray(q.options), `options inválido en ${q.id}`).toBe(true);
+      expect(q.options.length, `opciones insuficientes en ${q.id}`).toBeGreaterThanOrEqual(3);
+      expect(q.correct, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
+      expect(q.correct, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      expect(typeof q.chapter, `chapter inválido en ${q.id}`).toBe("number");
+      expect(q.chapter).toBeGreaterThanOrEqual(1);
+      expect(q.chapter).toBeLessThanOrEqual(6);
+      const normalized = q.options.map((o) => o.trim().toLowerCase());
+      expect(new Set(normalized).size, `opciones duplicadas en ${q.id}`).toBe(normalized.length);
     }
   });
 });

@@ -719,3 +719,123 @@
   color: var(--text-500);
   padding: 0 1.1rem 1.1rem;
 }
+
+/* ---------- Boss Final ---------- */
+.boss-card {
+  border: 2px solid var(--warning);
+  box-shadow: 0 0 24px rgba(255, 176, 46, 0.18);
+}
+
+.boss-topbar {
+  gap: 0.6rem;
+}
+
+.boss-progress {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9rem;
+  color: var(--text-300);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boss-clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  color: var(--text-100);
+}
+
+.boss-clock.low {
+  color: var(--danger);
+}
+
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.3rem;
+  padding: 0.7rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .boss-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.boss-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--bg-500);
+  background: var(--bg-800);
+  color: var(--text-300);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boss-cell.answered {
+  background: rgba(46, 234, 131, 0.18);
+  border-color: var(--success);
+  color: var(--text-100);
+}
+
+.boss-cell.current {
+  outline: 2px solid var(--primary-light);
+}
+
+.boss-cell.marked::after {
+  content: "⚑";
+  display: block;
+  font-size: 0.6rem;
+  line-height: 0.8;
+  color: var(--star);
+}
+
+.option-btn.selected {
+  outline: 2px solid var(--primary-light);
+  background: var(--bg-700);
+}
+
+.boss-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.boss-rules {
+  text-align: left;
+  margin: 1rem auto;
+  max-width: 34rem;
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.2rem;
+}
+
+.boss-breakdown {
+  width: 100%;
+  max-width: 24rem;
+  margin: 1rem auto 0;
+  border-collapse: collapse;
+}
+
+.boss-breakdown th,
+.boss-breakdown td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--bg-500);
+  text-align: center;
+}
+
+.boss-review {
+  margin-top: 1.2rem;
+  text-align: left;
+}
+
+.boss-review-item {
+  margin: 0.8rem 0;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+}

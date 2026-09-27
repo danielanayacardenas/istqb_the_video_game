@@ -17,6 +17,7 @@ const DEFAULT_STATE = {
     totalWrong: 0,
     bestStreak: 0,
     bossCleared: false,
+    bossBest: 0,
   },
 };
 
@@ -105,4 +106,16 @@ export function recordLevelResult(levelId, { stars = 0, bestStreak = 0, correct 
   saveState();
 
   return entry;
+}
+
+/**
+ * Registra el resultado del Boss Final:
+ * conserva el mejor número de aciertos y marca aprobado
+ * en cuanto se aprueba una vez.
+ */
+export function recordBossResult({ correct = 0, passed = false } = {}) {
+  state.stats.bossCleared = state.stats.bossCleared || passed;
+  state.stats.bossBest = Math.max(state.stats.bossBest || 0, correct);
+  saveState();
+  return { ...state.stats };
 }

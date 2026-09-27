@@ -146,7 +146,7 @@ ISTQB/
 | 8 | Contenido — Mundo 5: Gestión de Pruebas | ✅ |
 | 9 | Contenido — Mundo 6: Herramientas | ✅ |
 | 10 | Desafíos cruzados | ✅ |
-| 11 | Boss Final (simulacro de examen) | ⏳ |
+| 11 | Boss Final (simulacro de examen) | ✅ |
 | 12 | Logros y pulido final | ⏳ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.

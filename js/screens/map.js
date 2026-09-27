@@ -80,6 +80,31 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
   `;
 }
 
+/** Tarjeta especial del Boss Final. */
+function bossCardHtml(progress) {
+  const allDone = worlds.every((w) => w.levels.length > 0 && isWorldCompleted(w, progress));
+  const stats = getState().stats;
+  const passed = Boolean(stats.bossCleared);
+  const best = stats.bossBest ?? 0;
+  const status = passed ? "completed" : allDone ? "current" : "locked";
+  const statusIcon = passed ? "✅" : allDone ? "▶️" : "🔒";
+
+  return `
+    <article class="world-card boss-card ${status}">
+      <button class="world-header" ${allDone ? 'data-action="boss"' : "disabled"}>
+        <span class="world-emoji">👑</span>
+        <div class="world-info">
+          <h2 class="world-title">Boss Final · Simulacro de examen</h2>
+          <div class="world-meta">
+            <span class="world-count">40 preguntas · 75 min · 65 % para aprobar${passed ? ` · Mejor: ${best}/40` : ""}</span>
+          </div>
+        </div>
+        <span class="world-status">${statusIcon}</span>
+      </button>
+    </article>
+  `;
+}
+
 export function renderMap() {
   const progress = getState().progress;
 
@@ -98,6 +123,7 @@ export function renderMap() {
     </header>
     <main class="map-body">
       ${worlds.map((world, wi) => worldCardHtml(world, wi, progress, activeWorldIndex)).join("")}
+      ${bossCardHtml(progress)}
     </main>
   `;
 
@@ -117,6 +143,10 @@ export function renderMap() {
   el.querySelectorAll(".level-row:not(:disabled)").forEach((row) => {
     row.addEventListener("click", () => navigate("level", { levelId: row.dataset.level }));
   });
+
+  /* ---------- Entrar al Boss Final ---------- */
+  const bossBtn = el.querySelector('[data-action="boss"]');
+  if (bossBtn) bossBtn.addEventListener("click", () => navigate("boss"));
 
   return el;
 }
