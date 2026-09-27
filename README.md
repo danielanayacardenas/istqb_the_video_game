@@ -141,7 +141,7 @@ ISTQB/
 | 3 | Mapa del juego con desbloqueo progresivo | ✅ |
 | 4 | Contenido — Mundo 1: Fundamentos de Testing | ✅ |
 | 5 | Contenido — Mundo 2: Testing en el SDLC | ✅ |
-| 6 | Contenido — Mundo 3: Testing Estático | ⏳ |
+| 6 | Contenido — Mundo 3: Testing Estático | ✅ |
 | 7 | Contenido — Mundo 4: Análisis y Diseño de Pruebas | ⏳ |
 | 8 | Contenido — Mundo 5: Gestión de Pruebas | ⏳ |
 | 9 | Contenido — Mundo 6: Herramientas | ⏳ |
