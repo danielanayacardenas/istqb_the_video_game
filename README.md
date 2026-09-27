@@ -143,7 +143,7 @@ ISTQB/
 | 5 | Contenido — Mundo 2: Testing en el SDLC | ✅ |
 | 6 | Contenido — Mundo 3: Testing Estático | ✅ |
 | 7 | Contenido — Mundo 4: Análisis y Diseño de Pruebas | ✅ |
-| 8 | Contenido — Mundo 5: Gestión de Pruebas | ⏳ |
+| 8 | Contenido — Mundo 5: Gestión de Pruebas | ✅ |
 | 9 | Contenido — Mundo 6: Herramientas | ⏳ |
 | 10 | Desafíos cruzados | ⏳ |
 | 11 | Boss Final (simulacro de examen) | ⏳ |
