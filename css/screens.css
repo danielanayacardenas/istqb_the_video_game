@@ -508,3 +508,214 @@
   gap: 0.6rem;
   margin-top: 0.4rem;
 }
+
+.results-world-banner {
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.92rem;
+  background: rgba(46, 234, 131, 0.1);
+  border: 1px solid rgba(46, 234, 131, 0.4);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1rem;
+}
+
+/* ---------- Pantalla de mapa ---------- */
+.map-screen {
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  gap: 1rem;
+  padding: 1rem 1rem 2.5rem;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.map-title {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.map-stars {
+  font-weight: 900;
+  color: var(--star);
+  background: rgba(255, 217, 61, 0.1);
+  border: 2px solid rgba(255, 217, 61, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.9rem;
+}
+
+.map-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.world-card {
+  background: linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  border: 2px solid var(--bg-600);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.world-card.current {
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+}
+
+.world-card.completed {
+  border-color: rgba(46, 234, 131, 0.5);
+}
+
+.world-card.locked {
+  opacity: 0.65;
+}
+
+.world-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text-100);
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+}
+
+.world-header:disabled {
+  cursor: default;
+}
+
+.world-emoji {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.world-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.world-title {
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.world-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-500);
+}
+
+.world-progress {
+  flex: 1;
+  min-width: 100px;
+  height: 7px;
+  background: var(--bg-600);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.world-progress .progress-fill {
+  background: var(--success);
+}
+
+.world-status {
+  font-size: 1.15rem;
+}
+
+.level-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1.1rem 1.1rem;
+  animation: fade-in 0.25s ease both;
+}
+
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  text-align: left;
+  background: var(--bg-700);
+  border: 2px solid var(--bg-600);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.9rem;
+  color: var(--text-100);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.level-row:hover:not(:disabled) {
+  border-color: var(--primary);
+  transform: translateX(3px);
+}
+
+.level-row:disabled {
+  cursor: default;
+}
+
+.level-row.locked {
+  opacity: 0.5;
+}
+
+.level-row.done {
+  border-color: rgba(46, 234, 131, 0.45);
+}
+
+.level-row.current {
+  border-color: var(--primary);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.level-num {
+  flex: none;
+  min-width: 2.2rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.level-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-stars {
+  display: flex;
+  gap: 0.1rem;
+  font-size: 0.85rem;
+}
+
+.mini-star.on {
+  color: var(--star);
+}
+
+.mini-star.off {
+  color: var(--bg-500);
+}
+
+.world-empty {
+  font-size: 0.85rem;
+  color: var(--text-500);
+  padding: 0 1.1rem 1.1rem;
+}

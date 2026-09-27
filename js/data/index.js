@@ -5,8 +5,13 @@
 // =====================================================
 
 import { world1 } from "./worlds/world1.js";
+import { world2 } from "./worlds/world2.js";
+import { world3 } from "./worlds/world3.js";
+import { world4 } from "./worlds/world4.js";
+import { world5 } from "./worlds/world5.js";
+import { world6 } from "./worlds/world6.js";
 
-export const worlds = [world1];
+export const worlds = [world1, world2, world3, world4, world5, world6];
 
 /** Busca un nivel por id. Devuelve { world, level } o null. */
 export function findLevel(levelId) {

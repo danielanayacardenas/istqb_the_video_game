@@ -81,6 +81,17 @@ bun server.js
 
 ---
 
+## 🧪 Tests
+
+El motor, el sistema de progreso y la persistencia tienen tests unitarios
+con el runner integrado de Bun:
+
+```bash
+bun test
+```
+
+---
+
 ## 📁 Estructura del proyecto
 
 ```
@@ -90,28 +101,31 @@ ISTQB/
 ├── package.json
 ├── css/
 │   ├── base.css          ← variables, reset, tipografía
-│   ├── components.css    ← botones, tarjetas, modales, barras
+│   ├── components.css    ← botones, insignias, tarjetas
 │   ├── screens.css       ← pantallas (inicio, mapa, nivel, resultados)
 │   └── animations.css    ← streak, estrellas, transiciones
 ├── js/
-│   ├── app.js            ← bootstrap + router de pantallas
+│   ├── app.js            ← bootstrap de la aplicación
+│   ├── router.js         ← router de pantallas
 │   ├── state.js          ← estado global + persistencia (localStorage)
+│   ├── utils.js          ← utilidades compartidas
 │   ├── screens/
 │   │   ├── start.js      ← pantalla de inicio + idioma
-│   │   ├── map.js        ← mapa del juego
+│   │   ├── map.js        ← mapa del juego con desbloqueo
 │   │   ├── level.js      ← juego de nivel (preguntas)
-│   │   ├── results.js    ← resultado del nivel, estrellas y fallidas
-│   │   ├── achievements.js
-│   │   └── boss.js       ← simulacro de examen
+│   │   └── results.js    ← resultado del nivel, estrellas
 │   ├── engine/
-│   │   ├── game.js       ← vidas, streak, temporizador, aleatorización
-│   │   └── scoring.js    ← estrellas y logros
+│   │   ├── game.js       ← vidas, racha, aleatorización
+│   │   ├── scoring.js    ← estrellas
+│   │   └── progress.js   ← desbloqueo de mundos y niveles
 │   └── data/
-│       ├── worlds/       ← banco de preguntas por mundo
-│       │   ├── world1.js … world6.js
-│       │   ├── challenges.js
-│       │   └── boss.js
-│       └── achievements.js
+│       ├── index.js      ← agregador de mundos
+│       └── worlds/       ← banco de preguntas por mundo
+│           └── world1.js … world6.js
+├── tests/
+│   ├── engine.test.mjs   ← motor del juego
+│   ├── progress.test.mjs ← desbloqueo y estadísticas
+│   └── state.test.mjs    ← persistencia del progreso
 └── README.md
 ```
 
@@ -124,7 +138,7 @@ ISTQB/
 | 0 | Inicialización del repo, estructura y README | ✅ |
 | 1 | Esqueleto de la app + pantalla de inicio + router + estado | ✅ |
 | 2 | Motor de niveles (vidas, timer, streak, feedback, resultados) | ✅ |
-| 3 | Mapa del juego con desbloqueo progresivo | ⏳ |
+| 3 | Mapa del juego con desbloqueo progresivo | ✅ |
 | 4 | Contenido — Mundo 1: Fundamentos de Testing | ⏳ |
 | 5 | Contenido — Mundo 2: Testing en el SDLC | ⏳ |
 | 6 | Contenido — Mundo 3: Testing Estático | ⏳ |

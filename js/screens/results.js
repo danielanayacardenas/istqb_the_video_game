@@ -4,7 +4,9 @@
 // =====================================================
 
 import { navigate } from "../router.js";
-import { getNextLevel } from "../data/index.js";
+import { getNextLevel, worlds, findLevel } from "../data/index.js";
+import { getState } from "../state.js";
+import { isWorldCompleted } from "../engine/progress.js";
 import { esc } from "../utils.js";
 
 export function renderResults(params = {}) {
@@ -20,6 +22,23 @@ export function renderResults(params = {}) {
   } = params;
 
   const next = won ? getNextLevel(levelId) : null;
+
+  // Banner cuando se acaba de completar un mundo y el siguiente tiene contenido
+  let worldBanner = "";
+  if (won) {
+    const found = findLevel(levelId);
+    if (found) {
+      const wi = worlds.indexOf(found.world);
+      const nextWorld = wi + 1 < worlds.length ? worlds[wi + 1] : null;
+      if (
+        nextWorld &&
+        nextWorld.levels.length > 0 &&
+        isWorldCompleted(found.world, getState().progress)
+      ) {
+        worldBanner = `<p class="results-world-banner">🌍 ¡Mundo ${found.world.number} completado! Se desbloqueó el <strong>Mundo ${nextWorld.number} — ${esc(nextWorld.title)}</strong></p>`;
+      }
+    }
+  }
 
   const el = document.createElement("section");
   el.className = "screen results-screen";
@@ -65,6 +84,8 @@ export function renderResults(params = {}) {
             </p>`
           : ""
       }
+
+      ${worldBanner}
 
       <div class="results-actions">
         ${next ? `<button class="btn btn-primary" data-action="next">▶ Siguiente nivel</button>` : ""}
