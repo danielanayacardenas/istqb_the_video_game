@@ -12,6 +12,7 @@ import { recordLevelResult, getSetting } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
 import { createCombatScene } from "../ui/combatScene.js";
+import { playEvent as playSfxEvent } from "../ui/sfx.js";
 import { esc } from "../utils.js";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
@@ -198,6 +199,7 @@ export function renderLevel({ levelId } = {}) {
       const event = result.isCorrect ? combat.hit() : combat.miss();
       combatScene.play(event);
       combatScene.setEnemyHp(combat.enemyHpRatio());
+      if (getSetting("sound") !== false) playSfxEvent(event.type);
     }
 
     const q = game.current();
@@ -281,6 +283,7 @@ export function renderLevel({ levelId } = {}) {
     if (combat && combatScene) {
       const event = combat.finish(won);
       combatScene.play(event);
+      if (getSetting("sound") !== false) playSfxEvent(event.type);
       const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
       if (reduced) goToResults();
       else setTimeout(goToResults, 950);
