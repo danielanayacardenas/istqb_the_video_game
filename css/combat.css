@@ -1,0 +1,234 @@
+/* =====================================================
+   ISTQB Quest — css/combat.css
+   Barra de combate arcade (Etapa 13): arena inferior,
+   sprites pixel, disparos, impactos, KO y barra de aguante.
+   ===================================================== */
+
+.combat-strip {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.level-screen.has-combat {
+  padding-bottom: 150px;
+}
+
+.combat-arena {
+  --arena-sky-1: #1c2344;
+  --arena-sky-2: #2b3560;
+  --arena-ground: #3f3a55;
+  --arena-silhouette: #141a33;
+  position: relative;
+  height: 124px;
+  overflow: hidden;
+  border-top: 2px solid var(--bg-500);
+  background: linear-gradient(180deg, var(--arena-sky-1) 0%, var(--arena-sky-2) 100%);
+}
+
+/* Paletas por mundo (los desafíos reutilizan las de los mundos) */
+.combat-arena.theme-w2 { --arena-sky-1: #38221b; --arena-sky-2: #5a3620; --arena-ground: #4a3b2e; --arena-silhouette: #241611; }
+.combat-arena.theme-w3 { --arena-sky-1: #16281f; --arena-sky-2: #24443a; --arena-ground: #3c4a38; --arena-silhouette: #0f1d17; }
+.combat-arena.theme-w4 { --arena-sky-1: #2b2f1e; --arena-sky-2: #4a5530; --arena-ground: #4b4630; --arena-silhouette: #1c1f12; }
+.combat-arena.theme-w5 { --arena-sky-1: #202436; --arena-sky-2: #343b56; --arena-ground: #3b3f52; --arena-silhouette: #151826; }
+.combat-arena.theme-w6 { --arena-sky-1: #2a2018; --arena-sky-2: #46331f; --arena-ground: #4a3a2a; --arena-silhouette: #1a130d; }
+.combat-arena.theme-c1 { --arena-sky-1: #1c2344; --arena-sky-2: #2b3560; --arena-ground: #3f3a55; --arena-silhouette: #141a33; }
+.combat-arena.theme-c2 { --arena-sky-1: #2b2f1e; --arena-sky-2: #4a5530; --arena-ground: #4b4630; --arena-silhouette: #1c1f12; }
+.combat-arena.theme-c3 { --arena-sky-1: #202436; --arena-sky-2: #343b56; --arena-ground: #3b3f52; --arena-silhouette: #151826; }
+
+.combat-skyline {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  height: 38px;
+  opacity: 0.55;
+  background:
+    repeating-linear-gradient(90deg, var(--arena-silhouette) 0 20px, transparent 20px 38px),
+    repeating-linear-gradient(90deg, transparent 0 8px, var(--arena-silhouette) 8px 26px, transparent 26px 52px);
+  background-size: 140px 26px, 190px 38px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.combat-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 34px;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.16) 0 14px, transparent 14px 28px),
+    var(--arena-ground);
+  border-top: 3px solid rgba(0, 0, 0, 0.35);
+}
+
+.combat-actor {
+  position: absolute;
+  bottom: 26px;
+  transition: transform 0.18s ease-out, opacity 0.5s ease;
+  transform-origin: bottom center;
+}
+
+.combat-player { left: 5%; }
+.combat-enemy { right: 5%; }
+
+.combat-sprite {
+  display: block;
+  width: 76px;
+  height: 76px;
+  transition: filter 0.12s linear;
+}
+
+.combat-enemy .combat-sprite {
+  transform: scaleX(-1);
+}
+
+/* Sacudida del impactado */
+.combat-player.hit { transform: translateX(-8px); }
+.combat-enemy.hit { transform: translateX(8px); }
+.combat-actor.hit .combat-sprite { filter: brightness(2.4) saturate(0.3); }
+
+/* Fogonazo */
+.combat-muzzle {
+  position: absolute;
+  top: 34%;
+  width: 16px;
+  height: 9px;
+  border-radius: 50% 40% 40% 50%;
+  background: radial-gradient(circle at 30% 50%, #fff 0 20%, #ffe08a 40%, #ff9d3c 75%, transparent 100%);
+  opacity: 0;
+}
+
+.combat-player .combat-muzzle { right: -13px; }
+.combat-enemy .combat-muzzle { left: -13px; }
+
+.combat-actor.firing .combat-muzzle {
+  opacity: 1;
+  animation: combat-flash 0.22s steps(2, end) 1;
+}
+
+@keyframes combat-flash {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* Bala */
+.combat-projectile {
+  position: absolute;
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--star);
+  box-shadow: 0 0 8px rgba(255, 217, 61, 0.8);
+  opacity: 0;
+  z-index: 3;
+}
+
+.combat-projectile.visible { opacity: 1; }
+
+/* Chispas del impacto */
+.combat-spark {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 12%, var(--star) 30%, rgba(255, 130, 60, 0.6) 55%, transparent 75%);
+  opacity: 0;
+  z-index: 4;
+}
+
+.combat-spark.visible {
+  opacity: 1;
+  animation: combat-spark 0.35s ease-out;
+}
+
+@keyframes combat-spark {
+  0% { transform: scale(0.4); }
+  100% { transform: scale(1.5); }
+}
+
+/* Sacudidas de la arena */
+.combat-arena.shake { animation: combat-shake 0.32s ease-out; }
+.combat-arena.shake-soft { animation: combat-shake-soft 0.22s ease-out; }
+
+@keyframes combat-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+@keyframes combat-shake-soft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+/* Viñeta roja al recibir un disparo */
+.combat-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(255, 70, 70, 0.32) 100%);
+}
+
+.combat-vignette.show { opacity: 1; }
+
+/* Barra de aguante del enemigo */
+.combat-hp {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.combat-hp-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--success);
+  transition: width 0.35s ease;
+}
+
+.combat-hp-fill.low { background: var(--danger); }
+
+/* KO: el derrotado cae */
+.combat-actor.down {
+  transform: rotate(-88deg) translateY(6px);
+  opacity: 0.75;
+  transition: transform 0.5s ease-in, opacity 0.5s ease;
+}
+
+.combat-enemy.down { transform: rotate(88deg) translateY(6px); }
+
+/* Móvil: arena más compacta */
+@media (max-width: 640px) {
+  .level-screen.has-combat { padding-bottom: 118px; }
+  .combat-arena { height: 96px; }
+  .combat-sprite { width: 56px; height: 56px; }
+  .combat-actor { bottom: 22px; }
+  .combat-hp { width: 64px; }
+}
+
+/* Accesibilidad: sin animaciones para quien lo prefiera */
+@media (prefers-reduced-motion: reduce) {
+  .combat-arena.shake,
+  .combat-arena.shake-soft { animation: none; }
+  .combat-actor,
+  .combat-sprite,
+  .combat-hp-fill { transition: none; }
+  .combat-muzzle,
+  .combat-projectile { display: none; }
+}
