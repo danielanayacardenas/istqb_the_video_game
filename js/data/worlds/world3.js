@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world3.js
 // Mundo 3: Testing Estático (CTFL v4.0, capítulo 3)
+// Opciones equilibradas en longitud + multi-selección (Etapa 14, lote 4).
 // =====================================================
 
 export const world3 = {
@@ -25,9 +26,9 @@ export const world3 = {
           topic: "3.1",
           question: "¿Qué es el testing estático?",
           options: [
-            "Ejecutar el software para provocar fallos y observar el comportamiento.",
-            "Examinar productos de trabajo sin ejecutarlos, mediante revisiones y/o análisis estático con herramientas.",
-            "Una técnica exclusiva para revisar código compilado.",
+            "Ejecutar el software para provocar fallos y observar su comportamiento real.",
+            "Examinar productos de trabajo sin ejecutarlos, mediante revisiones o análisis.",
+            "Una técnica exclusiva para revisar el código fuente ya compilado.",
             "La última fase del proyecto, posterior a las pruebas de aceptación.",
           ],
           correct: 1,
@@ -46,10 +47,10 @@ export const world3 = {
           topic: "3.1",
           question: "¿Cuál de los siguientes productos de trabajo PUEDE examinarse con testing estático?",
           options: [
-            "Solo el código fuente.",
-            "Solo los documentos de requisitos.",
-            "Solo los casos de prueba.",
-            "Todos los anteriores, y también diseños, planes, historias de usuario, contratos y modelos.",
+            "Solo el código fuente y los scripts de automatización.",
+            "Solo los documentos de requisitos y las historias de usuario.",
+            "Solo los casos de prueba y sus datos asociados.",
+            "Cualquier producto de trabajo: código, requisitos, diseños o planes.",
           ],
           correct: 3,
           explanation:
@@ -68,9 +69,9 @@ export const world3 = {
           question:
             "¿Qué tipo de defectos encuentra el testing estático que el dinámico difícilmente detecta?",
           options: [
-            "Fallos de rendimiento bajo carga alta.",
-            "Ambigüedades, omisiones e inconsistencias en los requisitos, y código muerto o inalcanzable.",
-            "Errores de integración entre servicios en tiempo de ejecución.",
+            "Fallos de rendimiento del sistema cuando hay mucha carga.",
+            "Ambigüedades en los requisitos y código muerto o inalcanzable.",
+            "Errores de integración entre servicios durante la ejecución.",
             "Problemas de usabilidad detectados por usuarios reales.",
           ],
           correct: 1,
@@ -89,10 +90,10 @@ export const world3 = {
           topic: "3.1",
           question: "¿Por qué se considera rentable el testing estático?",
           options: [
-            "Porque elimina la necesidad de las pruebas dinámicas.",
-            "Porque los defectos se detectan antes, cuando corregirlos es más barato, y puede aplicarse a productos que aún no pueden ejecutarse.",
-            "Porque solo lo realizan herramientas automáticas.",
-            "Porque garantiza que el producto no tendrá defectos.",
+            "Porque elimina la necesidad de ejecutar pruebas dinámicas.",
+            "Porque los defectos se corrigen antes, cuando son más baratos.",
+            "Porque lo realizan únicamente herramientas automáticas.",
+            "Porque garantiza que el producto no tendrá ningún defecto.",
           ],
           correct: 1,
           explanation:
@@ -111,10 +112,10 @@ export const world3 = {
           question:
             "¿Cuál afirmación sobre el testing estático y el testing dinámico es CORRECTA?",
           options: [
-            "El estático examina sin ejecutar y el dinámico ejecuta el software; se complementan y juntos cubren más tipos de defectos.",
-            "El dinámico es superior porque siempre encuentra más defectos que el estático.",
-            "El estático solo puede usarse después del dinámico.",
-            "Ambos requieren que el código sea ejecutable.",
+            "El estático examina sin ejecutar y el dinámico ejecuta; se complementan.",
+            "El dinámico es superior porque encuentra siempre más defectos que el estático.",
+            "El estático solo puede usarse después de terminar el dinámico.",
+            "Ambos requieren que el código sea ejecutable y esté desplegado.",
           ],
           correct: 0,
           explanation:
@@ -133,10 +134,10 @@ export const world3 = {
           question:
             "¿Qué tipo de defectos busca principalmente una revisión de documentos de requisitos?",
           options: [
-            "Errores de sintaxis del lenguaje de programación.",
-            "Ambigüedades, contradicciones, omisiones y requisitos no verificables.",
-            "Fallos de memoria del servidor.",
-            "Problemas de compatibilidad con navegadores.",
+            "Errores de sintaxis del lenguaje de programación usado.",
+            "Ambigüedades, contradicciones y requisitos no verificables.",
+            "Fallos de memoria y de recursos del servidor de aplicaciones.",
+            "Problemas de compatibilidad con los navegadores de los usuarios.",
           ],
           correct: 1,
           explanation:
@@ -155,9 +156,9 @@ export const world3 = {
           question: "¿Cuándo puede comenzar el testing estático?",
           options: [
             "Solo cuando el código está compilado y es ejecutable.",
-            "En cuanto existen borradores de los productos de trabajo, incluso antes de escribir código.",
-            "Después de las pruebas de sistema.",
-            "Únicamente en la fase de mantenimiento.",
+            "En cuanto existen borradores de productos de trabajo.",
+            "Después de terminar las pruebas de sistema del producto.",
+            "Únicamente durante la fase de mantenimiento del sistema.",
           ],
           correct: 1,
           explanation:
@@ -175,10 +176,10 @@ export const world3 = {
           topic: "3.1",
           question: "¿Cuál es una limitación del testing estático?",
           options: [
-            "No puede examinar documentos.",
-            "No evalúa el comportamiento real en ejecución (por ejemplo, rendimiento o interacciones en tiempo de ejecución); para eso se necesita el testing dinámico.",
-            "Solo lo pueden aplicar herramientas de pago.",
-            "Depende siempre de datos de producción.",
+            "No puede examinar documentos ni código sin compilar.",
+            "No evalúa el comportamiento real durante la ejecución del software.",
+            "Solo lo pueden aplicar las herramientas comerciales de pago.",
+            "Depende siempre de datos reales de producción para funcionar.",
           ],
           correct: 1,
           explanation:
@@ -229,10 +230,10 @@ export const world3 = {
           topic: "3.2",
           question: "¿Qué caracteriza a la revisión informal?",
           options: [
-            "Un proceso documentado con actas y métricas.",
-            "No sigue un proceso formal y sus resultados no se documentan por obligación; busca detectar anomalías de forma económica.",
-            "Requiere un moderador y revisores certificados.",
-            "Solo puede realizarla el autor del documento.",
+            "Un proceso documentado con actas y métricas de la revisión.",
+            "Sin proceso formal ni documentación obligatoria de resultados.",
+            "Requiere un moderador y revisores certificados en el estándar.",
+            "Solo puede realizarla el propio autor del documento revisado.",
           ],
           correct: 1,
           explanation:
@@ -250,10 +251,10 @@ export const world3 = {
           topic: "3.2",
           question: "¿Qué distingue al walkthrough (recorrido)?",
           options: [
-            "El autor presenta y guía el producto de trabajo a los revisores, que aprenden de él mientras detectan anomalías.",
-            "Es la revisión más formal, con criterios de entrada y salida.",
-            "La dirige siempre un moderador externo.",
-            "No admite preguntas ni comentarios de los revisores.",
+            "El autor presenta y guía el producto mientras los revisores detectan anomalías.",
+            "Es la revisión más formal, con criterios de entrada y de salida.",
+            "La dirige siempre un moderador externo al equipo del autor.",
+            "No admite preguntas ni comentarios de los revisores presentes.",
           ],
           correct: 0,
           explanation:
@@ -271,10 +272,10 @@ export const world3 = {
           topic: "3.2",
           question: "¿Qué caracteriza a la revisión técnica?",
           options: [
-            "No dejar registro de los hallazgos.",
-            "Un peer review documentado, con proceso definido, dirigido por un moderador y realizado por revisores técnicamente cualificados.",
-            "Ser una sesión exclusiva de negocio, sin perfiles técnicos.",
-            "Sustituir a la inspección en los productos críticos.",
+            "No dejar ningún registro de los hallazgos encontrados.",
+            "Un peer review documentado con proceso y moderador definidos.",
+            "Ser una sesión exclusiva del área de negocio, sin técnicos.",
+            "Sustituir a la inspección en los productos más críticos.",
           ],
           correct: 1,
           explanation:
@@ -293,10 +294,10 @@ export const world3 = {
           question:
             "¿Qué característica define a la inspección (la revisión más formal)?",
           options: [
-            "Sigue un proceso completo y bien definido, con roles, criterios de entrada/salida, checklists y métricas; busca maximizar la detección de defectos.",
-            "Es una charla informal sin preparación.",
-            "La dirige el autor sin ayuda.",
-            "Prohíbe el uso de listas de comprobación.",
+            "Sigue un proceso completo con roles, checklists y métricas.",
+            "Es una charla informal que se hace sin ninguna preparación.",
+            "La dirige el propio autor sin ayuda de ningún moderador.",
+            "Prohíbe expresamente el uso de listas de comprobación.",
           ],
           correct: 0,
           explanation:
@@ -315,10 +316,10 @@ export const world3 = {
           question:
             "En una revisión, ¿qué rol planifica y dirige las actividades y garantiza que la reunión sea efectiva?",
           options: [
-            "El autor.",
-            "El escriba (scribe).",
-            "El moderador (facilitador).",
-            "El gerente del proyecto.",
+            "El autor del producto que se está revisando.",
+            "El escriba, que registra los hallazgos.",
+            "El moderador, que facilita la revisión.",
+            "El gerente del proyecto, por su autoridad.",
           ],
           correct: 2,
           explanation:
@@ -337,10 +338,10 @@ export const world3 = {
           question:
             "En una revisión formal, ¿qué actividad corresponde a la preparación previa a la reunión de revisión?",
           options: [
-            "La corrección de los defectos encontrados.",
-            "El examen individual del producto de trabajo por cada revisor, aplicando checklists si procede.",
-            "La publicación del informe final.",
-            "La reunión de apertura (kick-off).",
+            "La corrección de los defectos que se encontraron.",
+            "El examen individual del producto por cada revisor.",
+            "La publicación del informe final de la revisión.",
+            "La reunión de apertura (kick-off) de la revisión.",
           ],
           correct: 1,
           explanation:
@@ -358,10 +359,10 @@ export const world3 = {
           topic: "3.2",
           question: "¿Cuál de los siguientes factores favorece el éxito de una revisión?",
           options: [
-            "Incluir los objetivos de la revisión en la convocatoria y limitar el producto a revisar a un tamaño manejable.",
-            "Revisar documentos de 300 páginas en una sola sesión.",
-            "Usar la revisión para evaluar el desempeño del autor.",
-            "Invitar a cuantas más personas mejor, sin roles definidos.",
+            "Objetivos claros y un producto de tamaño manejable para revisar.",
+            "Revisar documentos de 300 páginas en una única sesión maratón.",
+            "Usar la revisión para evaluar el desempeño del autor del documento.",
+            "Invitar a cuantas más personas mejor, sin definir ningún rol.",
           ],
           correct: 0,
           explanation:
@@ -372,6 +373,29 @@ export const world3 = {
             "Dividir un documento grande en secciones asignadas a distintos revisores.",
           mistake:
             "Convertir la revisión en un juicio al autor; el miedo produce revisiones superficiales.",
+          syllabusRef: "Tema 3.2 — Proceso de revisión",
+        },
+        {
+          id: "w3-l2-q9",
+          type: "multi",
+          topic: "3.2",
+          question: "Selecciona las DOS afirmaciones correctas sobre el proceso de revisión.",
+          options: [
+            "La inspección es el tipo de revisión más formal, con roles y métricas.",
+            "El moderador planifica y dirige la revisión y hace su seguimiento.",
+            "El walkthrough lo dirige siempre un moderador externo al autor.",
+            "La revisión informal exige siempre actas y métricas obligatorias.",
+            "En la inspección, el autor decide en solitario qué hallazgos corregir.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "La inspección es la revisión más formal (proceso completo, roles y métricas) y el moderador es quien planifica, dirige y hace seguimiento. El walkthrough lo lidera el autor, la revisión informal no exige documentación y las correcciones se gestionan con seguimiento, no en solitario.",
+          example:
+            "El árbitro dirige el partido (moderador) y la final se juega con reglas completas (inspección).",
+          useCase:
+            "Para un requisito crítico se elige inspección con moderador y checklist.",
+          mistake:
+            "Dar por hecho que todas las revisiones funcionan igual: cada tipo tiene su formalidad.",
           syllabusRef: "Tema 3.2 — Proceso de revisión",
         },
       ],
@@ -390,10 +414,10 @@ export const world3 = {
           topic: "3.3",
           question: "¿Qué es el análisis estático realizado por herramientas?",
           options: [
-            "La ejecución automática de casos de prueba.",
-            "El examen automático de productos de trabajo (normalmente código) sin ejecutarlos, para detectar violaciones de estándares, defectos y vulnerabilidades.",
-            "Una revisión manual guiada por checklists.",
-            "Un tipo de prueba de rendimiento.",
+            "La ejecución automática de casos de prueba sobre el código.",
+            "El examen automático del código sin ejecutarlo, buscando defectos.",
+            "Una revisión manual de documentos guiada por checklists.",
+            "Un tipo de prueba de rendimiento sobre la aplicación.",
           ],
           correct: 1,
           explanation:
@@ -412,10 +436,10 @@ export const world3 = {
           question:
             "¿Cuál de los siguientes defectos es típicamente detectable mediante análisis estático del código?",
           options: [
-            "Que la aplicación se ralentiza con 10.000 usuarios.",
-            "Código inalcanzable (muerto), variables sin definir y violaciones de estándares de código.",
+            "Que la aplicación se ralentiza con diez mil usuarios conectados.",
+            "Código muerto, variables sin definir y violaciones de estándares.",
             "Que un pago se procesa dos veces por una condición de carrera.",
-            "Que la interfaz confunde a los usuarios.",
+            "Que la interfaz del producto confunde a los usuarios nuevos.",
           ],
           correct: 1,
           explanation:
@@ -433,10 +457,10 @@ export const world3 = {
           topic: "3.3",
           question: "¿Qué es un falso positivo en el análisis estático?",
           options: [
-            "Un defecto real que la herramienta no detecta.",
-            "Una advertencia de la herramienta sobre algo que en realidad no es un defecto.",
-            "Un error del compilador.",
-            "Un test que pasa cuando debería fallar.",
+            "Un defecto real que la herramienta no logra detectar.",
+            "Una advertencia sobre algo que en realidad no es un defecto.",
+            "Un error de compilación del propio lenguaje de programación.",
+            "Un caso de prueba que pasa cuando debería fallar.",
           ],
           correct: 1,
           explanation:
@@ -475,10 +499,10 @@ export const world3 = {
           topic: "3.3",
           question: "¿Cuál es un beneficio clave del análisis estático en el desarrollo?",
           options: [
-            "Permite detectar y corregir problemas de inmediato, incluso antes de ejecutar el código, y se integra bien en la integración continua.",
-            "Sustituye a las revisiones de documentos.",
-            "Garantiza cero defectos en producción.",
-            "Solo aporta valor en sistemas pequeños.",
+            "Detecta problemas de inmediato, incluso antes de ejecutar el código.",
+            "Sustituye por completo a las revisiones manuales de documentos.",
+            "Garantiza que no habrá defectos en el entorno de producción.",
+            "Solo aporta valor real en los sistemas pequeños y medianos.",
           ],
           correct: 0,
           explanation:
@@ -496,10 +520,10 @@ export const world3 = {
           topic: "3.3",
           question: "¿Dónde se suele integrar el análisis estático en un flujo DevOps?",
           options: [
-            "Únicamente en la fase final, antes del despliegue.",
-            "En la integración continua (CI), ejecutándose automáticamente con cada cambio como control de calidad del código.",
-            "Solo en las pruebas manuales de aceptación.",
-            "Únicamente cuando hay un incidente en producción.",
+            "Únicamente en la fase final del proyecto, antes del despliegue.",
+            "En la integración continua, ejecutándose con cada cambio.",
+            "Solo durante las pruebas manuales de aceptación del cliente.",
+            "Únicamente después de que ocurra un incidente en producción.",
           ],
           correct: 1,
           explanation:
@@ -510,6 +534,29 @@ export const world3 = {
             "El pipeline rechaza automáticamente un commit con vulnerabilidades conocidas.",
           mistake:
             "Dejarlo para el final; su valor está en ejecutarse continuamente.",
+          syllabusRef: "Tema 3.3 — Análisis estático por herramientas",
+        },
+        {
+          id: "w3-l3-q7",
+          type: "multi",
+          topic: "3.3",
+          question: "Selecciona las DOS opciones correctas sobre el análisis estático.",
+          options: [
+            "Puede integrarse en la integración continua y frenar un merge.",
+            "Detecta código muerto, variables sin usar y vulnerabilidades.",
+            "Sirve para medir el rendimiento real del sistema bajo carga.",
+            "Sustituye a las revisiones y a las pruebas dinámicas del equipo.",
+            "Garantiza que el software no tendrá defectos en producción.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El análisis estático se integra en CI/CD como quality gate y detecta defectos sin ejecutar: código muerto, variables sin usar, vulnerabilidades. No mide rendimiento real, no sustituye a otras actividades y no garantiza ausencia de defectos.",
+          example:
+            "El detector de metales de la entrada: automático (CI) y detecta objetos peligrosos (defectos).",
+          useCase:
+            "El pipeline frena el merge si el análisis encuentra una vulnerabilidad conocida.",
+          mistake:
+            "Esperar del análisis estático cosas que solo el testing dinámico puede dar.",
           syllabusRef: "Tema 3.3 — Análisis estático por herramientas",
         },
       ],

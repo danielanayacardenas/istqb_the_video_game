@@ -100,11 +100,11 @@ describe("integridad del banco de preguntas", () => {
     expect(total).toBe(29);
   });
 
-  test("el mundo 3 tiene 3 niveles y 22 preguntas", () => {
+  test("el mundo 3 tiene 3 niveles y 24 preguntas (22 simple + 2 multi)", () => {
     const world3 = worlds[2];
     expect(world3.levels.length).toBe(3);
     const total = world3.levels.reduce((sum, l) => sum + l.questions.length, 0);
-    expect(total).toBe(22);
+    expect(total).toBe(24);
   });
 
   test("el mundo 4 tiene 6 niveles y 45 preguntas", () => {
