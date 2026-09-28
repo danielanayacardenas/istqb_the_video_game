@@ -7,9 +7,11 @@
 import { createGame } from "../engine/game.js";
 import { starsFor } from "../engine/scoring.js";
 import { checkAchievements } from "../engine/achievements.js";
-import { recordLevelResult } from "../state.js";
+import { createCombat } from "../engine/combat.js";
+import { recordLevelResult, getSetting } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
+import { createCombatScene } from "../ui/combatScene.js";
 import { esc } from "../utils.js";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
@@ -72,7 +74,7 @@ export function renderLevel({ levelId } = {}) {
     return el;
   }
 
-  const { level } = found;
+  const { world, level } = found;
   const game = createGame(level);
 
   const el = document.createElement("section");
@@ -93,6 +95,7 @@ export function renderLevel({ levelId } = {}) {
       </div>
     </div>
     <main class="level-body" data-el="body"></main>
+    <div class="combat-strip" data-el="combat"></div>
   `;
 
   const livesEl = el.querySelector('[data-el="lives"]');
@@ -101,6 +104,20 @@ export function renderLevel({ levelId } = {}) {
   const counterEl = el.querySelector('[data-el="counter"]');
   const progressEl = el.querySelector('[data-el="progress"]');
   const bodyEl = el.querySelector('[data-el="body"]');
+
+  /* ---------- Combate arcade (franja inferior) ---------- */
+  const combatEnabled = getSetting("combat") !== false;
+  const combatSlot = el.querySelector('[data-el="combat"]');
+  let combat = null;
+  let combatScene = null;
+  if (combatEnabled) {
+    combat = createCombat({ lives: game.maxLives, questions: game.total });
+    combatScene = createCombatScene(combatSlot, { theme: world.id });
+    combatScene.setEnemyHp(combat.enemyHpRatio());
+    el.classList.add("has-combat");
+  } else {
+    combatSlot.remove();
+  }
 
   let timer = null;
   let locked = false;
@@ -176,6 +193,13 @@ export function renderLevel({ levelId } = {}) {
     timer?.stop();
 
     const result = game.submit(optionIndex, { timedOut });
+
+    if (combat && combatScene && result) {
+      const event = result.isCorrect ? combat.hit() : combat.miss();
+      combatScene.play(event);
+      combatScene.setEnemyHp(combat.enemyHpRatio());
+    }
+
     const q = game.current();
 
     bodyEl.querySelectorAll(".option-btn").forEach((btn, i) => {
@@ -239,17 +263,30 @@ export function renderLevel({ levelId } = {}) {
     });
     const newAchievements = checkAchievements();
 
-    navigate("results", {
-      levelId: level.id,
-      won,
-      stars,
-      correct: game.correct,
-      total: game.total,
-      wrong: game.wrong,
-      bestStreak: game.bestStreak,
-      topic: level.topic,
-      newAchievements,
-    });
+    const goToResults = () => {
+      combatScene?.destroy();
+      navigate("results", {
+        levelId: level.id,
+        won,
+        stars,
+        correct: game.correct,
+        total: game.total,
+        wrong: game.wrong,
+        bestStreak: game.bestStreak,
+        topic: level.topic,
+        newAchievements,
+      });
+    };
+
+    if (combat && combatScene) {
+      const event = combat.finish(won);
+      combatScene.play(event);
+      const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+      if (reduced) goToResults();
+      else setTimeout(goToResults, 950);
+    } else {
+      goToResults();
+    }
   }
 
   /* ---------- Salir ---------- */
@@ -257,6 +294,7 @@ export function renderLevel({ levelId } = {}) {
     const ok = confirm("¿Seguro que quieres salir del nivel? Este intento no se guardará.");
     if (!ok) return;
     timer?.stop();
+    combatScene?.destroy();
     navigate("map");
   });
 

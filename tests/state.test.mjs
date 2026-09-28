@@ -5,7 +5,7 @@
 
 import "./helpers.mjs";
 import { describe, test, expect, beforeEach } from "bun:test";
-import { recordLevelResult, recordBossResult, getState, resetProgress } from "../js/state.js";
+import { recordLevelResult, recordBossResult, getState, resetProgress, setSetting } from "../js/state.js";
 
 beforeEach(() => {
   resetProgress();
@@ -46,5 +46,12 @@ describe("progreso persistente", () => {
     recordBossResult({ correct: 26, passed: true });
     expect(getState().stats.bossBest).toBe(30);
     expect(getState().stats.bossCleared).toBe(true);
+  });
+
+  test("los ajustes de juego se persisten y se mezclan con los valores por defecto", () => {
+    expect(getState().settings).toEqual({ combat: true, sound: true });
+    setSetting("sound", false);
+    expect(getState().settings.sound).toBe(false);
+    expect(getState().settings.combat).toBe(true);
   });
 });
