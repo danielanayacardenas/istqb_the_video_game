@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "bun server.js",
     "start": "bun server.js",
-    "test": "bun test"
+    "test": "bun test",
+    "analyze": "bun scripts/analyze-bias.mjs"
   }
 }
