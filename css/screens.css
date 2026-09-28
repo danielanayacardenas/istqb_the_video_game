@@ -869,3 +869,28 @@
   color: var(--text-300);
   font-size: 0.95rem;
 }
+
+/* ---------- Ajustes de juego ---------- */
+.settings-row {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.chip {
+  border: 1px solid var(--bg-500);
+  background: var(--bg-800);
+  color: var(--text-300);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--success);
+  color: var(--text-100);
+}

@@ -3,7 +3,7 @@
    Pantalla de inicio: título, selector de idioma y arranque.
    ===================================================== */
 
-import { getState, setLanguage, hasProgress, resetProgress } from "../state.js";
+import { getState, setLanguage, hasProgress, resetProgress, setSetting } from "../state.js";
 import { ACHIEVEMENTS } from "../engine/achievements.js";
 import { globalStars } from "../engine/progress.js";
 import { navigate } from "../router.js";
@@ -34,6 +34,15 @@ export function renderStart() {
       </button>
     </div>
 
+    <div class="settings-row" role="group" aria-label="Ajustes de juego">
+      <button class="chip" data-setting="combat" aria-pressed="${state.settings.combat}">
+        🎮 Combate: ${state.settings.combat ? "ON" : "OFF"}
+      </button>
+      <button class="chip" data-setting="sound" aria-pressed="${state.settings.sound}">
+        🔊 Sonido: ${state.settings.sound ? "ON" : "OFF"}
+      </button>
+    </div>
+
     <div class="start-actions">
       <button class="btn btn-primary btn-big" data-action="play">
         ${someProgress ? "▶ Continuar" : "🎮 Comenzar"}
@@ -47,7 +56,7 @@ export function renderStart() {
     </div>
 
     <footer class="start-footer">
-      v1.0.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
+      v1.1.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
     </footer>
   `;
 
@@ -64,6 +73,20 @@ export function renderStart() {
         langButtons.forEach((b) => b.classList.toggle("active", b === btn));
       });
     }
+  });
+
+  /* ---------- Ajustes de juego ---------- */
+  screen.querySelectorAll(".chip[data-setting]").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const key = chip.dataset.setting;
+      const next = !getState().settings[key];
+      setSetting(key, next);
+      chip.setAttribute("aria-pressed", String(next));
+      chip.textContent =
+        key === "combat"
+          ? `🎮 Combate: ${next ? "ON" : "OFF"}`
+          : `🔊 Sonido: ${next ? "ON" : "OFF"}`;
+    });
   });
 
   /* ---------- Acciones ---------- */

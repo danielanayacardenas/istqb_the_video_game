@@ -8,6 +8,8 @@ const STORAGE_KEY = "istqb-quest.v1";
 const DEFAULT_STATE = {
   version: 1,
   language: "es",
+  /** Ajustes de juego (combate arcade, sonido) */
+  settings: { combat: true, sound: true },
   /** Progreso por nivel: levelId -> { completed, stars, attempts, bestStreak } */
   progress: {},
   /** Logros desbloqueados (ids) */
@@ -33,6 +35,7 @@ export function loadState() {
         ...structuredClone(DEFAULT_STATE),
         ...saved,
         stats: { ...DEFAULT_STATE.stats, ...(saved.stats || {}) },
+        settings: { ...DEFAULT_STATE.settings, ...(saved.settings || {}) },
       };
     }
   } catch (err) {
@@ -66,6 +69,16 @@ export function updateState(partial) {
 /** Cambia el idioma de la interfaz. */
 export function setLanguage(language) {
   return updateState({ language });
+}
+
+/** Lee un ajuste de juego (combat, sound). */
+export function getSetting(key) {
+  return state.settings?.[key];
+}
+
+/** Actualiza un ajuste de juego y lo persiste. */
+export function setSetting(key, value) {
+  return updateState({ settings: { ...state.settings, [key]: value } });
 }
 
 /** ¿El jugador tiene algún progreso guardado? */
