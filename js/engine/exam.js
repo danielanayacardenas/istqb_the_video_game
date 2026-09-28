@@ -65,11 +65,17 @@ export function drawExam(bank, { quotas = CHAPTER_QUOTAS, multiTarget = MULTI_TA
     const chapter = Number(chapterKey);
     const remaining = quota - (perChapter[chapter] ?? 0);
     if (remaining <= 0) continue;
-    const pool = shuffle(bank.filter((q) => q.chapter === chapter && !used.has(q.id)));
+    let pool = shuffle(bank.filter((q) => q.chapter === chapter && !used.has(q.id)));
+    // Si ya hay suficientes multis, el relleno prefiere simples
+    if (multiCount >= multiTarget) {
+      const singlesOnly = pool.filter((q) => !Array.isArray(q.correct));
+      if (singlesOnly.length >= remaining) pool = singlesOnly;
+    }
     for (const q of pool.slice(0, remaining)) {
       selected.push(q);
       used.add(q.id);
       perChapter[chapter] = (perChapter[chapter] ?? 0) + 1;
+      if (Array.isArray(q.correct)) multiCount += 1;
     }
   }
 
