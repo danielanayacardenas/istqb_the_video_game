@@ -39,15 +39,33 @@ describe("integridad del banco de preguntas", () => {
         expect(q[field], `falta el campo "${field}" en la pregunta ${q.id}`).toBeTruthy();
       }
       expect(Array.isArray(q.options), `options inválido en ${q.id}`).toBe(true);
-      expect(typeof q.correct, `correct inválido en ${q.id}`).toBe("number");
+      const correctOk =
+        typeof q.correct === "number" ||
+        (Array.isArray(q.correct) && q.correct.length >= 2 && q.correct.every((c) => typeof c === "number"));
+      expect(correctOk, `correct inválido en ${q.id}`).toBe(true);
     }
   });
 
-  test("cada pregunta tiene al menos 3 opciones y un índice correcto válido", () => {
+  test("cada pregunta tiene al menos 3 opciones y sus índices correctos son válidos", () => {
     for (const q of allQuestions) {
       expect(q.options.length, `opciones insuficientes en ${q.id}`).toBeGreaterThanOrEqual(3);
-      expect(q.correct, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
-      expect(q.correct, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      const idxs = Array.isArray(q.correct) ? q.correct : [q.correct];
+      for (const c of idxs) {
+        expect(c, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
+        expect(c, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      }
+    }
+  });
+
+  test("las preguntas multi son coherentes (type, sin duplicados, mínimo 2 correctas)", () => {
+    for (const q of allQuestions) {
+      if (q.type === "multi") {
+        expect(Array.isArray(q.correct), `${q.id} debería tener correct en array`).toBe(true);
+        expect(q.correct.length, `${q.id} necesita al menos 2 correctas`).toBeGreaterThanOrEqual(2);
+        expect(new Set(q.correct).size, `${q.id} tiene índices duplicados`).toBe(q.correct.length);
+      } else {
+        expect(typeof q.correct, `${q.id} single debería tener correct numérico`).toBe("number");
+      }
     }
   });
 
@@ -68,11 +86,11 @@ describe("integridad del banco de preguntas", () => {
     }
   });
 
-  test("el mundo 1 tiene 5 niveles y 37 preguntas", () => {
+  test("el mundo 1 tiene 5 niveles y 38 preguntas (37 simple + 1 multi)", () => {
     const world1 = worlds[0];
     expect(world1.levels.length).toBe(5);
     const total = world1.levels.reduce((sum, l) => sum + l.questions.length, 0);
-    expect(total).toBe(37);
+    expect(total).toBe(38);
   });
 
   test("el mundo 2 tiene 4 niveles y 27 preguntas", () => {
@@ -134,8 +152,11 @@ describe("integridad del banco del Boss", () => {
       }
       expect(Array.isArray(q.options), `options inválido en ${q.id}`).toBe(true);
       expect(q.options.length, `opciones insuficientes en ${q.id}`).toBeGreaterThanOrEqual(3);
-      expect(q.correct, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
-      expect(q.correct, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      const idxs = Array.isArray(q.correct) ? q.correct : [q.correct];
+      for (const c of idxs) {
+        expect(c, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
+        expect(c, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      }
       expect(typeof q.chapter, `chapter inválido en ${q.id}`).toBe("number");
       expect(q.chapter).toBeGreaterThanOrEqual(1);
       expect(q.chapter).toBeLessThanOrEqual(6);

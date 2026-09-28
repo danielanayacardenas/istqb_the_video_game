@@ -5,7 +5,7 @@
 // =====================================================
 
 import { bossBank, bossInfo } from "../data/boss/bank.js";
-import { drawExam, scoreExam, formatTime } from "../engine/exam.js";
+import { drawExam, scoreExam, formatTime, isCorrectAnswer } from "../engine/exam.js";
 import { checkAchievements } from "../engine/achievements.js";
 import { recordBossResult } from "../state.js";
 import { navigate } from "../router.js";
@@ -90,8 +90,10 @@ export function renderBoss() {
     function renderGrid() {
       gridEl.innerHTML = questions
         .map((_, i) => {
+          const a = answers[i];
+          const hasAnswer = a !== null && (!Array.isArray(a) || a.length > 0);
           const classes = ["boss-cell"];
-          if (answers[i] !== null) classes.push("answered");
+          if (hasAnswer) classes.push("answered");
           if (i === current) classes.push("current");
           if (marked.has(i)) classes.push("marked");
           return `<button class="${classes.join(" ")}" data-i="${i}">${i + 1}</button>`;
@@ -107,6 +109,10 @@ export function renderBoss() {
 
     function renderQuestion() {
       const q = questions[current];
+      const isMulti = Array.isArray(q.correct);
+      const required = isMulti ? q.correct.length : 1;
+      const raw = answers[current];
+      const picked = Array.isArray(raw) ? raw : raw === null ? [] : [raw];
       progressEl.textContent = `Pregunta ${current + 1} de ${questions.length}`;
 
       bodyEl.innerHTML = `
@@ -114,11 +120,16 @@ export function renderBoss() {
           <p class="question-topic">Pregunta ${current + 1} · Capítulo ${q.chapter}</p>
           <h2 class="question-text">${esc(q.question)}</h2>
         </div>
+        ${
+          isMulti
+            ? `<p class="multi-hint">🧩 Selecciona <strong>${required}</strong> opciones — <span data-el="multi-count">${picked.length}/${required}</span></p>`
+            : ""
+        }
         <div class="options">
           ${q.options
             .map(
               (opt, i) => `
-            <button class="option-btn ${answers[current] === i ? "selected" : ""}" data-index="${i}">
+            <button class="option-btn ${picked.includes(i) ? "selected" : ""}" data-index="${i}">
               <span class="option-letter">${LETTERS[i]}</span>
               <span class="option-text">${esc(opt)}</span>
             </button>`
@@ -134,7 +145,16 @@ export function renderBoss() {
 
       bodyEl.querySelectorAll(".option-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-          answers[current] = Number(btn.dataset.index);
+          const i = Number(btn.dataset.index);
+          if (isMulti) {
+            const cur = [...picked];
+            const pos = cur.indexOf(i);
+            if (pos >= 0) cur.splice(pos, 1);
+            else if (cur.length < required) cur.push(i);
+            answers[current] = cur;
+          } else {
+            answers[current] = i;
+          }
           renderQuestion();
         });
       });
@@ -161,7 +181,7 @@ export function renderBoss() {
 
     function submitExam(auto = false) {
       if (finished) return;
-      const unanswered = answers.filter((a) => a === null).length;
+      const unanswered = answers.filter((a) => a === null || (Array.isArray(a) && a.length === 0)).length;
       if (!auto) {
         const msg =
           unanswered > 0
@@ -202,17 +222,20 @@ export function renderBoss() {
 
     const wrong = questions
       .map((q, i) => ({ q, i }))
-      .filter(({ q, i }) => answers[i] !== q.correct);
+      .filter(({ q, i }) => !isCorrectAnswer(q, answers[i]));
     const wrongHtml = wrong
-      .map(
-        ({ q, i }) => `
+      .map(({ q, i }) => {
+        const idxs = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const letters = idxs.map((c) => LETTERS[c]).join(" y ");
+        const texts = idxs.map((c) => esc(q.options[c])).join(" · ");
+        return `
         <div class="boss-review-item">
           <p><strong>${i + 1}.</strong> ${esc(q.question)}</p>
-          <p class="answer-reveal">Correcta: ${LETTERS[q.correct]} — ${esc(q.options[q.correct])}</p>
+          <p class="answer-reveal">Correcta${idxs.length > 1 ? "s" : ""}: ${letters} — ${texts}</p>
           <p>${esc(q.explanation)}</p>
           <p class="syllabus">📚 ${esc(q.syllabusRef)}</p>
-        </div>`
-      )
+        </div>`;
+      })
       .join("");
 
     el.innerHTML = `

@@ -1,7 +1,8 @@
 // =====================================================
 // ISTQB Quest — screens/level.js
-// Pantalla de juego de un nivel: pregunta, opciones, vidas,
-// temporizador pausable, racha y feedback inmediato.
+// Pantalla de juego de un nivel: pregunta, opciones (simple
+// y multi-selección), vidas, temporizador pausable, racha,
+// feedback inmediato y combate arcade.
 // =====================================================
 
 import { createGame } from "../engine/game.js";
@@ -153,11 +154,21 @@ export function renderLevel({ levelId } = {}) {
     timerEl.classList.remove("low");
 
     const q = game.current();
+    const isMulti = q.type === "multi";
+    const required = q.correctIndexes.length;
+    const selected = new Set();
+
     bodyEl.innerHTML = `
       <div class="question-card card">
         <p class="question-topic">${esc(level.topic ?? "")}</p>
         <h2 class="question-text">${esc(q.question)}</h2>
       </div>
+      ${
+        isMulti
+          ? `<p class="multi-hint">🧩 Selecciona <strong>${required}</strong> opciones —
+              <span data-el="multi-count">0/${required}</span></p>`
+          : ""
+      }
       <div class="options">
         ${q.options
           .map(
@@ -169,12 +180,45 @@ export function renderLevel({ levelId } = {}) {
           )
           .join("")}
       </div>
+      ${
+        isMulti
+          ? `<div class="multi-actions">
+              <button class="btn btn-primary" data-action="confirm" disabled>Confirmar respuesta</button>
+            </div>`
+          : ""
+      }
       <div class="feedback" data-el="feedback" hidden></div>
     `;
 
-    bodyEl.querySelectorAll(".option-btn").forEach((btn) => {
-      btn.addEventListener("click", () => handleAnswer(Number(btn.dataset.index), false));
-    });
+    const optionBtns = [...bodyEl.querySelectorAll(".option-btn")];
+
+    if (isMulti) {
+      const countEl = bodyEl.querySelector('[data-el="multi-count"]');
+      const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
+
+      optionBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (locked) return;
+          const idx = Number(btn.dataset.index);
+          if (selected.has(idx)) {
+            selected.delete(idx);
+            btn.classList.remove("selected");
+          } else {
+            if (selected.size >= required) return; // límite: solo N
+            selected.add(idx);
+            btn.classList.add("selected");
+          }
+          countEl.textContent = `${selected.size}/${required}`;
+          confirmBtn.disabled = selected.size !== required;
+        });
+      });
+
+      confirmBtn.addEventListener("click", () => handleAnswer([...selected], false));
+    } else {
+      optionBtns.forEach((btn) => {
+        btn.addEventListener("click", () => handleAnswer(Number(btn.dataset.index), false));
+      });
+    }
 
     timer = createTimer({
       seconds: level.timePerQuestion ?? 60,
@@ -188,12 +232,12 @@ export function renderLevel({ levelId } = {}) {
   }
 
   /* ---------- Respuesta ---------- */
-  function handleAnswer(optionIndex, timedOut) {
+  function handleAnswer(selection, timedOut) {
     if (locked) return;
     locked = true;
     timer?.stop();
 
-    const result = game.submit(optionIndex, { timedOut });
+    const result = game.submit(selection, { timedOut });
 
     if (combat && combatScene && result) {
       const event = result.isCorrect ? combat.hit() : combat.miss();
@@ -203,12 +247,17 @@ export function renderLevel({ levelId } = {}) {
     }
 
     const q = game.current();
+    const chosen = timedOut || selection == null ? [] : Array.isArray(selection) ? selection : [selection];
 
     bodyEl.querySelectorAll(".option-btn").forEach((btn, i) => {
       btn.disabled = true;
-      if (i === q.correctIndex) btn.classList.add("correct");
-      else if (!timedOut && i === optionIndex) btn.classList.add("wrong");
+      btn.classList.remove("selected");
+      if (q.correctIndexes.includes(i)) btn.classList.add("correct");
+      else if (chosen.includes(i)) btn.classList.add("wrong");
     });
+
+    const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
+    if (confirmBtn) confirmBtn.disabled = true;
 
     paintHud();
     showFeedback(result, q);
@@ -230,8 +279,11 @@ export function renderLevel({ levelId } = {}) {
       html += `<p>💡 <strong>Ejemplo:</strong> ${esc(q.example)}</p>`;
       html += `<p>🛠️ <strong>Caso de uso:</strong> ${esc(q.useCase)}</p>`;
     } else {
+      const letters = q.correctIndexes.map((i) => LETTERS[i]).join(" y ");
+      const texts = q.correctIndexes.map((i) => esc(q.options[i])).join(" · ");
+      const label = q.correctIndexes.length > 1 ? "Las respuestas correctas eran" : "La respuesta correcta era";
       html += `<p class="feedback-head">${result.timedOut ? "⏰ ¡Se acabó el tiempo!" : "❌ Incorrecto"}</p>`;
-      html += `<p class="answer-reveal">La respuesta correcta era ${LETTERS[q.correctIndex]}: ${esc(q.options[q.correctIndex])}</p>`;
+      html += `<p class="answer-reveal">${label} ${letters}: ${texts}</p>`;
       html += `<p>${esc(q.explanation)}</p>`;
       html += `<p>📌 <strong>Recuerda:</strong> ${esc(q.mistake)}</p>`;
       html += `<p class="syllabus">📚 Te recomendamos repasar: ${esc(q.syllabusRef)}</p>`;

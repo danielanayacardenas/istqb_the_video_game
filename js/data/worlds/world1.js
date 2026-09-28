@@ -127,6 +127,30 @@ export const world1 = {
             "Cadena para memorizar: error humano → defecto en el producto de trabajo → fallo al ejecutar.",
           syllabusRef: "Tema 1.1 — Errores, defectos y fallos",
         },
+        {
+          id: "w1-l1-q6",
+          type: "multi",
+          topic: "1.1",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre el testing y la depuración (debugging).",
+          options: [
+            "El testing dinámico puede provocar fallos que revelan la presencia de defectos.",
+            "El debugging busca la causa de un fallo, la analiza y elimina el defecto correspondiente.",
+            "El testing y el debugging son actividades sinónimas que realiza siempre la misma persona.",
+            "El debugging consiste en ejecutar casos de prueba hasta que aparezcan fallos nuevos.",
+            "El testing estático exige ejecutar el software para poder detectar los defectos.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El testing dinámico provoca fallos que evidencian defectos; después, el debugging localiza la causa, la analiza y corrige el defecto. Son actividades distintas y no las realiza necesariamente la misma persona.",
+          example:
+            "Tú detectas que la puerta chirría al abrirla (testing); el técnico engrasa la bisagra (debugging).",
+          useCase:
+            "El tester adjunta pasos y evidencia del fallo; desarrollo depura, corrige y solicita el retesting.",
+          mistake:
+            "Confundir las actividades: el testing descubre, el debugging localiza y corrige la causa.",
+          syllabusRef: "Tema 1.1 — Testing y depuración (debugging)",
+        },
       ],
     },
     {

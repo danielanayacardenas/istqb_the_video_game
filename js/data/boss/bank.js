@@ -1,6 +1,6 @@
 // =====================================================
 // ISTQB Quest — data/boss/bank.js
-// Banco del Boss Final: 60 preguntas etiquetadas por
+// Banco del Boss Final: 61 preguntas etiquetadas por
 // capítulo (1–6). El examen sortea 40 según los pesos
 // oficiales: cap1 8 · cap2 6 · cap3 4 · cap4 11 · cap5 8 · cap6 3.
 // =====================================================
@@ -16,7 +16,7 @@ export const bossInfo = {
 };
 
 export const bossBank = [
-  // ---------------- Capítulo 1 (12) ----------------
+  // ---------------- Capítulo 1 (13) ----------------
   {
     id: "boss-q1",
     chapter: 1,
@@ -250,6 +250,28 @@ export const bossBank = [
     useCase: "Equilibrar independencia con colaboración: revisiones conjuntas y responsabilidad compartida.",
     mistake: "Creer que más independencia siempre es mejor.",
     syllabusRef: "Capítulo 1 — Independencia del testing",
+  },
+  {
+    id: "boss-q61",
+    type: "multi",
+    chapter: 1,
+    topic: "1.3",
+    question:
+      "Selecciona las DOS afirmaciones que describen correctamente los principios del testing.",
+    options: [
+      "El testing temprano reduce costes porque los defectos se corrigen antes de propagarse.",
+      "Los defectos tienden a concentrarse en pocos módulos, lo que ayuda a priorizar las pruebas.",
+      "El testing exhaustivo es alcanzable cuando se automatizan todos los casos posibles.",
+      "Los conjuntos de pruebas que dejan de encontrar defectos demuestran su ausencia total.",
+      "Existe un enfoque de prueba único que resulta óptimo para cualquier tipo de producto.",
+    ],
+    correct: [0, 1],
+    explanation:
+      "Entre los principios están el testing temprano y el agrupamiento de defectos. El testing exhaustivo es imposible aunque se automatice, no encontrar defectos no demuestra su ausencia y el enfoque depende del contexto.",
+    example: "Revisar los cimientos al inicio ahorra reparar la casa entera después.",
+    useCase: "El equipo adelanta las revisiones y concentra el esfuerzo en los módulos problemáticos.",
+    mistake: "Cuidado con los absolutos: «alcanzable», «demuestra su ausencia» o «único óptimo» suelen ser falsos.",
+    syllabusRef: "Capítulo 1 — Principios del testing",
   },
 
   // ---------------- Capítulo 2 (9) ----------------

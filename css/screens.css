@@ -794,7 +794,24 @@
 
 .option-btn.selected {
   outline: 2px solid var(--primary-light);
-  background: var(--bg-700);
+  background: rgba(124, 92, 255, 0.16);
+}
+
+.option-btn.selected .option-letter {
+  background: var(--secondary);
+  color: #04222e;
+}
+
+.multi-hint {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--secondary);
+  margin-top: 0.15rem;
+}
+
+.multi-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .boss-nav {
