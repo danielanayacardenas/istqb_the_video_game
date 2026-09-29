@@ -138,8 +138,8 @@ describe("puntuación del examen", () => {
 });
 
 describe("banco del Boss", () => {
-  test("tiene 61 preguntas con suficientes por capítulo para cubrir las cuotas", () => {
-    expect(bossBank.length).toBe(61);
+  test("tiene 65 preguntas con suficientes por capítulo para cubrir las cuotas", () => {
+    expect(bossBank.length).toBe(65);
     for (const [chapter, quota] of Object.entries(CHAPTER_QUOTAS)) {
       const count = bossBank.filter((q) => q.chapter === Number(chapter)).length;
       expect(count, `capítulo ${chapter}`).toBeGreaterThanOrEqual(quota);

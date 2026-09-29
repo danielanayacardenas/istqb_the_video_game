@@ -1,8 +1,9 @@
 // =====================================================
 // ISTQB Quest — data/boss/bank.js
-// Banco del Boss Final: 61 preguntas etiquetadas por
+// Banco del Boss Final: 65 preguntas etiquetadas por
 // capítulo (1–6). El examen sortea 40 según los pesos
 // oficiales: cap1 8 · cap2 6 · cap3 4 · cap4 11 · cap5 8 · cap6 3.
+// Opciones equilibradas + multi-selección (Etapa 14, lote 9).
 // =====================================================
 
 export const bossInfo = {
@@ -23,10 +24,10 @@ export const bossBank = [
     topic: "1.1",
     question: "¿Cuál de las siguientes describe mejor el testing?",
     options: [
-      "Un conjunto de actividades para descubrir defectos y evaluar la calidad de los productos de trabajo, incluyendo actividades estáticas y dinámicas.",
-      "La fase final del proyecto que certifica la ausencia de defectos.",
+      "Un conjunto de actividades, estáticas y dinámicas, para evaluar la calidad.",
+      "La fase final que certifica que el producto no tiene defectos.",
       "La actividad de corregir los defectos encontrados en el software.",
-      "La ejecución de casos de prueba exclusivamente sobre la interfaz de usuario.",
+      "La ejecución de casos de prueba sobre la interfaz de usuario.",
     ],
     correct: 0,
     explanation:
@@ -43,9 +44,9 @@ export const bossBank = [
     question: "¿Cuál de los siguientes NO es un objetivo típico del testing?",
     options: [
       "Evaluar productos de trabajo como requisitos o código.",
-      "Proporcionar información a los interesados para la toma de decisiones.",
-      "Corregir los defectos descubiertos.",
-      "Causar fallos y descubrir defectos.",
+      "Proporcionar información a los interesados para decidir.",
+      "Corregir los defectos descubiertos por las pruebas.",
+      "Causar fallos y descubrir los defectos del producto.",
     ],
     correct: 2,
     explanation:
@@ -62,10 +63,10 @@ export const bossBank = [
     question:
       "El tester reproduce que la aplicación cierra sesión al subir una imagen. ¿Cuál es la secuencia CORRECTA de actividades a partir de ahí?",
     options: [
-      "Testing → fallo observado → reporte → debugging (desarrollo) → corrección → confirmación y regresión.",
-      "Fallo → corrección inmediata por el tester → cierre del defecto.",
-      "Debugging → testing → corrección sin reporte.",
-      "Confirmación → reporte → debugging → despliegue.",
+      "Testing → fallo → reporte → debugging → corrección → confirmación y regresión.",
+      "Fallo → corrección inmediata por el tester → cierre sin reporte.",
+      "Debugging → testing → corrección sin reporte al equipo.",
+      "Confirmación → reporte → debugging → despliegue a producción.",
     ],
     correct: 0,
     explanation:
@@ -82,8 +83,8 @@ export const bossBank = [
     question:
       "Un analista interpreta mal una ley tributaria (error humano), el requisito queda con la regla equivocada (defecto) y al calcular impuestos el sistema muestra un importe incorrecto (fallo). ¿Qué secuencia describe correctamente la relación?",
     options: [
-      "Error → defecto → fallo: el error humano produce el defecto y este, al ejecutarse, el fallo.",
-      "Fallo → error → defecto: primero aparece el fallo y luego el error humano.",
+      "Error → defecto → fallo: el error humano produce el defecto.",
+      "Fallo → error → defecto: primero aparece el fallo.",
       "Defecto → error → fallo: los tres términos son lo mismo.",
       "Error → fallo → defecto: el fallo genera el defecto.",
     ],
@@ -101,10 +102,10 @@ export const bossBank = [
     topic: "1.3",
     question: "«El testing muestra la presencia de defectos, pero no su ausencia». ¿Qué implica este principio?",
     options: [
-      "Que las pruebas siempre encuentran todos los defectos.",
-      "Que aunque las pruebas no encuentren fallos, el software puede seguir teniendo defectos; reducir el riesgo no es eliminarlo.",
+      "Que las pruebas siempre encuentran todos los defectos presentes.",
+      "Que se reduce el riesgo de defectos, pero no se elimina.",
       "Que no merece la pena probar si no se encuentran fallos.",
-      "Que los defectos ausentes no existen.",
+      "Que los defectos ausentes no existen en el software.",
     ],
     correct: 1,
     explanation:
@@ -121,10 +122,10 @@ export const bossBank = [
     question:
       "El equipo entrega un producto sin defectos conocidos, pero los usuarios no consiguen realizar sus tareas. ¿Qué principio ilustra este caso?",
     options: [
-      "La paradoja del pesticida.",
-      "La falacia de la ausencia de errores: un producto sin defectos puede no satisfacer las necesidades del usuario.",
-      "Los defectos se agrupan.",
-      "El testing exhaustivo es imposible.",
+      "La paradoja del pesticida: las pruebas se desgastan.",
+      "La falacia de la ausencia de errores: sin defectos, pero inútil.",
+      "El agrupamiento: los defectos se concentran por zonas.",
+      "El testing exhaustivo: es imposible probarlo todo.",
     ],
     correct: 1,
     explanation:
@@ -141,8 +142,8 @@ export const bossBank = [
     question:
       "Un equipo debate entre probar exhaustivamente cada campo o distribuir el esfuerzo. ¿Qué principio respalda distribuir el esfuerzo?",
     options: [
-      "El testing exhaustivo es imposible; conviene priorizar por riesgo y contexto.",
-      "Cuanto antes se pruebe, más caro.",
+      "El testing exhaustivo es imposible; conviene priorizar por riesgo.",
+      "Cuanto antes se pruebe, más caro resulta el proyecto.",
       "Los defectos se agrupan, así que se prueba todo una vez.",
       "La paradoja del pesticida obliga a probar el 100 %.",
     ],
@@ -160,10 +161,10 @@ export const bossBank = [
     topic: "1.3",
     question: "¿Por qué se dice que las pruebas tempranas ahorran costes?",
     options: [
-      "Porque los defectos detectados en etapas tempranas son mucho más baratos de corregir que en producción.",
+      "Porque los defectos tempranos cuestan mucho menos de corregir.",
       "Porque probar pronto es más rápido que probar tarde.",
-      "Porque en las etapas tempranas no hay defectos.",
-      "Porque los testers trabajan más barato al inicio del proyecto.",
+      "Porque en las etapas tempranas no hay defectos aún.",
+      "Porque los testers trabajan más barato al inicio.",
     ],
     correct: 0,
     explanation:
@@ -200,10 +201,10 @@ export const bossBank = [
     question:
       "La misma batería de pruebas de regresión lleva meses sin encontrar defectos nuevos, aunque el equipo sabe que el producto cambia. ¿Qué principio conviene recordar?",
     options: [
-      "La paradoja del pesticida: si las pruebas no se actualizan, dejan de encontrar defectos nuevos.",
-      "La falacia de la ausencia de errores.",
-      "El clustering.",
-      "Que el testing no depende del contexto.",
+      "La paradoja del pesticida: las pruebas se desgastan sin renovarse.",
+      "La falacia de la ausencia de errores en el producto.",
+      "El agrupamiento de defectos por zonas del sistema.",
+      "Que el testing no depende del contexto del proyecto.",
     ],
     correct: 0,
     explanation:
@@ -219,9 +220,9 @@ export const bossBank = [
     topic: "1.3",
     question: "¿Qué señala el principio «el testing depende del contexto»?",
     options: [
-      "Que un sistema crítico (por ejemplo, médico) se prueba de forma distinta a una web de ocio: no hay un enfoque único.",
-      "Que el testing es igual en todos los dominios.",
-      "Que solo importa el presupuesto.",
+      "Que cada dominio exige su enfoque: no hay uno único.",
+      "Que el testing es siempre igual en todos los dominios.",
+      "Que solo importa el presupuesto disponible del proyecto.",
       "Que el testing debe hacerse siempre en producción.",
     ],
     correct: 0,
@@ -238,10 +239,10 @@ export const bossBank = [
     topic: "1.5",
     question: "¿Cuál es una DESVENTAJA de la independencia total de los testers?",
     options: [
-      "Que los desarrolladores pueden perder el sentido de responsabilidad sobre la calidad del producto.",
-      "Que se cuestionan supuestos de los interesados.",
-      "Que se detectan tipos de defectos distintos a los que encuentra el autor.",
-      "Que disminuye el sesgo de confirmación.",
+      "Que el equipo pierda el sentido de responsabilidad sobre la calidad.",
+      "Que se cuestionen los supuestos de los interesados.",
+      "Que se detecten tipos de defectos distintos a los del autor.",
+      "Que disminuya el sesgo de confirmación del equipo.",
     ],
     correct: 0,
     explanation:
@@ -274,17 +275,17 @@ export const bossBank = [
     syllabusRef: "Capítulo 1 — Principios del testing",
   },
 
-  // ---------------- Capítulo 2 (9) ----------------
+  // ---------------- Capítulo 2 (10) ----------------
   {
     id: "boss-q13",
     chapter: 2,
     topic: "2.1",
     question: "¿Cuál afirmación sobre el impacto del modelo de ciclo de vida en el testing es CORRECTA?",
     options: [
-      "El modelo elegido influye en el momento y el alcance de las pruebas, su documentación y el grado de automatización.",
-      "El testing es idéntico en todos los modelos.",
-      "En ágil no se planifican pruebas.",
-      "En cascada no se pueden hacer revisiones.",
+      "El modelo influye en cuándo y cómo se prueba y documenta.",
+      "El testing es idéntico en todos los modelos de desarrollo.",
+      "En ágil no se planifican ni documentan las pruebas.",
+      "En cascada no se pueden hacer revisiones de código.",
     ],
     correct: 0,
     explanation:
@@ -300,8 +301,8 @@ export const bossBank = [
     topic: "2.1",
     question: "En un equipo ágil con entregas cada dos semanas, ¿qué práctica de testing es más característica?",
     options: [
-      "Ejecutar pruebas automatizadas y regresión dentro de cada iteración, con feedback continuo.",
-      "Concentrar todas las pruebas en un hito final tras meses de desarrollo.",
+      "Pruebas automatizadas y regresión en cada iteración.",
+      "Concentrar todas las pruebas en un hito final del proyecto.",
       "Probar únicamente en producción tras el lanzamiento.",
       "Eliminar las revisiones para ganar velocidad.",
     ],
@@ -319,7 +320,7 @@ export const bossBank = [
     topic: "2.1",
     question: "¿Cuál es una buena práctica de testing aplicable en cualquier SDLC?",
     options: [
-      "Cada actividad de desarrollo tiene su actividad de prueba correspondiente, y los testers revisan borradores en cuanto existen.",
+      "Cada actividad de desarrollo tiene su prueba y se revisa a tiempo.",
       "Todos los niveles comparten el mismo objetivo de prueba.",
       "El análisis y diseño de pruebas comienza justo antes de ejecutar.",
       "Los testers se incorporan solo al final del proyecto.",
@@ -338,8 +339,8 @@ export const bossBank = [
     topic: "2.1",
     question: "En TDD (desarrollo dirigido por pruebas), ¿cuál es el ciclo correcto?",
     options: [
-      "Escribir una prueba que falla → escribir el código que la pasa → refactorizar.",
-      "Escribir el código completo → probarlo → refactorizar las pruebas.",
+      "Prueba que falla → código que la pasa → refactorizar.",
+      "Código completo → probarlo → refactorizar las pruebas.",
       "Desplegar → probar en producción → escribir pruebas.",
       "Diseñar la interfaz → automatizar todo → documentar.",
     ],
@@ -357,10 +358,10 @@ export const bossBank = [
     topic: "2.1",
     question: "¿Qué caracteriza al enfoque ATDD/BDD?",
     options: [
-      "Los criterios de aceptación se acuerdan en colaboración y de ellos se derivan pruebas antes del desarrollo, a menudo en formato Dado/Cuando/Entonces.",
-      "Las pruebas de aceptación se escriben después de que el usuario pruebe en producción.",
-      "Solo participan desarrolladores.",
-      "Reemplaza a las pruebas de sistema.",
+      "Los criterios se acuerdan en equipo y guían las pruebas.",
+      "Las pruebas se escriben después de probar el usuario en producción.",
+      "Solo participan los desarrolladores del equipo.",
+      "Reemplaza por completo a las pruebas de sistema.",
     ],
     correct: 0,
     explanation:
@@ -376,10 +377,10 @@ export const bossBank = [
     topic: "2.1",
     question: "En DevOps con integración continua, ¿qué aporta el testing automatizado en el pipeline?",
     options: [
-      "Feedback rápido ante cada cambio: build y pruebas automáticas que detectan problemas de integración de inmediato.",
-      "Elimina la necesidad de pruebas exploratorias.",
+      "Feedback rápido con build y pruebas automáticas por cambio.",
+      "Elimina la necesidad de las pruebas exploratorias.",
       "Permite prescindir de los entornos de prueba.",
-      "Sustituye los criterios de entrada.",
+      "Sustituye a los criterios de entrada del ciclo.",
     ],
     correct: 0,
     explanation:
@@ -396,10 +397,10 @@ export const bossBank = [
     question:
       "La empresa conecta su nuevo portal de clientes con el sistema de facturación ya existente y verifica la comunicación entre ambos sistemas. ¿Qué nivel de prueba es?",
     options: [
-      "Pruebas de integración de sistemas (system integration testing).",
-      "Pruebas de componente.",
-      "Pruebas de aceptación.",
-      "Análisis estático.",
+      "Pruebas de integración de sistemas entre productos.",
+      "Pruebas de componente del sistema nuevo.",
+      "Pruebas de aceptación del usuario final.",
+      "Análisis estático de las interfaces del sistema.",
     ],
     correct: 0,
     explanation:
@@ -416,10 +417,10 @@ export const bossBank = [
     question:
       "Un sistema médico debe demostrar ante el organismo regulador el cumplimiento de una normativa sectorial antes de comercializarse. ¿Qué forma de prueba de aceptación corresponde?",
     options: [
-      "Aceptación regulatoria (o contractual).",
-      "Pruebas alfa.",
-      "Pruebas de componente.",
-      "Pruebas de mantenimiento.",
+      "Aceptación regulatoria o contractual exigida.",
+      "Pruebas alfa en la sede del cliente.",
+      "Pruebas de componente del módulo clínico.",
+      "Pruebas de mantenimiento del sistema.",
     ],
     correct: 0,
     explanation:
@@ -436,10 +437,10 @@ export const bossBank = [
     question:
       "Se aplica una mejora planificada a un sistema en producción (nuevos informes). ¿Qué debe incluir el testing de mantenimiento?",
     options: [
-      "Pruebas del cambio (incluida la confirmación de lo modificado) y análisis de impacto para decidir la regresión necesaria.",
+      "Pruebas del cambio y análisis de impacto para la regresión.",
       "Solo pruebas del camino feliz del nuevo informe.",
       "Ninguna prueba: es una mejora, no una corrección.",
-      "Únicamente pruebas de aceptación de usuario.",
+      "Únicamente las pruebas de aceptación del usuario.",
     ],
     correct: 0,
     explanation:
@@ -449,6 +450,27 @@ export const bossBank = [
     mistake: "Probar solo lo nuevo y descuidar los efectos colaterales.",
     syllabusRef: "Capítulo 2 — Testing de mantenimiento",
   },
+  {
+    id: "boss-q62",
+    type: "multi",
+    chapter: 2,
+    topic: "2.2",
+    question: "Selecciona las DOS afirmaciones correctas sobre los niveles de prueba.",
+    options: [
+      "Las pruebas de componente aíslan unidades usando stubs o mocks.",
+      "Las pruebas de aceptación validan las necesidades del usuario.",
+      "Las pruebas de sistema se ejecutan antes que las de integración.",
+      "Las pruebas de integración solo verifican unidades aisladas.",
+      "Las pruebas de componente las realiza siempre el usuario final.",
+    ],
+    correct: [0, 1],
+    explanation:
+      "Componente aísla unidades con stubs/mocks y aceptación valida necesidades del usuario. Sistema va después de integración, la integración verifica interfaces (no unidades aisladas) y componente suele ser responsabilidad de desarrollo.",
+    example: "Ladrillo (componente con andamios), conexiones (integración), casa entera (sistema), entrega al cliente (aceptación).",
+    useCase: "El equipo prueba la función aislada, luego su API, después el flujo completo y al final con negocio.",
+    mistake: "Confundir el orden de los niveles y quién ejecuta cada uno.",
+    syllabusRef: "Capítulo 2 — Niveles de prueba",
+  },
 
   // ---------------- Capítulo 3 (6) ----------------
   {
@@ -457,10 +479,10 @@ export const bossBank = [
     topic: "3.1",
     question: "¿Cuál es el principal valor del testing estático?",
     options: [
-      "Detectar defectos en productos de trabajo (incluso no ejecutables) de forma temprana, cuando corregirlos es más barato.",
-      "Medir el rendimiento real del sistema.",
-      "Verificar la integración en tiempo de ejecución.",
-      "Sustituir a las pruebas dinámicas.",
+      "Detectar defectos pronto en productos, aunque no se ejecuten.",
+      "Medir el rendimiento real del sistema en producción.",
+      "Verificar la integración durante la ejecución.",
+      "Sustituir por completo a las pruebas dinámicas.",
     ],
     correct: 0,
     explanation:
@@ -477,10 +499,10 @@ export const bossBank = [
     question:
       "En la revisión de una historia de usuario se detecta que dos reglas se contradicen y que falta definir qué ocurre con los reembolsos parciales. ¿Qué tipo de defectos son?",
     options: [
-      "Contradicciones y omisiones en un producto de trabajo (requisitos), detectables sin ejecutar código.",
+      "Contradicciones y omisiones en los requisitos del producto.",
       "Fallos de rendimiento en tiempo de ejecución.",
-      "Defectos de integración entre servicios.",
-      "Errores de configuración del entorno.",
+      "Defectos de integración entre servicios internos.",
+      "Errores de configuración del entorno de pruebas.",
     ],
     correct: 0,
     explanation:
@@ -516,10 +538,10 @@ export const bossBank = [
     question:
       "En una revisión formal, ¿qué actividad realizan los revisores ANTES de la reunión de revisión?",
     options: [
-      "Preparación individual: examinar el producto con checklists y anotar hallazgos.",
-      "Corregir los defectos encontrados.",
-      "Publicar el informe final.",
-      "Firmar el acta de cierre.",
+      "Examinar el producto con checklists y anotar hallazgos.",
+      "Corregir los defectos encontrados en la reunión.",
+      "Publicar el informe final de la revisión.",
+      "Firmar el acta de cierre de la revisión.",
     ],
     correct: 0,
     explanation:
@@ -535,10 +557,10 @@ export const bossBank = [
     topic: "3.2",
     question: "¿Qué caracteriza a la inspección frente a otros tipos de revisión?",
     options: [
-      "Es la más formal: proceso completo, roles definidos, checklists y métricas, reservada a productos críticos.",
-      "Es una revisión informal sin documentación.",
-      "La lidera el autor sin preparación.",
-      "No permite recolectar métricas.",
+      "La más formal: roles, checklists y métricas definidas.",
+      "Una revisión informal sin documentación de resultados.",
+      "La lidera el autor sin preparación previa.",
+      "No permite recolectar métricas del proceso.",
     ],
     correct: 0,
     explanation:
@@ -555,9 +577,9 @@ export const bossBank = [
     question:
       "El analizador estático del pipeline reporta 50 avisos; tras revisarlos, solo 10 eran defectos reales. ¿Qué conclusión es CORRECTA?",
     options: [
-      "Existen falsos positivos (falsas alarmas); conviene ajustar reglas y prioridades sin renunciar al análisis.",
-      "El analizador no sirve y hay que retirarlo.",
-      "Los 50 eran falsos negativos.",
+      "Falsos positivos: ajustar reglas, sin renunciar al análisis.",
+      "El analizador no sirve para nada y hay que retirarlo.",
+      "Los 50 avisos eran todos falsos negativos.",
       "Los avisos del analizador siempre son defectos reales.",
     ],
     correct: 0,
@@ -569,17 +591,17 @@ export const bossBank = [
     syllabusRef: "Capítulo 3 — Análisis estático",
   },
 
-  // ---------------- Capítulo 4 (14) ----------------
+  // ---------------- Capítulo 4 (15) ----------------
   {
     id: "boss-q28",
     chapter: 4,
     topic: "4.1",
     question: "¿Qué produce el ANÁLISIS de pruebas?",
     options: [
-      "Condiciones de prueba: aspectos verificables identificados a partir de la base de prueba («qué probar»).",
+      "Condiciones de prueba: el «qué probar» derivado.",
       "Los scripts automatizados listos para ejecutar.",
-      "El informe de defectos del proyecto.",
-      "El presupuesto de pruebas.",
+      "El informe de defectos encontrados en el ciclo.",
+      "El presupuesto asignado a las pruebas.",
     ],
     correct: 0,
     explanation:
@@ -596,10 +618,10 @@ export const bossBank = [
     question:
       "Un tester está probando TODOS los valores de un rango (1, 2, 3, 4… 50). ¿Qué le sugeriría la partición de equivalencia?",
     options: [
-      "Probar un valor representativo de cada partición; los valores del mismo grupo se comportan igual.",
+      "Un representante por partición: dentro, se comportan igual.",
       "Probar los 50 valores, porque cada uno puede fallar distinto.",
-      "Probar solo el valor central.",
-      "No probar valores válidos.",
+      "Probar solo el valor central del rango completo.",
+      "No probar los valores válidos del rango.",
     ],
     correct: 0,
     explanation:
@@ -634,10 +656,10 @@ export const bossBank = [
     topic: "4.2",
     question: "Para el mismo campo de 10 a 20, ¿qué valores corresponden a BVA de 3 VALORES?",
     options: [
-      "9, 10, 11, 19, 20 y 21.",
-      "9, 10, 20 y 21.",
-      "10, 15 y 20.",
-      "8, 9, 10, 20, 21 y 22.",
+      "9, 10, 11, 19, 20 y 21: límites con el vecino interior.",
+      "9, 10, 20 y 21: cada límite con su vecino adyacente.",
+      "10, 15 y 20: solo valores representativos del rango.",
+      "8, 9, 10, 20, 21 y 22: dos valores fuera por cada extremo.",
     ],
     correct: 0,
     explanation:
@@ -689,9 +711,9 @@ export const bossBank = [
     question:
       "Un pedido pasa por: creado → pagado → enviado → entregado. ¿Por qué conviene probar también «entregado → cancelado»?",
     options: [
-      "Porque es una transición que debe comportarse según lo especificado (rechazarse o permitirse con condiciones): las transiciones inválidas revelan defectos graves.",
-      "Porque todas las transiciones deben permitirse.",
-      "Porque así se cubren más líneas de código.",
+      "Porque las transiciones inválidas revelan defectos graves.",
+      "Porque todas las transiciones deben permitirse siempre.",
+      "Porque así se cubren más líneas de código del módulo.",
       "No conviene: solo se prueba el camino feliz.",
     ],
     correct: 0,
@@ -721,9 +743,9 @@ export const bossBank = [
     topic: "4.3",
     question: "¿Qué relación es CORRECTA entre cobertura de sentencias y de ramas?",
     options: [
-      "100 % de ramas implica 100 % de sentencias; 100 % de sentencias no garantiza 100 % de ramas.",
-      "Son equivalentes.",
-      "100 % de sentencias implica 100 % de ramas.",
+      "100 % de ramas implica 100 % de sentencias, pero no al revés.",
+      "Son equivalentes y se calculan de la misma forma.",
+      "100 % de sentencias implica 100 % de ramas cubiertas.",
       "La cobertura de ramas siempre es menor que la de sentencias.",
     ],
     correct: 0,
@@ -753,10 +775,10 @@ export const bossBank = [
     topic: "4.4",
     question: "¿Qué caracteriza a una sesión de pruebas exploratorias bien gestionada?",
     options: [
-      "Un charter con el objetivo, un límite de tiempo (timebox) y registro de hallazgos durante la exploración.",
-      "Ejecutar sin objetivo ni registro.",
-      "Documentar todos los casos antes de ejecutar.",
-      "Medir la cobertura de ramas al final.",
+      "Charter con objetivo, timebox y registro de hallazgos.",
+      "Ejecutar sin objetivo ni registro posterior.",
+      "Documentar todos los casos antes de ejecutarlos.",
+      "Medir la cobertura de ramas al final de la sesión.",
     ],
     correct: 0,
     explanation:
@@ -772,10 +794,10 @@ export const bossBank = [
     topic: "4.4",
     question: "¿En qué se apoya la adivinación de errores (error guessing)?",
     options: [
-      "En la experiencia y el conocimiento de defectos frecuentes, patrones históricos y zonas propensas a fallos.",
-      "En el azar puro.",
-      "Exclusivamente en los requisitos formales.",
-      "En la cobertura de código.",
+      "En la experiencia sobre defectos frecuentes y zonas propensas.",
+      "En el azar puro, sin ningún criterio del tester.",
+      "Exclusivamente en los requisitos formales escritos.",
+      "En la cobertura de código alcanzada por las pruebas.",
     ],
     correct: 0,
     explanation:
@@ -791,10 +813,10 @@ export const bossBank = [
     topic: "4.4",
     question: "¿Cuál es un riesgo típico de las pruebas basadas en checklists?",
     options: [
-      "Que la lista quede desactualizada y deje de cubrir lo importante: hay que revisarla periódicamente.",
-      "Que sea imposible ejecutarlas.",
-      "Que cubran demasiados escenarios.",
-      "Que sustituyan a los requisitos.",
+      "Que la lista quede obsoleta y deje de cubrir lo importante.",
+      "Que resulte imposible ejecutar las pruebas.",
+      "Que cubran demasiados escenarios de una vez.",
+      "Que sustituyan por completo a los requisitos.",
     ],
     correct: 0,
     explanation:
@@ -810,10 +832,10 @@ export const bossBank = [
     topic: "4.5",
     question: "¿Qué produce el enfoque colaborativo (ATDD) a partir de los criterios de aceptación?",
     options: [
-      "Casos de prueba de aceptación derivados ANTES del desarrollo, que guían la implementación y verifican la historia.",
-      "El código de la funcionalidad.",
-      "El informe de defectos del sprint.",
-      "El manual de usuario final.",
+      "Casos de aceptación derivados antes de programar.",
+      "El código fuente completo de la funcionalidad.",
+      "El informe de defectos encontrados en el sprint.",
+      "El manual de usuario final del producto.",
     ],
     correct: 0,
     explanation:
@@ -830,10 +852,10 @@ export const bossBank = [
     question:
       "El equipo debate qué técnica elegir para probar un flujo con estados y retrocesos. ¿Qué argumento es correcto?",
     options: [
-      "No hay una técnica mejor para todo: se elige según el objeto de prueba, el riesgo y el contexto, y pueden combinarse.",
-      "Siempre hay que usar partición de equivalencia.",
+      "Se elige según objeto, riesgo y contexto: pueden combinarse.",
+      "Siempre hay que usar la partición de equivalencia.",
       "La primera técnica que se aprendió es la mejor.",
-      "Las técnicas nunca se combinan.",
+      "Las técnicas nunca deben combinarse entre sí.",
     ],
     correct: 0,
     explanation:
@@ -843,18 +865,39 @@ export const bossBank = [
     mistake: "Aplicar la técnica favorita a todo.",
     syllabusRef: "Capítulo 4 — Selección de técnicas",
   },
+  {
+    id: "boss-q63",
+    type: "multi",
+    chapter: 4,
+    topic: "4.2",
+    question: "Selecciona las DOS afirmaciones correctas sobre las técnicas de caja negra.",
+    options: [
+      "En partición de equivalencia basta un valor por partición.",
+      "BVA de 2 valores prueba cada límite y su vecino adyacente.",
+      "La tabla de decisión se mide contando las columnas infactibles.",
+      "La partición de equivalencia agrupa las entradas inválidas en un caso.",
+      "BVA de 3 valores coincide siempre con BVA de 2 valores.",
+    ],
+    correct: [0, 1],
+    explanation:
+      "En EP un representante cubre cada partición y BVA de 2 valores usa el límite con su vecino adyacente. Las infactibles se excluyen de la cobertura, las entradas inválidas van en casos separados y BVA de 3 valores añade el vecino interior.",
+    example: "Muestrear cada grupo (EP) y vigilar las fronteras de cada grupo (BVA).",
+    useCase: "Para un campo de 1 a 10: EP prueba 5 y 12; BVA prueba 0, 1, 10 y 11.",
+    mistake: "Mezclar las reglas de cada técnica al derivar los casos.",
+    syllabusRef: "Capítulo 4 — Técnicas de caja negra",
+  },
 
-  // ---------------- Capítulo 5 (14) ----------------
+  // ---------------- Capítulo 5 (15) ----------------
   {
     id: "boss-q43",
     chapter: 5,
     topic: "5.1",
     question: "¿Cuál es el propósito de un plan de pruebas?",
     options: [
-      "Documentar alcance, objetivos, enfoque, recursos y agenda de las pruebas, sirviendo de base para su control.",
-      "Listar los defectos encontrados.",
-      "Especificar el código del producto.",
-      "Reemplazar al plan del proyecto.",
+      "Documentar alcance, objetivos, enfoque, recursos y agenda.",
+      "Listar los defectos encontrados durante la ejecución.",
+      "Especificar el código fuente del producto a construir.",
+      "Reemplazar al plan general de gestión del proyecto.",
     ],
     correct: 0,
     explanation:
@@ -871,10 +914,10 @@ export const bossBank = [
     question:
       "El entorno de pruebas se retrasará tres días y los datos aún no están listos, pero se planificó empezar la ejecución hoy. ¿Qué es lo correcto según los criterios de entrada?",
     options: [
-      "No iniciar la ejecución: comunicar el incumplimiento y adelantar tareas que no dependan del entorno.",
-      "Ejecutar igualmente y confiar en la suerte.",
-      "Ignorar los criterios de entrada.",
-      "Cancelar el proyecto.",
+      "No iniciar: comunicar y adelantar tareas no dependientes.",
+      "Ejecutar igualmente y confiar en la suerte del equipo.",
+      "Ignorar los criterios de entrada, que son orientativos.",
+      "Cancelar el proyecto de inmediato.",
     ],
     correct: 0,
     explanation:
@@ -890,10 +933,10 @@ export const bossBank = [
     topic: "5.1",
     question: "¿En qué se basa la decisión de FINALIZAR una actividad de prueba cuando hay riesgo residual?",
     options: [
-      "En comparar el cumplimiento de los criterios de salida y el riesgo residual con los interesados, y decidir con esa información.",
+      "En los criterios de salida y el riesgo residual aceptado.",
       "En la fecha del calendario, exclusivamente.",
-      "En el número de casos escritos.",
-      "En que los testers estén cansados.",
+      "En el número total de casos de prueba escritos.",
+      "En que el equipo de testers esté cansado.",
     ],
     correct: 0,
     explanation:
@@ -909,10 +952,10 @@ export const bossBank = [
     topic: "5.1",
     question: "¿Qué caracteriza a la estimación basada en EXPERTOS?",
     options: [
-      "Usa la experiencia del equipo; las tareas grandes se descomponen y técnicas como Planning Poker ayudan, documentando supuestos.",
+      "Usa la experiencia del equipo y documenta supuestos.",
       "Solo usa fórmulas matemáticas con datos históricos.",
-      "Ignora los supuestos.",
-      "Es exacta por definición.",
+      "Ignora por completo los supuestos del proyecto.",
+      "Es exacta por definición, sin margen de error.",
     ],
     correct: 0,
     explanation:
@@ -928,10 +971,10 @@ export const bossBank = [
     topic: "5.1",
     question: "¿Cuándo es más apropiada la estimación basada en MÉTRICAS?",
     options: [
-      "Cuando existen datos de proyectos anteriores comparables (tamaño, productividad, defectos) para extrapolar.",
-      "Cuando el proyecto es completamente nuevo y sin referencias.",
-      "Cuando no hay datos históricos.",
-      "Cuando se quiere adivinar sin base.",
+      "Cuando hay datos comparables de proyectos anteriores.",
+      "Cuando el proyecto es totalmente nuevo y sin referencias.",
+      "Cuando no existe ningún dato histórico disponible.",
+      "Cuando se quiere adivinar sin ninguna base.",
     ],
     correct: 0,
     explanation:
@@ -948,7 +991,7 @@ export const bossBank = [
     question:
       "Quedan 5 días de pruebas y faltan módulos por cubrir. ¿Qué estrategia de priorización es más defendible?",
     options: [
-      "Priorizar por riesgo (probabilidad × impacto) y asegurar primero lo crítico, comunicando lo que quede fuera.",
+      "Priorizar por riesgo y comunicar lo que quede fuera.",
       "Ejecutar los casos en orden alfabético.",
       "Probar primero lo más fácil de probar.",
       "Ejecutar solo los casos que ya pasaron antes.",
@@ -967,10 +1010,10 @@ export const bossBank = [
     topic: "5.1.6",
     question: "Según la pirámide de pruebas, ¿qué reparto de automatización es el recomendado?",
     options: [
-      "Muchas pruebas de componente, menos de integración y pocas de interfaz/extremo a extremo.",
+      "Muchas de componente, menos de integración y pocas de UI.",
       "Muchas pruebas de interfaz y pocas unitarias.",
-      "Solo pruebas de interfaz.",
-      "Solo pruebas de rendimiento.",
+      "Solo pruebas de interfaz gráfica del producto.",
+      "Solo pruebas de rendimiento del sistema.",
     ],
     correct: 0,
     explanation:
@@ -1044,9 +1087,9 @@ export const bossBank = [
     topic: "5.4",
     question: "¿Por qué es crítica la gestión de configuración para el testing?",
     options: [
-      "Permite saber y reproducir exactamente qué versiones de software, datos, entorno y testware se probaron.",
-      "Elimina la necesidad de pruebas de regresión.",
-      "Sustituye a la gestión de defectos.",
+      "Permite reproducir qué versiones y datos se probaron.",
+      "Elimina la necesidad de las pruebas de regresión.",
+      "Sustituye a la gestión de defectos del proyecto.",
       "Reduce el número de entornos necesarios.",
     ],
     correct: 0,
@@ -1063,9 +1106,9 @@ export const bossBank = [
     topic: "5.5",
     question: "¿Cuál de estos elementos es IMPRESCINDIBLE en un informe de defecto?",
     options: [
-      "Pasos para reproducir, resultado esperado y observado, más entorno y versión.",
-      "La opinión personal sobre el desarrollador.",
-      "El coste estimado de la corrección.",
+      "Pasos para reproducir, resultado observado y entorno.",
+      "La opinión personal del tester sobre el desarrollador.",
+      "El coste estimado de la corrección del defecto.",
       "La lista completa de casos de prueba del proyecto.",
     ],
     correct: 0,
@@ -1083,10 +1126,10 @@ export const bossBank = [
     question:
       "Un error tipográfico en la página principal bloquea una campaña de marketing. Severidad baja, ¿prioridad?",
     options: [
-      "Alta: la prioridad refleja la urgencia de negocio y puede superar a la severidad técnica.",
-      "Baja: siempre coinciden.",
-      "Nula: es cosmético.",
-      "Media, por definición.",
+      "Alta: la urgencia de negocio supera a la severidad.",
+      "Baja: prioridad y severidad siempre coinciden.",
+      "Nula: al ser cosmético no se prioriza nunca.",
+      "Media: por definición, todos los cosméticos son medios.",
     ],
     correct: 0,
     explanation:
@@ -1103,8 +1146,8 @@ export const bossBank = [
     question:
       "El tablero muestra 90 % de casos ejecutados, pero 8 defectos críticos abiertos. ¿Qué conclusión es correcta?",
     options: [
-      "El avance de ejecución no basta: el estado de los defectos críticos condiciona la salida; hay que informar y decidir acciones.",
-      "Puede darse por finalizada la prueba: el 90 % es suficiente.",
+      "El avance no basta: los defectos críticos condicionan la salida.",
+      "Puede darse por finalizada: el 90 % de ejecución es suficiente.",
       "Los defectos críticos se ignoran si la cobertura es alta.",
       "Hay que borrar los defectos para mejorar el tablero.",
     ],
@@ -1116,8 +1159,29 @@ export const bossBank = [
     mistake: "Medir el progreso solo por casos ejecutados.",
     syllabusRef: "Capítulo 5 — Monitoreo y control",
   },
+  {
+    id: "boss-q64",
+    type: "multi",
+    chapter: 5,
+    topic: "5.2",
+    question: "Selecciona las DOS afirmaciones correctas sobre riesgos y priorización.",
+    options: [
+      "El nivel de riesgo combina probabilidad e impacto.",
+      "Con tiempo limitado se prioriza por riesgo lo crítico.",
+      "Los riesgos de proyecto son fallos funcionales del sistema.",
+      "La severidad y la prioridad de un defecto son lo mismo.",
+      "Priorizar por comodidad es lo más defendible.",
+    ],
+    correct: [0, 1],
+    explanation:
+      "El riesgo se evalúa como probabilidad × impacto y con poco tiempo se prioriza por riesgo lo crítico. Los riesgos de proyecto afectan a la entrega (no son fallos funcionales), severidad y prioridad son independientes y priorizar por comodidad es indefendible.",
+    example: "Triaje: primero lo grave, y lo grave se mide por probabilidad e impacto.",
+    useCase: "Con 5 días disponibles, el equipo asegura pago y autenticación.",
+    mistake: "Confundir categorías de riesgo y mezclar severidad con prioridad.",
+    syllabusRef: "Capítulo 5 — Riesgos y priorización",
+  },
 
-  // ---------------- Capítulo 6 (5) ----------------
+  // ---------------- Capítulo 6 (6) ----------------
   {
     id: "boss-q57",
     chapter: 6,
@@ -1143,10 +1207,10 @@ export const bossBank = [
     topic: "6.2",
     question: "¿Cuál es un beneficio claro de la automatización de pruebas?",
     options: [
-      "Repetición sin fatiga y con velocidad: permite ejecutar la regresión con mucha más frecuencia.",
-      "Garantiza la ausencia de defectos.",
-      "Elimina la necesidad de mantenimiento.",
-      "Sustituye el análisis de riesgos.",
+      "Repetición sin fatiga y regresión más frecuente.",
+      "Garantiza la ausencia total de defectos.",
+      "Elimina la necesidad de mantener la suite.",
+      "Sustituye al análisis de riesgos del proyecto.",
     ],
     correct: 0,
     explanation:
@@ -1162,10 +1226,10 @@ export const bossBank = [
     topic: "6.2",
     question: "¿Qué riesgo de la automatización se subestima con más frecuencia?",
     options: [
-      "El esfuerzo continuo de mantenimiento de los casos y scripts automatizados.",
-      "La velocidad de ejecución.",
-      "La consistencia de los resultados.",
-      "La posibilidad de ejecutar de noche.",
+      "El mantenimiento continuo de los casos y scripts.",
+      "La velocidad de ejecución de la suite.",
+      "La consistencia de los resultados obtenidos.",
+      "La posibilidad de ejecutar por la noche.",
     ],
     correct: 0,
     explanation:
@@ -1181,10 +1245,10 @@ export const bossBank = [
     topic: "6.2",
     question: "¿Cuál afirmación sobre herramientas y automatización es CORRECTA?",
     options: [
-      "Apoyan el testing, pero no garantizan el éxito: requieren formación, adaptación de procesos y mantenimiento; el juicio humano sigue siendo esencial.",
-      "Comprar la herramienta correcta asegura calidad.",
+      "Apoyan, pero no garantizan: requieren formación y mantenimiento.",
+      "Comprar la herramienta correcta asegura la calidad.",
       "La automatización elimina las pruebas exploratorias.",
-      "Los checks automatizados detectan defectos que nadie anticipó.",
+      "Los checks detectan defectos que nadie anticipó.",
     ],
     correct: 0,
     explanation:
@@ -1193,5 +1257,26 @@ export const bossBank = [
     useCase: "Adopción con formación y responsable de mantenimiento definidos.",
     mistake: "Esperar que la herramienta sustituya personas y procesos.",
     syllabusRef: "Capítulo 6 — Herramientas y automatización",
+  },
+  {
+    id: "boss-q65",
+    type: "multi",
+    chapter: 6,
+    topic: "6.2",
+    question: "Selecciona las DOS afirmaciones correctas sobre la automatización.",
+    options: [
+      "El mantenimiento de los scripts es un coste recurrente a planificar.",
+      "La automatización aporta repetición sin fatiga y consistencia.",
+      "Los checks automatizados detectan lo que nadie programó.",
+      "Adoptar una herramienta garantiza resultados inmediatos.",
+      "La automatización reemplaza al juicio humano en las pruebas.",
+    ],
+    correct: [0, 1],
+    explanation:
+      "Los grandes beneficios son repetibilidad sin fatiga y consistencia, a cambio de un mantenimiento continuo que debe planificarse. Los checks solo verifican lo programado, ninguna herramienta garantiza resultados por sí sola y el juicio humano sigue siendo esencial.",
+    example: "La lavadora repite sin cansarse, pero exige mantenimiento periódico.",
+    useCase: "El equipo reserva tiempo de cada sprint para mantener la suite.",
+    mistake: "Esperar de la automatización lo que no puede dar.",
+    syllabusRef: "Capítulo 6 — Automatización de pruebas",
   },
 ];
