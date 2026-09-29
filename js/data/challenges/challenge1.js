@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/challenges/challenge1.js
 // Desafío 1: Fundamentos en acción (capítulos 1–3)
+// Opciones equilibradas + 1 multi (Etapa 14, lote 8).
 // =====================================================
 
 export const challenge1 = {
@@ -29,7 +30,7 @@ export const challenge1 = {
           options: [
             "Depurar el código para encontrar la causa raíz del cierre.",
             "Corregir la validación que falta en el formulario.",
-            "Documentar el fallo con pasos, datos, entorno y evidencia, y reportarlo para que desarrollo haga la depuración.",
+            "Documentar el fallo con pasos y evidencia, y reportarlo.",
             "Concluir que no se puede reproducir y descartarlo.",
           ],
           correct: 2,
@@ -49,10 +50,10 @@ export const challenge1 = {
           question:
             "Tras encontrar una vulnerabilidad de inyección en el buscador, el equipo decide revisar todas las consultas similares del sistema. ¿Qué principio del testing están aplicando?",
           options: [
-            "El testing exhaustivo es imposible.",
-            "Los defectos se agrupan (clustering): cuando aparece uno, conviene buscar más en la misma zona o del mismo tipo.",
-            "La paradoja del pesticida.",
-            "La falacia de la ausencia de errores.",
+            "El testing exhaustivo es imposible de alcanzar.",
+            "Los defectos se agrupan: conviene buscar más en la misma zona.",
+            "La paradoja del pesticida: las pruebas se desgastan.",
+            "La falacia de la ausencia de errores en el producto.",
           ],
           correct: 1,
           explanation:
@@ -71,7 +72,7 @@ export const challenge1 = {
           question: "En un proyecto que usa el modelo en V, ¿qué afirmación es CORRECTA?",
           options: [
             "Las pruebas solo se planifican cuando termina el desarrollo.",
-            "Cada fase de desarrollo se corresponde con un nivel de prueba asociado, y las pruebas se planifican desde el inicio.",
+            "Cada fase tiene su nivel de prueba asociado y se planifican al inicio.",
             "El modelo en V elimina la necesidad de pruebas de aceptación.",
             "En la V, el testing no guarda relación con las fases de la izquierda.",
           ],
@@ -115,9 +116,9 @@ export const challenge1 = {
             "Se corrige un defecto del módulo de impuestos y se reejecuta solo el caso que fallaba, que ahora pasa. ¿Qué riesgo se está asumiendo?",
           options: [
             "Ninguno: si el caso pasa, la corrección es segura.",
-            "Que los cambios hayan introducido efectos secundarios en otras partes sin detectarlos, por no ejecutar pruebas de regresión.",
-            "Que la corrección no se haya aplicado.",
-            "Que falten más casos de confirmación del mismo defecto.",
+            "Que los cambios rompan otras zonas sin regresión que lo detecte.",
+            "Que la corrección no se haya aplicado en la build.",
+            "Que falten más casos de confirmación del defecto.",
           ],
           correct: 1,
           explanation:
@@ -136,9 +137,9 @@ export const challenge1 = {
           question:
             "La empresa traslada su facturación de servidores locales a la nube sin cambiar funcionalidades. ¿Qué tipo de testing es necesario y por qué?",
           options: [
-            "Pruebas de mantenimiento, porque la migración es un disparador habitual (cambio de entorno o plataforma).",
+            "Pruebas de mantenimiento: la migración es un disparador habitual.",
             "Solo pruebas exploratorias, porque la funcionalidad no cambió.",
-            "Ninguno: si no cambian funcionalidades no hace falta probar.",
+            "Ninguna: si no cambian funcionalidades no hace falta probar.",
             "Solo pruebas de componente del código migrado.",
           ],
           correct: 0,
@@ -158,8 +159,8 @@ export const challenge1 = {
           question:
             "En la revisión de requisitos se detecta que dos reglas de negocio se contradicen; corregirlo lleva 10 minutos. Si el problema llegara a producción, costaría días de retrabajo. ¿Qué ilustra este caso?",
           options: [
-            "Que el testing dinámico es siempre más caro.",
-            "El valor del testing estático y del feedback temprano: los defectos detectados antes son mucho más baratos de corregir.",
+            "Que el testing dinámico es siempre mucho más caro.",
+            "El valor del feedback temprano: los defectos tempranos cuestan menos.",
             "Que las revisiones sustituyen a las pruebas de sistema.",
             "Que los defectos de requisitos nunca llegan a producción.",
           ],
@@ -197,10 +198,10 @@ export const challenge1 = {
           question:
             "El analizador estático reporta 40 avisos; al revisarlos, 37 no eran defectos reales. ¿Cómo se llama el fenómeno y qué conclusión es correcta?",
           options: [
-            "Falsos negativos; hay que desactivar la herramienta.",
-            "Falsos positivos; conviene ajustar las reglas y el uso de la herramienta para no perder credibilidad, sin renunciar al análisis.",
-            "Defectos reales; hay que corregir los 40.",
-            "Efecto pesticida; hay que ignorar todos los avisos.",
+            "Falsos negativos: hay que desactivar la herramienta.",
+            "Falsos positivos: conviene ajustar las reglas del analizador.",
+            "Defectos reales: hay que corregir los 40 avisos.",
+            "Efecto pesticida: hay que ignorar todos los avisos.",
           ],
           correct: 1,
           explanation:
@@ -218,8 +219,8 @@ export const challenge1 = {
           topic: "Mix 1–3",
           question: "¿Cuál de las siguientes afirmaciones es CORRECTA?",
           options: [
-            "El testing estático puede comenzar cuando existen borradores de los productos de trabajo; el dinámico necesita código ejecutable.",
-            "Ambos requieren código ejecutable para empezar.",
+            "El estático empieza con borradores; el dinámico necesita ejecución.",
+            "Ambos requieren código ejecutable para poder empezar.",
             "El estático solo encuentra defectos de programación.",
             "El dinámico encuentra con facilidad requisitos ambiguos.",
           ],
@@ -233,6 +234,30 @@ export const challenge1 = {
           mistake:
             "Esperar al código para empezar a probar o pedirle al dinámico detectar ambigüedades de texto.",
           syllabusRef: "Desafío — Temas 3.1 y 1.3",
+        },
+        {
+          id: "c1-l1-q11",
+          type: "multi",
+          topic: "Mix 1–3",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre el testing y sus principios.",
+          options: [
+            "El testing estático puede encontrar defectos sin ejecutar el software.",
+            "Los defectos tienden a agruparse: conviene buscar más en zonas similares.",
+            "El testing dinámico detecta con facilidad requisitos ambiguos de texto.",
+            "Encontrar cero defectos demuestra que el software está libre de ellos.",
+            "El testing exhaustivo es alcanzable con suficiente automatización.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El estático encuentra defectos sin ejecutar y los defectos se agrupan por zonas. Los requisitos ambiguos se detectan mejor revisando (estático no dinámico), no encontrar defectos no demuestra su ausencia y el testing exhaustivo es imposible.",
+          example:
+            "Revisas el contrato antes de firmar (estático) y sospechas de las cláusulas vecinas (agrupamiento).",
+          useCase:
+            "Tras la revisión de un requisito problemático, el equipo revisa los requisitos redactados por el mismo autor.",
+          mistake:
+            "Confundir qué defectos encuentra cada tipo de testing y qué prometen sus resultados.",
+          syllabusRef: "Desafío — Capítulos 1–3 (fundamentos)",
         },
       ],
     },

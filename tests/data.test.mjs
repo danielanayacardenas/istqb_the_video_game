@@ -128,13 +128,13 @@ describe("integridad del banco de preguntas", () => {
     expect(total).toBe(24);
   });
 
-  test("los 3 desafíos cruzados tienen 1 nivel y 10 preguntas cada uno", () => {
+  test("los 3 desafíos cruzados tienen 1 nivel y 11 preguntas cada uno (10 + 1 multi)", () => {
     const challenges = worlds.slice(6);
     expect(challenges.length).toBe(3);
     for (const c of challenges) {
       expect(c.type).toBe("challenge");
       expect(c.levels.length).toBe(1);
-      expect(c.levels[0].questions.length).toBe(10);
+      expect(c.levels[0].questions.length).toBe(11);
     }
   });
 });

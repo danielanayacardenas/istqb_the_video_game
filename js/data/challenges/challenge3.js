@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/challenges/challenge3.js
 // Desafío 3: Gestión bajo presión (capítulos 5–6)
+// Opciones equilibradas + 1 multi (Etapa 14, lote 8).
 // =====================================================
 
 export const challenge3 = {
@@ -28,9 +29,9 @@ export const challenge3 = {
             "Queda una semana para el lanzamiento y no hay tiempo para probar todo. ¿Cuál es la estrategia más sensata?",
           options: [
             "Probar en el orden en que se escribieron los casos.",
-            "Priorizar por riesgo (probabilidad × impacto): asegurar primero lo crítico y escalar las decisiones con los interesados.",
-            "Probar solo las funcionalidades más fáciles.",
-            "Cancelar las pruebas y lanzar cuanto antes.",
+            "Priorizar por riesgo y escalar las decisiones con los interesados.",
+            "Probar solo las funcionalidades más fáciles de verificar.",
+            "Cancelar las pruebas y lanzar la versión cuanto antes.",
           ],
           correct: 1,
           explanation:
@@ -49,10 +50,10 @@ export const challenge3 = {
           question:
             "¿Cuál de estos riesgos debería abordar primero un enfoque basado en riesgos de PRODUCTO?",
           options: [
-            "La rotación de personal del equipo.",
+            "La rotación de personal del equipo de desarrollo.",
             "El retraso en la entrega del entorno de pruebas.",
-            "Que una vulnerabilidad permita acceder a los datos de pago de los clientes.",
-            "El recorte del presupuesto del proyecto.",
+            "Que una vulnerabilidad exponga los datos de pago.",
+            "El recorte del presupuesto anual del proyecto.",
           ],
           correct: 2,
           explanation:
@@ -71,10 +72,10 @@ export const challenge3 = {
           question:
             "Está planificado comenzar hoy las pruebas de sistema, pero los datos de prueba no están cargados y el entorno no está estable. Según los criterios de entrada, ¿qué corresponde?",
           options: [
-            "Comenzar igualmente y probar lo que se pueda.",
-            "No cumplir los criterios de entrada: comunicarlo, ajustar el inicio y usar el tiempo en actividades que no dependan del entorno.",
-            "Saltarse los criterios: total, son orientativos.",
-            "Cancelar el proyecto.",
+            "Comenzar igualmente y probar lo que se pueda del sistema.",
+            "Comunicarlo, ajustar el inicio y adelantar trabajo útil.",
+            "Saltarse los criterios de entrada: total, son orientativos.",
+            "Cancelar el proyecto de inmediato.",
           ],
           correct: 1,
           explanation:
@@ -93,9 +94,9 @@ export const challenge3 = {
           question:
             "El informe diario muestra el doble de defectos críticos que lo previsto y un retraso creciente. ¿Cuál es la primera actuación correcta?",
           options: [
-            "Ignorarlo hasta la semana siguiente.",
-            "Analizar causas, comunicar a los interesados y repriorizar o replanificar el esfuerzo hacia lo crítico.",
-            "Cerrar los defectos sin verificarlos para reducir el número.",
+            "Ignorar los datos hasta la semana siguiente.",
+            "Analizar causas, comunicar y repriorizar hacia lo crítico.",
+            "Cerrar los defectos sin verificarlos para bajar el número.",
             "Duplicar la velocidad de ejecución de casos sin más.",
           ],
           correct: 1,
@@ -115,10 +116,10 @@ export const challenge3 = {
           question:
             "Debes estimar el esfuerzo de pruebas de un proyecto NUEVO, bastante distinto a los anteriores. ¿Qué enfoque es más razonable?",
           options: [
-            "Usar solo métricas de proyectos anteriores, aunque el contexto no sea comparable.",
+            "Usar solo métricas históricas, aunque no sean comparables.",
             "Usar solo intuición, sin datos ni supuestos.",
-            "Combinar juicio de expertos (con descomposición del trabajo) y métricas cuando existan bases comparables, documentando los supuestos.",
-            "Estimar por el número de requisitos, sin más.",
+            "Combinar juicio experto y métricas comparables, con supuestos.",
+            "Estimar por el número de requisitos, sin más análisis.",
           ],
           correct: 2,
           explanation:
@@ -138,9 +139,9 @@ export const challenge3 = {
             "El equipo tiene 300 pruebas de interfaz lentas y frágiles, y solo 20 unitarias. ¿Qué sugiere la pirámide de pruebas?",
           options: [
             "Mantener el reparto: lo importante es la cobertura total.",
-            "Reequilibrar: aumentar las pruebas de bajo nivel (componente e integración) y reducir las de interfaz a lo imprescindible.",
-            "Eliminar todas las pruebas unitarias.",
-            "Automatizar todavía más pruebas de interfaz.",
+            "Reequilibrar hacia pruebas de bajo nivel, más rápidas y estables.",
+            "Eliminar todas las pruebas unitarias del proyecto.",
+            "Automatizar todavía más pruebas de interfaz gráfica.",
           ],
           correct: 1,
           explanation:
@@ -159,10 +160,10 @@ export const challenge3 = {
           question:
             "Desarrollo devuelve un defecto con la nota «no se puede reproducir». ¿Qué falta probablemente en el informe?",
           options: [
-            "Más opiniones sobre la calidad del módulo.",
-            "Pasos claros, datos concretos, entorno y versión, y resultado esperado frente al observado.",
-            "El presupuesto del proyecto.",
-            "Nada: los desarrolladores deberían adivinar cómo se reproduce.",
+            "Más opiniones subjetivas sobre la calidad del módulo.",
+            "Pasos, datos, entorno y versión, y esperado frente a observado.",
+            "El presupuesto completo del proyecto de pruebas.",
+            "Nada: desarrollo debería adivinar cómo se reproduce.",
           ],
           correct: 1,
           explanation:
@@ -181,10 +182,10 @@ export const challenge3 = {
           question:
             "Un error tipográfico aparece en la portada de la web de ventas durante la campaña principal. La severidad es baja. ¿Y la prioridad?",
           options: [
-            "Baja, porque la severidad manda siempre.",
-            "Puede ser ALTA: el impacto de negocio (imagen en plena campaña) lo justifica, aunque la severidad sea baja.",
-            "Media siempre, por norma.",
-            "No existe prioridad para defectos cosméticos.",
+            "Baja, porque la severidad manda siempre sobre todo.",
+            "Puede ser alta: el impacto de negocio lo justifica.",
+            "Media siempre, por norma del equipo de soporte.",
+            "No existe prioridad para los defectos cosméticos.",
           ],
           correct: 1,
           explanation:
@@ -203,10 +204,10 @@ export const challenge3 = {
           question:
             "El equipo quiere automatizar la regresión nocturna pero no reserva tiempo para mantener los scripts. ¿Qué riesgo se está asumiendo?",
           options: [
-            "Ninguno: los scripts se mantienen solos.",
-            "Subestimar el mantenimiento continuo, el riesgo clásico de la automatización.",
+            "Ninguno: los scripts se mantienen solos con el tiempo.",
+            "Subestimar el mantenimiento continuo de la suite.",
             "Que las pruebas se ejecuten demasiado rápido.",
-            "Que la regresión cubra demasiado.",
+            "Que la regresión nocturna cubra demasiado.",
           ],
           correct: 1,
           explanation:
@@ -225,9 +226,9 @@ export const challenge3 = {
           question: "¿Cuál afirmación sobre herramientas y automatización es CORRECTA?",
           options: [
             "Comprar una herramienta garantiza mejorar la calidad.",
-            "Una herramienta no garantiza el éxito: requiere formación, adaptación de procesos y mantenimiento.",
+            "Requiere formación, adaptación de procesos y mantenimiento.",
             "La automatización elimina la necesidad de pruebas manuales.",
-            "Las herramientas sustituyen el juicio humano.",
+            "Las herramientas sustituyen por completo el juicio humano.",
           ],
           correct: 1,
           explanation:
@@ -239,6 +240,30 @@ export const challenge3 = {
           mistake:
             "Esperar que la herramienta resuelva por sí sola los problemas de calidad.",
           syllabusRef: "Desafío — Temas 6.1–6.2 (herramientas)",
+        },
+        {
+          id: "c3-l1-q11",
+          type: "multi",
+          topic: "Mix 5.1–6.2",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre la gestión bajo presión.",
+          options: [
+            "Con tiempo limitado conviene priorizar por riesgo y comunicar lo pospuesto.",
+            "Severidad y prioridad son independientes: pueden no coincidir.",
+            "Si el entorno no está listo, se empieza igual y ya se verá.",
+            "Los defectos se cierran sin verificar para bajar el número.",
+            "Comprar una herramienta garantiza resolver los problemas de calidad.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "Con poco tiempo, el enfoque por riesgos y la comunicación a los interesados son la estrategia correcta; y severidad y prioridad se deciden por separado (impacto técnico vs urgencia de negocio). Empezar sin entorno listo, cerrar sin verificar o confiar en la compra de herramientas son malas prácticas.",
+          example:
+            "En el triaje: primero lo grave, y la mancha del escaparate puede subir de prioridad aunque sea leve.",
+          useCase:
+            "El equipo protege pago y autenticación; negocio firma el riesgo de lo pospuesto y sube la prioridad del texto de portada.",
+          mistake:
+            "Priorizar por costumbre, fiarse de la severidad para todo o creer que comprar resuelve.",
+          syllabusRef: "Desafío — Capítulos 5–6 (gestión y herramientas)",
         },
       ],
     },
