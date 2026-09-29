@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world6.js
 // Mundo 6: Soporte de Herramientas (CTFL v4.0, capítulo 6)
+// Opciones equilibradas en longitud + multi-selección (Etapa 14, lote 7).
 // =====================================================
 
 export const world6 = {
@@ -69,10 +70,10 @@ export const world6 = {
           topic: "6.1",
           question: "¿Qué hacen las herramientas de diseño e implementación de pruebas?",
           options: [
-            "Generar o apoyar la creación de casos y datos de prueba, y ayudar en el modelado del comportamiento del sistema.",
-            "Ejecutar las pruebas sobre el software compilado.",
+            "Generar casos y datos de prueba, y apoyar el modelado del sistema.",
+            "Ejecutar las pruebas sobre el software ya compilado.",
             "Medir la cobertura de ramas durante la ejecución.",
-            "Gestionar las incidencias del usuario final.",
+            "Gestionar las incidencias reportadas por el usuario final.",
           ],
           correct: 0,
           explanation:
@@ -90,10 +91,10 @@ export const world6 = {
           topic: "6.1",
           question: "Las herramientas de ejecución y cobertura permiten…",
           options: [
-            "Ejecutar pruebas automáticamente y medir la cobertura alcanzada (por ejemplo, de sentencias o de ramas).",
-            "Generar las condiciones de prueba a partir de los requisitos.",
-            "Gestionar el presupuesto del proyecto.",
-            "Revisar la ortografía de los documentos.",
+            "Ejecutar pruebas y medir la cobertura alcanzada.",
+            "Generar las condiciones de prueba desde los requisitos.",
+            "Gestionar el presupuesto y las compras del proyecto.",
+            "Revisar la ortografía de los documentos del equipo.",
           ],
           correct: 0,
           explanation:
@@ -112,10 +113,10 @@ export const world6 = {
           question:
             "¿Qué tipo de pruebas apoyan las herramientas no funcionales? Por ejemplo, las de rendimiento o seguridad.",
           options: [
-            "Pruebas de carga y estrés, análisis de vulnerabilidades, medición de accesibilidad y usabilidad.",
-            "Pruebas de regresión funcional exclusivamente.",
-            "Pruebas de partición de equivalencia.",
-            "Revisiones informales de documentos.",
+            "Carga y estrés, vulnerabilidades, accesibilidad y usabilidad.",
+            "Únicamente pruebas de regresión funcional del sistema.",
+            "Pruebas de partición de equivalencia y valores límite.",
+            "Revisiones informales de documentos entre compañeros.",
           ],
           correct: 0,
           explanation:
@@ -133,10 +134,10 @@ export const world6 = {
           topic: "6.1",
           question: "¿Para qué sirven las herramientas de colaboración en el contexto del testing?",
           options: [
-            "Para facilitar la comunicación y el intercambio de información del equipo (por ejemplo, wikis, pizarras y mensajería), incluida la información de pruebas.",
-            "Para ejecutar pruebas de rendimiento.",
-            "Para compilar el código automáticamente.",
-            "Para calcular la cobertura de decisiones.",
+            "Para facilitar la comunicación y compartir información del equipo.",
+            "Para ejecutar pruebas de rendimiento del sistema.",
+            "Para compilar automáticamente el código fuente.",
+            "Para calcular la cobertura de decisiones del código.",
           ],
           correct: 0,
           explanation:
@@ -155,10 +156,10 @@ export const world6 = {
           question:
             "En un pipeline de integración continua (CI), ¿qué permiten las herramientas de automatización?",
           options: [
-            "Ejecutar automáticamente la construcción y las pruebas con cada cambio, obteniendo feedback rápido del estado del software.",
+            "Construir y probar con cada cambio, con feedback rápido.",
             "Eliminar la necesidad de definir criterios de entrada.",
             "Sustituir por completo a las pruebas exploratorias.",
-            "Prescindir de entornos de prueba.",
+            "Prescindir de los entornos de prueba del equipo.",
           ],
           correct: 0,
           explanation:
@@ -176,10 +177,10 @@ export const world6 = {
           topic: "6.1",
           question: "Las herramientas de soporte a las revisiones ayudan a…",
           options: [
-            "Gestionar el proceso de revisión: distribuir el producto, registrar comentarios y hacer seguimiento de los hallazgos.",
-            "Ejecutar el software revisado.",
-            "Medir el rendimiento del sistema.",
-            "Generar datos de prueba aleatorios.",
+            "Gestionar el proceso: repartir y seguir los hallazgos.",
+            "Ejecutar el software que se está revisando.",
+            "Medir el rendimiento del sistema revisado.",
+            "Generar datos de prueba aleatorios para el equipo.",
           ],
           correct: 0,
           explanation:
@@ -208,9 +209,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Cuál es un beneficio clave de la automatización de pruebas?",
           options: [
-            "Permitir la repetición de pruebas sin fatiga y con mayor velocidad de ejecución, por ejemplo en la regresión.",
+            "Repetir pruebas sin fatiga y con mayor velocidad de ejecución.",
             "Garantizar que no quedan defectos en el software.",
-            "Eliminar la necesidad de revisar resultados.",
+            "Eliminar la necesidad de revisar los resultados.",
             "Reducir el número de requisitos a implementar.",
           ],
           correct: 0,
@@ -230,9 +231,9 @@ export const world6 = {
           question:
             "¿Qué beneficio aporta ejecutar la misma prueba automatizada una y otra vez?",
           options: [
-            "Consistencia y repetibilidad: los mismos pasos y datos se aplican siempre de la misma forma, sin variaciones humanas.",
+            "Consistencia: se aplican siempre los mismos pasos y datos.",
             "Que la prueba se actualiza sola cuando cambia el software.",
-            "Que ya no hace falta mantenimiento.",
+            "Que ya no hace falta mantenimiento de la suite.",
             "Que los defectos se corrigen automáticamente.",
           ],
           correct: 0,
@@ -252,7 +253,7 @@ export const world6 = {
           question:
             "¿Qué beneficio cualitativo aporta la automatización al equipo de pruebas?",
           options: [
-            "Libera a las personas del trabajo repetitivo para dedicarlas a actividades que aportan más valor, como las pruebas exploratorias.",
+            "Libera al equipo de tareas repetitivas y de bajo valor.",
             "Permite eliminar a los testers del proyecto.",
             "Elimina la necesidad de formación técnica.",
             "Hace innecesario el análisis de riesgos.",
@@ -273,9 +274,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Cuál es un riesgo típico de la automatización de pruebas?",
           options: [
-            "Las expectativas irreales: suponer que la herramienta resolverá por sí sola todos los problemas de calidad.",
-            "Que los pasos se ejecuten siempre igual.",
-            "Que la regresión se ejecute más a menudo.",
+            "Las expectativas irreales sobre lo que la herramienta logrará.",
+            "Que los pasos se ejecuten siempre de la misma forma.",
+            "Que la regresión se ejecute con más frecuencia.",
             "Que el equipo dedique más tiempo a lo exploratorio.",
           ],
           correct: 0,
@@ -294,10 +295,10 @@ export const world6 = {
           topic: "6.2",
           question: "¿Qué riesgo suele subestimarse al iniciar la automatización?",
           options: [
-            "El esfuerzo de mantenimiento continuo de los casos y scripts automatizados.",
+            "El mantenimiento continuo de los casos y los scripts.",
             "La velocidad de ejecución de las pruebas.",
-            "La consistencia de las ejecuciones.",
-            "La posibilidad de repetir las pruebas sin fatiga.",
+            "La consistencia de las ejecuciones repetidas.",
+            "La posibilidad de repetir pruebas sin fatiga.",
           ],
           correct: 0,
           explanation:
@@ -315,9 +316,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Qué significa el riesgo de «dependencia del proveedor» (vendor lock-in)?",
           options: [
-            "Atarse a una herramienta o tecnología propietaria de forma que cambiarla después sea muy costoso o inviable.",
-            "Que el proveedor ejecute las pruebas por el equipo.",
-            "Que la herramienta deje de venderse en tiendas.",
+            "Depender de una tecnología propietaria y no poder cambiarla.",
+            "Que el proveedor ejecute las pruebas en tu lugar.",
+            "Que la herramienta deje de venderse en las tiendas.",
             "Que el equipo reciba demasiado soporte técnico.",
           ],
           correct: 0,
@@ -336,9 +337,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Cuál afirmación sobre las pruebas automatizadas es CORRECTA?",
           options: [
-            "Comparan resultados reales con expectativas predefinidas; no sustituyen a las pruebas exploratorias ni al juicio humano.",
-            "Detectan cualquier defecto, incluidos los que nadie anticipó.",
-            "No necesitan revisión de resultados nunca.",
+            "Comparan expectativas predefinidas: no sustituyen al juicio humano.",
+            "Detectan cualquier defecto, incluidos los no anticipados.",
+            "No necesitan revisar sus resultados nunca más.",
             "Pueden diseñar por sí solas los criterios de aceptación.",
           ],
           correct: 0,
@@ -358,9 +359,9 @@ export const world6 = {
           question:
             "¿Qué debe hacer una organización con los riesgos de la automatización (mantenimiento, expectativas, lock-in, coste inicial)?",
           options: [
-            "Analizarlos y mitigarlos: planificar el mantenimiento, fijar expectativas realistas, evaluar proveedores y valorar el coste-beneficio.",
-            "Ignorarlos hasta que aparezcan problemas.",
-            "Firmar cuanto antes el contrato con un proveedor.",
+            "Analizarlos y mitigarlos con planes y expectativas realistas.",
+            "Ignorarlos hasta que aparezcan los primeros problemas.",
+            "Firmar cuanto antes el contrato con un proveedor grande.",
             "Automatizar el 100 % de las pruebas para compensarlos.",
           ],
           correct: 0,
@@ -373,6 +374,29 @@ export const world6 = {
           mistake:
             "Adoptar la herramienta con optimismo ciego; los riesgos no mitigados se materializan.",
           syllabusRef: "Tema 6.2 — Riesgos de la automatización",
+        },
+        {
+          id: "w6-l2-q9",
+          type: "multi",
+          topic: "6.2",
+          question: "Selecciona las DOS afirmaciones correctas sobre la automatización de pruebas.",
+          options: [
+            "La automatización repite pruebas sin fatiga y con consistencia.",
+            "El mantenimiento continuo de los scripts es un coste a planificar.",
+            "Los checks automáticos detectan defectos que nadie anticipó.",
+            "Automatizar elimina la necesidad del juicio humano.",
+            "Adoptar una herramienta garantiza mejoras inmediatas de calidad.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "Los grandes beneficios son la repetibilidad sin fatiga y la consistencia, a cambio de un mantenimiento continuo que debe planificarse. Los checks solo detectan lo programado, el juicio humano sigue siendo esencial y ninguna herramienta garantiza mejoras por sí sola.",
+          example:
+            "La lavadora repite el ciclo sin cansarse, pero hay que limpiarla y revisarla de vez en cuando.",
+          useCase:
+            "El equipo planifica cada sprint tiempo para mantener la suite automatizada.",
+          mistake:
+            "Esperar de la automatización lo que solo el criterio humano puede dar.",
+          syllabusRef: "Tema 6.2 — Beneficios y riesgos de la automatización",
         },
       ],
     },
@@ -390,9 +414,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Qué implica adquirir una herramienta de prueba?",
           options: [
-            "No garantiza el éxito por sí sola: requiere esfuerzo de introducción, mantenimiento y formación para obtener beneficios reales y duraderos.",
-            "Garantiza la mejora inmediata de la calidad.",
-            "Elimina la necesidad de formación del equipo.",
+            "Requiere introducción, formación y mantenimiento para dar frutos.",
+            "Garantiza la mejora inmediata de la calidad del producto.",
+            "Elimina la necesidad de formación para el equipo entero.",
             "Sustituye al proceso de pruebas de la organización.",
           ],
           correct: 0,
@@ -412,8 +436,8 @@ export const world6 = {
           question:
             "Antes de adoptar ampliamente una herramienta, ¿qué análisis conviene hacer?",
           options: [
-            "Valorar los beneficios esperados frente a los costes y riesgos (introducción, formación, mantenimiento) y comprobar el encaje con procesos y entorno.",
-            "Comprobar únicamente el precio de la licencia.",
+            "Valorar beneficios frente a costes, riesgos y encaje.",
+            "Comprobar únicamente el precio de la licencia anual.",
             "Ver si un competidor la usa, sin más análisis.",
             "Decidirlo por votación popular sin criterios.",
           ],
@@ -433,9 +457,9 @@ export const world6 = {
           topic: "6.2",
           question: "¿Qué papel juega la formación al introducir una herramienta?",
           options: [
-            "Es clave: sin formación y apoyo adecuados, el equipo no aprovecha la herramienta y los beneficios esperados no llegan.",
-            "Es opcional; las herramientas son autoexplicativas.",
-            "Solo importa para el equipo directivo.",
+            "Es clave: sin formación no se aprovecha la herramienta.",
+            "Es opcional: las herramientas son autoexplicativas.",
+            "Solo importa para el equipo directivo de la empresa.",
             "No influye en el éxito de la adopción.",
           ],
           correct: 0,
@@ -455,9 +479,9 @@ export const world6 = {
           question:
             "Un equipo introduce una herramienta de gestión de pruebas, pero no tiene procesos definidos ni comunicación fluida. ¿Qué cabe esperar?",
           options: [
-            "Que la herramienta no arregle por sí sola esos problemas: sin procesos y colaboración, sus beneficios serán limitados.",
+            "Que no arregle por sí sola esos problemas de fondo.",
             "Que resuelva automáticamente la falta de procesos.",
-            "Que sustituya la comunicación del equipo.",
+            "Que sustituya la comunicación interna del equipo.",
             "Que garantice la calidad sin cambiar la forma de trabajar.",
           ],
           correct: 0,
@@ -478,7 +502,7 @@ export const world6 = {
             "¿Cuál de las siguientes pruebas es MENOS adecuada para automatizar?",
           options: [
             "Una prueba exploratoria que requiere el juicio y la intuición del tester.",
-            "Una prueba de regresión de un cálculo estable y repetitivo.",
+            "Una prueba de regresión sobre un cálculo estable y repetitivo.",
             "Un smoke test que se ejecuta en cada despliegue.",
             "La verificación del contrato de una API estable.",
           ],
@@ -499,10 +523,10 @@ export const world6 = {
           question:
             "Para sostener los beneficios de la automatización integrada en CI/CD, ¿qué necesita la organización?",
           options: [
-            "Equipo preparado, casos mantenidos de forma continua e integración cuidada con el pipeline.",
+            "Equipo preparado y casos mantenidos de forma continua.",
             "No volver a tocar nunca la suite automatizada.",
-            "Automatizar una sola vez y olvidarse.",
-            "Ejecutar la suite una vez al año.",
+            "Automatizar una sola vez y olvidarse del tema.",
+            "Ejecutar la suite una vez al año como mínimo.",
           ],
           correct: 0,
           explanation:
@@ -514,6 +538,30 @@ export const world6 = {
           mistake:
             "Tratar la automatización como proyecto cerrado; sin mantenimiento pierde valor rápidamente.",
           syllabusRef: "Tema 6.1 — Integración con CI/CD",
+        },
+        {
+          id: "w6-l3-q7",
+          type: "multi",
+          topic: "6.2",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre la introducción de herramientas.",
+          options: [
+            "Conviene analizar el coste total: introducción, formación y mantenimiento.",
+            "Las herramientas apoyan los procesos, pero no los sustituyen.",
+            "Comprar la herramienta garantiza por sí sola la mejora de calidad.",
+            "La formación es un gasto prescindible en la adopción.",
+            "El vendor lock-in se evita eligiendo la herramienta más barata.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "La adopción exige un análisis realista de coste total (introducción, formación, mantenimiento) y recordar que las herramientas apoyan procesos existentes, no los crean. Comprar no garantiza nada, la formación es clave y el lock-in se evalúa por portabilidad, no por precio.",
+          example:
+            "Antes de mudarte, calcula no solo el alquiler: también el transporte, el seguro y el mantenimiento.",
+          useCase:
+            "El equipo compara suites por coste total a 3 años, formación necesaria y portabilidad.",
+          mistake:
+            "Decidir por precio inicial y llevarse sorpresas de coste y dependencia después.",
+          syllabusRef: "Tema 6.2 — Introducción de herramientas",
         },
       ],
     },

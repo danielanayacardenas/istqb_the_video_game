@@ -121,11 +121,11 @@ describe("integridad del banco de preguntas", () => {
     expect(total).toBe(32);
   });
 
-  test("el mundo 6 tiene 3 niveles y 22 preguntas", () => {
+  test("el mundo 6 tiene 3 niveles y 24 preguntas (22 simple + 2 multi)", () => {
     const world6 = worlds[5];
     expect(world6.levels.length).toBe(3);
     const total = world6.levels.reduce((sum, l) => sum + l.questions.length, 0);
-    expect(total).toBe(22);
+    expect(total).toBe(24);
   });
 
   test("los 3 desafíos cruzados tienen 1 nivel y 10 preguntas cada uno", () => {
