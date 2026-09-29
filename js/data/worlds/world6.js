@@ -134,7 +134,7 @@ export const world6 = {
           topic: "6.1",
           question: "¿Para qué sirven las herramientas de colaboración en el contexto del testing?",
           options: [
-            "Para facilitar la comunicación y compartir información del equipo.",
+            "Para facilitar la comunicación y compartir información.",
             "Para ejecutar pruebas de rendimiento del sistema.",
             "Para compilar automáticamente el código fuente.",
             "Para calcular la cobertura de decisiones del código.",
@@ -209,7 +209,7 @@ export const world6 = {
           topic: "6.2",
           question: "¿Cuál es un beneficio clave de la automatización de pruebas?",
           options: [
-            "Repetir pruebas sin fatiga y con mayor velocidad de ejecución.",
+            "Repetir pruebas sin fatiga y con mayor velocidad.",
             "Garantizar que no quedan defectos en el software.",
             "Eliminar la necesidad de revisar los resultados.",
             "Reducir el número de requisitos a implementar.",
@@ -253,7 +253,7 @@ export const world6 = {
           question:
             "¿Qué beneficio cualitativo aporta la automatización al equipo de pruebas?",
           options: [
-            "Libera al equipo de tareas repetitivas y de bajo valor.",
+            "Libera al equipo de tareas repetitivas y mecánicas.",
             "Permite eliminar a los testers del proyecto.",
             "Elimina la necesidad de formación técnica.",
             "Hace innecesario el análisis de riesgos.",
@@ -501,7 +501,7 @@ export const world6 = {
           question:
             "¿Cuál de las siguientes pruebas es MENOS adecuada para automatizar?",
           options: [
-            "Una prueba exploratoria que requiere el juicio y la intuición del tester.",
+            "Una prueba exploratoria que requiere el juicio del tester.",
             "Una prueba de regresión sobre un cálculo estable y repetitivo.",
             "Un smoke test que se ejecuta en cada despliegue.",
             "La verificación del contrato de una API estable.",

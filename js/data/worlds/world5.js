@@ -48,7 +48,7 @@ export const world5 = {
           question: "¿Qué afirmación sobre los planes de pruebas es CORRECTA?",
           options: [
             "Deben ser idénticos en todos los proyectos de la empresa.",
-            "Su contenido varía según el contexto: hay planes maestros o por iteración.",
+            "Su contenido varía según el contexto del proyecto.",
             "Solo puede existir un plan de pruebas por cada empresa.",
             "Una vez escrito, el plan no puede modificarse jamás.",
           ],
@@ -89,7 +89,7 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué son los criterios de salida?",
           options: [
-            "Las condiciones para declarar completada la actividad de prueba.",
+            "Las condiciones para dar por completada la actividad.",
             "Los permisos de acceso al entorno de pruebas.",
             "Las condiciones para comenzar a programar el sistema.",
             "Las tareas pendientes del equipo de desarrollo.",
@@ -184,7 +184,7 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué representa la pirámide de pruebas?",
           options: [
-            "Muchos tests de componente, menos de integración y pocos de sistema.",
+            "Muchos de componente, menos de integración y pocos de sistema.",
             "Que las pruebas manuales son la base de toda la pirámide.",
             "Que solo se debe probar al final del proyecto completo.",
             "El número de testers necesarios para cada equipo.",
@@ -387,7 +387,7 @@ export const world5 = {
           topic: "5.3",
           question: "¿Qué es el monitoreo de pruebas?",
           options: [
-            "Recopilar el avance real y compararlo con el plan de pruebas.",
+            "Recopilar el avance real y compararlo con el plan.",
             "Modificar el plan sin medir absolutamente nada.",
             "Ejecutar los casos de prueba mucho más rápido.",
             "Escribir el informe final del proyecto completo.",
@@ -429,7 +429,7 @@ export const world5 = {
           topic: "5.3",
           question: "¿Cuál de las siguientes es una métrica típica del avance de pruebas?",
           options: [
-            "Casos ejecutados y aprobados, defectos por severidad y cobertura.",
+            "Casos ejecutados, defectos por severidad y cobertura.",
             "El número total de empleados de toda la empresa.",
             "La cotización de las acciones de la compañía en bolsa.",
             "Los metros cuadrados de las oficinas centrales.",
@@ -492,7 +492,7 @@ export const world5 = {
           topic: "5.3",
           question: "¿En qué se basa la decisión de dar por finalizadas las pruebas?",
           options: [
-            "En el cumplimiento de los criterios de salida y el riesgo residual.",
+            "En el cumplimiento de los criterios de salida y del riesgo.",
             "En la fecha del calendario de entrega, sin más criterio.",
             "En el número de testers disponibles en el equipo.",
             "En el cansancio acumulado del equipo de pruebas.",
@@ -546,7 +546,7 @@ export const world5 = {
           topic: "5.4",
           question: "¿Qué gestiona la gestión de configuración en un proyecto?",
           options: [
-            "El versionado y control de cambios de los elementos del proyecto.",
+            "El versionado y control de cambios de los elementos clave.",
             "Los precios de venta del producto en el mercado.",
             "El calendario de vacaciones y ausencias del equipo.",
             "La decoración y el mobiliario de las oficinas.",
@@ -588,7 +588,7 @@ export const world5 = {
           topic: "5.5",
           question: "¿Qué debe incluir un informe de defecto para ser útil?",
           options: [
-            "Pasos para reproducir, resultados observado/esperado y entorno.",
+            "Pasos para reproducir, resultado observado y entorno.",
             "Solo una captura de pantalla, y además opcional.",
             "La opinión personal del tester sobre el programador.",
             "El presupuesto completo del proyecto de pruebas.",
@@ -609,7 +609,7 @@ export const world5 = {
           topic: "5.5",
           question: "¿Qué diferencia hay entre la severidad y la prioridad de un defecto?",
           options: [
-            "La severidad mide el impacto; la prioridad, la urgencia de corrección.",
+            "La severidad mide el impacto; la prioridad, la urgencia.",
             "Son exactamente lo mismo y las decide la misma persona.",
             "La severidad la decide el cliente y la prioridad el tester.",
             "Dependen solo de la fecha en que se reportó el defecto.",

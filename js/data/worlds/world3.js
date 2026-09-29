@@ -210,7 +210,7 @@ export const world3 = {
             "¿Cuál es el orden correcto de los tipos de revisión, de MENOR a MAYOR formalidad?",
           options: [
             "Inspección → revisión técnica → walkthrough → informal.",
-            "Informal → walkthrough (recorrido) → revisión técnica → inspección.",
+            "Informal → walkthrough → revisión técnica → inspección.",
             "Walkthrough → informal → inspección → revisión técnica.",
             "Revisión técnica → inspección → informal → walkthrough.",
           ],
@@ -251,7 +251,7 @@ export const world3 = {
           topic: "3.2",
           question: "¿Qué distingue al walkthrough (recorrido)?",
           options: [
-            "El autor presenta y guía el producto mientras los revisores detectan anomalías.",
+            "El autor presenta el producto y los revisores detectan anomalías.",
             "Es la revisión más formal, con criterios de entrada y de salida.",
             "La dirige siempre un moderador externo al equipo del autor.",
             "No admite preguntas ni comentarios de los revisores presentes.",

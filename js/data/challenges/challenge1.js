@@ -116,7 +116,7 @@ export const challenge1 = {
             "Se corrige un defecto del módulo de impuestos y se reejecuta solo el caso que fallaba, que ahora pasa. ¿Qué riesgo se está asumiendo?",
           options: [
             "Ninguno: si el caso pasa, la corrección es segura.",
-            "Que los cambios rompan otras zonas sin regresión que lo detecte.",
+            "Que los cambios rompan otras zonas sin regresión.",
             "Que la corrección no se haya aplicado en la build.",
             "Que falten más casos de confirmación del defecto.",
           ],
@@ -160,7 +160,7 @@ export const challenge1 = {
             "En la revisión de requisitos se detecta que dos reglas de negocio se contradicen; corregirlo lleva 10 minutos. Si el problema llegara a producción, costaría días de retrabajo. ¿Qué ilustra este caso?",
           options: [
             "Que el testing dinámico es siempre mucho más caro.",
-            "El valor del feedback temprano: los defectos tempranos cuestan menos.",
+            "El valor del feedback temprano: defectos tempranos, costes menores.",
             "Que las revisiones sustituyen a las pruebas de sistema.",
             "Que los defectos de requisitos nunca llegan a producción.",
           ],
@@ -219,7 +219,7 @@ export const challenge1 = {
           topic: "Mix 1–3",
           question: "¿Cuál de las siguientes afirmaciones es CORRECTA?",
           options: [
-            "El estático empieza con borradores; el dinámico necesita ejecución.",
+            "El estático empieza con borradores; el dinámico necesita código.",
             "Ambos requieren código ejecutable para poder empezar.",
             "El estático solo encuentra defectos de programación.",
             "El dinámico encuentra con facilidad requisitos ambiguos.",

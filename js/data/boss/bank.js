@@ -63,7 +63,7 @@ export const bossBank = [
     question:
       "El tester reproduce que la aplicación cierra sesión al subir una imagen. ¿Cuál es la secuencia CORRECTA de actividades a partir de ahí?",
     options: [
-      "Testing → fallo → reporte → debugging → corrección → confirmación y regresión.",
+      "Testing → fallo → reporte → debugging → corrección → confirmación.",
       "Fallo → corrección inmediata por el tester → cierre sin reporte.",
       "Debugging → testing → corrección sin reporte al equipo.",
       "Confirmación → reporte → debugging → despliegue a producción.",
@@ -201,7 +201,7 @@ export const bossBank = [
     question:
       "La misma batería de pruebas de regresión lleva meses sin encontrar defectos nuevos, aunque el equipo sabe que el producto cambia. ¿Qué principio conviene recordar?",
     options: [
-      "La paradoja del pesticida: las pruebas se desgastan sin renovarse.",
+      "La paradoja del pesticida: las pruebas se desgastan.",
       "La falacia de la ausencia de errores en el producto.",
       "El agrupamiento de defectos por zonas del sistema.",
       "Que el testing no depende del contexto del proyecto.",
@@ -813,7 +813,7 @@ export const bossBank = [
     topic: "4.4",
     question: "¿Cuál es un riesgo típico de las pruebas basadas en checklists?",
     options: [
-      "Que la lista quede obsoleta y deje de cubrir lo importante.",
+      "Que la lista quede obsoleta y no cubra lo importante.",
       "Que resulte imposible ejecutar las pruebas.",
       "Que cubran demasiados escenarios de una vez.",
       "Que sustituyan por completo a los requisitos.",
@@ -1010,7 +1010,7 @@ export const bossBank = [
     topic: "5.1.6",
     question: "Según la pirámide de pruebas, ¿qué reparto de automatización es el recomendado?",
     options: [
-      "Muchas de componente, menos de integración y pocas de UI.",
+      "Muchas de componente y pocas de interfaz.",
       "Muchas pruebas de interfaz y pocas unitarias.",
       "Solo pruebas de interfaz gráfica del producto.",
       "Solo pruebas de rendimiento del sistema.",
@@ -1049,9 +1049,9 @@ export const bossBank = [
     topic: "5.2",
     question: "¿Cuál de los siguientes es un riesgo de PRODUCTO?",
     options: [
-      "Que el cálculo de intereses de un préstamo sea incorrecto.",
+      "Que el cálculo de intereses del préstamo sea erróneo.",
       "Que el equipo pierda a un experto clave.",
-      "Que la entrega se retrase por un proveedor.",
+      "Que la entrega se retrase por culpa de un proveedor.",
       "Que se recorte el presupuesto del proyecto.",
     ],
     correct: 0,
@@ -1245,7 +1245,7 @@ export const bossBank = [
     topic: "6.2",
     question: "¿Cuál afirmación sobre herramientas y automatización es CORRECTA?",
     options: [
-      "Apoyan, pero no garantizan: requieren formación y mantenimiento.",
+      "Apoyan, pero no garantizan: exigen formación y mantenimiento.",
       "Comprar la herramienta correcta asegura la calidad.",
       "La automatización elimina las pruebas exploratorias.",
       "Los checks detectan defectos que nadie anticipó.",

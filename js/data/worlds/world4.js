@@ -594,7 +594,7 @@ export const world4 = {
           topic: "4.3",
           question: "¿Qué mide la cobertura de sentencias?",
           options: [
-            "El porcentaje de sentencias ejecutables ejecutadas por las pruebas.",
+            "El porcentaje de sentencias ejecutadas por las pruebas.",
             "El porcentaje de particiones de equivalencia cubiertas.",
             "El número de defectos encontrados por cada sentencia.",
             "El porcentaje de decisiones evaluadas como verdaderas.",
@@ -864,7 +864,7 @@ export const world4 = {
           question: "En las pruebas exploratorias, ¿qué es un charter (o misión)?",
           options: [
             "Un documento legal de compras del proyecto.",
-            "Una breve declaración del objetivo de la sesión exploratoria.",
+            "Una declaración breve del objetivo de la sesión.",
             "El informe final de los defectos encontrados.",
             "El listado completo de casos de prueba del sprint.",
           ],
@@ -962,7 +962,7 @@ export const world4 = {
             "¿Quiénes colaboran típicamente al escribir historias de usuario en un enfoque colaborativo?",
           options: [
             "Únicamente los desarrolladores del equipo.",
-            "Negocio, desarrollo y testing aportando su perspectiva.",
+            "Negocio, desarrollo y testing con su perspectiva.",
             "Solo el equipo de operaciones de TI.",
             "Únicamente la persona que vende el producto.",
           ],
@@ -1025,10 +1025,10 @@ export const world4 = {
           question:
             "¿Cómo se usan los criterios de aceptación en ATDD (desarrollo guiado por pruebas de aceptación)?",
           options: [
-            "Se derivan casos antes de programar que guían la implementación.",
+            "Se derivan casos antes de programar que guían el desarrollo.",
             "Se usan solo después de desplegar a producción.",
             "Los redacta el equipo de operaciones de TI.",
-            "Sustituyen a los casos de caja blanca del sprint.",
+            "Sustituyen por completo a los casos de caja blanca del sprint.",
           ],
           correct: 0,
           explanation:

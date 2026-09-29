@@ -206,7 +206,7 @@ export const world2 = {
           topic: "2.2",
           question: "Las pruebas de sistema…",
           options: [
-            "…verifican el sistema completo, funcional y no funcional, de extremo a extremo.",
+            "…verifican el sistema completo, funcional y no funcional.",
             "…solo verifican las unidades individuales de código aisladas.",
             "…son responsabilidad exclusiva del usuario final del sistema.",
             "…se ejecutan antes que las pruebas de integración de módulos.",
@@ -450,7 +450,7 @@ export const world2 = {
             "¿Cuál es la diferencia entre las pruebas de confirmación (retesting) y las de regresión?",
           options: [
             "Son exactamente lo mismo y se ejecutan en el mismo momento.",
-            "El retesting confirma la corrección; la regresión busca efectos colaterales.",
+            "El retesting confirma la corrección; la regresión busca efectos.",
             "La regresión solo aplica a las pruebas de interfaz gráfica.",
             "El retesting se realiza únicamente sobre producción.",
           ],
@@ -609,7 +609,7 @@ export const world2 = {
           question:
             "Se va a modificar un sistema en producción. ¿Qué es imprescindible para gestionar el riesgo?",
           options: [
-            "Reejecutar la regresión sobre las áreas que el análisis marque como afectadas.",
+            "Reejecutar la regresión sobre las áreas que el análisis marque.",
             "Probar solo la funcionalidad modificada y no mirar el resto.",
             "No probar nada: los cambios pequeños nunca rompen nada.",
             "Reescribir el sistema completo desde cero para eliminar el riesgo.",
@@ -630,7 +630,7 @@ export const world2 = {
           topic: "2.3",
           question: "¿Qué tipo de pruebas se necesitan antes de migrar datos a un sistema nuevo?",
           options: [
-            "Pruebas de migración: verificar que los datos llegan completos e íntegros.",
+            "Pruebas de migración: verificar que los datos llegan completos.",
             "Solo una revisión visual de la pantalla de inicio de sesión.",
             "Ninguna: las migraciones las valida directamente el proveedor.",
             "Únicamente pruebas de usabilidad sobre la nueva interfaz.",

@@ -309,7 +309,7 @@ export const world1 = {
             "«El testing muestra la presencia de defectos, pero no su ausencia». ¿Qué significa exactamente?",
           options: [
             "Que el testing nunca puede encontrar la mayoría de los defectos presentes.",
-            "Que aunque no encontremos defectos, pueden existir: se reduce la probabilidad, no se elimina.",
+            "Que aunque no encontremos defectos, pueden existir: se reduce la probabilidad.",
             "Que solo puede demostrarse la presencia de defectos si el usuario los reporta.",
             "Que los defectos solo existen antes de ejecutar las pruebas por primera vez.",
           ],
@@ -329,7 +329,7 @@ export const world1 = {
           question: "¿Por qué el testing exhaustivo es imposible?",
           options: [
             "Porque los testers no tienen suficiente formación técnica y experiencia.",
-            "Porque las combinaciones de entradas y condiciones son astronómicas y hay que priorizar.",
+            "Porque las combinaciones de entradas y condiciones son astronómicas.",
             "Porque las herramientas automáticas tienen límites de licencias y coste.",
             "Porque el software cambia por completo cada pocas semanas de desarrollo.",
           ],
@@ -414,7 +414,7 @@ export const world1 = {
           question: "¿Qué significa que «el testing depende del contexto»?",
           options: [
             "Que el testing se ejecuta distinto según el sistema operativo de cada equipo.",
-            "Que el enfoque de prueba debe adaptarse al riesgo, al dominio y al modelo de desarrollo.",
+            "Que el enfoque debe adaptarse al riesgo, al dominio y al desarrollo.",
             "Que hay que usar siempre el mismo proceso para poder comparar los resultados.",
             "Que el testing solo puede hacerse en entornos reales de producción.",
           ],
@@ -570,7 +570,7 @@ export const world1 = {
           question: "¿Qué ocurre durante la EJECUCIÓN de pruebas?",
           options: [
             "Se diseñan los casos de prueba a partir de las condiciones.",
-            "Se ejecutan, se registran resultados (pasó, falló) y se reportan defectos.",
+            "Se ejecutan, se registran (pasó, falló) y se reportan defectos.",
             "Se archiva el testware reutilizable y las lecciones aprendidas.",
             "Se definen los objetivos y la estrategia del siguiente ciclo.",
           ],
