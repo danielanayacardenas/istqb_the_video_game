@@ -1,6 +1,6 @@
 {
   "name": "istqb-quest",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "description": "Juego interactivo de preparación para el examen ISTQB Foundation Level v4.0",
   "type": "module",

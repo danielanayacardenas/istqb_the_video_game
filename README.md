@@ -19,7 +19,7 @@ Avanza de lo básico a lo avanzado pasando mundos, niveles y desafíos, como en 
 - 🔥 **Racha (streak)** de respuestas correctas con multiplicador visual.
 - 🎯 **Combate arcade** (estilo retro): aciertos → disparas al enemigo; fallos → el enemigo te dispara y pierdes una vida. Es visual: no altera las reglas. Se puede desactivar en los ajustes, junto con el sonido y la música.
 - 🎵 **Música de fondo**: dos pistas 8-bit que suenan en bucle mientras juegas, con bocina de silencio y slider de volumen en la esquina de la escena de combate, y botón de apagado en el mapa.
-- ⚙️ **Configuración estilo videojuego**: el botón de engrane abre una modal con **Combate**, **Efectos** y **Música** (ON/OFF). La interfaz usa iconos SVG de [Lucide](https://lucide.dev) en lugar de emojis.
+- ⚙️ **Configuración estilo videojuego**: el botón de engrane abre una modal con **Combate**, **Efectos** y **Música** (ON/OFF). Toda la interfaz usa iconos SVG de [Lucide](https://lucide.dev) y el logo del inicio es un PNG neón animado.
 - 🏆 **Logros desbloqueables** (perfeccionista, en llamas, explorador, etc.).
 - 💾 **Progreso guardado** en `localStorage` (no pierdes tu avance al cerrar el navegador).
 - 🌐 **Español** en v1. Selector de idioma preparado para futuras versiones.
@@ -104,7 +104,8 @@ ISTQB/
 ├── server.js             ← servidor de desarrollo (Bun)
 ├── package.json
 ├── assets/
-│   └── audio/            ← pistas de música de fondo (8-bit)
+│   ├── audio/            ← pistas de música de fondo (8-bit)
+│   └── img/              ← logo neón del inicio (PNG)
 ├── css/
 │   ├── base.css          ← variables, reset, tipografía
 │   ├── components.css    ← botones, insignias, tarjetas
@@ -176,6 +177,7 @@ ISTQB/
 | 14 | Calidad del banco: re-equilibrio de opciones + multi-selección | ✅ |
 | 15 | Música de fondo + control de volumen (bocina y slider) | ✅ |
 | 16 | Configuración estilo videojuego + iconos Lucide + música en el mapa | ✅ |
+| 17 | Barrido total a iconos Lucide + logo PNG neón animado en el inicio | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 
