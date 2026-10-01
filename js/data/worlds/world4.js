@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world4.js
 // Mundo 4: Análisis y Diseño de Pruebas (CTFL v4.0, capítulo 4)
+// Opciones equilibradas en longitud + multi-selección (Etapa 14, lote 5).
 // =====================================================
 
 export const world4 = {
@@ -47,10 +48,10 @@ export const world4 = {
           topic: "4.1",
           question: "¿Qué produce principalmente el diseño de pruebas?",
           options: [
-            "Una lista de defectos encontrados en la base de prueba.",
-            "La elaboración de las condiciones de prueba en casos de prueba y otro testware (por ejemplo, charters), identificando elementos de cobertura (coverage items).",
-            "El código fuente ya probado.",
-            "El informe de cierre del proyecto.",
+            "Una lista de los defectos encontrados en la base de prueba.",
+            "Casos de prueba y otro testware, con elementos de cobertura.",
+            "El código fuente ya probado y verificado por el equipo.",
+            "El informe de cierre del proyecto y su acta final.",
           ],
           correct: 1,
           explanation:
@@ -68,10 +69,10 @@ export const world4 = {
           topic: "4.1",
           question: "¿Qué incluye típicamente la implementación de pruebas?",
           options: [
-            "Crear o adquirir datos de prueba, y organizar los casos en procedimientos y suites de prueba.",
-            "Elegir el lenguaje de programación del sistema.",
-            "Firmar el contrato con el cliente.",
-            "Revisar el presupuesto del proyecto.",
+            "Crear datos de prueba y organizar los casos en suites.",
+            "Elegir el lenguaje de programación principal del sistema.",
+            "Firmar el contrato del proyecto con el cliente final.",
+            "Revisar y aprobar el presupuesto anual del proyecto.",
           ],
           correct: 0,
           explanation:
@@ -90,9 +91,9 @@ export const world4 = {
           question: "¿En qué se basan las técnicas de caja negra (especificación)?",
           options: [
             "En la estructura interna del código y su flujo de control.",
-            "En el comportamiento especificado del objeto de prueba, sin conocer su estructura interna; los casos se crean con independencia de la implementación.",
-            "En la intuición y experiencia del tester.",
-            "En los defectos históricos del proyecto.",
+            "En el comportamiento especificado, sin ver la estructura interna.",
+            "En la intuición y en la experiencia previa del tester.",
+            "En los defectos históricos registrados del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -110,10 +111,10 @@ export const world4 = {
           topic: "4.1",
           question: "¿En qué se basan las técnicas de caja blanca (estructurales)?",
           options: [
-            "En las especificaciones funcionales del producto.",
-            "En la estructura interna y el procesamiento del objeto de prueba; los casos dependen del diseño, por lo que se crean después de diseñarlo o implementarlo.",
-            "En la opinión de los usuarios finales.",
-            "En los requisitos no funcionales.",
+            "En las especificaciones funcionales escritas del producto.",
+            "En la estructura interna del objeto de prueba y su diseño.",
+            "En la opinión recogida de los usuarios finales.",
+            "En los requisitos no funcionales del sistema.",
           ],
           correct: 1,
           explanation:
@@ -131,9 +132,9 @@ export const world4 = {
           topic: "4.1",
           question: "¿En qué se basan las técnicas basadas en la experiencia?",
           options: [
-            "En la estructura del código fuente.",
-            "En el conocimiento, la intuición y la experiencia de los testers (y de otras partes interesadas) para diseñar y ejecutar pruebas.",
-            "En el número de líneas de código.",
+            "En la estructura del código fuente del sistema.",
+            "En el conocimiento y la experiencia de testers y usuarios.",
+            "En el número total de líneas de código del sistema.",
             "En la documentación formal de requisitos exclusivamente.",
           ],
           correct: 1,
@@ -153,9 +154,9 @@ export const world4 = {
           question:
             "¿Para qué sirve la trazabilidad bidireccional entre la base de prueba y el testware?",
           options: [
-            "Para calcular el presupuesto del proyecto.",
-            "Para evaluar la cobertura lograda, apoyar el análisis de impacto de los cambios y medir la completitud de las pruebas.",
-            "Para elegir el lenguaje de programación.",
+            "Para calcular el presupuesto anual del proyecto.",
+            "Para evaluar la cobertura y el impacto de los cambios.",
+            "Para elegir el lenguaje de programación principal.",
             "Para decidir qué desarrollador programa cada módulo.",
           ],
           correct: 1,
@@ -175,10 +176,10 @@ export const world4 = {
           question:
             "¿Cuál es el orden típico de las actividades de prueba dentro del proceso?",
           options: [
-            "Ejecución → análisis → diseño → implementación.",
-            "Análisis (qué probar) → diseño (cómo probar) → implementación (preparar datos y procedimientos) → ejecución.",
-            "Diseño → ejecución → análisis → implementación.",
-            "Implementación → diseño → análisis → ejecución.",
+            "Ejecución → análisis → diseño → implementación de pruebas.",
+            "Análisis, luego diseño, implementación y ejecución.",
+            "Diseño → ejecución → análisis → implementación de pruebas.",
+            "Implementación → diseño → análisis → ejecución de pruebas.",
           ],
           correct: 1,
           explanation:
@@ -207,10 +208,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Qué hace la partición de equivalencia (EP)?",
           options: [
-            "Ejecutar el programa con datos aleatorios hasta encontrar un fallo.",
-            "Dividir el dominio de datos en particiones donde todos los valores deberían tratarse igual; basta probar un valor representativo de cada partición.",
-            "Medir el porcentaje de líneas de código ejecutadas.",
-            "Ordenar los casos de prueba por prioridad.",
+            "Ejecutar el programa con datos aleatorios hasta encontrar fallos.",
+            "Dividir los datos en particiones que se tratan igual y probar una de cada.",
+            "Medir el porcentaje de líneas de código ejecutadas por las pruebas.",
+            "Ordenar los casos de prueba por prioridad de ejecución.",
           ],
           correct: 1,
           explanation:
@@ -229,9 +230,9 @@ export const world4 = {
           question: "En la partición de equivalencia, ¿cómo deben cubrirse las particiones no válidas?",
           options: [
             "Agrupando todos los valores no válidos en un único caso de prueba.",
-            "Cubriendo cada partición no válida con un caso de prueba separado, para evitar que un valor enmascare el efecto de otro.",
+            "Con un caso de prueba separado para cada partición no válida.",
             "Ignorándolas, porque solo interesan las entradas válidas.",
-            "Probándolas solo en producción.",
+            "Probándolas únicamente en el entorno de producción.",
           ],
           correct: 1,
           explanation:
@@ -249,10 +250,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Cómo se calcula la cobertura de la partición de equivalencia?",
           options: [
-            "Particiones ejercitadas dividido entre particiones totales, expresado en porcentaje.",
-            "Defectos encontrados dividido entre defectos totales.",
-            "Líneas de código ejecutadas dividido entre líneas totales.",
-            "Casos ejecutados dividido entre casos planificados.",
+            "Particiones ejercitadas entre particiones totales, en porcentaje.",
+            "Defectos encontrados entre defectos totales estimados.",
+            "Líneas de código ejecutadas entre líneas totales del módulo.",
+            "Casos ejecutados entre casos planificados en el sprint.",
           ],
           correct: 0,
           explanation:
@@ -270,10 +271,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿En qué se centra el análisis de valores límite (BVA)?",
           options: [
-            "En los valores de las particiones que están más lejos de los extremos.",
-            "En los límites entre particiones ordenadas, porque los defectos tienden a aparecer ahí.",
+            "En los valores de cada partición más alejados de los extremos.",
+            "En los límites entre particiones, donde suelen aparecer defectos.",
             "En valores elegidos al azar dentro de cada partición.",
-            "En la cobertura de ramas del código.",
+            "En la cobertura de ramas del código fuente del módulo.",
           ],
           correct: 1,
           explanation:
@@ -292,10 +293,10 @@ export const world4 = {
           question:
             "En BVA de 2 valores para un rango de 1 a 10, ¿qué valores se prueban en el límite inferior?",
           options: [
-            "Solo el 1.",
-            "El 0 y el 1 (el valor del límite y el vecino más cercano en la partición adyacente).",
-            "El 0, el 1 y el 2.",
-            "El 1 y el 10.",
+            "El 1 y el 10, los valores exactos de los límites.",
+            "El 0 y el 1, límite y vecino de la partición adyacente.",
+            "El 0, el 1 y el 2, con el vecino interior incluido.",
+            "Solo el 1, porque es el valor mínimo del rango.",
           ],
           correct: 1,
           explanation:
@@ -314,10 +315,10 @@ export const world4 = {
           question:
             "En BVA de 3 valores para un rango de 1 a 10, ¿qué valores se prueban en el límite inferior?",
           options: [
-            "El 0 y el 1.",
-            "El 0, el 1 y el 2.",
-            "El 1, el 2 y el 3.",
-            "El 1 y el 10.",
+            "El 0 y el 1, límite y vecino adyacente.",
+            "El 0, el 1 y el 2, incluyendo el vecino interior.",
+            "El 1, el 2 y el 3, sin salir de la partición válida.",
+            "El 1 y el 10, solo los bordes exactos del rango.",
           ],
           correct: 1,
           explanation:
@@ -335,10 +336,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Qué significa un 100 % de cobertura de valores límite?",
           options: [
-            "Que se han ejecutado todas las líneas de código.",
-            "Que se han ejercitado todos los valores límite identificados para las particiones analizadas.",
-            "Que no quedan defectos en el sistema.",
-            "Que se han probado todos los valores posibles del dominio.",
+            "Que se han ejecutado todas las líneas de código del módulo.",
+            "Que se ejercitaron los valores límite identificados.",
+            "Que no quedan defectos pendientes en el sistema.",
+            "Que se probaron todos los valores posibles del dominio.",
           ],
           correct: 1,
           explanation:
@@ -373,6 +374,30 @@ export const world4 = {
             "Añadir los vecinos interiores (19 y 64): eso es BVA de 3 valores.",
           syllabusRef: "Tema 4.2 — Caja negra: análisis de valores límite",
         },
+        {
+          id: "w4-l2-q9",
+          type: "multi",
+          topic: "4.2",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre la partición de equivalencia (EP) y los valores límite (BVA).",
+          options: [
+            "En EP basta un valor representativo por cada partición de equivalencia.",
+            "BVA se centra en los límites entre particiones ordenadas.",
+            "Cada partición no válida debe agruparse con las demás en un solo caso.",
+            "La cobertura del 100 % con estas técnicas garantiza ausencia de defectos.",
+            "BVA de 3 valores prueba únicamente el valor exacto del límite.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "En EP un valor representativo cubre toda la partición, y BVA se centra en los límites, donde más defectos aparecen. Las particiones no válidas van en casos separados, el 100 % no garantiza calidad total y BVA de 3 valores incluye el vecino interior.",
+          example:
+            "EP elige un representante de cada grupo; BVA vigila las fronteras de cada grupo.",
+          useCase:
+            "Para un campo de 1 a 10: EP prueba 5 (válido) y 12 (inválido); BVA prueba 0, 1, 10 y 11.",
+          mistake:
+            "Confundir el objetivo de cada técnica: EP cubre clases, BVA cubre fronteras.",
+          syllabusRef: "Tema 4.2 — Caja negra: partición de equivalencia y valores límite",
+        },
       ],
     },
     {
@@ -389,10 +414,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Qué prueban las tablas de decisión?",
           options: [
-            "Los tiempos de respuesta del sistema.",
-            "Las combinaciones de condiciones (reglas) que producen diferentes acciones, típicas de la lógica de negocio compleja.",
-            "La cobertura de ramas del código.",
-            "La usabilidad de la interfaz.",
+            "Los tiempos de respuesta del sistema bajo carga real.",
+            "Las combinaciones de condiciones que producen acciones.",
+            "La cobertura de ramas y sentencias del código fuente.",
+            "La usabilidad de la interfaz con usuarios finales.",
           ],
           correct: 1,
           explanation:
@@ -410,10 +435,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Qué elementos componen una tabla de decisión?",
           options: [
-            "Estados, transiciones y eventos.",
-            "Condiciones, acciones y reglas (columnas) que combinan las condiciones.",
-            "Nodos, aristas y caminos.",
-            "Particiones válidas e inválidas.",
+            "Estados, transiciones y eventos que las provocan.",
+            "Condiciones, acciones y reglas que las combinan.",
+            "Nodos, aristas y caminos del grafo de flujo.",
+            "Particiones válidas y no válidas de los datos.",
           ],
           correct: 1,
           explanation:
@@ -431,10 +456,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Cuál es la diferencia entre entradas limitadas y extendidas en una tabla de decisión?",
           options: [
-            "Las limitadas solo usan valores booleanos (sí/no) en las condiciones; las extendidas admiten múltiples valores o rangos.",
-            "Las limitadas no tienen acciones; las extendidas sí.",
-            "Las extendidas solo sirven para estados.",
-            "No hay diferencia, son sinónimos.",
+            "Las limitadas usan valores booleanos; las extendidas, varios valores.",
+            "Las limitadas no tienen acciones; las extendidas sí las tienen.",
+            "Las extendidas solo sirven para modelos de estados.",
+            "No hay diferencia real: son términos sinónimos.",
           ],
           correct: 0,
           explanation:
@@ -452,10 +477,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Cómo se mide la cobertura de una tabla de decisión?",
           options: [
-            "Reglas (columnas) factibles ejercitadas dividido entre el total de reglas factibles.",
-            "Condiciones ejercitadas dividido entre condiciones totales.",
-            "Sentencias ejecutadas dividido entre sentencias totales.",
-            "Defectos cerrados dividido entre defectos abiertos.",
+            "Reglas factibles ejercitadas entre el total de reglas factibles.",
+            "Condiciones ejercitadas entre las condiciones totales.",
+            "Sentencias ejecutadas entre las sentencias totales del código.",
+            "Defectos cerrados entre los defectos aún abiertos.",
           ],
           correct: 0,
           explanation:
@@ -474,10 +499,10 @@ export const world4 = {
           question:
             "¿Qué se hace con las combinaciones imposibles (infactibles) en una tabla de decisión?",
           options: [
-            "Se prueban igualmente aunque no puedan ocurrir.",
-            "Se marcan como infactibles y se excluyen del cálculo de cobertura.",
-            "Se convierten en acciones.",
-            "Se eliminan todas las reglas de la tabla.",
+            "Se prueban igualmente, aunque no puedan ocurrir nunca.",
+            "Se marcan como infactibles y se excluyen de la cobertura.",
+            "Se convierten en acciones de la propia tabla.",
+            "Se eliminan todas las reglas de la tabla por completo.",
           ],
           correct: 1,
           explanation:
@@ -496,9 +521,9 @@ export const world4 = {
           question: "¿Qué modela un diagrama de transición de estados?",
           options: [
             "Las condiciones y acciones de una regla de negocio.",
-            "Los estados del sistema, las transiciones entre ellos y los eventos que las provocan, incluyendo acciones asociadas.",
-            "La estructura de ramas del código.",
-            "Las particiones de equivalencia de un campo.",
+            "Estados, transiciones y los eventos que las provocan.",
+            "La estructura de ramas y bucles del código fuente.",
+            "Las particiones de equivalencia de cada campo.",
           ],
           correct: 1,
           explanation:
@@ -516,10 +541,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Qué significa cubrir todos los estados en una prueba de transición de estados?",
           options: [
-            "Que cada estado del sistema se visita al menos una vez por los casos de prueba.",
-            "Que se prueban todos los eventos posibles.",
-            "Que se ejecutan todas las líneas de código.",
-            "Que se prueban solo las transiciones inválidas.",
+            "Que cada estado se visita al menos una vez por los casos.",
+            "Que se prueban todos los eventos posibles del sistema.",
+            "Que se ejecutan todas las líneas de código del módulo.",
+            "Que se prueban solo las transiciones no válidas.",
           ],
           correct: 0,
           explanation:
@@ -537,10 +562,10 @@ export const world4 = {
           topic: "4.2",
           question: "¿Para qué sirve probar las transiciones NO válidas?",
           options: [
-            "Para nada; solo importan las transiciones válidas.",
-            "Para verificar que el sistema rechaza o maneja correctamente eventos que no corresponden al estado actual.",
-            "Para medir el rendimiento del sistema.",
-            "Para reducir el número de casos de prueba.",
+            "Para nada: solo importan las transiciones válidas.",
+            "Para verificar que el sistema rechaza los eventos inválidos.",
+            "Para medir el rendimiento del sistema bajo eventos.",
+            "Para reducir el número total de casos de prueba.",
           ],
           correct: 1,
           explanation:
@@ -569,9 +594,9 @@ export const world4 = {
           topic: "4.3",
           question: "¿Qué mide la cobertura de sentencias?",
           options: [
-            "El porcentaje de sentencias ejecutables que han sido ejecutadas por los casos de prueba.",
+            "El porcentaje de sentencias ejecutadas por las pruebas.",
             "El porcentaje de particiones de equivalencia cubiertas.",
-            "El número de defectos encontrados por sentencia.",
+            "El número de defectos encontrados por cada sentencia.",
             "El porcentaje de decisiones evaluadas como verdaderas.",
           ],
           correct: 0,
@@ -590,10 +615,10 @@ export const world4 = {
           topic: "4.3",
           question: "¿Qué es una rama en el código?",
           options: [
-            "Una variable global del programa.",
-            "Una transferencia de control entre dos nodos del grafo de flujo, por ejemplo el resultado verdadero o falso de una decisión.",
-            "Un comentario del código fuente.",
-            "Una partición de equivalencia del dominio.",
+            "Una variable global declarada en el programa.",
+            "Una transferencia de control entre nodos del grafo de flujo.",
+            "Un comentario explicativo dentro del código fuente.",
+            "Una partición de equivalencia del dominio de datos.",
           ],
           correct: 1,
           explanation:
@@ -634,10 +659,10 @@ export const world4 = {
           question:
             "¿Qué relación existe entre la cobertura de ramas y la cobertura de sentencias?",
           options: [
-            "100 % de cobertura de ramas implica 100 % de cobertura de sentencias (porque cada rama ejecuta sus sentencias); lo contrario no siempre se cumple.",
-            "100 % de cobertura de sentencias implica 100 % de cobertura de ramas.",
-            "Son exactamente lo mismo.",
-            "La cobertura de ramas no tiene relación con la de sentencias.",
+            "100 % de ramas implica 100 % de sentencias; lo inverso no.",
+            "100 % de sentencias implica 100 % de cobertura de ramas.",
+            "Son exactamente lo mismo y se calculan igual.",
+            "La cobertura de ramas no tiene relación con las sentencias.",
           ],
           correct: 0,
           explanation:
@@ -698,10 +723,10 @@ export const world4 = {
           topic: "4.3",
           question: "¿Para qué sirven las técnicas de caja blanca en la práctica?",
           options: [
-            "Para reemplazar a las pruebas de aceptación.",
-            "Para medir la cobertura estructural alcanzada y guiar pruebas adicionales que cubran las partes no ejercitadas.",
-            "Para medir la satisfacción del usuario.",
-            "Para calcular el presupuesto del proyecto.",
+            "Para reemplazar a las pruebas de aceptación del cliente.",
+            "Para medir la cobertura y guiar pruebas hacia lo no cubierto.",
+            "Para medir la satisfacción del usuario con el producto.",
+            "Para calcular el presupuesto de pruebas del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -736,6 +761,29 @@ export const world4 = {
             "Dividir al revés (20/15); la cobertura nunca supera el 100 %.",
           syllabusRef: "Tema 4.3 — Caja blanca: cobertura de sentencias",
         },
+        {
+          id: "w4-l4-q9",
+          type: "multi",
+          topic: "4.3",
+          question: "Selecciona las DOS afirmaciones correctas sobre la cobertura de código.",
+          options: [
+            "100 % de cobertura de ramas implica 100 % de cobertura de sentencias.",
+            "La cobertura de ramas puede ser menor que la de sentencias en un módulo.",
+            "100 % de cobertura de sentencias garantiza todas las ramas cubiertas.",
+            "La cobertura del 100 % demuestra que no quedan defectos en el código.",
+            "Ejecutar todas las sentencias obliga a evaluar cada decisión en ambos sentidos.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "Cubrir todas las ramas ejecuta todas las sentencias alcanzables (implicación directa), y en un módulo la cobertura de ramas puede quedar por debajo de la de sentencias. Las otras tres afirmaciones son falsas: la cobertura no garantiza defectos cero ni obliga a recorrer ambos sentidos de cada decisión.",
+          example:
+            "Pasear por todas las calles (ramas) implica pasar por todas las casas (sentencias), pero no al revés.",
+          useCase:
+            "El equipo reporta 95 % de sentencias y 80 % de ramas: añade casos para las ramas restantes.",
+          mistake:
+            "Creer que la cobertura mide la calidad del código; mide cuánto se ha ejecutado.",
+          syllabusRef: "Tema 4.3 — Caja blanca: cobertura de sentencias y de ramas",
+        },
       ],
     },
     {
@@ -752,10 +800,10 @@ export const world4 = {
           topic: "4.4",
           question: "¿En qué consiste la adivinación de errores (error guessing)?",
           options: [
-            "En ejecutar pruebas al azar sin ningún criterio.",
-            "En derivar pruebas del conocimiento y la experiencia sobre errores típicos, defectos frecuentes y zonas propensas a fallos.",
-            "En medir la cobertura de código.",
-            "En seguir una tabla de decisión completa.",
+            "En ejecutar pruebas al azar y sin ningún criterio definido.",
+            "En derivar pruebas de la experiencia sobre errores típicos.",
+            "En medir la cobertura de código alcanzada por la suite.",
+            "En seguir una tabla de decisión hasta el final.",
           ],
           correct: 1,
           explanation:
@@ -773,10 +821,10 @@ export const world4 = {
           topic: "4.4",
           question: "¿Qué puede hacer más efectiva a la adivinación de errores?",
           options: [
-            "Conocer los defectos más frecuentes del histórico, usar listas de ataques de fallos (fault attacks) y aprender de las lecciones anteriores.",
-            "Usar exclusivamente casos aleatorios generados por herramienta.",
-            "Evitar el conocimiento del dominio.",
-            "Limitarse a ejecutar el camino feliz.",
+            "Conocer los defectos históricos y usar listas de ataques de fallos.",
+            "Usar exclusivamente casos aleatorios generados por herramientas.",
+            "Evitar el conocimiento previo del dominio del negocio.",
+            "Limitarse a ejecutar el camino feliz del sistema.",
           ],
           correct: 0,
           explanation:
@@ -794,10 +842,10 @@ export const world4 = {
           topic: "4.4",
           question: "¿Qué caracteriza a las pruebas exploratorias?",
           options: [
-            "Diseñar y ejecutar a la vez: el tester aprende del sistema, diseña y ejecuta pruebas de forma simultánea dentro de sesiones con límite de tiempo.",
-            "Ejecutar sin ninguna misión ni objetivo.",
-            "Documentar cada caso antes de ejecutarlo.",
-            "Medir la cobertura de ramas del código.",
+            "Diseñar y ejecutar a la vez, en sesiones con límite de tiempo.",
+            "Ejecutar pruebas sin ninguna misión ni objetivo previo.",
+            "Documentar cada caso de prueba antes de ejecutarlo.",
+            "Medir la cobertura de ramas del código fuente.",
           ],
           correct: 0,
           explanation:
@@ -813,13 +861,12 @@ export const world4 = {
         {
           id: "w4-l5-q4",
           topic: "4.4",
-          question:
-            "En las pruebas exploratorias, ¿qué es un charter (o misión)?",
+          question: "En las pruebas exploratorias, ¿qué es un charter (o misión)?",
           options: [
-            "Un documento legal de compras.",
-            "Una breve declaración que define el objetivo de la sesión exploratoria (qué explorar y, a menudo, con qué enfoque).",
-            "El informe de defectos final.",
-            "El listado completo de casos de prueba.",
+            "Un documento legal de compras del proyecto.",
+            "Una declaración breve del objetivo de la sesión.",
+            "El informe final de los defectos encontrados.",
+            "El listado completo de casos de prueba del sprint.",
           ],
           correct: 1,
           explanation:
@@ -837,10 +884,10 @@ export const world4 = {
           topic: "4.4",
           question: "¿Qué caracteriza a las pruebas basadas en checklists?",
           options: [
-            "El tester se guía por una lista de comprobación con elementos que debe verificar o probar, actualizada según el contexto.",
-            "Se ejecutan solo pruebas de rendimiento.",
-            "La lista de comprobación nunca se modifica.",
-            "Sustituyen completamente a las técnicas de caja negra.",
+            "El tester verifica elementos de una checklist actualizada.",
+            "Se ejecutan únicamente pruebas de rendimiento básicas.",
+            "La checklist se mantiene sin cambios con el tiempo.",
+            "Sustituyen por completo a las técnicas de caja negra.",
           ],
           correct: 0,
           explanation:
@@ -859,10 +906,10 @@ export const world4 = {
           question:
             "¿Cómo se relacionan las técnicas basadas en la experiencia con las de caja negra y caja blanca?",
           options: [
-            "Las reemplazan cuando no hay documentación.",
-            "Las complementan: ayudan a alcanzar cobertura que las técnicas sistemáticas pueden dejar fuera y viceversa.",
-            "Son incompatibles entre sí.",
-            "Solo se pueden usar después de las de caja blanca.",
+            "Las reemplazan por completo cuando no hay documentación.",
+            "Las complementan y cubren lo que las formales dejan fuera.",
+            "Son incompatibles entre sí y no deben combinarse.",
+            "Solo se pueden usar después de las técnicas de caja blanca.",
           ],
           correct: 1,
           explanation:
@@ -881,10 +928,10 @@ export const world4 = {
           question:
             "¿Cuándo resultan especialmente valiosas las técnicas basadas en la experiencia?",
           options: [
-            "Cuando hay documentación escasa, presión de tiempo, o se busca detectar defectos que las técnicas formales no atrapan.",
-            "Solo cuando el proyecto tiene documentación exhaustiva y sin prisa.",
-            "Únicamente en sistemas pequeños.",
-            "Cuando no hay testers disponibles.",
+            "Con poca documentación, prisa, o defectos que las formales no ven.",
+            "Solo cuando hay documentación exhaustiva y sin ninguna prisa.",
+            "Únicamente en sistemas pequeños y poco críticos.",
+            "Cuando no hay testers disponibles en el equipo.",
           ],
           correct: 0,
           explanation:
@@ -914,9 +961,9 @@ export const world4 = {
           question:
             "¿Quiénes colaboran típicamente al escribir historias de usuario en un enfoque colaborativo?",
           options: [
-            "Solo los desarrolladores.",
-            "Representantes de negocio, desarrollo y testing, aportando cada uno su perspectiva.",
-            "Solo el equipo de operaciones.",
+            "Únicamente los desarrolladores del equipo.",
+            "Negocio, desarrollo y testing con su perspectiva.",
+            "Solo el equipo de operaciones de TI.",
             "Únicamente la persona que vende el producto.",
           ],
           correct: 1,
@@ -935,10 +982,10 @@ export const world4 = {
           topic: "4.5",
           question: "¿Qué son los criterios de aceptación de una historia de usuario?",
           options: [
-            "El presupuesto asignado a la historia.",
-            "Las condiciones que debe cumplir la historia para considerarse terminada y aceptable; guían su desarrollo y sus pruebas.",
-            "Una lista de defectos encontrados.",
-            "El manual de estilo del código.",
+            "El presupuesto asignado a la historia de usuario.",
+            "Las condiciones para considerar la historia terminada.",
+            "Una lista de los defectos encontrados durante el sprint.",
+            "El manual de estilo y formato del código fuente.",
           ],
           correct: 1,
           explanation:
@@ -956,10 +1003,10 @@ export const world4 = {
           topic: "4.5",
           question: "¿Cuál es un formato típico de criterio de aceptación?",
           options: [
-            "Escenarios en formato Dado (contexto) / Cuando (acción) / Entonces (resultado esperado).",
-            "Un diagrama de Gantt detallado.",
-            "Una tabla de cobertura de ramas.",
-            "El organigrama del equipo.",
+            "Escenarios Dado / Cuando / Entonces (contexto, acción y resultado).",
+            "Un diagrama de Gantt con las tareas planificadas del sprint.",
+            "Una tabla de cobertura de ramas y sentencias del código.",
+            "El organigrama del equipo de desarrollo del producto.",
           ],
           correct: 0,
           explanation:
@@ -978,10 +1025,10 @@ export const world4 = {
           question:
             "¿Cómo se usan los criterios de aceptación en ATDD (desarrollo guiado por pruebas de aceptación)?",
           options: [
-            "Se derivan casos de prueba antes de desarrollar, que guían la implementación y luego se ejecutan para aceptar la historia.",
+            "Se derivan casos antes de programar que guían el desarrollo.",
             "Se usan solo después de desplegar a producción.",
-            "Los escribe el equipo de operaciones.",
-            "Sustituyen a los casos de prueba de caja blanca.",
+            "Los redacta el equipo de operaciones de TI.",
+            "Sustituyen por completo a los casos de caja blanca del sprint.",
           ],
           correct: 0,
           explanation:
@@ -999,10 +1046,10 @@ export const world4 = {
           topic: "4.5",
           question: "¿Qué factores influyen al elegir una técnica de diseño de pruebas?",
           options: [
-            "El tipo de objeto de prueba, el riesgo, el contexto del proyecto, la documentación y modelo disponibles, y la experiencia del equipo.",
-            "Únicamente el gusto personal del tester.",
-            "Solo el presupuesto del proyecto.",
-            "Exclusivamente el modelo de ciclo de vida.",
+            "El objeto de prueba, el riesgo y la experiencia del equipo.",
+            "Únicamente el gusto personal y la costumbre del tester.",
+            "Solo el presupuesto asignado al proyecto de pruebas.",
+            "Exclusivamente el modelo de ciclo de vida elegido.",
           ],
           correct: 0,
           explanation:
@@ -1020,10 +1067,10 @@ export const world4 = {
           topic: "4.5",
           question: "¿Cuál de estas afirmaciones sobre la elección de técnicas es CORRECTA?",
           options: [
-            "Las técnicas se pueden y se suelen combinar; la elección depende del contexto y no existe una técnica mejor para todo.",
+            "Se combinan según el contexto: ninguna técnica es la mejor para todo.",
             "La partición de equivalencia es la mejor técnica en todos los casos.",
-            "Se debe elegir una sola técnica por proyecto.",
-            "Las técnicas basadas en la experiencia nunca deben combinarse con otras.",
+            "Se debe elegir una única técnica por proyecto y no variarla.",
+            "Las basadas en la experiencia nunca se combinan con otras técnicas.",
           ],
           correct: 0,
           explanation:

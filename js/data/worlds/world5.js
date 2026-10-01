@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world5.js
 // Mundo 5: Gestión de las Actividades de Prueba (CTFL v4.0, capítulo 5)
+// Opciones equilibradas en longitud + multi-selección (Etapa 14, lote 6).
 // =====================================================
 
 export const world5 = {
@@ -25,10 +26,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Cuál es el propósito principal de un plan de pruebas?",
           options: [
-            "Registrar los defectos encontrados durante la ejecución.",
-            "Documentar el alcance, los objetivos, el enfoque, los recursos y el calendario de las pruebas, y servir de base para su monitoreo y control.",
-            "Detallar el código de los casos automatizados.",
-            "Sustituir al plan del proyecto.",
+            "Registrar los defectos que se encuentran durante la ejecución.",
+            "Documentar alcance, objetivos, enfoque, recursos y calendario.",
+            "Detallar el código fuente de los casos automatizados.",
+            "Sustituir al plan general del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -46,10 +47,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué afirmación sobre los planes de pruebas es CORRECTA?",
           options: [
-            "Deben ser idénticos en todos los proyectos.",
-            "Su contenido y nivel de detalle varían según el contexto; puede existir un plan maestro del proyecto y planes por nivel de prueba o iteración (en ágil suelen ser más ligeros).",
-            "Solo puede existir un plan de pruebas por empresa.",
-            "Una vez escrito, el plan no puede modificarse.",
+            "Deben ser idénticos en todos los proyectos de la empresa.",
+            "Su contenido varía según el contexto del proyecto.",
+            "Solo puede existir un plan de pruebas por cada empresa.",
+            "Una vez escrito, el plan no puede modificarse jamás.",
           ],
           correct: 1,
           explanation:
@@ -67,10 +68,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué son los criterios de entrada de una actividad de prueba?",
           options: [
-            "Las condiciones que deben cumplirse para poder comenzar la actividad (por ejemplo, código disponible, entorno listo y datos preparados).",
-            "Los defectos que quedan pendientes al terminar.",
-            "Las métricas de cobertura alcanzadas al final.",
-            "Los casos de prueba ejecutados con éxito.",
+            "Las condiciones necesarias para poder comenzar la actividad.",
+            "Los defectos que quedan pendientes al terminar la actividad.",
+            "Las métricas de cobertura que se alcanzaron al final.",
+            "Los casos de prueba que se ejecutaron con éxito.",
           ],
           correct: 0,
           explanation:
@@ -88,9 +89,9 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué son los criterios de salida?",
           options: [
-            "Las condiciones que deben cumplirse para declarar completada una actividad de prueba (por ejemplo, cobertura alcanzada, densidad de defectos o umbrales de éxito).",
-            "Los permisos para acceder al entorno.",
-            "Las condiciones para comenzar a programar.",
+            "Las condiciones para dar por completada la actividad.",
+            "Los permisos de acceso al entorno de pruebas.",
+            "Las condiciones para comenzar a programar el sistema.",
             "Las tareas pendientes del equipo de desarrollo.",
           ],
           correct: 0,
@@ -109,10 +110,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿En qué se basa la estimación del esfuerzo de pruebas BASADA EN MÉTRICAS?",
           options: [
-            "En extrapolar a partir de datos de proyectos o pruebas anteriores (por ejemplo, ratios de tamaño, productividad o defectos históricos).",
-            "En la intuición del equipo, sin datos.",
-            "En el presupuesto de marketing.",
-            "En el número de reuniones realizadas.",
+            "En extrapolar con datos de proyectos anteriores, como ratios.",
+            "En la intuición del equipo, sin usar ningún dato.",
+            "En el presupuesto de marketing de la empresa.",
+            "En el número de reuniones realizadas por el equipo.",
           ],
           correct: 0,
           explanation:
@@ -130,10 +131,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué caracteriza a la estimación BASADA EN EXPERTOS?",
           options: [
-            "Usar únicamente fórmulas matemáticas complejas.",
-            "Basarse en la experiencia del equipo; suele apoyarse en la descomposición de tareas y en técnicas como el Planning Poker o el juicio de expertos.",
-            "Depender exclusivamente de datos históricos.",
-            "Ignorar por completo los supuestos.",
+            "Usar únicamente fórmulas matemáticas muy complejas.",
+            "Basarse en la experiencia del equipo y descomponer tareas.",
+            "Depender exclusivamente de los datos históricos.",
+            "Ignorar por completo los supuestos del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -151,10 +152,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué implica priorizar las pruebas basándose en RIESGOS?",
           options: [
-            "Ejecutar primero las pruebas de las áreas de mayor riesgo (probabilidad × impacto), para encontrar cuanto antes los defectos más importantes.",
-            "Ejecutar los casos por orden alfabético.",
-            "Ejecutar primero los casos más cortos.",
-            "Ejecutar primero las pruebas que pide el equipo de desarrollo.",
+            "Ejecutar primero las áreas de mayor riesgo (probabilidad × impacto).",
+            "Ejecutar los casos de prueba por orden alfabético.",
+            "Ejecutar primero los casos de prueba más cortos de ejecutar.",
+            "Ejecutar primero lo que pida el equipo de desarrollo.",
           ],
           correct: 0,
           explanation:
@@ -183,10 +184,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Qué representa la pirámide de pruebas?",
           options: [
-            "Que conviene tener muchos más tests de bajo nivel (componente) que de integración, y aún menos de alto nivel (interfaz/sistema), guiando el esfuerzo y la automatización.",
-            "Que las pruebas manuales son la base de todo.",
-            "Que solo se debe probar al final del proyecto.",
-            "El número de testers necesarios por equipo.",
+            "Muchos de componente, menos de integración y pocos de sistema.",
+            "Que las pruebas manuales son la base de toda la pirámide.",
+            "Que solo se debe probar al final del proyecto completo.",
+            "El número de testers necesarios para cada equipo.",
           ],
           correct: 0,
           explanation:
@@ -204,10 +205,10 @@ export const world5 = {
           topic: "5.1",
           question: "¿Para qué sirve el modelo de los CUATRO CUADRANTES de prueba?",
           options: [
-            "Para clasificar los tipos de prueba según estén orientados a negocio o a tecnología y según apoyen al desarrollo o critiquen el producto, ayudando a planificar qué pruebas realizar.",
-            "Para medir la cobertura de código.",
-            "Para calcular el riesgo del proyecto.",
-            "Para clasificar los defectos por severidad.",
+            "Para clasificar las pruebas según negocio/tecnología y su enfoque.",
+            "Para medir la cobertura de código alcanzada por la suite.",
+            "Para calcular el nivel de riesgo de cada proyecto.",
+            "Para clasificar los defectos según su severidad.",
           ],
           correct: 0,
           explanation:
@@ -225,9 +226,9 @@ export const world5 = {
           topic: "5.2",
           question: "¿Cómo se determina el nivel de un riesgo?",
           options: [
-            "Sumando el número de defectos abiertos.",
-            "Multiplicando la probabilidad de que ocurra el problema por el impacto de sus consecuencias.",
-            "Con el presupuesto disponible del proyecto.",
+            "Sumando el número de defectos abiertos en el sistema.",
+            "Multiplicando la probabilidad de ocurrencia por el impacto.",
+            "Con el presupuesto disponible del proyecto de pruebas.",
             "Según el orden en que se detectan los fallos.",
           ],
           correct: 1,
@@ -247,9 +248,9 @@ export const world5 = {
           question: "¿Cuál de los siguientes es un ejemplo de riesgo de PRODUCTO?",
           options: [
             "Que el equipo pierda a un desarrollador clave durante el sprint.",
-            "Que la pasarela de pago calcule mal los importes y cobre cantidades erróneas.",
-            "Que el entorno de pruebas llegue tarde.",
-            "Que recorten el presupuesto del proyecto.",
+            "Que la pasarela de pago cobre importes incorrectos a los clientes.",
+            "Que el entorno de pruebas del proyecto llegue tarde.",
+            "Que recorten el presupuesto del proyecto a mitad de camino.",
           ],
           correct: 1,
           explanation:
@@ -288,10 +289,10 @@ export const world5 = {
           topic: "5.2",
           question: "¿Qué busca el análisis de riesgos de producto?",
           options: [
-            "Identificar y evaluar los riesgos del producto según su probabilidad e impacto, para priorizar el esfuerzo de prueba.",
-            "Redactar el presupuesto anual del departamento.",
-            "Seleccionar el lenguaje de programación.",
-            "Medir la velocidad del equipo de desarrollo.",
+            "Identificar y evaluar los riesgos del producto para priorizar.",
+            "Redactar el presupuesto anual del departamento de TI.",
+            "Seleccionar el lenguaje de programación principal.",
+            "Medir la velocidad de entrega del equipo de desarrollo.",
           ],
           correct: 0,
           explanation:
@@ -310,10 +311,10 @@ export const world5 = {
           question:
             "Las acciones de mitigación (control) de los riesgos de producto buscan…",
           options: [
-            "Eliminar todos los defectos existentes por arte de magia.",
-            "Reducir la probabilidad y/o el impacto del riesgo, por ejemplo probando más a fondo las áreas críticas, mediante revisiones o prototipos.",
+            "Eliminar los defectos por completo y de inmediato.",
+            "Reducir la probabilidad o el impacto del riesgo.",
             "Aumentar el número de defectos registrados.",
-            "Cambiar la fecha de entrega.",
+            "Cambiar la fecha de entrega del producto.",
           ],
           correct: 1,
           explanation:
@@ -332,8 +333,8 @@ export const world5 = {
           question: "¿Qué implica un enfoque de pruebas BASADO EN RIESGOS?",
           options: [
             "Probar todas las áreas con exactamente la misma profundidad.",
-            "Probar más y antes las áreas de mayor riesgo, y con menor profundidad las de menor riesgo, ajustando el esfuerzo total.",
-            "Probar únicamente lo que pide el área de negocio.",
+            "Probar más y antes las áreas de mayor riesgo; menos el resto.",
+            "Probar únicamente lo que pida el área de negocio.",
             "No probar las áreas que ya funcionaron alguna vez.",
           ],
           correct: 1,
@@ -346,6 +347,29 @@ export const world5 = {
           mistake:
             "Repartir esfuerzo por igual entre todo; los riesgos altos quedan infracubiertos.",
           syllabusRef: "Tema 5.2 — Testing basado en riesgos",
+        },
+        {
+          id: "w5-l2-q9",
+          type: "multi",
+          topic: "5.2",
+          question: "Selecciona las DOS afirmaciones correctas sobre los riesgos.",
+          options: [
+            "Los riesgos de producto amenazan la calidad del propio sistema.",
+            "El nivel de riesgo combina la probabilidad con el impacto.",
+            "Los riesgos de proyecto son siempre fallos funcionales del sistema.",
+            "Mitigar un riesgo consiste en eliminar todos los defectos existentes.",
+            "El testing basado en riesgos prueba todo con igual profundidad.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "Los riesgos de producto amenazan la calidad del sistema y su nivel combina probabilidad × impacto. Los riesgos de proyecto afectan a la planificación y entrega (no son fallos funcionales), mitigar no elimina defectos por arte de magia y el testing basado en riesgos distribuye el esfuerzo de forma desigual.",
+          example:
+            "Producto: el pago cobra mal. Proyecto: falta personal. Cada uno se gestiona distinto.",
+          useCase:
+            "La matriz de riesgos prioriza módulos: pago (alto), textos legales (bajo).",
+          mistake:
+            "Mezclar las categorías de riesgo y creer que mitigar significa eliminar el problema.",
+          syllabusRef: "Tema 5.2 — Gestión de riesgos",
         },
       ],
     },
@@ -363,10 +387,10 @@ export const world5 = {
           topic: "5.3",
           question: "¿Qué es el monitoreo de pruebas?",
           options: [
-            "Recopilar y comparar información del avance real de las pruebas frente al plan (progreso, cobertura, defectos, riesgos) para evaluar el cumplimiento de objetivos y criterios de salida.",
-            "Modificar el plan sin medir nada.",
-            "Ejecutar los casos de prueba más rápido.",
-            "Escribir el informe final del proyecto.",
+            "Recopilar el avance real y compararlo con el plan.",
+            "Modificar el plan sin medir absolutamente nada.",
+            "Ejecutar los casos de prueba mucho más rápido.",
+            "Escribir el informe final del proyecto completo.",
           ],
           correct: 0,
           explanation:
@@ -384,10 +408,10 @@ export const world5 = {
           topic: "5.3",
           question: "¿Qué es el control de pruebas?",
           options: [
-            "Tomar acciones correctivas ante las desviaciones observadas (por ejemplo, repriorizar casos, ajustar alcance, recursos o el calendario) y actualizar el plan.",
+            "Tomar acciones ante las desviaciones y ajustar el plan.",
             "Copiar el plan de pruebas del proyecto anterior.",
-            "Medir el avance sin intervenir.",
-            "Añadir más casos de prueba sin criterio.",
+            "Medir el avance sin intervenir en absoluto.",
+            "Añadir más casos de prueba sin ningún criterio.",
           ],
           correct: 0,
           explanation:
@@ -405,10 +429,10 @@ export const world5 = {
           topic: "5.3",
           question: "¿Cuál de las siguientes es una métrica típica del avance de pruebas?",
           options: [
-            "El porcentaje de casos ejecutados y aprobados, los defectos encontrados por severidad y la cobertura alcanzada.",
-            "El número de empleados de toda la empresa.",
-            "La cotización de las acciones de la compañía.",
-            "Los metros cuadrados de la oficina.",
+            "Casos ejecutados, defectos por severidad y cobertura.",
+            "El número total de empleados de toda la empresa.",
+            "La cotización de las acciones de la compañía en bolsa.",
+            "Los metros cuadrados de las oficinas centrales.",
           ],
           correct: 0,
           explanation:
@@ -426,9 +450,9 @@ export const world5 = {
           topic: "5.3",
           question: "¿Qué contiene típicamente un informe de progreso de pruebas?",
           options: [
-            "El estado de las pruebas frente al plan, las desviaciones, las métricas (casos, defectos, cobertura), los riesgos y el plan para el siguiente periodo.",
-            "Únicamente la lista de defectos cerrados.",
-            "El código fuente completo del sistema.",
+            "El estado frente al plan, métricas y riesgos vigentes.",
+            "Únicamente la lista de defectos ya cerrados.",
+            "El código fuente completo del sistema bajo prueba.",
             "Las actas de todas las reuniones del año.",
           ],
           correct: 0,
@@ -447,10 +471,10 @@ export const world5 = {
           topic: "5.3",
           question: "¿Cuándo se elabora el informe de cierre (test completion report)?",
           options: [
-            "Al final de una actividad de prueba (nivel, iteración, proyecto), resumiendo los resultados, la cobertura, los defectos, el riesgo residual y las lecciones aprendidas.",
-            "Antes de escribir el primer caso de prueba.",
-            "Solo si no se encontraron defectos.",
-            "Nunca; no aporta valor.",
+            "Al final de la actividad: resultados, cobertura y lecciones.",
+            "Antes de escribir el primer caso de prueba del ciclo.",
+            "Solo si no se encontraron defectos durante la ejecución.",
+            "Nunca: el informe de cierre no aporta ningún valor.",
           ],
           correct: 0,
           explanation:
@@ -468,10 +492,10 @@ export const world5 = {
           topic: "5.3",
           question: "¿En qué se basa la decisión de dar por finalizadas las pruebas?",
           options: [
-            "En evaluar el cumplimiento de los criterios de salida y el riesgo residual, e informar a los interesados para la decisión.",
-            "En la fecha del calendario, sin más.",
-            "En el número de testers disponibles.",
-            "En el cansancio acumulado del equipo.",
+            "En el cumplimiento de los criterios de salida y del riesgo.",
+            "En la fecha del calendario de entrega, sin más criterio.",
+            "En el número de testers disponibles en el equipo.",
+            "En el cansancio acumulado del equipo de pruebas.",
           ],
           correct: 0,
           explanation:
@@ -491,9 +515,9 @@ export const world5 = {
             "Durante la ejecución, la densidad de defectos críticos supera el umbral y quedan módulos críticos sin probar. ¿Qué acción de control es adecuada?",
           options: [
             "Ignorar los datos y continuar exactamente igual.",
-            "Investigar la causa, repriorizar para cubrir lo crítico, informar a los interesados y ajustar el plan si es necesario.",
-            "Cerrar todos los defectos sin verificar sus correcciones.",
-            "Cancelar el proyecto de inmediato.",
+            "Investigar la causa, repriorizar y avisar a los interesados.",
+            "Cerrar los defectos sin verificar sus correcciones.",
+            "Cancelar el proyecto de inmediato por completo.",
           ],
           correct: 1,
           explanation:
@@ -522,10 +546,10 @@ export const world5 = {
           topic: "5.4",
           question: "¿Qué gestiona la gestión de configuración en un proyecto?",
           options: [
-            "La identificación, el versionado y el control de cambios de los elementos de configuración (código, documentos, testware, entornos), creando líneas base (baselines).",
-            "Los precios de venta del producto.",
-            "El calendario de vacaciones del equipo.",
-            "La decoración de las oficinas.",
+            "El versionado y control de cambios de los elementos clave.",
+            "Los precios de venta del producto en el mercado.",
+            "El calendario de vacaciones y ausencias del equipo.",
+            "La decoración y el mobiliario de las oficinas.",
           ],
           correct: 0,
           explanation:
@@ -543,10 +567,10 @@ export const world5 = {
           topic: "5.4",
           question: "¿Por qué es importante la gestión de configuración para el testing?",
           options: [
-            "Porque permite saber exactamente qué versión del software y del testware se está probando, reproducir resultados y ejecutar sobre las versiones correctas (incluidos entornos, stubs y drivers).",
-            "Porque evita tener que probar el software.",
-            "Porque sustituye a los criterios de salida.",
-            "Porque elimina los defectos automáticamente.",
+            "Porque permite saber qué versión se prueba y reproducirla.",
+            "Porque evita tener que probar el software construido.",
+            "Porque sustituye a los criterios de salida del ciclo.",
+            "Porque elimina los defectos de forma automática.",
           ],
           correct: 0,
           explanation:
@@ -564,10 +588,10 @@ export const world5 = {
           topic: "5.5",
           question: "¿Qué debe incluir un informe de defecto para ser útil?",
           options: [
-            "Pasos para reproducir, resultado esperado y observado, entorno y versión, además de título, fecha, autor, severidad y estado.",
-            "Solo una captura de pantalla opcional.",
+            "Pasos para reproducir, resultado observado y entorno.",
+            "Solo una captura de pantalla, y además opcional.",
             "La opinión personal del tester sobre el programador.",
-            "El presupuesto completo del proyecto.",
+            "El presupuesto completo del proyecto de pruebas.",
           ],
           correct: 0,
           explanation:
@@ -585,10 +609,10 @@ export const world5 = {
           topic: "5.5",
           question: "¿Qué diferencia hay entre la severidad y la prioridad de un defecto?",
           options: [
-            "La severidad mide el impacto del defecto en el sistema; la prioridad indica la urgencia de su corrección según el negocio; pueden no coincidir.",
-            "Son exactamente lo mismo.",
-            "La severidad la decide el cliente y la prioridad, el tester.",
-            "Ambas dependen solo de la fecha en que se reportó el defecto.",
+            "La severidad mide el impacto; la prioridad, la urgencia.",
+            "Son exactamente lo mismo y las decide la misma persona.",
+            "La severidad la decide el cliente y la prioridad el tester.",
+            "Dependen solo de la fecha en que se reportó el defecto.",
           ],
           correct: 0,
           explanation:
@@ -606,10 +630,10 @@ export const world5 = {
           topic: "5.5",
           question: "Un defecto pasa de «resuelto» a «reabierto». ¿Qué significa?",
           options: [
-            "Que la corrección no superó la prueba de confirmación y el defecto sigue presente.",
+            "Que la corrección no pasó la verificación y el defecto sigue.",
             "Que se encontró un defecto nuevo con el mismo identificador.",
-            "Que la corrección se verificó y el defecto se cerró.",
-            "Que su corrección se pospuso indefinidamente.",
+            "Que la corrección se verificó con éxito y se cerró.",
+            "Que su corrección se pospuso de forma indefinida.",
           ],
           correct: 0,
           explanation:
@@ -627,10 +651,10 @@ export const world5 = {
           topic: "5.5",
           question: "¿Cuál es un objetivo de la gestión de defectos?",
           options: [
-            "Proporcionar información sobre los defectos, hacer seguimiento de su ciclo de vida hasta el cierre y apoyar el análisis de causas y la mejora de procesos.",
+            "Dar información, seguir el ciclo de vida y apoyar la mejora.",
             "Ocultar los defectos para no alarmar al negocio.",
-            "Registrar solo los defectos cosméticos.",
-            "Transformar todos los defectos en nuevas funcionalidades.",
+            "Registrar únicamente los defectos cosméticos del producto.",
+            "Transformar cada defecto en una nueva funcionalidad.",
           ],
           correct: 0,
           explanation:
@@ -648,9 +672,9 @@ export const world5 = {
           topic: "5.5",
           question: "¿Qué NO debe hacerse en un informe de defectos?",
           options: [
-            "Culpar a personas concretas o incluir opiniones subjetivas; hay que describir hechos objetivos y pasos reproducibles.",
-            "Incluir el entorno y la versión donde se reprodujo.",
-            "Añadir evidencias, como capturas o registros (logs).",
+            "Culpar a personas concretas o incluir opiniones subjetivas.",
+            "Incluir el entorno y la versión donde se reprodujo el fallo.",
+            "Añadir evidencias, como capturas de pantalla o registros.",
             "Indicar el resultado esperado y el resultado observado.",
           ],
           correct: 0,
@@ -685,6 +709,29 @@ export const world5 = {
           mistake:
             "Dejar defectos «resueltos» sin verificar; la verificación es lo que autoriza el cierre.",
           syllabusRef: "Tema 5.5 — Ciclo de vida de los defectos",
+        },
+        {
+          id: "w5-l4-q9",
+          type: "multi",
+          topic: "5.5",
+          question: "Selecciona las DOS afirmaciones correctas sobre la gestión de defectos.",
+          options: [
+            "La severidad y la prioridad de un defecto pueden no coincidir.",
+            "Tras verificar con éxito la corrección, el defecto pasa a cerrado.",
+            "Un defecto reabierto indica que la corrección se verificó bien.",
+            "El informe de defecto debe incluir opiniones sobre las personas.",
+            "Un defecto resuelto se cierra automáticamente, sin verificar.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "La severidad (impacto técnico) y la prioridad (urgencia de negocio) son independientes y pueden no coincidir; el cierre llega tras verificar con éxito la corrección. Reabierto indica que la verificación falló, el informe describe hechos (no personas) y nada se cierra sin verificar.",
+          example:
+            "La mancha en el escaparate: severidad baja, prioridad alta. Solo se cierra al comprobar que quedó limpio.",
+          useCase:
+            "El tester verifica el arreglo en la nueva build y recién entonces cierra el defecto.",
+          mistake:
+            "Cerrar por confianza («ya me dijeron que está arreglado») en lugar de por evidencia.",
+          syllabusRef: "Tema 5.5 — Gestión de defectos",
         },
       ],
     },

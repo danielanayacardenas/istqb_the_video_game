@@ -88,7 +88,8 @@ El motor, el sistema de progreso y la persistencia tienen tests unitarios
 con el runner integrado de Bun:
 
 ```bash
-bun test
+bun test          # suite completa (incluye guardarraíles anti-sesgo)
+bun run analyze   # reporte de sesgo de longitud del banco de preguntas
 ```
 
 ---
@@ -163,6 +164,7 @@ ISTQB/
 | 11 | Boss Final (simulacro de examen) | ✅ |
 | 12 | Logros y pulido final | ✅ |
 | 13 | Combate arcade (mini-juego retro en los niveles) | ✅ |
+| 14 | Calidad del banco: re-equilibrio de opciones + multi-selección | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 

@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world1.js
 // Mundo 1: Fundamentos de Testing (CTFL v4.0, capítulo 1)
+// Opciones equilibradas en longitud (Etapa 14, lote 2).
 // =====================================================
 
 export const world1 = {
@@ -25,10 +26,10 @@ export const world1 = {
           topic: "1.1",
           question: "¿Cuál de las siguientes opciones describe mejor el testing de software?",
           options: [
-            "Un proceso exclusivamente dinámico que consiste en ejecutar el software para encontrar fallos.",
-            "Un conjunto de actividades para descubrir defectos y evaluar la calidad de los productos de trabajo, que puede incluir actividades estáticas y dinámicas.",
-            "Una actividad de desarrollo cuyo objetivo es corregir los defectos encontrados.",
-            "Una fase final del proyecto que certifica que el software está libre de defectos.",
+            "Un proceso exclusivamente dinámico que consiste en ejecutar el software para encontrar sus fallos.",
+            "Un conjunto de actividades, estáticas y dinámicas, para descubrir defectos y evaluar la calidad.",
+            "Una actividad de desarrollo cuyo objetivo es corregir los defectos encontrados en el código.",
+            "Una fase final del proyecto que certifica que el software quedó libre de todos los defectos.",
           ],
           correct: 1,
           explanation:
@@ -47,10 +48,10 @@ export const world1 = {
           question:
             "¿Cuál de las siguientes afirmaciones sobre el testing y la depuración (debugging) es CORRECTA?",
           options: [
-            "El testing y el debugging son la misma actividad, realizada siempre por la misma persona.",
-            "El debugging encuentra fallos y el testing corrige los defectos.",
-            "El testing puede provocar fallos que revelan defectos; el debugging localiza la causa del fallo y corrige el defecto.",
-            "El debugging solo se realiza sobre el código fuente y el testing solo sobre la interfaz de usuario.",
+            "El testing y el debugging son la misma actividad y los realiza siempre la misma persona.",
+            "El testing localiza la causa de los fallos y el debugging corrige los defectos encontrados.",
+            "El testing provoca fallos que revelan defectos; el debugging localiza la causa y corrige el defecto.",
+            "El debugging se realiza solo sobre el código fuente y el testing solo sobre la interfaz gráfica.",
           ],
           correct: 2,
           explanation:
@@ -68,10 +69,10 @@ export const world1 = {
           topic: "1.1",
           question: "¿Cuál de las siguientes opciones NO es un objetivo típico del testing?",
           options: [
-            "Evaluar productos de trabajo como requisitos, historias de usuario y código.",
-            "Causar fallos y descubrir defectos.",
-            "Corregir los defectos encontrados en el software.",
-            "Proporcionar información a los interesados para la toma de decisiones.",
+            "Evaluar productos de trabajo como requisitos, historias de usuario o código fuente.",
+            "Causar fallos reales y descubrir los defectos presentes en el software.",
+            "Corregir los defectos encontrados durante la ejecución de las pruebas.",
+            "Proporcionar información a los interesados para que tomen decisiones.",
           ],
           correct: 2,
           explanation:
@@ -91,8 +92,8 @@ export const world1 = {
           options: [
             "Ejecutar un caso de prueba de inicio de sesión con credenciales inválidas.",
             "Revisar una historia de usuario para detectar ambigüedades e inconsistencias.",
-            "Automatizar una batería de pruebas de regresión de interfaz.",
-            "Medir los tiempos de respuesta del sistema bajo carga.",
+            "Automatizar una batería de pruebas de regresión de la interfaz.",
+            "Medir los tiempos de respuesta del sistema con muchos usuarios.",
           ],
           correct: 1,
           explanation:
@@ -111,10 +112,10 @@ export const world1 = {
           question:
             "Un desarrollador escribe por error «suma = a - b» en lugar de «suma = a + b». Al ejecutarse, el sistema muestra resultados incorrectos al usuario. ¿Cómo se llama ese resultado incorrecto observado durante la ejecución?",
           options: [
-            "Error (equivocación humana).",
-            "Defecto (fault / bug).",
-            "Fallo (failure).",
-            "Caso de prueba negativo.",
+            "Error: la equivocación humana al escribir la fórmula en el editor.",
+            "Defecto: la fórmula mal escrita dentro del producto de trabajo.",
+            "Fallo: el comportamiento incorrecto observado al ejecutar el sistema.",
+            "Caso negativo: la prueba que verifica una entrada inválida del usuario.",
           ],
           correct: 2,
           explanation:
@@ -126,6 +127,30 @@ export const world1 = {
           mistake:
             "Cadena para memorizar: error humano → defecto en el producto de trabajo → fallo al ejecutar.",
           syllabusRef: "Tema 1.1 — Errores, defectos y fallos",
+        },
+        {
+          id: "w1-l1-q6",
+          type: "multi",
+          topic: "1.1",
+          question:
+            "Selecciona las DOS afirmaciones correctas sobre el testing y la depuración (debugging).",
+          options: [
+            "El testing dinámico puede provocar fallos que revelan la presencia de defectos.",
+            "El debugging busca la causa de un fallo, la analiza y elimina el defecto correspondiente.",
+            "El testing y el debugging son actividades sinónimas que realiza siempre la misma persona.",
+            "El debugging consiste en ejecutar casos de prueba hasta que aparezcan fallos nuevos.",
+            "El testing estático exige ejecutar el software para poder detectar los defectos.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El testing dinámico provoca fallos que evidencian defectos; después, el debugging localiza la causa, la analiza y corrige el defecto. Son actividades distintas y no las realiza necesariamente la misma persona.",
+          example:
+            "Tú detectas que la puerta chirría al abrirla (testing); el técnico engrasa la bisagra (debugging).",
+          useCase:
+            "El tester adjunta pasos y evidencia del fallo; desarrollo depura, corrige y solicita el retesting.",
+          mistake:
+            "Confundir las actividades: el testing descubre, el debugging localiza y corrige la causa.",
+          syllabusRef: "Tema 1.1 — Testing y depuración (debugging)",
         },
       ],
     },
@@ -144,10 +169,10 @@ export const world1 = {
           question:
             "Además de descubrir defectos, ¿qué otra contribución clave hace el testing al éxito de un producto?",
           options: [
-            "Garantizar que no habrá fallos en producción.",
-            "Reducir el riesgo de fallos en producción, aportar información para decidir y generar confianza en la calidad.",
-            "Sustituir al aseguramiento de calidad (QA) de la organización.",
-            "Eliminar la necesidad de revisiones y auditorías.",
+            "Garantizar que el producto no tendrá ningún fallo cuando esté en producción.",
+            "Reducir el riesgo de fallos, aportar información para decidir y generar confianza.",
+            "Sustituir al aseguramiento de calidad de la organización cuando falta personal.",
+            "Eliminar la necesidad de revisiones, auditorías y controles de calidad.",
           ],
           correct: 1,
           explanation:
@@ -165,10 +190,10 @@ export const world1 = {
           topic: "1.2",
           question: "¿Cuál es la diferencia entre el aseguramiento de la calidad (QA) y el testing?",
           options: [
-            "La QA se centra en el producto y el testing en los procesos.",
-            "Son sinónimos: ambos consisten en ejecutar pruebas.",
-            "La QA se centra en la calidad de los procesos y el testing es una forma de control de calidad (QC) centrada en el producto.",
-            "La QA la realiza únicamente el cliente y el testing solo el equipo de desarrollo.",
+            "La QA se centra en el producto terminado y el testing en los procesos internos.",
+            "Son sinónimos: ambos consisten en ejecutar pruebas y revisar los resultados.",
+            "La QA se centra en los procesos y el testing es control de calidad del producto.",
+            "La QA la realiza solo el cliente y el testing solo el equipo de desarrollo.",
           ],
           correct: 2,
           explanation:
@@ -185,10 +210,10 @@ export const world1 = {
           topic: "1.2",
           question: "¿Cuál de las siguientes es una CAUSA típica de defectos en el software?",
           options: [
-            "Trabajar bajo presión con plazos ajustados y asumir demasiada complejidad.",
-            "Ejecutar demasiadas pruebas automatizadas.",
-            "Documentar los requisitos con claridad.",
-            "Revisar el código por pares.",
+            "Trabajar bajo presión con plazos ajustados, prisa y demasiada complejidad.",
+            "Ejecutar demasiadas pruebas automatizadas antes de cada entrega.",
+            "Documentar los requisitos con demasiado detalle y claridad.",
+            "Revisar el código por pares antes de subirlo al repositorio.",
           ],
           correct: 0,
           explanation:
@@ -206,10 +231,10 @@ export const world1 = {
           topic: "1.2",
           question: "¿Por qué se dice que encontrar un defecto tarde es mucho más caro?",
           options: [
-            "Porque los defectos se multiplican como bacterias con el tiempo.",
-            "Porque cuanto más tarde se detecta, más artefactos dependen de él y mayor es el retrabajo en cascada.",
-            "Porque los testers cobran más en las fases finales del proyecto.",
-            "Porque los usuarios siempre reportan mejor que los testers.",
+            "Porque los defectos se multiplican de forma exponencial con el tiempo transcurrido.",
+            "Porque más tarde hay más artefactos implicados y el retrabajo crece en cascada.",
+            "Porque los testers cobran más caro en las últimas fases de cada proyecto.",
+            "Porque los usuarios finales siempre reportan defectos mejor que los testers.",
           ],
           correct: 1,
           explanation:
@@ -228,10 +253,10 @@ export const world1 = {
           question:
             "¿Cómo contribuye el testing al cumplimiento de requisitos legales o contractuales?",
           options: [
-            "Emitiendo certificados de calidad para los clientes.",
-            "Comprobando que el producto cumple con las normativas y estándares exigidos (por ejemplo, seguridad o privacidad).",
-            "Sustituyendo al departamento legal de la empresa.",
-            "Eliminando la necesidad de auditorías externas.",
+            "Emitiendo certificados de calidad que se entregan a los clientes.",
+            "Comprobando que cumple normativas exigidas, como seguridad o privacidad.",
+            "Sustituyendo al departamento legal de la empresa durante el proyecto.",
+            "Eliminando la necesidad de auditorías externas de calidad.",
           ],
           correct: 1,
           explanation:
@@ -250,10 +275,10 @@ export const world1 = {
           question:
             "El director pregunta: «¿Lanzamos mañana?». Tras ejecutar las pruebas de aceptación, todas pasan. ¿Qué aporta el testing en esta decisión?",
           options: [
-            "La certeza absoluta de que no habrá ningún fallo.",
-            "Información objetiva sobre la calidad y confianza para decidir el lanzamiento.",
-            "La corrección automática de los defectos restantes.",
-            "Una excusa formal para retrasar el despliegue.",
+            "La certeza absoluta de que el producto no tendrá ningún fallo futuro.",
+            "Información objetiva sobre la calidad para decidir con confianza.",
+            "La corrección automática de los defectos que quedan pendientes.",
+            "Una excusa formal para retrasar el despliegue previsto.",
           ],
           correct: 1,
           explanation:
@@ -283,10 +308,10 @@ export const world1 = {
           question:
             "«El testing muestra la presencia de defectos, pero no su ausencia». ¿Qué significa exactamente?",
           options: [
-            "Que el testing no sirve para encontrar defectos.",
-            "Que aunque no encontremos defectos, pueden seguir existiendo: el testing reduce su probabilidad, no la elimina.",
-            "Que solo se puede demostrar que hay defectos si el usuario los reporta.",
-            "Que los defectos existen únicamente antes de ejecutar pruebas.",
+            "Que el testing nunca puede encontrar la mayoría de los defectos presentes.",
+            "Que aunque no encontremos defectos, pueden existir: se reduce la probabilidad.",
+            "Que solo puede demostrarse la presencia de defectos si el usuario los reporta.",
+            "Que los defectos solo existen antes de ejecutar las pruebas por primera vez.",
           ],
           correct: 1,
           explanation:
@@ -303,10 +328,10 @@ export const world1 = {
           topic: "1.3",
           question: "¿Por qué el testing exhaustivo es imposible?",
           options: [
-            "Porque los testers no tienen suficiente formación técnica.",
-            "Porque el número de combinaciones de entradas, condiciones y escenarios es astronómico: hay que priorizar según el riesgo.",
-            "Porque las herramientas de prueba tienen límites de licencia.",
-            "Porque el software cambia cada semana.",
+            "Porque los testers no tienen suficiente formación técnica y experiencia.",
+            "Porque las combinaciones de entradas y condiciones son astronómicas.",
+            "Porque las herramientas automáticas tienen límites de licencias y coste.",
+            "Porque el software cambia por completo cada pocas semanas de desarrollo.",
           ],
           correct: 1,
           explanation:
@@ -324,10 +349,10 @@ export const world1 = {
           topic: "1.3",
           question: "«Probar temprano ahorra tiempo y dinero» (shift left). ¿Cuál es un ejemplo?",
           options: [
-            "Ejecutar todas las pruebas manuales el último día del proyecto.",
-            "Revisar requisitos y diseño antes de programar, cuando los defectos son fáciles y baratos de corregir.",
-            "Empezar a probar solo cuando el código esté completo.",
-            "Automatizar únicamente las pruebas de interfaz.",
+            "Ejecutar todas las pruebas manuales justo el último día del proyecto.",
+            "Revisar requisitos y diseño antes de programar, cuando corregir es más barato.",
+            "Empezar a probar solo cuando el código esté terminado y estable.",
+            "Automatizar únicamente las pruebas de interfaz de usuario.",
           ],
           correct: 1,
           explanation:
@@ -345,10 +370,10 @@ export const world1 = {
           question:
             "Un análisis muestra que el 80% de los fallos provienen de 2 de los 15 módulos del sistema. ¿Qué principio ilustra esto?",
           options: [
-            "El testing exhaustivo es imposible.",
-            "Los defectos se agrupan: pocos módulos concentran la mayoría de los defectos.",
-            "Las pruebas se desgastan con el tiempo.",
-            "El testing depende del contexto.",
+            "Que el testing exhaustivo es imposible de alcanzar en la práctica.",
+            "Que los defectos se agrupan: pocos módulos concentran la mayoría de ellos.",
+            "Que las pruebas se desgastan y dejan de encontrar defectos nuevos.",
+            "Que el enfoque de testing depende del contexto de cada producto.",
           ],
           correct: 1,
           explanation:
@@ -367,10 +392,10 @@ export const world1 = {
           question:
             "El mismo conjunto de pruebas lleva meses sin encontrar defectos nuevos, aunque el software sigue cambiando. ¿Qué principio aplica y qué se debe hacer?",
           options: [
-            "Falacia de ausencia de defectos; dejar de probar definitivamente.",
-            "Las pruebas se desgastan: hay que revisarlas y actualizarlas, incluidos los datos, para seguir encontrando defectos.",
-            "El testing exhaustivo es imposible; hay que probar todo de nuevo cada vez.",
-            "El testing depende del contexto; hay que cambiar de metodología.",
+            "La falacia de ausencia de defectos; hay que dejar de probar definitivamente.",
+            "Las pruebas se desgastan: hay que revisarlas y actualizar también los datos.",
+            "El testing exhaustivo es imposible; hay que volver a probar todo cada vez.",
+            "El testing depende del contexto; hay que cambiar de marco de trabajo.",
           ],
           correct: 1,
           explanation:
@@ -388,10 +413,10 @@ export const world1 = {
           topic: "1.3",
           question: "¿Qué significa que «el testing depende del contexto»?",
           options: [
-            "Que el testing se ejecuta distinto según el sistema operativo.",
-            "Que el enfoque de prueba debe adaptarse al riesgo, al dominio y al modelo de desarrollo: lo óptimo para una app bancaria no lo es para un videojuego.",
-            "Que hay que usar siempre el mismo proceso para poder comparar resultados.",
-            "Que el testing solo puede hacerse en entornos de producción.",
+            "Que el testing se ejecuta distinto según el sistema operativo de cada equipo.",
+            "Que el enfoque debe adaptarse al riesgo, al dominio y al desarrollo.",
+            "Que hay que usar siempre el mismo proceso para poder comparar los resultados.",
+            "Que el testing solo puede hacerse en entornos reales de producción.",
           ],
           correct: 1,
           explanation:
@@ -409,10 +434,10 @@ export const world1 = {
           question:
             "Un sistema fue probado a fondo y cumple todos los requisitos, pero el cliente está descontento: no cubre sus necesidades reales. ¿Qué principio explica esto?",
           options: [
-            "La falacia de ausencia de defectos: cumplir los requisitos no garantiza satisfacer las necesidades del usuario.",
-            "El testing exhaustivo es imposible.",
-            "Las pruebas se desgastan con el tiempo.",
-            "Los defectos se agrupan en pocos módulos.",
+            "La falacia de ausencia de defectos: cumplir requisitos no cubre necesidades.",
+            "El principio de que el testing exhaustivo es imposible de alcanzar.",
+            "El principio de que las pruebas se desgastan con el tiempo.",
+            "El principio de que los defectos se agrupan en pocos módulos.",
           ],
           correct: 0,
           explanation:
@@ -430,9 +455,9 @@ export const world1 = {
           question: "¿Cuál de las siguientes afirmaciones sobre los principios del testing es CORRECTA?",
           options: [
             "Con suficiente automatización se puede alcanzar el testing exhaustivo.",
-            "El testing temprano solo aplica a proyectos en cascada.",
-            "Revisar y actualizar las pruebas periódicamente contrarresta el desgaste de las mismas.",
-            "Si no se encuentran defectos, el software está libre de defectos.",
+            "El principio del testing temprano solo aplica a proyectos en cascada.",
+            "Revisar y actualizar las pruebas periódicamente contrarresta su desgaste.",
+            "Si no se encuentran defectos, el software está libre de todo defecto.",
           ],
           correct: 2,
           explanation:
@@ -461,10 +486,10 @@ export const world1 = {
           topic: "1.4",
           question: "¿Cuál es la primera actividad del proceso de testing?",
           options: [
-            "Ejecutar los casos de prueba.",
+            "La ejecución de los primeros casos de prueba del nivel.",
             "La planificación: definir objetivos, enfoque y estrategia de prueba.",
-            "El diseño de los casos de prueba.",
-            "El cierre y archivo del testware.",
+            "El diseño de los casos de prueba a partir de las condiciones.",
+            "El cierre: archivar el testware y documentar lecciones.",
           ],
           correct: 1,
           explanation:
@@ -482,10 +507,10 @@ export const world1 = {
           topic: "1.4",
           question: "Durante el ANÁLISIS de pruebas, ¿qué se produce?",
           options: [
-            "El código de los tests automatizados.",
-            "La decisión de liberar el producto al mercado.",
-            "Las condiciones de prueba: qué hay que probar, analizando las bases de prueba y los riesgos.",
-            "Los resultados de la ejecución de pruebas.",
+            "El código de los tests automatizados y sus datos de entrada.",
+            "La decisión de liberar el producto al mercado tras el hito.",
+            "Las condiciones de prueba: qué probar, según bases y riesgos.",
+            "Los resultados de la ejecución de las pruebas del ciclo.",
           ],
           correct: 2,
           explanation:
@@ -503,10 +528,10 @@ export const world1 = {
           topic: "1.4",
           question: "En el DISEÑO de pruebas, los testers…",
           options: [
-            "…transforman las condiciones de prueba en casos de prueba y conjuntos de pruebas, con datos de entrada y resultados esperados.",
-            "…ejecutan las pruebas y comparan resultados reales con los esperados.",
-            "…escriben el informe de cierre del proyecto.",
-            "…definen la estrategia comercial de la empresa.",
+            "…transforman las condiciones en casos concretos con datos y resultados esperados.",
+            "…ejecutan las pruebas y comparan los resultados reales con los esperados.",
+            "…escriben el informe de cierre y archivan el testware del proyecto.",
+            "…definen la estrategia comercial y el presupuesto de la empresa.",
           ],
           correct: 0,
           explanation:
@@ -524,10 +549,10 @@ export const world1 = {
           question:
             "Preparar los datos de prueba, escribir scripts automatizados y organizar los casos en conjuntos de pruebas (suites) corresponde a…",
           options: [
-            "La ejecución de pruebas.",
-            "La implementación de pruebas.",
-            "El análisis de pruebas.",
-            "El cierre de pruebas.",
+            "La ejecución de las pruebas en el entorno de pruebas.",
+            "La implementación de las pruebas y su preparación.",
+            "El análisis de las bases de prueba y sus condiciones.",
+            "El cierre de las pruebas y el archivo del testware.",
           ],
           correct: 1,
           explanation:
@@ -544,10 +569,10 @@ export const world1 = {
           topic: "1.4",
           question: "¿Qué ocurre durante la EJECUCIÓN de pruebas?",
           options: [
-            "Se diseñan casos de prueba nuevos.",
-            "Se corren las pruebas según lo planeado, se registran resultados (pasó, falló, bloqueado), se comparan con los esperados y se reportan defectos.",
-            "Se archiva el testware reutilizable.",
-            "Se definen los principios del testing.",
+            "Se diseñan los casos de prueba a partir de las condiciones.",
+            "Se ejecutan, se registran (pasó, falló) y se reportan defectos.",
+            "Se archiva el testware reutilizable y las lecciones aprendidas.",
+            "Se definen los objetivos y la estrategia del siguiente ciclo.",
           ],
           correct: 1,
           explanation:
@@ -564,10 +589,10 @@ export const world1 = {
           topic: "1.4",
           question: "En el CIERRE del testing, una actividad típica es…",
           options: [
-            "…ejecutar por primera vez el plan de pruebas.",
-            "…documentar lecciones aprendidas, conservar el testware reutilizable y comunicar el estado final del testing.",
-            "…diseñar los casos de la próxima versión.",
-            "…corregir los defectos pendientes.",
+            "…ejecutar por primera vez el plan de pruebas del proyecto.",
+            "…conservar el testware, documentar lecciones y comunicar el estado.",
+            "…diseñar los casos de prueba de la próxima versión del producto.",
+            "…corregir los defectos pendientes antes del cierre del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -584,10 +609,10 @@ export const world1 = {
           topic: "1.4",
           question: "¿Cuál de los siguientes es testware típico del proceso de testing?",
           options: [
-            "El expediente académico del tester.",
-            "El plan de pruebas, los casos de prueba y los informes de defectos.",
-            "El manual de marca de la empresa.",
-            "La nómina de los empleados.",
+            "El expediente académico y la titulación del tester.",
+            "El plan de pruebas, los casos y los informes de defectos.",
+            "El manual de marca y la guía de estilo de la empresa.",
+            "La nómina y los contratos del personal de la empresa.",
           ],
           correct: 1,
           explanation:
@@ -604,10 +629,10 @@ export const world1 = {
           topic: "1.4",
           question: "¿Para qué sirve la trazabilidad entre las bases de prueba y el testware?",
           options: [
-            "Para decorar el informe final del proyecto.",
-            "Para evaluar la cobertura, medir el impacto de los cambios y proporcionar evidencia de cumplimiento.",
-            "Para aumentar automáticamente el número de defectos encontrados.",
-            "Para no tener que escribir casos de prueba.",
+            "Para decorar el informe final que se entrega al cliente.",
+            "Para evaluar cobertura, medir el impacto de cambios y dar evidencias.",
+            "Para aumentar de forma automática los defectos detectados.",
+            "Para no tener que diseñar ni escribir casos de prueba nuevos.",
           ],
           correct: 1,
           explanation:
@@ -624,10 +649,10 @@ export const world1 = {
           topic: "1.4",
           question: "¿Qué describe mejor la diferencia entre el test manager y el tester?",
           options: [
-            "El test manager ejecuta los casos y el tester planifica.",
-            "El test manager se enfoca en la gestión (planificación, monitoreo, liderazgo) y el tester en el trabajo técnico (análisis, diseño, ejecución y reporte).",
-            "El test manager no trabaja con personas.",
-            "El tester solo redacta documentos.",
+            "El test manager ejecuta los casos y el tester planifica las pruebas.",
+            "El test manager se enfoca en la gestión y el tester en el trabajo técnico.",
+            "El test manager no trabaja con personas ni coordina al equipo.",
+            "El tester solo redacta documentos y no ejecuta ningún caso.",
           ],
           correct: 1,
           explanation:
@@ -644,10 +669,10 @@ export const world1 = {
           topic: "1.4",
           question: "El monitoreo y control del testing…",
           options: [
-            "…solo se realiza al final del proyecto.",
-            "…es continuo: compara el progreso real con el plan y aplica acciones correctivas.",
-            "…consiste en ejecutar casos de prueba manualmente.",
-            "…lo realiza siempre el cliente.",
+            "…solo se realiza una vez, al final, para cerrar el proyecto.",
+            "…es continuo: compara el progreso con el plan y aplica correcciones.",
+            "…consiste en ejecutar manualmente todos los casos de prueba.",
+            "…lo realiza siempre el cliente al recibir el producto final.",
           ],
           correct: 1,
           explanation:
@@ -657,6 +682,27 @@ export const world1 = {
           useCase:
             "A mitad del sprint, el test manager detecta retraso en la regresión, reasigna recursos y prioriza los casos críticos.",
           mistake: "El control se ejerce durante todo el proyecto, no solo al final.",
+          syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
+        },
+        {
+          id: "w1-l4-q11",
+          type: "multi",
+          topic: "1.4",
+          question:
+            "Selecciona las DOS opciones que describen correctamente las actividades del proceso de testing.",
+          options: [
+            "El análisis define las condiciones de prueba a partir de las bases y los riesgos.",
+            "La implementación prepara scripts, datos y suites listos para ejecutar.",
+            "La ejecución comienza cuando el diseño de casos aún está sin terminar.",
+            "El cierre del testing consiste en corregir los defectos que quedaron pendientes.",
+            "La planificación se limita a pedir presupuesto y asignar testers al proyecto.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El análisis deriva las condiciones de prueba de las bases y los riesgos, y la implementación deja todo listo (scripts, datos, suites) para poder ejecutar. La ejecución requiere el diseño terminado, el cierre no corrige defectos y la planificación va mucho más allá del presupuesto.",
+          example: "Antes de cocinar: primero eliges los platos (análisis) y luego preparas los ingredientes (implementación).",
+          useCase: "El tester deriva condiciones de las historias y después prepara datos y suites para la regresión.",
+          mistake: "Confundir implementación (preparar) con ejecución (correr), y cierre con corrección de defectos.",
           syllabusRef: "Tema 1.4 — Actividades del proceso de testing",
         },
       ],
@@ -675,8 +721,8 @@ export const world1 = {
           topic: "1.5",
           question: "¿Cuál es una habilidad de comunicación clave para un tester?",
           options: [
-            "Escribir informes largos y muy técnicos para impresionar.",
-            "Comunicar los hallazgos con precisión, de forma constructiva y adaptada a cada audiencia.",
+            "Escribir informes largos y muy técnicos para impresionar al equipo.",
+            "Comunicar los hallazgos con precisión y adaptados a cada audiencia.",
             "Evitar hablar con los desarrolladores para no influir en ellos.",
             "Corregir los defectos directamente en el código sin avisar.",
           ],
@@ -696,10 +742,10 @@ export const world1 = {
           question:
             "El desarrollador dice: «funciona en mi máquina». ¿Qué habilidad ayuda al tester a investigar esa afirmación?",
           options: [
-            "La obediencia: aceptar lo que dice el desarrollador.",
-            "El pensamiento crítico y el escepticismo profesional: cuestionar supuestos y verificar con evidencia.",
-            "La creatividad: cambiar de tema para evitar el conflicto.",
-            "La atención al detalle: revisar la ortografía del mensaje.",
+            "La obediencia: aceptar sin más lo que afirma el desarrollador.",
+            "El pensamiento crítico: cuestionar supuestos y verificar con evidencias.",
+            "La creatividad: proponer un tema distinto para evitar el conflicto.",
+            "La atención al detalle: revisar la ortografía de los mensajes.",
           ],
           correct: 1,
           explanation:
@@ -716,10 +762,10 @@ export const world1 = {
           topic: "1.5",
           question: "¿Por qué el conocimiento del dominio (negocio) es valioso para un tester?",
           options: [
-            "Porque le permite sustituir al dueño del producto.",
-            "Porque le ayuda a anticipar riesgos, diseñar mejores pruebas y comunicarse con el negocio en su lenguaje.",
-            "Porque así ejecuta los clics más rápido.",
-            "Porque elimina la necesidad de leer los requisitos.",
+            "Porque le permite sustituir al product owner en las decisiones clave.",
+            "Porque le ayuda a anticipar riesgos y a comunicarse con el negocio.",
+            "Porque así ejecuta los clics de las pruebas mucho más rápido.",
+            "Porque elimina la necesidad de leer los requisitos del sistema.",
           ],
           correct: 1,
           explanation:
@@ -736,10 +782,10 @@ export const world1 = {
           topic: "1.5",
           question: "¿Cómo ayudan la curiosidad y la atención al detalle al tester?",
           options: [
-            "Explorando el software en busca de comportamientos inesperados y detectando inconsistencias sutiles.",
-            "Encontrando el 100% de los defectos siempre.",
-            "Terminando más rápido sin necesidad de probar.",
-            "Evitando documentar los hallazgos.",
+            "Explorando en busca de comportamientos inesperados e inconsistencias.",
+            "Encontrando siempre el 100% de los defectos de cada versión.",
+            "Terminando antes las pruebas, sin necesidad de ejecutar casos.",
+            "Evitando documentar los hallazgos para ahorrar tiempo.",
           ],
           correct: 0,
           explanation:
@@ -757,10 +803,10 @@ export const world1 = {
           question:
             "¿Cuál es una VENTAJA de la independencia del tester respecto del equipo de desarrollo?",
           options: [
-            "Tiene menos incentivos para ignorar los errores comunes.",
-            "Ve el producto con menos sesgos que quien lo creó, aumentando la probabilidad de detectar defectos distintos.",
-            "Conoce mejor el código y por eso no necesita probar.",
-            "Trabaja más rápido porque no habla con nadie.",
+            "Tiene menos incentivos para ignorar los errores más comunes.",
+            "Ve el producto con menos sesgos y detecta defectos distintos.",
+            "Conoce mejor el código interno y por eso no necesita probar.",
+            "Trabaja mucho más rápido porque no habla con nadie del equipo.",
           ],
           correct: 1,
           explanation:
@@ -777,10 +823,10 @@ export const world1 = {
           topic: "1.5",
           question: "¿Cuál es una DESVENTAJA de la independencia total del tester?",
           options: [
-            "Que conoce demasiado bien el negocio.",
-            "Que puede aislarlo del equipo: menos información de contexto, comunicación tardía y menor sentido de propiedad sobre el producto.",
-            "Que encuentra demasiados defectos y retrasa el proyecto.",
-            "Que no puede ejecutar pruebas de regresión.",
+            "Que el tester conoce demasiado bien el negocio de la empresa.",
+            "Que puede aislarlo del equipo y darle menos contexto del producto.",
+            "Que encuentra demasiados defectos y retrasa el proyecto entero.",
+            "Que no puede ejecutar las pruebas de regresión necesarias.",
           ],
           correct: 1,
           explanation:
@@ -797,10 +843,10 @@ export const world1 = {
           topic: "1.5",
           question: "¿Qué implica el enfoque de equipo completo (whole team approach)?",
           options: [
-            "Que solo el test manager se responsabiliza de la calidad.",
-            "Que la calidad es responsabilidad compartida del equipo: cualquier miembro puede realizar tareas de testing según sus habilidades.",
-            "Que los desarrolladores dejan de escribir código.",
-            "Que el testing lo realiza únicamente el cliente final.",
+            "Que solo el test manager se responsabiliza de la calidad del producto.",
+            "Que la calidad es responsabilidad compartida de todo el equipo.",
+            "Que los desarrolladores dejan de escribir código de producción.",
+            "Que el testing lo realiza únicamente el cliente al final del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -819,9 +865,9 @@ export const world1 = {
             "El tester propone probar el sistema en zonas sin conexión, un escenario que nadie había considerado. ¿Qué habilidad demuestra principalmente?",
           options: [
             "Creatividad: generar ideas, escenarios y pruebas que otros no han imaginado.",
-            "Obediencia: seguir estrictamente lo escrito en los requisitos.",
-            "Impuntualidad: perder tiempo en escenarios irrelevantes.",
-            "Rigidez metodológica: aplicar el proceso sin adaptarlo.",
+            "Obediencia: seguir al pie de la letra lo escrito en los requisitos.",
+            "Impuntualidad: perder el tiempo en escenarios irrelevantes.",
+            "Rigidez metodológica: aplicar el proceso sin adaptarlo al contexto.",
           ],
           correct: 0,
           explanation:

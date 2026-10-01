@@ -1,6 +1,7 @@
 // =====================================================
 // ISTQB Quest — data/worlds/world2.js
 // Mundo 2: Testing a lo largo del SDLC (CTFL v4.0, cap. 2)
+// Opciones equilibradas en longitud + multi-selección (Etapa 14, lote 3).
 // =====================================================
 
 export const world2 = {
@@ -25,10 +26,10 @@ export const world2 = {
           topic: "2.1",
           question: "¿Cómo afecta el modelo de desarrollo al testing?",
           options: [
-            "En cascada no se prueba nunca; solo se prueba en ágil.",
-            "En cascada el testing suele ser una fase posterior al desarrollo; en ágil el testing es continuo y se integra en cada iteración.",
-            "En ágil no se documentan casos de prueba; en cascada siempre se documenta absolutamente todo.",
-            "El testing es idéntico en todos los modelos: no depende de ellos.",
+            "En cascada no se prueba nunca; solo se hacen pruebas en los proyectos ágiles.",
+            "En cascada el testing tiende a ser una fase posterior; en ágil es continuo e integrado.",
+            "En ágil no se documentan casos; en cascada se documenta absolutamente todo.",
+            "El testing es idéntico en todos los modelos y no depende del ciclo de vida.",
           ],
           correct: 1,
           explanation:
@@ -47,9 +48,9 @@ export const world2 = {
           question: "¿Qué caracteriza al modelo en V respecto al testing?",
           options: [
             "El testing solo existe en la parte derecha de la V, sin relación con la izquierda.",
-            "Cada fase de desarrollo (izquierda) tiene una fase de prueba asociada (derecha): las pruebas se planifican en paralelo al desarrollo.",
-            "Elimina la necesidad de pruebas de aceptación.",
-            "Sustituye las revisiones por ejecución de pruebas.",
+            "Cada fase de desarrollo tiene su fase de prueba asociada: se planifican en paralelo.",
+            "Elimina la necesidad de ejecutar las pruebas de aceptación del cliente.",
+            "Sustituye las revisiones y el testing estático por pruebas dinámicas.",
           ],
           correct: 1,
           explanation:
@@ -68,9 +69,9 @@ export const world2 = {
           question:
             "En un enfoque DevOps con integración y entrega continuas (CI/CD), ¿qué cambia para el testing?",
           options: [
-            "Se eliminan las pruebas de regresión automatizadas.",
-            "El testing se automatiza y ejecuta continuamente en el pipeline, con retroalimentación rápida a todo el equipo.",
-            "Solo se prueba en producción para ahorrar tiempo.",
+            "Se eliminan las pruebas de regresión automatizadas del proceso.",
+            "El testing se automatiza y se ejecuta continuamente en el pipeline.",
+            "Solo se prueba en producción para ahorrar tiempo y recursos.",
             "El testing pasa a ser responsabilidad exclusiva de operaciones.",
           ],
           correct: 1,
@@ -89,10 +90,10 @@ export const world2 = {
           topic: "2.1",
           question: "¿Qué significa el enfoque shift-right en el testing?",
           options: [
-            "Retrasar todo el testing a la fase final del proyecto.",
-            "Realizar testing en producción o cerca de ella (monitoreo, pruebas en campo) para obtener retroalimentación del uso real.",
-            "Trasladar el equipo de pruebas a la oficina de la derecha.",
-            "Probar únicamente después de que ocurra un fallo en producción.",
+            "Retrasar todo el testing a la fase final del proyecto de desarrollo.",
+            "Probar y monitorear en producción para captar el uso real.",
+            "Trasladar al equipo de pruebas a la oficina de la derecha del edificio.",
+            "Probar únicamente después de que ocurra un fallo grave en producción.",
           ],
           correct: 1,
           explanation:
@@ -111,9 +112,9 @@ export const world2 = {
           question: "¿Qué caracteriza al desarrollo guiado por pruebas (TDD)?",
           options: [
             "Los casos de prueba se escriben después de programar toda la funcionalidad.",
-            "Las pruebas se escriben antes del código: primero una prueba que falla, luego el código que la hace pasar, y finalmente se refactoriza.",
-            "Solo se aplica a pruebas de interfaz de usuario.",
-            "Reemplaza a las pruebas de aceptación.",
+            "Primero se escribe una prueba que falla, luego el código que la pasa.",
+            "Solo se aplica a las pruebas de interfaz de usuario y de API.",
+            "Reemplaza por completo a las pruebas de aceptación del cliente.",
           ],
           correct: 1,
           explanation:
@@ -163,10 +164,10 @@ export const world2 = {
           topic: "2.2",
           question: "Las pruebas de componente (unitarias)…",
           options: [
-            "…prueban el sistema completo de extremo a extremo.",
-            "…prueban componentes/unidades de forma aislada, a menudo con objetos simulados (stubs, mocks).",
-            "…las ejecuta siempre el usuario final en producción.",
-            "…son siempre pruebas de rendimiento.",
+            "…prueban el sistema completo de extremo a extremo en producción.",
+            "…prueban unidades de forma aislada usando stubs o mocks.",
+            "…las ejecuta siempre el usuario final desde su navegador.",
+            "…son siempre pruebas de rendimiento y de seguridad.",
           ],
           correct: 1,
           explanation:
@@ -184,10 +185,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Qué se busca principalmente en las pruebas de integración?",
           options: [
-            "Verificar la apariencia visual de la interfaz.",
-            "Detectar defectos en las interfaces e interacciones entre componentes o sistemas.",
-            "Validar el plan de negocio de la empresa.",
-            "Probar el rendimiento del servidor en producción.",
+            "Verificar la apariencia visual y la usabilidad de la interfaz.",
+            "Detectar defectos en las interfaces entre componentes o sistemas.",
+            "Validar el plan de negocio y los objetivos comerciales de la empresa.",
+            "Probar el rendimiento del servidor directamente en producción.",
           ],
           correct: 1,
           explanation:
@@ -205,10 +206,10 @@ export const world2 = {
           topic: "2.2",
           question: "Las pruebas de sistema…",
           options: [
-            "…verifican el comportamiento del sistema completo de extremo a extremo, incluidos requisitos funcionales y no funcionales.",
-            "…solo verifican unidades individuales de código.",
-            "…son responsabilidad exclusiva del usuario final.",
-            "…se ejecutan antes de las pruebas de integración.",
+            "…verifican el sistema completo, funcional y no funcional.",
+            "…solo verifican las unidades individuales de código aisladas.",
+            "…son responsabilidad exclusiva del usuario final del sistema.",
+            "…se ejecutan antes que las pruebas de integración de módulos.",
           ],
           correct: 0,
           explanation:
@@ -226,10 +227,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Cuál es el objetivo principal de las pruebas de aceptación?",
           options: [
-            "Encontrar la mayor cantidad de defectos técnicos posible.",
-            "Generar confianza en que el sistema satisface las necesidades del usuario y cumple los criterios de aceptación.",
-            "Medir la cobertura de código.",
-            "Probar la base de datos del sistema.",
+            "Encontrar la mayor cantidad posible de defectos técnicos.",
+            "Generar confianza en que cubre las necesidades del usuario.",
+            "Medir la cobertura de código alcanzada por las pruebas.",
+            "Probar la base de datos del sistema y sus consultas.",
           ],
           correct: 1,
           explanation:
@@ -247,10 +248,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Qué diferencia clave hay entre niveles de prueba?",
           options: [
-            "Ninguna: todos comparten las mismas bases de prueba y objetivos.",
-            "Cada nivel tiene sus propios objetivos, base de prueba, objetos de prueba y defectos típicos.",
-            "Solo el nivel de componente tiene base de prueba.",
-            "Los niveles solo se diferencian en el color del informe.",
+            "Ninguno: todos comparten las mismas bases de prueba y objetivos.",
+            "Cada nivel tiene objetivos, bases de prueba y defectos típicos propios.",
+            "Solo el nivel de componente tiene una base de prueba definida.",
+            "Los niveles solo se diferencian en el informe que producen.",
           ],
           correct: 1,
           explanation:
@@ -268,10 +269,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Cuáles son formas típicas de prueba de aceptación?",
           options: [
-            "Aceptación de usuario (UAT), operacional, contractual/regulatoria y alfa/beta.",
-            "Caja blanca y caja gris.",
-            "Solo pruebas automatizadas.",
-            "Pruebas unitarias y de integración.",
+            "Aceptación de usuario, operacional, contractual y alfa/beta.",
+            "Caja blanca, caja negra y caja gris en sus distintas variantes.",
+            "Únicamente pruebas automatizadas ejecutadas por el equipo.",
+            "Pruebas unitarias y de integración entre los componentes.",
           ],
           correct: 0,
           explanation:
@@ -289,10 +290,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Quién suele ser responsable de las pruebas de aceptación?",
           options: [
-            "Los usuarios, el negocio o los clientes, con apoyo del equipo de pruebas.",
-            "Exclusivamente los desarrolladores del sistema.",
-            "Exclusivamente el equipo de operaciones de TI.",
-            "Nadie: siempre se omiten por falta de tiempo.",
+            "Los usuarios o el negocio, con apoyo del equipo de pruebas.",
+            "Exclusivamente los desarrolladores que construyeron el sistema.",
+            "Exclusivamente el equipo de operaciones de TI de la empresa.",
+            "Nadie: se omiten siempre por falta de tiempo en el proyecto.",
           ],
           correct: 0,
           explanation:
@@ -302,6 +303,29 @@ export const world2 = {
           useCase:
             "El product owner ejecuta los escenarios de aceptación de la épica antes de marcar el incremento como «done».",
           mistake: "El equipo técnico apoya, pero la aceptación la valida el usuario/negocio.",
+          syllabusRef: "Tema 2.2 — Pruebas de aceptación",
+        },
+        {
+          id: "w2-l2-q9",
+          type: "multi",
+          topic: "2.2",
+          question: "Selecciona las DOS afirmaciones correctas sobre las pruebas de aceptación.",
+          options: [
+            "Su objetivo es generar confianza en que el sistema cubre las necesidades del usuario.",
+            "Pueden incluir formas como UAT, operacional, contractual y alfa/beta.",
+            "Buscan encontrar la mayor cantidad posible de defectos técnicos.",
+            "Las realiza siempre el equipo de desarrollo, sin participación del negocio.",
+            "Sustituyen a las pruebas de sistema dentro del proceso de testing.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "Las pruebas de aceptación buscan confianza y validación de las necesidades del usuario, y adoptan formas como UAT, operacional, contractual/regulatoria y alfa/beta. No son una cacería de defectos técnicos, no las ejecuta solo desarrollo y no sustituyen a las pruebas de sistema.",
+          example:
+            "Antes de abrir el restaurante, los dueños prueban el menú completo (aceptación), no cada sartén.",
+          useCase:
+            "El negocio valida los flujos clave con sus propios datos antes de autorizar el despliegue.",
+          mistake:
+            "Confundir la aceptación (validar necesidades) con las pruebas de sistema (verificar el producto completo).",
           syllabusRef: "Tema 2.2 — Pruebas de aceptación",
         },
       ],
@@ -320,10 +344,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Cuál de las siguientes es una prueba NO funcional?",
           options: [
-            "Verificar que el cálculo de la nómina es correcto.",
-            "Verificar que la app responde en menos de 2 segundos con 1000 usuarios concurrentes.",
-            "Verificar que el login rechaza contraseñas incorrectas.",
-            "Verificar que el botón «Guardar» persiste los datos.",
+            "Verificar que el cálculo mensual de la nómina es correcto.",
+            "Verificar que la app responde en menos de 2 segundos bajo carga.",
+            "Verificar que el login rechaza las contraseñas incorrectas.",
+            "Verificar que el botón «Guardar» persiste los datos del formulario.",
           ],
           correct: 1,
           explanation:
@@ -342,9 +366,9 @@ export const world2 = {
           question: "¿Cuál de los siguientes grupos son tipos de prueba no funcional?",
           options: [
             "Rendimiento, seguridad, usabilidad y portabilidad.",
-            "Unidad, integración y aceptación.",
-            "Caja blanca y caja gris.",
-            "Humo y regresión de funcionalidad.",
+            "Componente, integración, sistema y aceptación del usuario.",
+            "Caja blanca, caja negra y caja gris aplicadas al código.",
+            "Humo, regresión y confirmación sobre la funcionalidad.",
           ],
           correct: 0,
           explanation:
@@ -362,10 +386,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Qué distingue a las pruebas de caja negra de las de caja blanca?",
           options: [
-            "La caja negra se basa en especificaciones y externos sin ver la estructura interna; la caja blanca se basa en la estructura interna del código.",
-            "La caja negra se ejecuta únicamente de noche.",
-            "La caja blanca solo la realizan los usuarios finales.",
-            "No existen diferencias reales entre ambas.",
+            "La caja negra usa la especificación; la blanca, la estructura interna.",
+            "La caja negra se ejecuta únicamente de noche, sin usuarios.",
+            "La caja blanca solo la pueden realizar los usuarios finales.",
+            "No existen diferencias reales entre caja negra y caja blanca.",
           ],
           correct: 0,
           explanation:
@@ -383,10 +407,10 @@ export const world2 = {
           topic: "2.2",
           question: "Las pruebas funcionales verifican…",
           options: [
-            "…el «qué hace» el sistema, su comportamiento respecto a los requisitos funcionales.",
-            "…cómo se comporta el sistema bajo carga.",
-            "…la estructura interna del código.",
-            "…la estética del producto únicamente.",
+            "…el «qué hace» el sistema, según los requisitos funcionales.",
+            "…cómo se comporta el sistema cuando está bajo carga.",
+            "…la estructura interna y la cobertura del código fuente.",
+            "…la estética y el atractivo visual del producto.",
           ],
           correct: 0,
           explanation:
@@ -403,10 +427,10 @@ export const world2 = {
           topic: "2.2",
           question: "Las pruebas NO funcionales evalúan…",
           options: [
-            "…el «qué hace» el sistema.",
-            "…cómo se comporta: rendimiento, usabilidad, seguridad, fiabilidad, entre otros.",
-            "…solo la interfaz gráfica.",
-            "…únicamente la documentación del proyecto.",
+            "…el «qué hace» el sistema y si cumple sus funciones.",
+            "…cómo se comporta: rendimiento, usabilidad o seguridad.",
+            "…solo la interfaz gráfica y sus elementos visuales.",
+            "…únicamente la documentación técnica del proyecto.",
           ],
           correct: 1,
           explanation:
@@ -425,10 +449,10 @@ export const world2 = {
           question:
             "¿Cuál es la diferencia entre las pruebas de confirmación (retesting) y las de regresión?",
           options: [
-            "Son exactamente lo mismo.",
-            "El retesting confirma que un defecto específico fue corregido; la regresión verifica que los cambios no rompieron nada en lo que ya funcionaba.",
-            "La regresión solo aplica a pruebas de interfaz gráfica.",
-            "El retesting se realiza únicamente en producción.",
+            "Son exactamente lo mismo y se ejecutan en el mismo momento.",
+            "El retesting confirma la corrección; la regresión busca efectos.",
+            "La regresión solo aplica a las pruebas de interfaz gráfica.",
+            "El retesting se realiza únicamente sobre producción.",
           ],
           correct: 1,
           explanation:
@@ -447,10 +471,10 @@ export const world2 = {
           question:
             "Un desarrollador corrige un defecto crítico en el cálculo de impuestos. El tester verifica que el defecto ya no ocurre y después ejecuta la suite completa del módulo. ¿Qué hizo en cada paso?",
           options: [
-            "Primero pruebas de regresión y luego de confirmación.",
-            "Primero retesting (confirmación) del defecto y luego pruebas de regresión del módulo.",
-            "Ambas fueron pruebas de aceptación.",
-            "Ambas fueron pruebas de humo.",
+            "Primero ejecutó pruebas de regresión y luego de confirmación.",
+            "Primero retesting del defecto y luego regresión del módulo.",
+            "Ambas ejecuciones fueron pruebas de aceptación del cliente.",
+            "Ambas ejecuciones fueron pruebas de humo de la versión.",
           ],
           correct: 1,
           explanation:
@@ -467,10 +491,10 @@ export const world2 = {
           topic: "2.2",
           question: "¿Cuál de las siguientes afirmaciones sobre tipos de prueba es CORRECTA?",
           options: [
-            "Un tipo de prueba (funcional o no funcional) puede realizarse en distintos niveles (componente, integración, sistema, aceptación).",
+            "Un tipo de prueba puede realizarse en distintos niveles de prueba.",
             "Cada tipo de prueba pertenece a un único nivel de prueba.",
-            "Las pruebas no funcionales solo se realizan en el nivel de componente.",
-            "Las pruebas funcionales no aplican a las pruebas de aceptación.",
+            "Las pruebas no funcionales solo se hacen en el nivel de componente.",
+            "Las pruebas funcionales no aplican al nivel de aceptación.",
           ],
           correct: 0,
           explanation:
@@ -482,6 +506,29 @@ export const world2 = {
           mistake:
             "Nivel ≠ tipo: un mismo tipo puede aplicarse en varios niveles y viceversa.",
           syllabusRef: "Tema 2.2 — Niveles y tipos de prueba",
+        },
+        {
+          id: "w2-l3-q9",
+          type: "multi",
+          topic: "2.2",
+          question: "Selecciona las DOS opciones que son ejemplos de pruebas NO funcionales.",
+          options: [
+            "Verificar que la app responde en menos de 2 segundos con carga alta.",
+            "Comprobar que las contraseñas se almacenan cifradas y seguras.",
+            "Validar que el cálculo de la nómina usa la tabla de impuestos correcta.",
+            "Comprobar que el botón de guardar persiste los datos correctamente.",
+            "Verificar que el informe mensual muestra las columnas acordadas.",
+          ],
+          correct: [0, 1],
+          explanation:
+            "El rendimiento (tiempo de respuesta bajo carga) y la seguridad (cifrado de contraseñas) son atributos de calidad, es decir, pruebas no funcionales. Las otras tres verifican funcionalidad: cálculos, persistencia y contenido de informes.",
+          example:
+            "Preguntar «¿llega rápido y viaja seguro?» es distinto de «¿lleva lo que pedí?».",
+          useCase:
+            "Antes de la campaña de ventas se prueban carga y seguridad, además de la funcionalidad del carrito.",
+          mistake:
+            "Verificar «qué hace» es funcional; verificar «cómo se comporta» es no funcional.",
+          syllabusRef: "Tema 2.2 — Tipos de prueba",
         },
       ],
     },
@@ -499,10 +546,10 @@ export const world2 = {
           topic: "2.3",
           question: "¿Cuál de los siguientes es un disparador (trigger) típico del testing de mantenimiento?",
           options: [
-            "El primer sprint de un producto que aún no existe.",
-            "Modificaciones, migraciones o el retiro (retirement) de un sistema.",
-            "La escritura de la primera historia de usuario.",
-            "La reunión de kick-off del proyecto.",
+            "El primer sprint de un producto que todavía no existe.",
+            "Modificaciones, migraciones o el retiro de un sistema.",
+            "La escritura de la primera historia de usuario del backlog.",
+            "La reunión de kick-off que inicia el proyecto desde cero.",
           ],
           correct: 1,
           explanation:
@@ -520,10 +567,10 @@ export const world2 = {
           topic: "2.3",
           question: "¿Cuáles son las categorías típicas de mantenimiento de software?",
           options: [
-            "Únicamente correctivo.",
-            "Correctivo, adaptativo, perfectivo (mejoras) y preventivo.",
-            "Solo preventivo y perfectivo.",
-            "Funcional y no funcional.",
+            "Únicamente correctivo: arreglar los defectos reportados.",
+            "Correctivo, adaptativo, perfectivo y preventivo.",
+            "Solo preventivo y perfectivo, sin correcciones.",
+            "Funcional, no funcional y estructural.",
           ],
           correct: 1,
           explanation:
@@ -540,10 +587,10 @@ export const world2 = {
           topic: "2.3",
           question: "¿Qué es el análisis de impacto y por qué es clave en el mantenimiento?",
           options: [
-            "Un estudio financiero sobre los beneficios del sistema.",
-            "Evaluar cómo un cambio propuesto afecta al sistema existente, para decidir qué hay que volver a probar.",
-            "Un informe de marketing sobre el producto.",
-            "Una prueba de estrés sobre el servidor.",
+            "Un estudio financiero sobre los beneficios esperados del sistema.",
+            "Evaluar cómo un cambio afecta al sistema y qué hay que reprobar.",
+            "Un informe de marketing sobre el producto y sus usuarios.",
+            "Una prueba de estrés sobre el servidor de aplicaciones.",
           ],
           correct: 1,
           explanation:
@@ -562,10 +609,10 @@ export const world2 = {
           question:
             "Se va a modificar un sistema en producción. ¿Qué es imprescindible para gestionar el riesgo?",
           options: [
-            "Reejecutar pruebas de regresión sobre las áreas que el análisis de impacto señala como afectadas.",
+            "Reejecutar la regresión sobre las áreas que el análisis marque.",
             "Probar solo la funcionalidad modificada y no mirar el resto.",
             "No probar nada: los cambios pequeños nunca rompen nada.",
-            "Reescribir todo el sistema de cero.",
+            "Reescribir el sistema completo desde cero para eliminar el riesgo.",
           ],
           correct: 0,
           explanation:
@@ -583,10 +630,10 @@ export const world2 = {
           topic: "2.3",
           question: "¿Qué tipo de pruebas se necesitan antes de migrar datos a un sistema nuevo?",
           options: [
-            "Pruebas de migración: verificar que los datos se transfieren completos, íntegros y correctamente transformados.",
+            "Pruebas de migración: verificar que los datos llegan completos.",
             "Solo una revisión visual de la pantalla de inicio de sesión.",
             "Ninguna: las migraciones las valida directamente el proveedor.",
-            "Únicamente pruebas de usabilidad.",
+            "Únicamente pruebas de usabilidad sobre la nueva interfaz.",
           ],
           correct: 0,
           explanation:
@@ -604,10 +651,10 @@ export const world2 = {
           topic: "2.3",
           question: "Cuando un sistema se retira (retirement)…",
           options: [
-            "…no hace falta ningún tipo de testing.",
-            "…puede requerir pruebas de archivado de datos, migración de procesos pendientes y verificación de que no se pierda información.",
-            "…se eliminan las pruebas de regresión sin revisarlas.",
-            "…se prueba únicamente la nueva interfaz gráfica.",
+            "…no hace falta ningún tipo de testing porque deja de usarse.",
+            "…hacen falta pruebas de archivado y de que no se pierdan datos.",
+            "…se eliminan las pruebas de regresión sin revisarlas siquiera.",
+            "…se prueba únicamente la nueva interfaz gráfica del reemplazo.",
           ],
           correct: 1,
           explanation:
