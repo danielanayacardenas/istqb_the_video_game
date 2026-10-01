@@ -8,8 +8,8 @@ const STORAGE_KEY = "istqb-quest.v1";
 const DEFAULT_STATE = {
   version: 1,
   language: "es",
-  /** Ajustes de juego (combate arcade, sonido) */
-  settings: { combat: true, sound: true },
+  /** Ajustes de juego (combate arcade, efectos de sonido y música) */
+  settings: { combat: true, sound: true, music: true, musicVolume: 0.6 },
   /** Progreso por nivel: levelId -> { completed, stars, attempts, bestStreak } */
   progress: {},
   /** Logros desbloqueados (ids) */
