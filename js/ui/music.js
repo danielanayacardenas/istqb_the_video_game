@@ -31,7 +31,8 @@ export function clampVolume(value) {
 
 /** Índice de la siguiente pista de la playlist (vuelve al inicio). */
 export function nextTrackIndex(current, total = TRACKS.length) {
-  const count = Number.isFinite(total) && total > 0 ? Math.floor(total) : TRACKS.length;
+  const count = Number.isFinite(total) && total > 0 ? Math.floor(total) : 0;
+  if (count === 0) return 0;
   const index = Number.isFinite(Number(current)) ? Math.floor(Number(current)) : -1;
   return (((index + 1) % count) + count) % count;
 }

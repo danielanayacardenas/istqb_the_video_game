@@ -72,7 +72,7 @@ export function renderStart() {
     </div>
 
     <footer class="start-footer">
-      v1.1.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
+      v1.2.0 · Basado en el syllabus oficial ISTQB® CTFL v4.0
     </footer>
   `;
 

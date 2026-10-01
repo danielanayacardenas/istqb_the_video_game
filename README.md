@@ -17,7 +17,8 @@ Avanza de lo básico a lo avanzado pasando mundos, niveles y desafíos, como en 
   - ❌ Si fallas: por qué está mal + referencia al tema del syllabus para repasar.
 - ⭐ **Estrellas** según vidas restantes (1⭐ / 2⭐ / 3⭐).
 - 🔥 **Racha (streak)** de respuestas correctas con multiplicador visual.
-- 🎯 **Combate arcade** (estilo retro): aciertos → disparas al enemigo; fallos → el enemigo te dispara y pierdes una vida. Es visual: no altera las reglas. Se puede desactivar en los ajustes, junto con el sonido.
+- 🎯 **Combate arcade** (estilo retro): aciertos → disparas al enemigo; fallos → el enemigo te dispara y pierdes una vida. Es visual: no altera las reglas. Se puede desactivar en los ajustes, junto con el sonido y la música.
+- 🎵 **Música de fondo**: dos pistas 8-bit que suenan en bucle mientras juegas, con bocina de silencio y slider de volumen en la esquina de la escena de combate. En el inicio, el botón **🔊 Sonido** abre los toggles de **FX** y **Música**.
 - 🏆 **Logros desbloqueables** (perfeccionista, en llamas, explorador, etc.).
 - 💾 **Progreso guardado** en `localStorage` (no pierdes tu avance al cerrar el navegador).
 - 🌐 **Español** en v1. Selector de idioma preparado para futuras versiones.
@@ -101,6 +102,8 @@ ISTQB/
 ├── index.html            ← punto de entrada
 ├── server.js             ← servidor de desarrollo (Bun)
 ├── package.json
+├── assets/
+│   └── audio/            ← pistas de música de fondo (8-bit)
 ├── css/
 │   ├── base.css          ← variables, reset, tipografía
 │   ├── components.css    ← botones, insignias, tarjetas
@@ -127,6 +130,8 @@ ISTQB/
 │   │   └── achievements.js ← logros desbloqueables
 │   ├── ui/
 │   │   ├── combatScene.js ← escena pixel-art SVG del combate
+│   │   ├── volumeControl.js ← bocina + slider de volumen (música)
+│   │   ├── music.js       ← playlist de música de fondo
 │   │   └── sfx.js         ← efectos de sonido (WebAudio)
 │   └── data/
 │       ├── index.js      ← agregador de mundos y desafíos
@@ -140,7 +145,8 @@ ISTQB/
 │   ├── data.test.mjs        ← integridad de los bancos de preguntas
 │   ├── exam.test.mjs        ← sorteo y puntuación del Boss
 │   ├── achievements.test.mjs ← sistema de logros
-│   └── combat.test.mjs      ← motor del duelo de combate
+│   ├── combat.test.mjs      ← motor del duelo de combate
+│   └── music.test.mjs       ← playlist y volumen de la música
 └── README.md
 ```
 
@@ -165,6 +171,7 @@ ISTQB/
 | 12 | Logros y pulido final | ✅ |
 | 13 | Combate arcade (mini-juego retro en los niveles) | ✅ |
 | 14 | Calidad del banco: re-equilibrio de opciones + multi-selección | ✅ |
+| 15 | Música de fondo + control de volumen (bocina y slider) | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 
