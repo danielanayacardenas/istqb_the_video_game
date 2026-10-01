@@ -6,6 +6,7 @@
 // combate o flotante en pantallas sin arena.
 // =====================================================
 
+import { icon } from "./icons.js";
 import { getMusicVolume, isMusicOn, setMusicVolume, toggleMusic } from "./music.js";
 
 /** Crea el control de volumen listo para insertar en el DOM. */
@@ -13,7 +14,7 @@ export function createVolumeControl({ floating = false } = {}) {
   const el = document.createElement("div");
   el.className = `volume-control${floating ? " floating" : ""}`;
   el.innerHTML = `
-    <button class="volume-btn" type="button" data-action="mute">🔊</button>
+    <button class="volume-btn" type="button" data-action="mute">${icon("volume-2", { size: 14 })}</button>
     <input class="volume-slider" type="range" min="0" max="100" step="1" data-el="slider"
            aria-label="Volumen de la música">
   `;
@@ -25,7 +26,7 @@ export function createVolumeControl({ floating = false } = {}) {
   function paint() {
     const on = isMusicOn();
     const volume = getMusicVolume();
-    btn.textContent = on && volume > 0 ? "🔊" : "🔇";
+    btn.innerHTML = on && volume > 0 ? icon("volume-2", { size: 14 }) : icon("volume-x", { size: 14 });
     btn.setAttribute("aria-pressed", String(!on));
     btn.setAttribute("aria-label", on ? "Silenciar música" : "Activar música");
     btn.title = on ? "Silenciar música" : "Activar música";

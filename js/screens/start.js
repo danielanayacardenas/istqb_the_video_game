@@ -7,9 +7,10 @@ import { getState, setLanguage, hasProgress, resetProgress, setSetting } from ".
 import { ACHIEVEMENTS } from "../engine/achievements.js";
 import { globalStars } from "../engine/progress.js";
 import { navigate } from "../router.js";
+import { icon } from "../ui/icons.js";
 
-/** Desconecta los listeners del panel de sonido de la pantalla anterior. */
-let detachSoundPanel = null;
+/** Desconecta los listeners de la modal de configuración anterior. */
+let detachSettings = null;
 
 /** Renderiza la pantalla de inicio y devuelve su elemento raíz. */
 export function renderStart() {
@@ -37,24 +38,39 @@ export function renderStart() {
       </button>
     </div>
 
-    <div class="settings-row" role="group" aria-label="Ajustes de juego">
-      <button class="chip" data-setting="combat" aria-pressed="${state.settings.combat}">
-        🎮 Combate: ${state.settings.combat ? "ON" : "OFF"}
+    <div class="settings-row">
+      <button class="chip settings-open" data-action="settings" aria-haspopup="dialog" aria-expanded="false">
+        ${icon("settings", { size: 17 })} Configuración
       </button>
-      <div class="sound-settings">
-        <button class="chip" data-action="sound-panel" aria-expanded="false" aria-haspopup="true" aria-controls="sound-panel">
-          🔊 Sonido
-        </button>
-        <div class="sound-panel" id="sound-panel" data-el="sound-panel" hidden>
-          <p class="sound-panel-title">Sonido</p>
-          <button class="sound-choice" data-setting="sound" aria-pressed="${state.settings.sound}">
-            <span class="sound-choice-label">FX</span>
-            <span class="sound-choice-state">${state.settings.sound ? "On" : "Off"}</span>
+    </div>
+
+    <div class="settings-modal" data-el="settings-modal" hidden>
+      <div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <header class="settings-head">
+          <h2 class="settings-title" id="settings-title">Configuración</h2>
+          <button class="icon-btn" data-action="settings-close" aria-label="Cerrar configuración">
+            ${icon("x", { size: 18 })}
           </button>
-          <button class="sound-choice" data-setting="music" aria-pressed="${state.settings.music}">
-            <span class="sound-choice-label">Música</span>
-            <span class="sound-choice-state">${state.settings.music ? "On" : "Off"}</span>
-          </button>
+        </header>
+        <div class="settings-list">
+          <div class="settings-item">
+            <span class="settings-item-label">${icon("gamepad-2", { size: 18 })} Combate</span>
+            <button class="setting-toggle" data-setting="combat" aria-pressed="${state.settings.combat}">
+              ${state.settings.combat ? "ON" : "OFF"}
+            </button>
+          </div>
+          <div class="settings-item">
+            <span class="settings-item-label">${icon("volume-2", { size: 18 })} Efectos</span>
+            <button class="setting-toggle" data-setting="sound" aria-pressed="${state.settings.sound}">
+              ${state.settings.sound ? "ON" : "OFF"}
+            </button>
+          </div>
+          <div class="settings-item">
+            <span class="settings-item-label">${icon("music", { size: 18 })} Música</span>
+            <button class="setting-toggle" data-setting="music" aria-pressed="${state.settings.music}">
+              ${state.settings.music ? "ON" : "OFF"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -91,61 +107,52 @@ export function renderStart() {
     }
   });
 
-  /* ---------- Ajustes de juego ---------- */
-  screen.querySelector('[data-setting="combat"]').addEventListener("click", (ev) => {
-    const chip = ev.currentTarget;
-    const next = !getState().settings.combat;
-    setSetting("combat", next);
-    chip.setAttribute("aria-pressed", String(next));
-    chip.textContent = `🎮 Combate: ${next ? "ON" : "OFF"}`;
-  });
+  /* ---------- Modal de configuración (estilo videojuego) ---------- */
+  const settingsBtn = screen.querySelector('[data-action="settings"]');
+  const settingsModal = screen.querySelector('[data-el="settings-modal"]');
+  const settingsClose = screen.querySelector('[data-action="settings-close"]');
 
-  /* ---------- Panel de sonido: FX y música ---------- */
-  const soundBtn = screen.querySelector('[data-action="sound-panel"]');
-  const soundPanel = screen.querySelector('[data-el="sound-panel"]');
-
-  const setPanelOpen = (open) => {
-    soundPanel.hidden = !open;
-    soundBtn.setAttribute("aria-expanded", String(open));
+  const setSettingsOpen = (open) => {
+    settingsModal.hidden = !open;
+    settingsBtn.setAttribute("aria-expanded", String(open));
+    if (open) settingsClose.focus();
+    else settingsBtn.focus();
   };
 
-  const paintSoundSettings = () => {
-    screen.querySelectorAll(".sound-choice").forEach((choice) => {
-      const on = getState().settings[choice.dataset.setting] !== false;
-      choice.setAttribute("aria-pressed", String(on));
-      choice.querySelector(".sound-choice-state").textContent = on ? "On" : "Off";
+  const paintSettings = () => {
+    screen.querySelectorAll(".setting-toggle").forEach((toggle) => {
+      const on = getState().settings[toggle.dataset.setting] !== false;
+      toggle.setAttribute("aria-pressed", String(on));
+      toggle.textContent = on ? "ON" : "OFF";
     });
   };
 
-  soundBtn.addEventListener("click", () => setPanelOpen(soundPanel.hidden));
+  settingsBtn.addEventListener("click", () => setSettingsOpen(true));
+  settingsClose.addEventListener("click", () => setSettingsOpen(false));
+  settingsModal.addEventListener("click", (ev) => {
+    if (ev.target === settingsModal) setSettingsOpen(false);
+  });
 
-  screen.querySelectorAll(".sound-choice").forEach((choice) => {
-    choice.addEventListener("click", () => {
-      const key = choice.dataset.setting;
+  screen.querySelectorAll(".setting-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const key = toggle.dataset.setting;
       setSetting(key, !getState().settings[key]);
-      paintSoundSettings();
+      paintSettings();
     });
   });
 
-  const onDocumentClick = (ev) => {
-    if (soundPanel.hidden) return;
-    if (soundPanel.contains(ev.target) || soundBtn.contains(ev.target)) return;
-    setPanelOpen(false);
-  };
-  const onDocumentKey = (ev) => {
-    if (ev.key === "Escape" && !soundPanel.hidden) setPanelOpen(false);
+  const onSettingsKey = (ev) => {
+    if (ev.key === "Escape" && !settingsModal.hidden) setSettingsOpen(false);
   };
 
-  detachSoundPanel?.();
-  document.addEventListener("click", onDocumentClick);
-  document.addEventListener("keydown", onDocumentKey);
-  detachSoundPanel = () => {
-    document.removeEventListener("click", onDocumentClick);
-    document.removeEventListener("keydown", onDocumentKey);
-    detachSoundPanel = null;
+  detachSettings?.();
+  document.addEventListener("keydown", onSettingsKey);
+  detachSettings = () => {
+    document.removeEventListener("keydown", onSettingsKey);
+    detachSettings = null;
   };
 
-  paintSoundSettings();
+  paintSettings();
 
   /* ---------- Acciones ---------- */
   screen.querySelector('[data-action="play"]').addEventListener("click", () => {

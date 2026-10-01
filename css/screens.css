@@ -897,6 +897,9 @@
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border: 1px solid var(--bg-500);
   background: var(--bg-800);
   color: var(--text-300);
@@ -907,82 +910,120 @@
   cursor: pointer;
 }
 
+.chip .icon {
+  flex: none;
+}
+
 .chip[aria-pressed="true"] {
   border-color: var(--success);
   color: var(--text-100);
 }
 
-/* ---------- Panel de sonido del inicio ---------- */
-.sound-settings {
-  position: relative;
-}
-
-.sound-panel {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  z-index: 20;
+/* ---------- Modal de configuración (estilo videojuego) ---------- */
+.settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
   display: grid;
-  gap: 0.2rem;
-  min-width: 190px;
-  padding: 0.6rem;
-  border: 1px solid var(--bg-500);
-  border-radius: var(--radius-md);
-  background: var(--bg-800);
-  box-shadow: var(--shadow-soft);
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(4, 6, 14, 0.72);
+  backdrop-filter: blur(3px);
+  animation: settings-fade 0.18s ease-out;
 }
 
-.sound-panel[hidden] {
+.settings-modal[hidden] {
   display: none;
 }
 
-.sound-panel-title {
-  margin-bottom: 0.2rem;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: left;
-  color: var(--text-500);
+.settings-dialog {
+  width: min(400px, 92vw);
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  box-shadow: var(--shadow-deep), var(--glow-primary);
+  animation: settings-pop 0.22s ease-out;
 }
 
-.sound-choice {
+.settings-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
-  width: 100%;
-  padding: 0.45rem 0.6rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--text-300);
-  font: inherit;
-  font-size: 0.95rem;
-  text-align: left;
-  cursor: pointer;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--bg-600);
 }
 
-.sound-choice:hover {
-  border-color: var(--bg-500);
-  background: var(--bg-700);
+.settings-title {
+  font-size: 1.15rem;
 }
 
-.sound-choice:focus-visible {
-  outline: 2px solid var(--secondary);
-  outline-offset: 1px;
+.settings-list {
+  display: grid;
+  padding: 0.5rem 0.6rem 0.7rem;
 }
 
-.sound-choice-state {
-  padding: 0.1rem 0.55rem;
-  border: 1px solid var(--bg-500);
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 800;
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.55rem;
+  border-bottom: 1px dashed var(--bg-600);
+}
+
+.settings-item:last-child {
+  border-bottom: 0;
+}
+
+.settings-item-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  color: var(--text-100);
+}
+
+.settings-item-label .icon {
   color: var(--text-500);
 }
 
-.sound-choice[aria-pressed="true"] .sound-choice-state {
+.setting-toggle {
+  min-width: 64px;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-full);
+  background: var(--bg-900);
+  color: var(--text-500);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.setting-toggle[aria-pressed="true"] {
   border-color: var(--success);
+  background: rgba(46, 234, 131, 0.12);
   color: var(--success);
+  box-shadow: 0 0 12px rgba(46, 234, 131, 0.25);
+}
+
+.setting-toggle:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+@keyframes settings-fade {
+  from { opacity: 0; }
+}
+
+@keyframes settings-pop {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settings-modal,
+  .settings-dialog { animation: none; }
 }
