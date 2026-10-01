@@ -28,8 +28,8 @@
 }
 
 .start-logo {
-  font-size: 3.2rem;
-  line-height: 1;
+  width: clamp(88px, 22vw, 128px);
+  height: auto;
   animation: float 3.2s ease-in-out infinite;
   filter: drop-shadow(0 0 18px rgba(124, 92, 255, 0.6));
 }

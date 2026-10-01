@@ -22,7 +22,7 @@ export function renderStart() {
 
   screen.innerHTML = `
     <div class="start-hero">
-      <div class="start-logo">🎮</div>
+      <img class="start-logo" src="assets/img/neon-game-controller.png" alt="ISTQB Quest">
       <h1 class="start-title">ISTQB <span>Quest</span></h1>
       <p class="start-subtitle">
         Prepárate para el examen <strong>Foundation Level v4.0</strong>
