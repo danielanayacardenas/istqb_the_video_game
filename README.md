@@ -81,6 +81,7 @@ bun server.js
 - **CSS3** (vanilla, sin frameworks)
 - **JavaScript** (ES Modules, vanilla, sin dependencias)
 - **Bun** como runtime para el servidor de desarrollo local
+- **happy-dom** (solo en tests) para los smoke tests de pantallas
 
 ---
 
@@ -90,9 +91,12 @@ El motor, el sistema de progreso y la persistencia tienen tests unitarios
 con el runner integrado de Bun:
 
 ```bash
-bun test          # suite completa (incluye guardarraíles anti-sesgo)
+bun test          # suite completa (incluye guardarraíles anti-sesgo y smoke tests)
 bun run analyze   # reporte de sesgo de longitud del banco de preguntas
 ```
+
+Los smoke tests de pantallas usan **happy-dom** (solo devDependency): `bun install`
+la instala; si no está disponible, esos tests se omiten sin romper la suite.
 
 ---
 
@@ -150,7 +154,9 @@ ISTQB/
 │   ├── achievements.test.mjs ← sistema de logros
 │   ├── combat.test.mjs      ← motor del duelo de combate
 │   ├── music.test.mjs       ← playlist y volumen de la música
-│   └── icons.test.mjs       ← iconos SVG de Lucide
+│   ├── icons.test.mjs       ← iconos SVG de Lucide
+│   ├── imports.test.mjs     ← guardarraíl de imports de helpers
+│   └── screens.test.mjs     ← smoke test de pantallas (happy-dom)
 └── README.md
 ```
 

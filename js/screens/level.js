@@ -14,6 +14,7 @@ import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
 import { createCombatScene } from "../ui/combatScene.js";
 import { createVolumeControl } from "../ui/volumeControl.js";
+import { icon } from "../ui/icons.js";
 import { playEvent as playSfxEvent } from "../ui/sfx.js";
 import { esc } from "../utils.js";
 
