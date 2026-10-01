@@ -25,7 +25,8 @@ import { ACHIEVEMENTS } from "../engine/achievements.js";
 function miniStars(count, max = 3) {
   return Array.from(
     { length: max },
-    (_, i) => `<span class="mini-star ${i < count ? "on" : "off"}">★</span>`
+    (_, i) =>
+      `<span class="mini-star ${i < count ? "on" : "off"}">${icon("star", { size: 13, fill: i < count })}</span>`
   ).join("");
 }
 
@@ -40,11 +41,16 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
   if (unlocked && !empty) status = completed ? "completed" : "current";
 
   const expanded = wi === activeWorldIndex && unlocked && !empty;
-  const statusIcon = status === "locked" ? "🔒" : status === "completed" ? "✅" : "▶️";
+  const statusIcon =
+    status === "locked"
+      ? icon("lock", { size: 20 })
+      : status === "completed"
+        ? icon("circle-check", { size: 20, className: "ok" })
+        : icon("play", { size: 20, className: "now", fill: true });
   const pct = stats.totalLevels > 0 ? (stats.completed / stats.totalLevels) * 100 : 0;
 
   const levelsHtml = empty
-    ? `<p class="world-empty">🚧 Contenido en construcción — llega en la próxima actualización.</p>`
+    ? `<p class="world-empty">${icon("construction", { size: 16 })} Contenido en construcción — llega en la próxima actualización.</p>`
     : world.levels
         .map((level, li) => {
           const unlockedLevel = isLevelUnlocked(wi, li, progress);
@@ -63,7 +69,7 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
   return `
     <article class="world-card ${status}">
       <button class="world-header" ${unlocked && !empty ? 'data-action="toggle"' : "disabled"} aria-expanded="${expanded}">
-        <span class="world-emoji">${world.emoji}</span>
+        <span class="world-icon">${icon(world.icon, { size: 26 })}</span>
         <div class="world-info">
           <h2 class="world-title">${worldLabel(world)} · ${esc(world.title)}</h2>
           <div class="world-meta">
@@ -71,7 +77,7 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
               <div class="progress-fill" style="width:${pct}%"></div>
             </div>
             <span class="world-count">${stats.completed}/${stats.totalLevels} niveles</span>
-            <span class="world-stars">⭐ ${stats.stars}/${stats.maxStars}</span>
+            <span class="world-stars">${icon("star", { size: 14, fill: true })} ${stats.stars}/${stats.maxStars}</span>
           </div>
         </div>
         <span class="world-status">${statusIcon}</span>
@@ -90,12 +96,16 @@ function bossCardHtml(progress) {
   const passed = Boolean(stats.bossCleared);
   const best = stats.bossBest ?? 0;
   const status = passed ? "completed" : allDone ? "current" : "locked";
-  const statusIcon = passed ? "✅" : allDone ? "▶️" : "🔒";
+  const statusIcon = passed
+    ? icon("circle-check", { size: 20, className: "ok" })
+    : allDone
+      ? icon("play", { size: 20, className: "now", fill: true })
+      : icon("lock", { size: 20 });
 
   return `
     <article class="world-card boss-card ${status}">
       <button class="world-header" ${allDone ? 'data-action="boss"' : "disabled"}>
-        <span class="world-emoji">👑</span>
+        <span class="world-icon">${icon("crown", { size: 26 })}</span>
         <div class="world-info">
           <h2 class="world-title">Boss Final · Simulacro de examen</h2>
           <div class="world-meta">
@@ -120,11 +130,11 @@ export function renderMap() {
   el.className = "screen map-screen";
   el.innerHTML = `
     <header class="map-header">
-      <button class="icon-btn" data-action="home" title="Volver al inicio">🏠</button>
+      <button class="icon-btn" data-action="home" title="Volver al inicio">${icon("house", { size: 18 })}</button>
       <h1 class="map-title">Mapa del juego</h1>
       <div class="map-badges">
-        <div class="map-stars" title="Estrellas conseguidas">⭐ ${globalStars(progress)}</div>
-        <div class="map-stars" title="Logros desbloqueados">🏆 ${getState().achievements.length}/${ACHIEVEMENTS.length}</div>
+        <div class="map-stars" title="Estrellas conseguidas">${icon("star", { size: 15, fill: true })} ${globalStars(progress)}</div>
+        <div class="map-stars" title="Logros desbloqueados">${icon("trophy", { size: 15 })} ${getState().achievements.length}/${ACHIEVEMENTS.length}</div>
         <button class="icon-btn map-music" data-action="music">
           ${icon("music", { size: 18 })}
         </button>

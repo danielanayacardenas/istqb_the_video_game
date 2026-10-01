@@ -83,16 +83,16 @@ if (jsonMode) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   const pct = (n, d) => `${Math.round((100 * n) / d)}%`;
-  console.log("🎮 ISTQB Quest — Análisis de sesgo de longitud (Etapa 14)\n");
+  console.log("ISTQB Quest — Análisis de sesgo de longitud (Etapa 14)\n");
   console.log(
     `Total: ${report.total} preguntas · Multi-selección: ${multiCount} · Rango aceptable: ${RANGE.min}–${RANGE.max} · Media objetivo: ≤ ${GLOBAL_TARGET}\n`
   );
   console.log(
-    `GLOBAL: ratio medio ${report.global.avgRatio} · fuera de rango: ${globalOutOfRange}/${report.total} (${pct(globalOutOfRange, report.total)}) ${report.global.ok ? "✅" : "🔴"}\n`
+    `GLOBAL: ratio medio ${report.global.avgRatio} · fuera de rango: ${globalOutOfRange}/${report.total} (${pct(globalOutOfRange, report.total)}) ${report.global.ok ? "OK" : "REVISAR"}\n`
   );
   console.log("Por sección:");
   for (const s of report.sections) {
-    const flag = s.outOfRange === 0 ? "✅" : "🔴";
+    const flag = s.outOfRange === 0 ? "OK " : "!! ";
     console.log(
       `  ${flag} ${s.name.padEnd(42)} ${String(s.total).padStart(3)} preg · ratio ${String(s.avgRatio).padStart(4)} · fuera ${s.outOfRange}`
     );
@@ -101,5 +101,5 @@ if (jsonMode) {
   for (const r of report.worst) {
     console.log(`  ${r.id.padEnd(12)} ratio ${r.ratio}`);
   }
-  console.log("\n💡 Los lotes de contenido re-equilibran por mundo hasta dejar 0 fuera de rango.");
+  console.log("\nTip: los lotes de contenido re-equilibran por mundo hasta dejar 0 fuera de rango.");
 }

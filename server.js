@@ -33,4 +33,4 @@ const server = Bun.serve({
   },
 });
 
-console.log(`🎮 ISTQB Quest listo en http://localhost:${server.port}`);
+console.log(`ISTQB Quest listo en http://localhost:${server.port}`);

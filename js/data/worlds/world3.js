@@ -8,7 +8,7 @@ export const world3 = {
   id: "w3",
   number: 3,
   title: "Testing Estático",
-  emoji: "🔍",
+  icon: "search",
   description:
     "Fundamentos del testing estático, proceso de revisión y análisis estático con herramientas.",
   levels: [

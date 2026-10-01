@@ -9,7 +9,7 @@
 export const bossInfo = {
   id: "boss",
   title: "Boss Final",
-  emoji: "👑",
+  icon: "crown",
   description: "Simulacro del examen real: 40 preguntas en 75 minutos. Se aprueba con el 65 % (26/40).",
   questionCount: 40,
   durationMinutes: 75,

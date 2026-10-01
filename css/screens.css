@@ -204,9 +204,13 @@
   line-height: 1;
 }
 
-.heart.off {
-  filter: grayscale(1);
-  opacity: 0.45;
+.heart.on .icon {
+  color: var(--danger);
+}
+
+.heart.off .icon {
+  color: var(--text-500);
+  opacity: 0.55;
 }
 
 .hud-streak {
@@ -439,7 +443,8 @@
 }
 
 .results-emoji {
-  font-size: 3rem;
+  display: flex;
+  justify-content: center;
   line-height: 1;
 }
 
@@ -465,9 +470,12 @@
   animation: star-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
 }
 
+.star.on .icon {
+  color: var(--star);
+}
+
 .star.off {
-  opacity: 0.22;
-  filter: grayscale(1);
+  opacity: 0.35;
 }
 
 .results-stats {
@@ -604,10 +612,16 @@
   cursor: default;
 }
 
-.world-emoji {
-  font-size: 1.9rem;
-  line-height: 1;
+.world-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  color: var(--text-300);
 }
+
+.world-status .icon.ok { color: var(--success); }
+.world-status .icon.now { color: var(--secondary); }
 
 .world-info {
   flex: 1;
@@ -792,11 +806,9 @@
   outline: 2px solid var(--primary-light);
 }
 
-.boss-cell.marked::after {
-  content: "⚑";
+.boss-cell .cell-flag {
   display: block;
-  font-size: 0.6rem;
-  line-height: 0.8;
+  margin: 0 auto;
   color: var(--star);
 }
 

@@ -67,7 +67,7 @@ export function renderLevel({ levelId } = {}) {
     el.className = "screen placeholder-screen";
     el.innerHTML = `
       <div class="placeholder-card">
-        <span class="placeholder-emoji">🚧</span>
+        <span class="placeholder-emoji">${icon("construction", { size: 44 })}</span>
         <h2>Nivel no encontrado</h2>
         <p>El nivel <strong>${esc(levelId ?? "?")}</strong> todavía no está disponible.</p>
         <button class="btn btn-ghost" data-action="back">← Volver al inicio</button>
@@ -84,7 +84,7 @@ export function renderLevel({ levelId } = {}) {
   el.className = "screen level-screen";
   el.innerHTML = `
     <header class="level-topbar">
-      <button class="icon-btn" data-action="exit" title="Salir del nivel">✕</button>
+      <button class="icon-btn" data-action="exit" title="Salir del nivel">${icon("x", { size: 18 })}</button>
       <div class="hud-lives" data-el="lives" aria-label="Vidas"></div>
       <div class="hud-streak" data-el="streak" aria-label="Racha"></div>
       <div class="hud-timer" aria-label="Tiempo restante">
@@ -136,11 +136,11 @@ export function renderLevel({ levelId } = {}) {
   function paintHud() {
     livesEl.innerHTML = Array.from({ length: game.maxLives }, (_, i) => {
       const on = i < game.lives;
-      return `<span class="heart ${on ? "on" : "off"}">${on ? "❤️" : "🖤"}</span>`;
+      return `<span class="heart ${on ? "on" : "off"}">${on ? icon("heart", { size: 16, fill: true }) : icon("heart", { size: 16 })}</span>`;
     }).join("");
 
     const s = game.streak;
-    streakEl.textContent = `🔥 x${s}`;
+    streakEl.innerHTML = `${icon("flame", { size: 15, fill: true })} x${s}`;
     streakEl.classList.toggle("visible", s >= 1);
     streakEl.classList.toggle("hot", s >= 3);
   }
@@ -173,7 +173,7 @@ export function renderLevel({ levelId } = {}) {
       </div>
       ${
         isMulti
-          ? `<p class="multi-hint">🧩 Selecciona <strong>${required}</strong> opciones —
+          ? `<p class="multi-hint">${icon("puzzle", { size: 16 })} Selecciona <strong>${required}</strong> opciones —
               <span data-el="multi-count">0/${required}</span></p>`
           : ""
       }
@@ -281,20 +281,23 @@ export function renderLevel({ levelId } = {}) {
 
     let html = "";
     if (result.isCorrect) {
-      const hot = game.streak >= 3 ? ` <span class="feedback-streak">🔥 x${game.streak} ¡En llamas!</span>` : "";
-      html += `<p class="feedback-head">✅ ¡Correcto!${hot}</p>`;
+      const hot =
+        game.streak >= 3
+          ? ` <span class="feedback-streak">${icon("flame", { size: 15, fill: true })} x${game.streak} ¡En llamas!</span>`
+          : "";
+      html += `<p class="feedback-head">${icon("circle-check", { size: 16 })} ¡Correcto!${hot}</p>`;
       html += `<p>${esc(q.explanation)}</p>`;
-      html += `<p>💡 <strong>Ejemplo:</strong> ${esc(q.example)}</p>`;
-      html += `<p>🛠️ <strong>Caso de uso:</strong> ${esc(q.useCase)}</p>`;
+      html += `<p>${icon("lightbulb", { size: 16 })} <strong>Ejemplo:</strong> ${esc(q.example)}</p>`;
+      html += `<p>${icon("wrench", { size: 16 })} <strong>Caso de uso:</strong> ${esc(q.useCase)}</p>`;
     } else {
       const letters = q.correctIndexes.map((i) => LETTERS[i]).join(" y ");
       const texts = q.correctIndexes.map((i) => esc(q.options[i])).join(" · ");
       const label = q.correctIndexes.length > 1 ? "Las respuestas correctas eran" : "La respuesta correcta era";
-      html += `<p class="feedback-head">${result.timedOut ? "⏰ ¡Se acabó el tiempo!" : "❌ Incorrecto"}</p>`;
+      html += `<p class="feedback-head">${result.timedOut ? `${icon("alarm-clock", { size: 16 })} ¡Se acabó el tiempo!` : `${icon("circle-x", { size: 16 })} Incorrecto`}</p>`;
       html += `<p class="answer-reveal">${label} ${letters}: ${texts}</p>`;
       html += `<p>${esc(q.explanation)}</p>`;
-      html += `<p>📌 <strong>Recuerda:</strong> ${esc(q.mistake)}</p>`;
-      html += `<p class="syllabus">📚 Te recomendamos repasar: ${esc(q.syllabusRef)}</p>`;
+      html += `<p>${icon("pin", { size: 16 })} <strong>Recuerda:</strong> ${esc(q.mistake)}</p>`;
+      html += `<p class="syllabus">${icon("book-open", { size: 16 })} Te recomendamos repasar: ${esc(q.syllabusRef)}</p>`;
     }
 
     const nextLabel = willEnd ? "Ver resultado" : "Siguiente →";

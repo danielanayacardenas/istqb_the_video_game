@@ -8,7 +8,7 @@ export const world5 = {
   id: "w5",
   number: 5,
   title: "Gestión de las Actividades de Prueba",
-  emoji: "📋",
+  icon: "clipboard-list",
   description:
     "Planificación y estimación, gestión de riesgos, monitoreo y control, configuración y gestión de defectos.",
   levels: [

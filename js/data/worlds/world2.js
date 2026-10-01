@@ -8,7 +8,7 @@ export const world2 = {
   id: "w2",
   number: 2,
   title: "Testing a lo largo del SDLC",
-  emoji: "🔄",
+  icon: "workflow",
   description:
     "Modelos de desarrollo, niveles de prueba, tipos de prueba y testing de mantenimiento.",
   levels: [

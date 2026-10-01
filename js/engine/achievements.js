@@ -11,35 +11,35 @@ import { getState, updateState } from "../state.js";
 export const ACHIEVEMENTS = [
   {
     id: "first-step",
-    emoji: "🎓",
+    icon: "graduation-cap",
     name: "Primer paso",
     description: "Completa tu primer nivel.",
     check: (progress) => progress["w1-l1"]?.completed === true,
   },
   {
     id: "perfectionist",
-    emoji: "⭐",
+    icon: "star",
     name: "Perfeccionista",
     description: "Consigue 3 estrellas en un nivel.",
     check: (progress) => Object.values(progress).some((p) => (p.stars ?? 0) >= 3),
   },
   {
     id: "on-fire",
-    emoji: "🔥",
+    icon: "flame",
     name: "En llamas",
     description: "Logra una racha de 5 respuestas correctas seguidas.",
     check: (_progress, stats) => (stats.bestStreak ?? 0) >= 5,
   },
   {
     id: "collector",
-    emoji: "🌟",
+    icon: "sparkles",
     name: "Coleccionista",
     description: "Reúne 30 estrellas.",
     check: (progress) => globalStars(progress) >= 30,
   },
   {
     id: "explorer",
-    emoji: "🗺️",
+    icon: "map",
     name: "Explorador",
     description: "Completa los 6 mundos del juego.",
     check: (progress) =>
@@ -47,7 +47,7 @@ export const ACHIEVEMENTS = [
   },
   {
     id: "challenger",
-    emoji: "⚔️",
+    icon: "swords",
     name: "Retador",
     description: "Supera los 3 desafíos cruzados.",
     check: (progress) =>
@@ -55,14 +55,14 @@ export const ACHIEVEMENTS = [
   },
   {
     id: "graduated",
-    emoji: "👑",
+    icon: "crown",
     name: "Graduado",
     description: "Aprueba el Boss Final.",
     check: (_progress, stats) => stats.bossCleared === true,
   },
   {
     id: "excellent",
-    emoji: "💯",
+    icon: "award",
     name: "Excelencia",
     description: "Consigue al menos el 90 % en el Boss Final (36/40).",
     check: (_progress, stats) => (stats.bossBest ?? 0) >= 36,

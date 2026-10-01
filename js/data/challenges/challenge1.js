@@ -10,7 +10,7 @@ export const challenge1 = {
   challengeNumber: 1,
   type: "challenge",
   title: "Fundamentos en acción",
-  emoji: "⚔️",
+  icon: "swords",
   description: "Escenarios y trampas de fundamentos, SDLC y testing estático.",
   levels: [
     {
