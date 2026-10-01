@@ -13,6 +13,7 @@ import { recordLevelResult, getSetting } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
 import { createCombatScene } from "../ui/combatScene.js";
+import { createVolumeControl } from "../ui/volumeControl.js";
 import { playEvent as playSfxEvent } from "../ui/sfx.js";
 import { esc } from "../utils.js";
 
@@ -112,12 +113,19 @@ export function renderLevel({ levelId } = {}) {
   const combatSlot = el.querySelector('[data-el="combat"]');
   let combat = null;
   let combatScene = null;
+
+  /* ---------- Control de volumen (solo música) ---------- */
+  const volumeControl = createVolumeControl();
   if (combatEnabled) {
     combat = createCombat({ lives: game.maxLives, questions: game.total });
     combatScene = createCombatScene(combatSlot, { theme: world.id });
     combatScene.setEnemyHp(combat.enemyHpRatio());
     el.classList.add("has-combat");
+    combatSlot.appendChild(volumeControl.el);
   } else {
+    volumeControl.el.classList.add("floating");
+    el.appendChild(volumeControl.el);
+    el.classList.add("has-volume");
     combatSlot.remove();
   }
 

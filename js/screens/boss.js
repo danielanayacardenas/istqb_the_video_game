@@ -10,6 +10,7 @@ import { checkAchievements } from "../engine/achievements.js";
 import { recordBossResult } from "../state.js";
 import { navigate } from "../router.js";
 import { esc } from "../utils.js";
+import { createVolumeControl } from "../ui/volumeControl.js";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
 
@@ -19,6 +20,12 @@ export function renderBoss() {
 
   let timerId = null;
   let finished = false;
+
+  /** Monta el control flotante de volumen de la música. */
+  function mountVolumeControl() {
+    el.classList.add("has-volume");
+    el.appendChild(createVolumeControl({ floating: true }).el);
+  }
 
   const clearTimer = () => {
     if (timerId) {
@@ -51,6 +58,7 @@ export function renderBoss() {
     `;
     el.querySelector('[data-action="start"]').addEventListener("click", startExam);
     el.querySelector('[data-action="back"]').addEventListener("click", () => navigate("map"));
+    mountVolumeControl();
     window.scrollTo(0, 0);
   }
 
@@ -206,6 +214,7 @@ export function renderBoss() {
       navigate("map");
     });
 
+    mountVolumeControl();
     timerId = setInterval(tick, 1000);
     tick();
     renderQuestion();
@@ -279,6 +288,7 @@ export function renderBoss() {
     `;
     el.querySelector('[data-action="retry"]').addEventListener("click", startExam);
     el.querySelector('[data-action="map"]').addEventListener("click", () => navigate("map"));
+    mountVolumeControl();
     window.scrollTo(0, 0);
   }
 
