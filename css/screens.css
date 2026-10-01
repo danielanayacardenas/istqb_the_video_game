@@ -911,3 +911,78 @@
   border-color: var(--success);
   color: var(--text-100);
 }
+
+/* ---------- Panel de sonido del inicio ---------- */
+.sound-settings {
+  position: relative;
+}
+
+.sound-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  gap: 0.2rem;
+  min-width: 190px;
+  padding: 0.6rem;
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-md);
+  background: var(--bg-800);
+  box-shadow: var(--shadow-soft);
+}
+
+.sound-panel[hidden] {
+  display: none;
+}
+
+.sound-panel-title {
+  margin-bottom: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--text-500);
+}
+
+.sound-choice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-300);
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sound-choice:hover {
+  border-color: var(--bg-500);
+  background: var(--bg-700);
+}
+
+.sound-choice:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 1px;
+}
+
+.sound-choice-state {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-500);
+}
+
+.sound-choice[aria-pressed="true"] .sound-choice-state {
+  border-color: var(--success);
+  color: var(--success);
+}
