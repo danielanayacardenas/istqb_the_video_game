@@ -8,6 +8,8 @@ import { worlds, worldLabel } from "../data/index.js";
 import { getState } from "../state.js";
 import { navigate } from "../router.js";
 import { esc } from "../utils.js";
+import { icon } from "../ui/icons.js";
+import { isMusicOn, toggleMusic } from "../ui/music.js";
 import {
   isWorldUnlocked,
   isWorldCompleted,
@@ -123,6 +125,9 @@ export function renderMap() {
       <div class="map-badges">
         <div class="map-stars" title="Estrellas conseguidas">⭐ ${globalStars(progress)}</div>
         <div class="map-stars" title="Logros desbloqueados">🏆 ${getState().achievements.length}/${ACHIEVEMENTS.length}</div>
+        <button class="icon-btn map-music" data-action="music">
+          ${icon("music", { size: 18 })}
+        </button>
       </div>
     </header>
     <main class="map-body">
@@ -133,6 +138,22 @@ export function renderMap() {
 
   /* ---------- Volver al inicio ---------- */
   el.querySelector('[data-action="home"]').addEventListener("click", () => navigate("start"));
+
+  /* ---------- Música: apagar / activar ---------- */
+  const musicBtn = el.querySelector('[data-action="music"]');
+  const paintMusicBtn = () => {
+    const on = isMusicOn();
+    musicBtn.innerHTML = on ? icon("music", { size: 18 }) : icon("volume-x", { size: 18 });
+    musicBtn.setAttribute("aria-pressed", String(!on));
+    musicBtn.title = on ? "Apagar música" : "Activar música";
+    musicBtn.setAttribute("aria-label", musicBtn.title);
+    musicBtn.classList.toggle("muted", !on);
+  };
+  musicBtn.addEventListener("click", () => {
+    toggleMusic();
+    paintMusicBtn();
+  });
+  paintMusicBtn();
 
   /* ---------- Expandir / colapsar mundos ---------- */
   el.querySelectorAll('.world-header[data-action="toggle"]').forEach((header) => {
