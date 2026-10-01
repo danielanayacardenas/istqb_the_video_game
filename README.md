@@ -18,7 +18,8 @@ Avanza de lo básico a lo avanzado pasando mundos, niveles y desafíos, como en 
 - ⭐ **Estrellas** según vidas restantes (1⭐ / 2⭐ / 3⭐).
 - 🔥 **Racha (streak)** de respuestas correctas con multiplicador visual.
 - 🎯 **Combate arcade** (estilo retro): aciertos → disparas al enemigo; fallos → el enemigo te dispara y pierdes una vida. Es visual: no altera las reglas. Se puede desactivar en los ajustes, junto con el sonido y la música.
-- 🎵 **Música de fondo**: dos pistas 8-bit que suenan en bucle mientras juegas, con bocina de silencio y slider de volumen en la esquina de la escena de combate. En el inicio, el botón **🔊 Sonido** abre los toggles de **FX** y **Música**.
+- 🎵 **Música de fondo**: dos pistas 8-bit que suenan en bucle mientras juegas, con bocina de silencio y slider de volumen en la esquina de la escena de combate, y botón de apagado en el mapa.
+- ⚙️ **Configuración estilo videojuego**: el botón de engrane abre una modal con **Combate**, **Efectos** y **Música** (ON/OFF). La interfaz usa iconos SVG de [Lucide](https://lucide.dev) en lugar de emojis.
 - 🏆 **Logros desbloqueables** (perfeccionista, en llamas, explorador, etc.).
 - 💾 **Progreso guardado** en `localStorage` (no pierdes tu avance al cerrar el navegador).
 - 🌐 **Español** en v1. Selector de idioma preparado para futuras versiones.
@@ -132,6 +133,7 @@ ISTQB/
 │   │   ├── combatScene.js ← escena pixel-art SVG del combate
 │   │   ├── volumeControl.js ← bocina + slider de volumen (música)
 │   │   ├── music.js       ← playlist de música de fondo
+│   │   ├── icons.js       ← iconos SVG de Lucide
 │   │   └── sfx.js         ← efectos de sonido (WebAudio)
 │   └── data/
 │       ├── index.js      ← agregador de mundos y desafíos
@@ -146,7 +148,8 @@ ISTQB/
 │   ├── exam.test.mjs        ← sorteo y puntuación del Boss
 │   ├── achievements.test.mjs ← sistema de logros
 │   ├── combat.test.mjs      ← motor del duelo de combate
-│   └── music.test.mjs       ← playlist y volumen de la música
+│   ├── music.test.mjs       ← playlist y volumen de la música
+│   └── icons.test.mjs       ← iconos SVG de Lucide
 └── README.md
 ```
 
@@ -172,6 +175,7 @@ ISTQB/
 | 13 | Combate arcade (mini-juego retro en los niveles) | ✅ |
 | 14 | Calidad del banco: re-equilibrio de opciones + multi-selección | ✅ |
 | 15 | Música de fondo + control de volumen (bocina y slider) | ✅ |
+| 16 | Configuración estilo videojuego + iconos Lucide + música en el mapa | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 
