@@ -57,11 +57,19 @@
 /* ---------- Selector de idioma ---------- */
 .lang-switch {
   display: inline-flex;
+  align-items: center;
   gap: 0.4rem;
   padding: 0.35rem;
   background: var(--bg-800);
   border: 1px solid var(--bg-600);
   border-radius: var(--radius-full);
+}
+
+.lang-switch-icon {
+  display: flex;
+  align-items: center;
+  padding-left: 0.45rem;
+  color: var(--text-500);
 }
 
 .lang-btn {

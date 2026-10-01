@@ -28,13 +28,14 @@ export function renderStart() {
         Prepárate para el examen <strong>Foundation Level v4.0</strong>
         pasando mundos, niveles y desafíos.
       </p>
-      <span class="badge">📘 CTFL v4.0</span>
+      <span class="badge">${icon("book", { size: 16 })} CTFL v4.0</span>
     </div>
 
     <div class="lang-switch" role="group" aria-label="Idioma">
-      <button class="lang-btn" data-lang="es">🇪🇸 Español</button>
+      <span class="lang-switch-icon">${icon("languages", { size: 18 })}</span>
+      <button class="lang-btn" data-lang="es">Español</button>
       <button class="lang-btn" data-lang="en" disabled title="Próximamente">
-        🇬🇧 English <span class="soon">pronto</span>
+        English <span class="soon">pronto</span>
       </button>
     </div>
 
@@ -77,12 +78,12 @@ export function renderStart() {
 
     <div class="start-actions">
       <button class="btn btn-primary btn-big" data-action="play">
-        ${someProgress ? "▶ Continuar" : "🎮 Comenzar"}
+        ${icon("play", { size: 18, fill: true })} ${someProgress ? "Continuar" : "Comenzar"}
       </button>
       ${
         someProgress
-          ? `<button class="btn btn-ghost btn-small" data-action="reset">🗑 Reiniciar progreso</button>
-             <p class="start-progress-summary">⭐ ${globalStars()} estrellas · 🏆 ${state.achievements.length}/${ACHIEVEMENTS.length} logros</p>`
+          ? `<button class="btn btn-ghost btn-small" data-action="reset">${icon("trash-2", { size: 16 })} Reiniciar progreso</button>
+             <p class="start-progress-summary">${icon("star", { size: 15, fill: true })} ${globalStars()} estrellas · ${icon("trophy", { size: 15 })} ${state.achievements.length}/${ACHIEVEMENTS.length} logros</p>`
           : ""
       }
     </div>

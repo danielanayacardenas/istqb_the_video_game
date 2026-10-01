@@ -83,6 +83,13 @@ button {
   font-family: inherit;
 }
 
+/* Iconos Lucide: heredan color y se alinean al texto */
+.icon {
+  display: inline-block;
+  vertical-align: -0.18em;
+  flex: none;
+}
+
 ::selection {
   background: var(--primary);
   color: #fff;
