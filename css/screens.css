@@ -939,9 +939,20 @@
 
 /* ---------- Logros ---------- */
 .map-badges {
+  position: relative;
   display: flex;
   gap: 0.7rem;
   align-items: center;
+}
+
+.map-stars[data-action] {
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.map-stars[data-action]:hover {
+  border-color: var(--star);
 }
 
 .map-music.muted {
@@ -1111,4 +1122,154 @@
 @media (prefers-reduced-motion: reduce) {
   .settings-modal,
   .settings-dialog { animation: none; }
+}
+
+/* ---------- Reto Dorado: tarjeta dorada ---------- */
+.gold-card {
+  border-color: rgba(255, 217, 61, 0.75);
+  background:
+    radial-gradient(120% 90% at 8% 0%, rgba(255, 217, 61, 0.16) 0%, rgba(255, 217, 61, 0) 55%),
+    linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  animation: gold-glow 2.6s ease-in-out infinite;
+}
+
+.gold-card:hover {
+  border-color: var(--star);
+  animation: none;
+  box-shadow:
+    0 0 18px rgba(255, 217, 61, 0.6),
+    0 0 46px rgba(255, 217, 61, 0.32),
+    inset 0 0 18px rgba(255, 217, 61, 0.12);
+}
+
+.gold-card .world-title {
+  color: var(--star);
+  text-shadow: 0 0 16px rgba(255, 217, 61, 0.45);
+}
+
+.gold-header {
+  cursor: default;
+}
+
+.gold-icon {
+  color: var(--star);
+  filter: drop-shadow(0 0 10px rgba(255, 217, 61, 0.8));
+}
+
+.gold-row {
+  border-color: rgba(255, 217, 61, 0.45);
+}
+
+.gold-row:hover:not(:disabled) {
+  border-color: var(--star);
+  box-shadow: 0 0 14px rgba(255, 217, 61, 0.35);
+}
+
+.gold-stars {
+  color: var(--star);
+  border-color: var(--star);
+  background: rgba(255, 217, 61, 0.16);
+}
+
+/* ---------- Desglose de estrellas ---------- */
+.stars-popover {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 30;
+  display: grid;
+  gap: 0.4rem;
+  min-width: 190px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-md);
+  background: var(--bg-800);
+  box-shadow: var(--shadow-soft);
+}
+
+.stars-popover[hidden] {
+  display: none;
+}
+
+.stars-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--text-300);
+}
+
+.stars-row strong {
+  color: var(--text-100);
+}
+
+.icon.gold {
+  color: var(--star);
+  filter: drop-shadow(0 0 5px rgba(255, 217, 61, 0.75));
+}
+
+/* ---------- Intro del Reto Dorado ---------- */
+.gold-intro {
+  border-color: rgba(255, 217, 61, 0.55);
+  box-shadow: 0 0 30px rgba(255, 217, 61, 0.18);
+}
+
+/* ---------- Ventana dorada de desbloqueo ---------- */
+.gold-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(4, 6, 14, 0.72);
+  backdrop-filter: blur(3px);
+  animation: settings-fade 0.18s ease-out;
+}
+
+.gold-modal[hidden] {
+  display: none;
+}
+
+.gold-dialog {
+  position: relative;
+  width: min(430px, 92vw);
+  padding: 1.4rem 1.3rem 1.2rem;
+  border: 1px solid rgba(255, 217, 61, 0.6);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  box-shadow: var(--shadow-deep), 0 0 34px rgba(255, 217, 61, 0.3);
+  text-align: center;
+  animation: settings-pop 0.22s ease-out;
+}
+
+.gold-dialog-star {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+  color: var(--star);
+  filter: drop-shadow(0 0 12px rgba(255, 217, 61, 0.85));
+}
+
+.gold-dialog h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: var(--star);
+  text-shadow: 0 0 16px rgba(255, 217, 61, 0.4);
+}
+
+.gold-dialog p {
+  margin-bottom: 1rem;
+  color: var(--text-300);
+}
+
+.gold-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+}
+
+/* Check verde también fuera del estado de mundo */
+.icon.ok {
+  color: var(--success);
 }

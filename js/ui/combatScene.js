@@ -5,6 +5,8 @@
 // Es puramente visual y decorativa (aria-hidden).
 // =====================================================
 
+import { icon } from "./icons.js";
+
 const PLAYER_COLORS = {
   helmetLight: "#a794ff",
   helmet: "#7c5cff",
@@ -184,10 +186,28 @@ export function createCombatScene(container, { theme = "w1" } = {}) {
     hpFill.classList.toggle("low", clamped <= 0.34);
   }
 
+  /** Deja caer una estrella dorada en la arena; onPick se ejecuta al clickearla. */
+  function dropGoldStar(onPick) {
+    const star = document.createElement("button");
+    star.type = "button";
+    star.className = "combat-gold-star";
+    star.title = "¡Un reto extra!";
+    star.setAttribute("aria-label", "Estrella dorada: reto extra desbloqueado");
+    star.innerHTML = icon("star", { size: 24, fill: true });
+    star.style.left = `${25 + Math.random() * 40}%`;
+    star.addEventListener("click", () => {
+      star.classList.add("picked");
+      star.disabled = true;
+      onPick?.();
+    });
+    arena.appendChild(star);
+    return star;
+  }
+
   /** Limpia temporizadores pendientes (al salir de la pantalla). */
   function destroy() {
     clearTimers();
   }
 
-  return { play, setEnemyHp, destroy };
+  return { play, setEnemyHp, dropGoldStar, destroy };
 }

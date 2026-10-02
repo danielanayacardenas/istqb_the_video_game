@@ -111,4 +111,51 @@ describe("pantallas (smoke)", () => {
     expect(html).toContain("boss-rules");
     expect(html).toContain("Comenzar examen");
   });
+
+  run("mapa: tarjeta dorada y contador con el reto desbloqueado", () => {
+    const stats = getState().stats;
+    const previous = stats.goldUnlocked;
+    stats.goldUnlocked = true;
+    try {
+      const html = htmlOf(renderMap());
+      expect(html).toContain("gold-card");
+      expect(html).toContain("gold-stars");
+      expect(html).toContain("Reto Dorado");
+    } finally {
+      stats.goldUnlocked = previous;
+    }
+  });
+
+  run("reto dorado: intro de reglas y arranque", () => {
+    const el = renderLevel({ levelId: "gold-l1" });
+    expect(htmlOf(el)).toContain("gold-intro");
+    expect(htmlOf(el)).toContain("Comenzar reto");
+    el.querySelector('[data-action="start-gold"]').click();
+    const html = htmlOf(el);
+    expect(html).toContain("question-text");
+    expect(html).toContain("option-btn");
+  });
+
+  run("sin combate: la ventana dorada aparece al empezar el nivel", () => {
+    const state = getState();
+    const prevPending = state.stats.goldPending;
+    const prevUnlocked = state.stats.goldUnlocked;
+    const prevCombat = state.settings.combat;
+    state.stats.goldPending = true;
+    state.stats.goldUnlocked = false;
+    state.settings.combat = false;
+    try {
+      const el = renderLevel({ levelId: "w1-l1" });
+      const modal = el.querySelector('[data-el="gold-modal"]');
+      expect(modal).not.toBeNull();
+      expect(modal.hidden).toBe(false);
+      expect(modal.textContent).toContain("¡Has desbloqueado un reto extra!");
+      expect(getState().stats.goldUnlocked).toBe(true);
+      expect(getState().stats.goldPending).toBe(false);
+    } finally {
+      state.stats.goldPending = prevPending;
+      state.stats.goldUnlocked = prevUnlocked;
+      state.settings.combat = prevCombat;
+    }
+  });
 });

@@ -204,6 +204,63 @@
 
 .combat-hp-fill.low { background: var(--danger); }
 
+/* Estrella dorada del Reto Dorado: cae en la arena y brilla */
+.combat-gold-star {
+  position: absolute;
+  bottom: 30px;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid rgba(255, 217, 61, 0.85);
+  border-radius: 50%;
+  background: rgba(255, 217, 61, 0.18);
+  color: var(--star);
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 0 16px rgba(255, 217, 61, 0.75);
+  animation:
+    gold-drop 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.25) both,
+    gold-twinkle 1.5s ease-in-out 0.9s infinite;
+}
+
+.combat-gold-star:hover {
+  background: rgba(255, 217, 61, 0.32);
+  box-shadow: 0 0 26px rgba(255, 217, 61, 0.95);
+}
+
+.combat-gold-star.picked {
+  animation: none;
+  opacity: 0;
+  transform: scale(1.6);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@keyframes gold-drop {
+  from {
+    transform: translateY(-110px);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes gold-twinkle {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(255, 217, 61, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(255, 217, 61, 0.95);
+  }
+}
+
 /* KO: el derrotado cae */
 .combat-actor.down {
   transform: rotate(-88deg) translateY(6px);
