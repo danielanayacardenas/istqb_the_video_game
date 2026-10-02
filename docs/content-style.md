@@ -65,4 +65,4 @@ Las preguntas del banco del Boss añaden además: `chapter` (1–6).
 
 ---
 
-_Última actualización: Etapa 14 (re-equilibrio + multi-selección), lote 10._
+_Última actualización: Etapa 18 (Reto Dorado). El banco dorado también pasa `bun run analyze` y los guardarraíles de `tests/bias.test.mjs`._

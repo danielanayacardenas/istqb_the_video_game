@@ -14,6 +14,7 @@ import {
   goldStars,
   refreshGoldPending,
 } from "../js/engine/gold.js";
+import { checkAchievements } from "../js/engine/achievements.js";
 import { goldQuestions } from "../js/data/gold/goldBank.js";
 import { worlds } from "../js/data/index.js";
 import { globalStars } from "../js/engine/progress.js";
@@ -145,5 +146,12 @@ describe("Reto Dorado: estrellas", () => {
     expect(goldStars()).toBe(3);
     expect(globalStars()).toBe(15);
     expect(getState().progress[GOLD_LEVEL_ID].completed).toBe(true);
+  });
+
+  test("completar el reto desbloquea el logro Leyenda dorada", () => {
+    complete(W1_LEVELS);
+    recordLevelResult(GOLD_LEVEL_ID, { stars: 3, bestStreak: 5, correct: 10, wrong: 0 });
+    const fresh = checkAchievements();
+    expect(fresh.some((a) => a.id === "golden-legend")).toBe(true);
   });
 });

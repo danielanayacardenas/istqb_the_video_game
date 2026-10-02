@@ -20,6 +20,7 @@ Avanza de lo básico a lo avanzado pasando mundos, niveles y desafíos, como en 
 - 🎯 **Combate arcade** (estilo retro): aciertos → disparas al enemigo; fallos → el enemigo te dispara y pierdes una vida. Es visual: no altera las reglas. Se puede desactivar en los ajustes, junto con el sonido y la música.
 - 🎵 **Música de fondo**: dos pistas 8-bit que suenan en bucle mientras juegas, con bocina de silencio y slider de volumen en la esquina de la escena de combate, y botón de apagado en el mapa.
 - ⚙️ **Configuración estilo videojuego**: el botón de engrane abre una modal con **Combate**, **Efectos** y **Música** (ON/OFF). Toda la interfaz usa iconos SVG de [Lucide](https://lucide.dev) y el logo del inicio es un PNG neón animado.
+- 🏅 **Reto Dorado (El 110 %)**: al llegar a 20 ⭐ se desbloquea un reto extra. Una estrella dorada cae en la arena de combate; al clickearla (o al terminar el nivel) aparece la ventana de desbloqueo. Son 10 preguntas (1 nueva + 9 de lo que ya dominas), tiempo a la mitad y hasta 3 estrellas doradas, con contador y desglose propio en el mapa.
 - 🏆 **Logros desbloqueables** (perfeccionista, en llamas, explorador, etc.).
 - 💾 **Progreso guardado** en `localStorage` (no pierdes tu avance al cerrar el navegador).
 - 🌐 **Español** en v1. Selector de idioma preparado para futuras versiones.
@@ -133,6 +134,7 @@ ISTQB/
 │   │   ├── progress.js   ← desbloqueo de mundos y niveles
 │   │   ├── combat.js     ← motor del duelo de combate
 │   │   ├── exam.js       ← sorteo y puntuación del Boss
+│   │   ├── gold.js       ← Reto Dorado: desbloqueo y armado
 │   │   └── achievements.js ← logros desbloqueables
 │   ├── ui/
 │   │   ├── combatScene.js ← escena pixel-art SVG del combate
@@ -144,7 +146,8 @@ ISTQB/
 │       ├── index.js      ← agregador de mundos y desafíos
 │       ├── worlds/       ← banco de preguntas por mundo (world1–world6)
 │       ├── challenges/   ← desafíos cruzados (challenge1–challenge3)
-│       └── boss/         ← banco del Boss Final (60 preguntas)
+│       ├── boss/         ← banco del Boss Final (60 preguntas)
+│       └── gold/         ← banco dorado (1 pregunta nueva por mundo)
 ├── tests/
 │   ├── engine.test.mjs      ← motor del juego
 │   ├── progress.test.mjs    ← desbloqueo y estadísticas
@@ -154,6 +157,7 @@ ISTQB/
 │   ├── achievements.test.mjs ← sistema de logros
 │   ├── combat.test.mjs      ← motor del duelo de combate
 │   ├── music.test.mjs       ← playlist y volumen de la música
+│   ├── gold.test.mjs        ← Reto Dorado: desbloqueo y preguntas
 │   ├── icons.test.mjs       ← iconos SVG de Lucide
 │   ├── imports.test.mjs     ← guardarraíl de imports de helpers
 │   └── screens.test.mjs     ← smoke test de pantallas (happy-dom)
@@ -184,6 +188,7 @@ ISTQB/
 | 15 | Música de fondo + control de volumen (bocina y slider) | ✅ |
 | 16 | Configuración estilo videojuego + iconos Lucide + música en el mapa | ✅ |
 | 17 | Barrido total a iconos Lucide + logo PNG neón animado en el inicio | ✅ |
+| 18 | Reto Dorado (El 110 %): estrella dorada, ventana y estrellas extra | ✅ |
 
 Cada etapa se desarrolla y se versiona con su propio commit.
 
