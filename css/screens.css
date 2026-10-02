@@ -589,6 +589,13 @@
 
 .world-card.completed {
   border-color: rgba(46, 234, 131, 0.5);
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+/* Mundo completado: mismo glow que el actual, pero en verde */
+.world-card.completed:hover {
+  border-color: var(--success);
+  box-shadow: var(--glow-success);
 }
 
 /* ---------- Mundos bloqueados: liquid glass + glow neón al hover ---------- */
