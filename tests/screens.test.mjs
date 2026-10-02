@@ -126,6 +126,32 @@ describe("pantallas (smoke)", () => {
     }
   });
 
+  run("mapa: el reto completado desaparece y queda el contador dorado", () => {
+    const state = getState();
+    const stats = state.stats;
+    const prevUnlocked = stats.goldUnlocked;
+    stats.goldUnlocked = true;
+    state.progress["gold-l1"] = { completed: true, stars: 3, attempts: 1, bestStreak: 10 };
+    try {
+      const html = htmlOf(renderMap());
+      expect(html).not.toContain("gold-card");
+      expect(html).toContain("gold-stars");
+    } finally {
+      delete state.progress["gold-l1"];
+      stats.goldUnlocked = prevUnlocked;
+    }
+  });
+
+  run("reto dorado: resultados sin repetir (solo mapa)", () => {
+    const html = htmlOf(
+      renderResults({ levelId: "gold-l1", won: true, stars: 3, correct: 10, total: 10, topic: "Reto Dorado" })
+    );
+    expect(html).toContain("results-card");
+    expect(html).not.toContain("Repetir nivel");
+    expect(html).not.toContain("Reintentar nivel");
+    expect(html).toContain("Mapa");
+  });
+
   run("reto dorado: intro de reglas y arranque", () => {
     const el = renderLevel({ levelId: "gold-l1" });
     expect(htmlOf(el)).toContain("gold-intro");

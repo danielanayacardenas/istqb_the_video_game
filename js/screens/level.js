@@ -104,7 +104,7 @@ export function renderLevel({ levelId } = {}) {
           <li>${icon("star", { size: 16, fill: true })} <strong>${level.questions.length} preguntas</strong>: 1 nueva y el resto de lo que ya dominas.</li>
           <li>${icon("timer", { size: 16 })} <strong>Tiempo a la mitad</strong>: ${level.timePerQuestion} segundos por pregunta.</li>
           <li>${icon("heart", { size: 16 })} <strong>${level.lives} vidas</strong>: sin fallos te llevas las 3 estrellas doradas.</li>
-          <li>${icon("circle-check", { size: 16 })} Puedes repetirlo las veces que quieras para mejorar tus estrellas.</li>
+          <li>${icon("circle-check", { size: 16 })} Es único: al ganarlo queda sellado y no se repite para mejorar estrellas.</li>
         </ul>
         <div class="results-actions">
           <button class="btn btn-primary" data-action="start-gold">${icon("play", { size: 16, fill: true })} Comenzar reto</button>

@@ -96,7 +96,6 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
 /** Tarjeta dorada del Reto Dorado (siempre arriba del mapa). */
 function goldCardHtml(progress) {
   const stars = goldStars(progress);
-  const done = isLevelCompleted("gold-l1", progress);
   return `
     <article class="world-card gold-card">
       <div class="world-header gold-header">
@@ -106,12 +105,11 @@ function goldCardHtml(progress) {
           <div class="world-meta">
             <span class="world-count">${icon("timer", { size: 14 })} Tiempo a la mitad · 10 preguntas</span>
             <span class="world-stars">${icon("star", { size: 14, fill: true })} ${stars}/3</span>
-            ${done ? `<span class="world-count">${icon("circle-check", { size: 14, className: "ok" })} Completado</span>` : ""}
           </div>
         </div>
       </div>
       <div class="level-list">
-        <button class="level-row gold-row ${done ? "done" : ""}" data-level="gold-l1">
+        <button class="level-row gold-row" data-level="gold-l1">
           <span class="level-num">${icon("star", { size: 14, fill: true })}</span>
           <span class="level-name">${esc(goldChallenge.levels[0].title)}</span>
           <span class="mini-stars">${miniStars(stars)}</span>
@@ -153,6 +151,8 @@ function bossCardHtml(progress) {
 export function renderMap() {
   const progress = getState().progress;
   const goldUnlocked = isGoldUnlocked();
+  // El reto es único: al completarlo desaparece del mapa (quedan las doradas).
+  const goldDone = isLevelCompleted("gold-l1", progress);
 
   // Mundo activo: primer mundo desbloqueado, con contenido y sin completar
   let activeWorldIndex = worlds.findIndex(
@@ -183,7 +183,7 @@ export function renderMap() {
       </div>
     </header>
     <main class="map-body">
-      ${goldUnlocked ? goldCardHtml(progress) : ""}
+      ${goldUnlocked && !goldDone ? goldCardHtml(progress) : ""}
       ${worlds.map((world, wi) => worldCardHtml(world, wi, progress, activeWorldIndex)).join("")}
       ${bossCardHtml(progress)}
     </main>
