@@ -71,7 +71,7 @@ export const ACHIEVEMENTS = [
     id: "golden-legend",
     icon: "star",
     name: "Leyenda dorada",
-    description: "Supera el Reto Dorado (El 110 %).",
+    description: "Supera el Reto Dorado.",
     check: (progress) => progress["gold-l1"]?.completed === true,
   },
 ];
