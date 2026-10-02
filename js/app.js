@@ -6,6 +6,7 @@
 
 import { loadState } from "./state.js";
 import { checkAchievements } from "./engine/achievements.js";
+import { refreshGoldPending } from "./engine/gold.js";
 import { registerScreen, initRouter, onNavigate } from "./router.js";
 import { initMusic, setGameplay } from "./ui/music.js";
 import { renderStart } from "./screens/start.js";
@@ -20,6 +21,7 @@ const GAMEPLAY_SCREENS = new Set(["map", "level", "boss"]);
 window.addEventListener("DOMContentLoaded", () => {
   loadState();
   checkAchievements(); // desbloquea los logros ya merecidos por el progreso guardado
+  refreshGoldPending(); // reto dorado pendiente si ya se cruzó el umbral de estrellas
 
   registerScreen("start", renderStart);
   registerScreen("map", renderMap);

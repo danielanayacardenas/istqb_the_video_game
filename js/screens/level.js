@@ -9,6 +9,7 @@ import { createGame } from "../engine/game.js";
 import { starsFor } from "../engine/scoring.js";
 import { checkAchievements } from "../engine/achievements.js";
 import { createCombat } from "../engine/combat.js";
+import { buildGoldLevel, refreshGoldPending } from "../engine/gold.js";
 import { recordLevelResult, getSetting } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
@@ -78,7 +79,9 @@ export function renderLevel({ levelId } = {}) {
     return el;
   }
 
-  const { world, level } = found;
+  const { world } = found;
+  // El Reto Dorado arma sus preguntas en vivo desde el progreso.
+  const level = world.type === "gold" ? buildGoldLevel() : found.level;
   const game = createGame(level);
 
   const el = document.createElement("section");
@@ -327,6 +330,7 @@ export function renderLevel({ levelId } = {}) {
       correct: game.correct,
       wrong: game.wrong,
     });
+    refreshGoldPending();
     const newAchievements = checkAchievements();
 
     const goToResults = () => {

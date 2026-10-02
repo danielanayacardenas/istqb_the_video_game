@@ -13,6 +13,7 @@ import { world6 } from "./worlds/world6.js";
 import { challenge1 } from "./challenges/challenge1.js";
 import { challenge2 } from "./challenges/challenge2.js";
 import { challenge3 } from "./challenges/challenge3.js";
+import { goldChallenge } from "./gold/goldBank.js";
 
 // Los desafíos cruzados se añaden al final como pseudo-mundos
 // (mismo desbloqueo, progreso y estrellas que los mundos).
@@ -33,9 +34,11 @@ export function worldLabel(world) {
   return world.type === "challenge" ? `Desafío ${world.challengeNumber}` : `Mundo ${world.number}`;
 }
 
-/** Busca un nivel por id. Devuelve { world, level } o null. */
+export { goldChallenge };
+
+/** Busca un nivel por id (incluye el Reto Dorado). Devuelve { world, level } o null. */
 export function findLevel(levelId) {
-  for (const world of worlds) {
+  for (const world of [...worlds, goldChallenge]) {
     const level = world.levels.find((l) => l.id === levelId);
     if (level) return { world, level };
   }

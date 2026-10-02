@@ -20,6 +20,9 @@ const DEFAULT_STATE = {
     bestStreak: 0,
     bossCleared: false,
     bossBest: 0,
+    /** Reto Dorado: anuncio pendiente / desbloqueado. */
+    goldPending: false,
+    goldUnlocked: false,
   },
 };
 
