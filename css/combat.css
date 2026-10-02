@@ -213,6 +213,73 @@
 
 .combat-enemy.down { transform: rotate(88deg) translateY(6px); }
 
+/* Control de volumen de la música (esquina derecha de la escena) */
+.volume-control {
+  position: absolute;
+  right: 8px;
+  bottom: 2px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  background: rgba(8, 10, 22, 0.66);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  color: var(--text-100);
+  backdrop-filter: blur(3px);
+  pointer-events: auto;
+}
+
+.volume-control.floating {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 35;
+}
+
+.volume-btn {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.volume-btn:hover { background: rgba(255, 255, 255, 0.14); }
+
+.volume-btn:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 1px;
+}
+
+.volume-slider {
+  width: 72px;
+  height: 12px;
+  margin: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.volume-control.muted .volume-slider {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Espacio inferior para el control flotante en pantallas sin arena */
+.level-screen.has-volume,
+.boss-screen.has-volume {
+  padding-bottom: 56px;
+}
+
 /* Móvil: arena más compacta */
 @media (max-width: 640px) {
   .level-screen.has-combat { padding-bottom: 118px; }
@@ -220,6 +287,9 @@
   .combat-sprite { width: 56px; height: 56px; }
   .combat-actor { bottom: 22px; }
   .combat-hp { width: 64px; }
+  .volume-control { bottom: 0; padding: 1px 6px; }
+  .volume-btn { width: 16px; height: 16px; font-size: 11px; }
+  .volume-slider { width: 56px; }
 }
 
 /* Accesibilidad: sin animaciones para quien lo prefiera */

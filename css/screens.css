@@ -28,8 +28,8 @@
 }
 
 .start-logo {
-  font-size: 3.2rem;
-  line-height: 1;
+  width: clamp(88px, 22vw, 128px);
+  height: auto;
   animation: float 3.2s ease-in-out infinite;
   filter: drop-shadow(0 0 18px rgba(124, 92, 255, 0.6));
 }
@@ -57,11 +57,19 @@
 /* ---------- Selector de idioma ---------- */
 .lang-switch {
   display: inline-flex;
+  align-items: center;
   gap: 0.4rem;
   padding: 0.35rem;
   background: var(--bg-800);
   border: 1px solid var(--bg-600);
   border-radius: var(--radius-full);
+}
+
+.lang-switch-icon {
+  display: flex;
+  align-items: center;
+  padding-left: 0.45rem;
+  color: var(--text-500);
 }
 
 .lang-btn {
@@ -196,9 +204,13 @@
   line-height: 1;
 }
 
-.heart.off {
-  filter: grayscale(1);
-  opacity: 0.45;
+.heart.on .icon {
+  color: var(--danger);
+}
+
+.heart.off .icon {
+  color: var(--text-500);
+  opacity: 0.55;
 }
 
 .hud-streak {
@@ -431,7 +443,8 @@
 }
 
 .results-emoji {
-  font-size: 3rem;
+  display: flex;
+  justify-content: center;
   line-height: 1;
 }
 
@@ -457,9 +470,12 @@
   animation: star-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
 }
 
+.star.on .icon {
+  color: var(--star);
+}
+
 .star.off {
-  opacity: 0.22;
-  filter: grayscale(1);
+  opacity: 0.35;
 }
 
 .results-stats {
@@ -596,10 +612,16 @@
   cursor: default;
 }
 
-.world-emoji {
-  font-size: 1.9rem;
-  line-height: 1;
+.world-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  color: var(--text-300);
 }
+
+.world-status .icon.ok { color: var(--success); }
+.world-status .icon.now { color: var(--secondary); }
 
 .world-info {
   flex: 1;
@@ -784,11 +806,9 @@
   outline: 2px solid var(--primary-light);
 }
 
-.boss-cell.marked::after {
-  content: "⚑";
+.boss-cell .cell-flag {
   display: block;
-  font-size: 0.6rem;
-  line-height: 0.8;
+  margin: 0 auto;
   color: var(--star);
 }
 
@@ -864,6 +884,11 @@
   align-items: center;
 }
 
+.map-music.muted {
+  color: var(--text-500);
+  border-color: var(--bg-600);
+}
+
 .achievements-unlocked {
   margin-top: 1.2rem;
   padding: 0.8rem 1rem;
@@ -897,6 +922,9 @@
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border: 1px solid var(--bg-500);
   background: var(--bg-800);
   color: var(--text-300);
@@ -907,7 +935,120 @@
   cursor: pointer;
 }
 
+.chip .icon {
+  flex: none;
+}
+
 .chip[aria-pressed="true"] {
   border-color: var(--success);
   color: var(--text-100);
+}
+
+/* ---------- Modal de configuración (estilo videojuego) ---------- */
+.settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(4, 6, 14, 0.72);
+  backdrop-filter: blur(3px);
+  animation: settings-fade 0.18s ease-out;
+}
+
+.settings-modal[hidden] {
+  display: none;
+}
+
+.settings-dialog {
+  width: min(400px, 92vw);
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--bg-700) 0%, var(--bg-800) 100%);
+  box-shadow: var(--shadow-deep), var(--glow-primary);
+  animation: settings-pop 0.22s ease-out;
+}
+
+.settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--bg-600);
+}
+
+.settings-title {
+  font-size: 1.15rem;
+}
+
+.settings-list {
+  display: grid;
+  padding: 0.5rem 0.6rem 0.7rem;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.55rem;
+  border-bottom: 1px dashed var(--bg-600);
+}
+
+.settings-item:last-child {
+  border-bottom: 0;
+}
+
+.settings-item-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  color: var(--text-100);
+}
+
+.settings-item-label .icon {
+  color: var(--text-500);
+}
+
+.setting-toggle {
+  min-width: 64px;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--bg-500);
+  border-radius: var(--radius-full);
+  background: var(--bg-900);
+  color: var(--text-500);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.setting-toggle[aria-pressed="true"] {
+  border-color: var(--success);
+  background: rgba(46, 234, 131, 0.12);
+  color: var(--success);
+  box-shadow: 0 0 12px rgba(46, 234, 131, 0.25);
+}
+
+.setting-toggle:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+@keyframes settings-fade {
+  from { opacity: 0; }
+}
+
+@keyframes settings-pop {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settings-modal,
+  .settings-dialog { animation: none; }
 }

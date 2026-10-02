@@ -8,7 +8,7 @@ export const world1 = {
   id: "w1",
   number: 1,
   title: "Fundamentos de Testing",
-  emoji: "🧪",
+  icon: "flask-conical",
   description:
     "Qué es el testing, sus objetivos, principios, el proceso de prueba y la psicología del tester.",
   levels: [

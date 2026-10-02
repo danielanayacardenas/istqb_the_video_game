@@ -10,7 +10,7 @@ export const challenge2 = {
   challengeNumber: 2,
   type: "challenge",
   title: "Diseño y cálculo",
-  emoji: "⚔️",
+  icon: "swords",
   description: "Casos trampa de técnicas de diseño: particiones, límites, tablas, estados y cobertura.",
   levels: [
     {

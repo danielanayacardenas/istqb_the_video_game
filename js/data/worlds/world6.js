@@ -8,7 +8,7 @@ export const world6 = {
   id: "w6",
   number: 6,
   title: "Soporte de Herramientas",
-  emoji: "🛠️",
+  icon: "wrench",
   description:
     "Tipos de herramientas de prueba, beneficios y riesgos de la automatización, e introducción en la organización.",
   levels: [

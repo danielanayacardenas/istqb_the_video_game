@@ -8,6 +8,7 @@ import { getNextLevel, worlds, findLevel, worldLabel } from "../data/index.js";
 import { getState } from "../state.js";
 import { isWorldCompleted } from "../engine/progress.js";
 import { esc } from "../utils.js";
+import { icon } from "../ui/icons.js";
 
 export function renderResults(params = {}) {
   const {
@@ -36,8 +37,9 @@ export function renderResults(params = {}) {
         nextWorld.levels.length > 0 &&
         isWorldCompleted(found.world, getState().progress)
       ) {
-        const doneEmoji = found.world.type === "challenge" ? "⚔️" : "🌍";
-        worldBanner = `<p class="results-world-banner">${doneEmoji} ¡${worldLabel(found.world)} completado! Se desbloqueó el <strong>${worldLabel(nextWorld)} — ${esc(nextWorld.title)}</strong></p>`;
+        const doneIcon =
+          found.world.type === "challenge" ? icon("swords", { size: 16 }) : icon("globe", { size: 16 });
+        worldBanner = `<p class="results-world-banner">${doneIcon} ¡${worldLabel(found.world)} completado! Se desbloqueó el <strong>${worldLabel(nextWorld)} — ${esc(nextWorld.title)}</strong></p>`;
       }
     }
   }
@@ -46,7 +48,7 @@ export function renderResults(params = {}) {
   el.className = "screen results-screen";
   el.innerHTML = `
     <div class="results-card card">
-      <div class="results-emoji">${won ? "🎉" : "💥"}</div>
+      <div class="results-emoji">${won ? icon("party-popper", { size: 44 }) : icon("bomb", { size: 44 })}</div>
       <h2 class="results-title">${won ? "¡Nivel completado!" : "¡Te quedaste sin vidas!"}</h2>
       <p class="results-topic">${esc(topic)}</p>
 
@@ -56,7 +58,7 @@ export function renderResults(params = {}) {
               ${[0, 1, 2]
                 .map(
                   (i) =>
-                    `<span class="star ${i < stars ? "on" : "off"}" style="animation-delay:${i * 0.18}s">⭐</span>`
+                    `<span class="star ${i < stars ? "on" : "off"}" style="animation-delay:${i * 0.18}s">${icon("star", { size: 38, fill: i < stars })}</span>`
                 )
                 .join("")}
             </div>`
@@ -81,7 +83,7 @@ export function renderResults(params = {}) {
       ${
         !won
           ? `<p class="results-hint">
-              📚 Te recomendamos repasar este módulo antes de reintentar:<br>
+              ${icon("book-open", { size: 16 })} Te recomendamos repasar este módulo antes de reintentar:<br>
               <strong>${esc(topic)}</strong>
             </p>`
           : ""
@@ -92,11 +94,11 @@ export function renderResults(params = {}) {
       ${
         newAchievements.length > 0
           ? `<div class="achievements-unlocked">
-              <h3>🏆 ¡Logros desbloqueados!</h3>
+              <h3>${icon("trophy", { size: 18 })} ¡Logros desbloqueados!</h3>
               ${newAchievements
                 .map(
                   (a) =>
-                    `<p class="achievement-item">${a.emoji} <strong>${esc(a.name)}</strong> — ${esc(a.description)}</p>`
+                    `<p class="achievement-item">${icon(a.icon, { size: 16 })} <strong>${esc(a.name)}</strong> — ${esc(a.description)}</p>`
                 )
                 .join("")}
             </div>`
@@ -104,11 +106,11 @@ export function renderResults(params = {}) {
       }
 
       <div class="results-actions">
-        ${next ? `<button class="btn btn-primary" data-action="next">▶ Siguiente nivel</button>` : ""}
+        ${next ? `<button class="btn btn-primary" data-action="next">${icon("play", { size: 16, fill: true })} Siguiente nivel</button>` : ""}
         <button class="btn ${next ? "btn-ghost" : "btn-primary"}" data-action="retry">
-          🔁 ${won ? "Repetir nivel" : "Reintentar nivel"}
+          ${icon("rotate-ccw", { size: 16 })} ${won ? "Repetir nivel" : "Reintentar nivel"}
         </button>
-        <button class="btn btn-ghost" data-action="map">🗺️ Mapa</button>
+        <button class="btn btn-ghost" data-action="map">${icon("map", { size: 16 })} Mapa</button>
       </div>
     </div>
   `;

@@ -8,7 +8,7 @@ export const world4 = {
   id: "w4",
   number: 4,
   title: "Análisis y Diseño de Pruebas",
-  emoji: "🎯",
+  icon: "target",
   description:
     "Proceso de diseño, técnicas de caja negra, caja blanca, basadas en experiencia y enfoques colaborativos.",
   levels: [

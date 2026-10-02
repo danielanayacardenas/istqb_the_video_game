@@ -49,7 +49,7 @@ describe("progreso persistente", () => {
   });
 
   test("los ajustes de juego se persisten y se mezclan con los valores por defecto", () => {
-    expect(getState().settings).toEqual({ combat: true, sound: true });
+    expect(getState().settings).toEqual({ combat: true, sound: true, music: true, musicVolume: 0.6 });
     setSetting("sound", false);
     expect(getState().settings.sound).toBe(false);
     expect(getState().settings.combat).toBe(true);

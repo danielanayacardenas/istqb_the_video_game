@@ -10,7 +10,7 @@ export const challenge3 = {
   challengeNumber: 3,
   type: "challenge",
   title: "Gestión bajo presión",
-  emoji: "⚔️",
+  icon: "swords",
   description: "Escenarios de planificación, riesgos, defectos, monitoreo y herramientas.",
   levels: [
     {
