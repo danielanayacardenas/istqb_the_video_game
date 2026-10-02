@@ -39,6 +39,7 @@
   --shadow-deep: 0 16px 48px rgba(0, 0, 0, 0.5);
   --glow-primary: 0 0 18px rgba(124, 92, 255, 0.55);
   --glow-secondary: 0 0 18px rgba(0, 212, 255, 0.45);
+  --glow-success: 0 0 18px rgba(46, 234, 131, 0.55);
 }
 
 * {
