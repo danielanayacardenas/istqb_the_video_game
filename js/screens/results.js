@@ -31,8 +31,9 @@ export function renderResults(params = {}) {
     const found = findLevel(levelId);
     if (found) {
       const wi = worlds.indexOf(found.world);
-      const nextWorld = wi + 1 < worlds.length ? worlds[wi + 1] : null;
+      const nextWorld = wi >= 0 && wi + 1 < worlds.length ? worlds[wi + 1] : null;
       if (
+        wi >= 0 &&
         nextWorld &&
         nextWorld.levels.length > 0 &&
         isWorldCompleted(found.world, getState().progress)
