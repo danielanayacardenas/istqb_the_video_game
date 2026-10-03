@@ -1,10 +1,10 @@
 // =====================================================
 // ISTQB Quest — screens/map.js
 // Mapa del juego: 6 mundos con desbloqueo progresivo,
-// niveles secuenciales, estrellas y progreso.
+// niveles secuenciales, estrellas, progreso y Reto Dorado.
 // =====================================================
 
-import { worlds, worldLabel } from "../data/index.js";
+import { worlds, worldLabel, goldChallenge } from "../data/index.js";
 import { getState } from "../state.js";
 import { navigate } from "../router.js";
 import { esc } from "../utils.js";
@@ -19,7 +19,11 @@ import {
   worldStats,
   globalStars,
 } from "../engine/progress.js";
+import { goldStars, isGoldUnlocked } from "../engine/gold.js";
 import { ACHIEVEMENTS } from "../engine/achievements.js";
+
+/** Desconecta los listeners del desglose de estrellas anterior. */
+let detachStarsPopover = null;
 
 /** Tres estrellas pequeñas: llenas según las obtenidas. */
 function miniStars(count, max = 3) {
@@ -89,6 +93,32 @@ function worldCardHtml(world, wi, progress, activeWorldIndex) {
   `;
 }
 
+/** Tarjeta dorada del Reto Dorado (siempre arriba del mapa). */
+function goldCardHtml(progress) {
+  const stars = goldStars(progress);
+  return `
+    <article class="world-card gold-card">
+      <div class="world-header gold-header">
+        <span class="world-icon gold-icon">${icon("star", { size: 26, fill: true })}</span>
+        <div class="world-info">
+          <h2 class="world-title">${esc(goldChallenge.title)} · El 110 %</h2>
+          <div class="world-meta">
+            <span class="world-count">${icon("timer", { size: 14 })} Tiempo a la mitad · 10 preguntas</span>
+            <span class="world-stars">${icon("star", { size: 14, fill: true })} ${stars}/3</span>
+          </div>
+        </div>
+      </div>
+      <div class="level-list">
+        <button class="level-row gold-row" data-level="gold-l1">
+          <span class="level-num">${icon("star", { size: 14, fill: true })}</span>
+          <span class="level-name">${esc(goldChallenge.levels[0].title)}</span>
+          <span class="mini-stars">${miniStars(stars)}</span>
+        </button>
+      </div>
+    </article>
+  `;
+}
+
 /** Tarjeta especial del Boss Final. */
 function bossCardHtml(progress) {
   const allDone = worlds.every((w) => w.levels.length > 0 && isWorldCompleted(w, progress));
@@ -120,6 +150,9 @@ function bossCardHtml(progress) {
 
 export function renderMap() {
   const progress = getState().progress;
+  const goldUnlocked = isGoldUnlocked();
+  // El reto es único: al completarlo desaparece del mapa (quedan las doradas).
+  const goldDone = isLevelCompleted("gold-l1", progress);
 
   // Mundo activo: primer mundo desbloqueado, con contenido y sin completar
   let activeWorldIndex = worlds.findIndex(
@@ -133,14 +166,24 @@ export function renderMap() {
       <button class="icon-btn" data-action="home" title="Volver al inicio">${icon("house", { size: 18 })}</button>
       <h1 class="map-title">Mapa del juego</h1>
       <div class="map-badges">
-        <div class="map-stars" title="Estrellas conseguidas">${icon("star", { size: 15, fill: true })} ${globalStars(progress)}</div>
+        <button class="map-stars" data-action="stars" title="Estrellas: ver desglose">${icon("star", { size: 15, fill: true })} ${globalStars(progress)}</button>
+        ${
+          goldUnlocked
+            ? `<button class="map-stars gold-stars" data-action="stars" title="Estrellas doradas: ver desglose">${icon("star", { size: 15, fill: true, className: "gold" })} ${goldStars(progress)}</button>`
+            : ""
+        }
         <div class="map-stars" title="Logros desbloqueados">${icon("trophy", { size: 15 })} ${getState().achievements.length}/${ACHIEVEMENTS.length}</div>
         <button class="icon-btn map-music" data-action="music">
           ${icon("music", { size: 18 })}
         </button>
+        <div class="stars-popover" data-el="stars-popover" hidden>
+          <p class="stars-row">${icon("star", { size: 15, fill: true })} Estrellas <strong>${globalStars(progress)}</strong></p>
+          <p class="stars-row">${icon("star", { size: 15, fill: true, className: "gold" })} Doradas <strong>${goldStars(progress)}</strong></p>
+        </div>
       </div>
     </header>
     <main class="map-body">
+      ${goldUnlocked && !goldDone ? goldCardHtml(progress) : ""}
       ${worlds.map((world, wi) => worldCardHtml(world, wi, progress, activeWorldIndex)).join("")}
       ${bossCardHtml(progress)}
     </main>
@@ -164,6 +207,35 @@ export function renderMap() {
     paintMusicBtn();
   });
   paintMusicBtn();
+
+  /* ---------- Desglose de estrellas ---------- */
+  const starsPopover = el.querySelector('[data-el="stars-popover"]');
+  const starsButtons = [...el.querySelectorAll('[data-action="stars"]')];
+  const setPopoverOpen = (open) => {
+    starsPopover.hidden = !open;
+  };
+
+  starsButtons.forEach((btn) => {
+    btn.addEventListener("click", () => setPopoverOpen(starsPopover.hidden));
+  });
+
+  const onDocumentClick = (ev) => {
+    if (starsPopover.hidden) return;
+    if (starsPopover.contains(ev.target) || starsButtons.some((b) => b.contains(ev.target))) return;
+    setPopoverOpen(false);
+  };
+  const onDocumentKey = (ev) => {
+    if (ev.key === "Escape" && !starsPopover.hidden) setPopoverOpen(false);
+  };
+
+  detachStarsPopover?.();
+  document.addEventListener("click", onDocumentClick);
+  document.addEventListener("keydown", onDocumentKey);
+  detachStarsPopover = () => {
+    document.removeEventListener("click", onDocumentClick);
+    document.removeEventListener("keydown", onDocumentKey);
+    detachStarsPopover = null;
+  };
 
   /* ---------- Expandir / colapsar mundos ---------- */
   el.querySelectorAll('.world-header[data-action="toggle"]').forEach((header) => {

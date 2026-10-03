@@ -8,6 +8,7 @@ import "./helpers.mjs";
 import { describe, test, expect } from "bun:test";
 import { worlds } from "../js/data/index.js";
 import { bossBank } from "../js/data/boss/bank.js";
+import { goldQuestions } from "../js/data/gold/goldBank.js";
 
 const TEXT_FIELDS = [
   "id",
@@ -135,6 +136,33 @@ describe("integridad del banco de preguntas", () => {
       expect(c.type).toBe("challenge");
       expect(c.levels.length).toBe(1);
       expect(c.levels[0].questions.length).toBe(11);
+    }
+  });
+});
+
+describe("integridad del banco dorado", () => {
+  test("tiene 6 preguntas (una por mundo) con ids únicos en todo el juego", () => {
+    expect(goldQuestions.length).toBe(6);
+    expect(new Set(goldQuestions.map((q) => q.world)).size).toBe(6);
+    const all = [...allQuestions.map((q) => q.id), ...goldQuestions.map((q) => q.id)];
+    expect(new Set(all).size).toBe(all.length);
+  });
+
+  test("cada pregunta dorada tiene campos completos, opciones válidas y mundo", () => {
+    for (const q of goldQuestions) {
+      for (const field of TEXT_FIELDS) {
+        expect(q[field], `falta el campo "${field}" en ${q.id}`).toBeTruthy();
+      }
+      expect(["w1", "w2", "w3", "w4", "w5", "w6"]).toContain(q.world);
+      expect(Array.isArray(q.options), `options inválido en ${q.id}`).toBe(true);
+      expect(q.options.length, `opciones insuficientes en ${q.id}`).toBeGreaterThanOrEqual(3);
+      const idxs = Array.isArray(q.correct) ? q.correct : [q.correct];
+      for (const c of idxs) {
+        expect(c, `índice correct inválido en ${q.id}`).toBeGreaterThanOrEqual(0);
+        expect(c, `índice correct fuera de rango en ${q.id}`).toBeLessThan(q.options.length);
+      }
+      const normalized = q.options.map((o) => o.trim().toLowerCase());
+      expect(new Set(normalized).size, `opciones duplicadas en ${q.id}`).toBe(normalized.length);
     }
   });
 });

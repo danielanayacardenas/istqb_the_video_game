@@ -24,15 +24,17 @@ export function renderResults(params = {}) {
   } = params;
 
   const next = won ? getNextLevel(levelId) : null;
+  const found = findLevel(levelId);
+  const isGold = found?.world?.type === "gold";
 
   // Banner cuando se acaba de completar un mundo y el siguiente tiene contenido
   let worldBanner = "";
   if (won) {
-    const found = findLevel(levelId);
     if (found) {
       const wi = worlds.indexOf(found.world);
-      const nextWorld = wi + 1 < worlds.length ? worlds[wi + 1] : null;
+      const nextWorld = wi >= 0 && wi + 1 < worlds.length ? worlds[wi + 1] : null;
       if (
+        wi >= 0 &&
         nextWorld &&
         nextWorld.levels.length > 0 &&
         isWorldCompleted(found.world, getState().progress)
@@ -107,17 +109,22 @@ export function renderResults(params = {}) {
 
       <div class="results-actions">
         ${next ? `<button class="btn btn-primary" data-action="next">${icon("play", { size: 16, fill: true })} Siguiente nivel</button>` : ""}
-        <button class="btn ${next ? "btn-ghost" : "btn-primary"}" data-action="retry">
-          ${icon("rotate-ccw", { size: 16 })} ${won ? "Repetir nivel" : "Reintentar nivel"}
-        </button>
-        <button class="btn btn-ghost" data-action="map">${icon("map", { size: 16 })} Mapa</button>
+        ${
+          isGold
+            ? ""
+            : `<button class="btn ${next ? "btn-ghost" : "btn-primary"}" data-action="retry">
+                ${icon("rotate-ccw", { size: 16 })} ${won ? "Repetir nivel" : "Reintentar nivel"}
+              </button>`
+        }
+        <button class="btn ${isGold ? "btn-primary" : "btn-ghost"}" data-action="map">${icon("map", { size: 16 })} Mapa</button>
       </div>
     </div>
   `;
 
-  el.querySelector('[data-action="retry"]').addEventListener("click", () =>
-    navigate("level", { levelId })
-  );
+  const retryBtn = el.querySelector('[data-action="retry"]');
+  if (retryBtn) {
+    retryBtn.addEventListener("click", () => navigate("level", { levelId }));
+  }
   el.querySelector('[data-action="map"]').addEventListener("click", () => navigate("map"));
 
   const nextBtn = el.querySelector('[data-action="next"]');

@@ -7,6 +7,7 @@
 
 import { worlds } from "../js/data/index.js";
 import { bossBank } from "../js/data/boss/bank.js";
+import { goldQuestions } from "../js/data/gold/goldBank.js";
 
 const RANGE = { min: 0.7, max: 1.4 };
 const GLOBAL_TARGET = 1.15;
@@ -39,6 +40,7 @@ const sections = [
     questions: w.levels.flatMap((l) => l.questions),
   })),
   { name: "Boss Final (banco)", questions: bossBank },
+  { name: "Reto Dorado (banco)", questions: goldQuestions },
 ];
 
 const sectionReports = [];

@@ -3,12 +3,19 @@
 // Pantalla de juego de un nivel: pregunta, opciones (simple
 // y multi-selección), vidas, temporizador pausable, racha,
 // feedback inmediato y combate arcade.
+// El Reto Dorado muestra una intro de reglas antes de jugar.
 // =====================================================
 
 import { createGame } from "../engine/game.js";
 import { starsFor } from "../engine/scoring.js";
 import { checkAchievements } from "../engine/achievements.js";
 import { createCombat } from "../engine/combat.js";
+import {
+  announceGoldChallenge,
+  buildGoldLevel,
+  isGoldPending,
+  refreshGoldPending,
+} from "../engine/gold.js";
 import { recordLevelResult, getSetting } from "../state.js";
 import { navigate } from "../router.js";
 import { findLevel } from "../data/index.js";
@@ -78,293 +85,435 @@ export function renderLevel({ levelId } = {}) {
     return el;
   }
 
-  const { world, level } = found;
-  const game = createGame(level);
+  const { world } = found;
+  const isGold = world.type === "gold";
+  // El Reto Dorado arma sus preguntas en vivo desde el progreso.
+  const level = isGold ? buildGoldLevel() : found.level;
 
   const el = document.createElement("section");
   el.className = "screen level-screen";
-  el.innerHTML = `
-    <header class="level-topbar">
-      <button class="icon-btn" data-action="exit" title="Salir del nivel">${icon("x", { size: 18 })}</button>
-      <div class="hud-lives" data-el="lives" aria-label="Vidas"></div>
-      <div class="hud-streak" data-el="streak" aria-label="Racha"></div>
-      <div class="hud-timer" aria-label="Tiempo restante">
-        <div class="timer-fill" data-el="timer"></div>
+
+  /* ---------- Intro del Reto Dorado ---------- */
+  function renderGoldIntro() {
+    el.innerHTML = `
+      <div class="results-card card gold-intro">
+        <div class="results-emoji gold-icon">${icon("star", { size: 44, fill: true })}</div>
+        <h2 class="results-title">Reto Dorado · El 110 %</h2>
+        <p class="results-topic">${esc(level.topic)}</p>
+        <ul class="boss-rules">
+          <li>${icon("star", { size: 16, fill: true })} <strong>${level.questions.length} preguntas</strong>: 1 nueva y el resto de lo que ya dominas.</li>
+          <li>${icon("timer", { size: 16 })} <strong>Tiempo a la mitad</strong>: ${level.timePerQuestion} segundos por pregunta.</li>
+          <li>${icon("heart", { size: 16 })} <strong>${level.lives} vidas</strong>: sin fallos te llevas las 3 estrellas doradas.</li>
+          <li>${icon("circle-check", { size: 16 })} Es único: al ganarlo queda sellado y no se repite para mejorar estrellas.</li>
+        </ul>
+        <div class="results-actions">
+          <button class="btn btn-primary" data-action="start-gold">${icon("play", { size: 16, fill: true })} Comenzar reto</button>
+          <button class="btn btn-ghost" data-action="back">${icon("map", { size: 16 })} Volver al mapa</button>
+        </div>
       </div>
-    </header>
-    <div class="level-progress">
-      <span data-el="counter"></span>
-      <div class="progress-track">
-        <div class="progress-fill" data-el="progress"></div>
-      </div>
-    </div>
-    <main class="level-body" data-el="body"></main>
-    <div class="combat-strip" data-el="combat"></div>
-  `;
-
-  const livesEl = el.querySelector('[data-el="lives"]');
-  const streakEl = el.querySelector('[data-el="streak"]');
-  const timerEl = el.querySelector('[data-el="timer"]');
-  const counterEl = el.querySelector('[data-el="counter"]');
-  const progressEl = el.querySelector('[data-el="progress"]');
-  const bodyEl = el.querySelector('[data-el="body"]');
-
-  /* ---------- Combate arcade (franja inferior) ---------- */
-  const combatEnabled = getSetting("combat") !== false;
-  const combatSlot = el.querySelector('[data-el="combat"]');
-  let combat = null;
-  let combatScene = null;
-
-  /* ---------- Control de volumen (solo música) ---------- */
-  const volumeControl = createVolumeControl();
-  if (combatEnabled) {
-    combat = createCombat({ lives: game.maxLives, questions: game.total });
-    combatScene = createCombatScene(combatSlot, { theme: world.id });
-    combatScene.setEnemyHp(combat.enemyHpRatio());
-    el.classList.add("has-combat");
-    combatSlot.appendChild(volumeControl.el);
-  } else {
-    volumeControl.el.classList.add("floating");
-    el.appendChild(volumeControl.el);
-    el.classList.add("has-volume");
-    combatSlot.remove();
+    `;
+    el.querySelector('[data-action="start-gold"]').addEventListener("click", () => startGame());
+    el.querySelector('[data-action="back"]').addEventListener("click", () => navigate("map"));
+    window.scrollTo(0, 0);
   }
 
-  let timer = null;
-  let locked = false;
+  /* ---------- Juego del nivel ---------- */
+  function startGame() {
+    const game = createGame(level);
+    let goldPending = isGoldPending();
 
-  /* ---------- HUD ---------- */
-  function paintHud() {
-    livesEl.innerHTML = Array.from({ length: game.maxLives }, (_, i) => {
-      const on = i < game.lives;
-      return `<span class="heart ${on ? "on" : "off"}">${on ? icon("heart", { size: 16, fill: true }) : icon("heart", { size: 16 })}</span>`;
-    }).join("");
-
-    const s = game.streak;
-    streakEl.innerHTML = `${icon("flame", { size: 15, fill: true })} x${s}`;
-    streakEl.classList.toggle("visible", s >= 1);
-    streakEl.classList.toggle("hot", s >= 3);
-  }
-
-  function paintProgress() {
-    counterEl.textContent = `Pregunta ${game.index + 1} de ${game.total}`;
-    progressEl.style.width = `${(game.index / game.total) * 100}%`;
-  }
-
-  /* ---------- Pregunta ---------- */
-  function renderQuestion() {
-    locked = false;
-    timer?.stop();
-
-    paintHud();
-    paintProgress();
-
-    timerEl.style.width = "100%";
-    timerEl.classList.remove("low");
-
-    const q = game.current();
-    const isMulti = q.type === "multi";
-    const required = q.correctIndexes.length;
-    const selected = new Set();
-
-    bodyEl.innerHTML = `
-      <div class="question-card card">
-        <p class="question-topic">${esc(level.topic ?? "")}</p>
-        <h2 class="question-text">${esc(q.question)}</h2>
+    el.innerHTML = `
+      <header class="level-topbar">
+        <button class="icon-btn" data-action="exit" title="Salir del nivel">${icon("x", { size: 18 })}</button>
+        <div class="hud-lives" data-el="lives" aria-label="Vidas"></div>
+        <div class="hud-streak" data-el="streak" aria-label="Racha"></div>
+        <div class="hud-timer" aria-label="Tiempo restante">
+          <div class="timer-fill" data-el="timer"></div>
+        </div>
+      </header>
+      <div class="level-progress">
+        <span data-el="counter"></span>
+        <div class="progress-track">
+          <div class="progress-fill" data-el="progress"></div>
+        </div>
       </div>
+      <main class="level-body" data-el="body"></main>
+      <div class="combat-strip" data-el="combat"></div>
       ${
-        isMulti
-          ? `<p class="multi-hint">${icon("puzzle", { size: 16 })} Selecciona <strong>${required}</strong> opciones —
-              <span data-el="multi-count">0/${required}</span></p>`
-          : ""
-      }
-      <div class="options">
-        ${q.options
-          .map(
-            (opt, i) => `
-          <button class="option-btn" data-index="${i}">
-            <span class="option-letter">${LETTERS[i]}</span>
-            <span class="option-text">${esc(opt)}</span>
-          </button>`
-          )
-          .join("")}
-      </div>
-      ${
-        isMulti
-          ? `<div class="multi-actions">
-              <button class="btn btn-primary" data-action="confirm" disabled>Confirmar respuesta</button>
+        goldPending
+          ? `<div class="gold-modal" data-el="gold-modal" hidden>
+              <div class="gold-dialog" role="dialog" aria-modal="true" aria-labelledby="gold-dialog-title">
+                <div class="gold-dialog-star">${icon("star", { size: 44, fill: true })}</div>
+                <h2 id="gold-dialog-title">¡Has desbloqueado un reto extra!</h2>
+                <p>El <strong>Reto Dorado</strong> te espera: 10 preguntas, una nueva y el resto de lo que ya dominas.</p>
+                <div class="results-actions">
+                  <button class="btn btn-primary" data-action="gold-go">${icon("star", { size: 16, fill: true })} Ir a él</button>
+                  <button class="btn btn-ghost" data-action="gold-later">Después</button>
+                </div>
+                <button class="icon-btn gold-close" data-action="gold-close" aria-label="Cerrar">${icon("x", { size: 18 })}</button>
+              </div>
             </div>`
           : ""
       }
-      <div class="feedback" data-el="feedback" hidden></div>
     `;
 
-    const optionBtns = [...bodyEl.querySelectorAll(".option-btn")];
+    const livesEl = el.querySelector('[data-el="lives"]');
+    const streakEl = el.querySelector('[data-el="streak"]');
+    const timerEl = el.querySelector('[data-el="timer"]');
+    const counterEl = el.querySelector('[data-el="counter"]');
+    const progressEl = el.querySelector('[data-el="progress"]');
+    const bodyEl = el.querySelector('[data-el="body"]');
 
-    if (isMulti) {
-      const countEl = bodyEl.querySelector('[data-el="multi-count"]');
-      const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
+    /* ---------- Combate arcade (franja inferior) ---------- */
+    const combatEnabled = getSetting("combat") !== false;
+    const combatSlot = el.querySelector('[data-el="combat"]');
+    let combat = null;
+    let combatScene = null;
 
-      optionBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          if (locked) return;
-          const idx = Number(btn.dataset.index);
-          if (selected.has(idx)) {
-            selected.delete(idx);
-            btn.classList.remove("selected");
-          } else {
-            if (selected.size >= required) return; // límite: solo N
-            selected.add(idx);
-            btn.classList.add("selected");
-          }
-          countEl.textContent = `${selected.size}/${required}`;
-          confirmBtn.disabled = selected.size !== required;
-        });
-      });
-
-      confirmBtn.addEventListener("click", () => handleAnswer([...selected], false));
-    } else {
-      optionBtns.forEach((btn) => {
-        btn.addEventListener("click", () => handleAnswer(Number(btn.dataset.index), false));
-      });
-    }
-
-    timer = createTimer({
-      seconds: level.timePerQuestion ?? 60,
-      onTick: (ratio) => {
-        timerEl.style.width = `${ratio * 100}%`;
-        timerEl.classList.toggle("low", ratio <= 0.25);
-      },
-      onEnd: () => handleAnswer(null, true),
-    });
-    timer.start();
-  }
-
-  /* ---------- Respuesta ---------- */
-  function handleAnswer(selection, timedOut) {
-    if (locked) return;
-    locked = true;
-    timer?.stop();
-
-    const result = game.submit(selection, { timedOut });
-
-    if (combat && combatScene && result) {
-      const event = result.isCorrect ? combat.hit() : combat.miss();
-      combatScene.play(event);
+    /* ---------- Control de volumen (solo música) ---------- */
+    const volumeControl = createVolumeControl();
+    if (combatEnabled) {
+      combat = createCombat({ lives: game.maxLives, questions: game.total });
+      combatScene = createCombatScene(combatSlot, { theme: world.id });
       combatScene.setEnemyHp(combat.enemyHpRatio());
-      if (getSetting("sound") !== false) playSfxEvent(event.type);
-    }
-
-    const q = game.current();
-    const chosen = timedOut || selection == null ? [] : Array.isArray(selection) ? selection : [selection];
-
-    bodyEl.querySelectorAll(".option-btn").forEach((btn, i) => {
-      btn.disabled = true;
-      btn.classList.remove("selected");
-      if (q.correctIndexes.includes(i)) btn.classList.add("correct");
-      else if (chosen.includes(i)) btn.classList.add("wrong");
-    });
-
-    const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
-    if (confirmBtn) confirmBtn.disabled = true;
-
-    paintHud();
-    showFeedback(result, q);
-  }
-
-  /* ---------- Feedback inmediato ---------- */
-  function showFeedback(result, q) {
-    const fb = bodyEl.querySelector('[data-el="feedback"]');
-    const willEnd = game.lives <= 0 || game.isLast();
-
-    fb.hidden = false;
-    fb.className = `feedback card ${result.isCorrect ? "feedback-ok" : "feedback-bad"}`;
-
-    let html = "";
-    if (result.isCorrect) {
-      const hot =
-        game.streak >= 3
-          ? ` <span class="feedback-streak">${icon("flame", { size: 15, fill: true })} x${game.streak} ¡En llamas!</span>`
-          : "";
-      html += `<p class="feedback-head">${icon("circle-check", { size: 16 })} ¡Correcto!${hot}</p>`;
-      html += `<p>${esc(q.explanation)}</p>`;
-      html += `<p>${icon("lightbulb", { size: 16 })} <strong>Ejemplo:</strong> ${esc(q.example)}</p>`;
-      html += `<p>${icon("wrench", { size: 16 })} <strong>Caso de uso:</strong> ${esc(q.useCase)}</p>`;
+      el.classList.add("has-combat");
+      combatSlot.appendChild(volumeControl.el);
     } else {
-      const letters = q.correctIndexes.map((i) => LETTERS[i]).join(" y ");
-      const texts = q.correctIndexes.map((i) => esc(q.options[i])).join(" · ");
-      const label = q.correctIndexes.length > 1 ? "Las respuestas correctas eran" : "La respuesta correcta era";
-      html += `<p class="feedback-head">${result.timedOut ? `${icon("alarm-clock", { size: 16 })} ¡Se acabó el tiempo!` : `${icon("circle-x", { size: 16 })} Incorrecto`}</p>`;
-      html += `<p class="answer-reveal">${label} ${letters}: ${texts}</p>`;
-      html += `<p>${esc(q.explanation)}</p>`;
-      html += `<p>${icon("pin", { size: 16 })} <strong>Recuerda:</strong> ${esc(q.mistake)}</p>`;
-      html += `<p class="syllabus">${icon("book-open", { size: 16 })} Te recomendamos repasar: ${esc(q.syllabusRef)}</p>`;
+      volumeControl.el.classList.add("floating");
+      el.appendChild(volumeControl.el);
+      el.classList.add("has-volume");
+      combatSlot.remove();
     }
 
-    const nextLabel = willEnd ? "Ver resultado" : "Siguiente →";
-    html += `<button class="btn btn-primary" data-action="next">${nextLabel}</button>`;
+    let timer = null;
+    let locked = false;
+    let finished = false;
 
-    fb.innerHTML = html;
-    fb.querySelector('[data-action="next"]').addEventListener("click", handleNext);
-    fb.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }
+    /* ---------- Reto Dorado: estrella que cae + ventana ---------- */
+    const goldModal = el.querySelector('[data-el="gold-modal"]');
+    const goldGoBtn = goldModal?.querySelector('[data-action="gold-go"]');
+    let goldModalAtEnd = false;
+    let goldLater = null;
+    let goldStarTimer = null;
 
-  /* ---------- Avance ---------- */
-  function handleNext() {
-    const status = game.advance();
-    if (status === "lost") return finish(false);
-    if (status === "won") return finish(true);
-    renderQuestion();
-  }
+    /** Muestra la ventana dorada (pausa el nivel si es a mitad). */
+    function openGoldModal({ atEnd = false, onLater = null } = {}) {
+      if (!goldPending || !goldModal) return;
+      goldPending = false;
+      announceGoldChallenge();
+      goldModalAtEnd = atEnd;
+      goldLater = onLater;
+      goldModal.hidden = false;
+      if (!atEnd) timer?.pause();
+      goldGoBtn?.focus();
+    }
 
-  function finish(won) {
-    timer?.stop();
+    /** Cierra la ventana (equivale a «Después»). */
+    function closeGoldModal() {
+      if (!goldModal || goldModal.hidden) return;
+      goldModal.hidden = true;
+      if (goldModalAtEnd) {
+        const fn = goldLater;
+        goldLater = null;
+        goldModalAtEnd = false;
+        fn?.();
+      } else {
+        timer?.start();
+      }
+    }
 
-    const stars = starsFor(game.lives, won);
-    recordLevelResult(level.id, {
-      stars,
-      bestStreak: game.bestStreak,
-      correct: game.correct,
-      wrong: game.wrong,
-    });
-    const newAchievements = checkAchievements();
-
-    const goToResults = () => {
+    /** Ir al reto (con confirmación si abandona el nivel actual). */
+    function goToGold() {
+      if (!goldModalAtEnd) {
+        const ok = confirm(
+          "Vas a ir al Reto Dorado y perderás el progreso de este nivel. ¿Continuar?"
+        );
+        if (!ok) return;
+      }
+      timer?.stop();
+      if (goldStarTimer) clearTimeout(goldStarTimer);
       combatScene?.destroy();
-      navigate("results", {
-        levelId: level.id,
-        won,
-        stars,
-        correct: game.correct,
-        total: game.total,
-        wrong: game.wrong,
-        bestStreak: game.bestStreak,
-        topic: level.topic,
-        newAchievements,
-      });
-    };
-
-    if (combat && combatScene) {
-      const event = combat.finish(won);
-      combatScene.play(event);
-      if (getSetting("sound") !== false) playSfxEvent(event.type);
-      const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-      if (reduced) goToResults();
-      else setTimeout(goToResults, 950);
-    } else {
-      goToResults();
+      navigate("level", { levelId: "gold-l1" });
     }
+
+    if (goldModal) {
+      goldGoBtn.addEventListener("click", goToGold);
+      goldModal.querySelector('[data-action="gold-later"]').addEventListener("click", closeGoldModal);
+      goldModal.querySelector('[data-action="gold-close"]').addEventListener("click", closeGoldModal);
+      goldModal.addEventListener("click", (ev) => {
+        if (ev.target === goldModal) closeGoldModal();
+      });
+      el.addEventListener("keydown", (ev) => {
+        if (ev.key === "Escape" && !goldModal.hidden) closeGoldModal();
+      });
+    }
+
+    /** Agenda la caída de la estrella (o la ventana directa sin combate). */
+    function scheduleGoldStar() {
+      if (!goldPending) return;
+      if (combat && combatScene) {
+        goldStarTimer = setTimeout(() => {
+          if (!goldPending) return;
+          combatScene.dropGoldStar(() => openGoldModal({ atEnd: false }));
+        }, 2500 + Math.random() * 6000);
+      } else {
+        openGoldModal({ atEnd: false });
+      }
+    }
+
+    /* ---------- HUD ---------- */
+    function paintHud() {
+      livesEl.innerHTML = Array.from({ length: game.maxLives }, (_, i) => {
+        const on = i < game.lives;
+        return `<span class="heart ${on ? "on" : "off"}">${on ? icon("heart", { size: 16, fill: true }) : icon("heart", { size: 16 })}</span>`;
+      }).join("");
+
+      const s = game.streak;
+      streakEl.innerHTML = `${icon("flame", { size: 15, fill: true })} x${s}`;
+      streakEl.classList.toggle("visible", s >= 1);
+      streakEl.classList.toggle("hot", s >= 3);
+    }
+
+    function paintProgress() {
+      counterEl.textContent = `Pregunta ${game.index + 1} de ${game.total}`;
+      progressEl.style.width = `${(game.index / game.total) * 100}%`;
+    }
+
+    /* ---------- Pregunta ---------- */
+    function renderQuestion() {
+      locked = false;
+      timer?.stop();
+
+      paintHud();
+      paintProgress();
+
+      timerEl.style.width = "100%";
+      timerEl.classList.remove("low");
+
+      const q = game.current();
+      const isMulti = q.type === "multi";
+      const required = q.correctIndexes.length;
+      const selected = new Set();
+
+      bodyEl.innerHTML = `
+        <div class="question-card card">
+          <p class="question-topic">${esc(level.topic ?? "")}</p>
+          <h2 class="question-text">${esc(q.question)}</h2>
+        </div>
+        ${
+          isMulti
+            ? `<p class="multi-hint">${icon("puzzle", { size: 16 })} Selecciona <strong>${required}</strong> opciones —
+                <span data-el="multi-count">0/${required}</span></p>`
+            : ""
+        }
+        <div class="options">
+          ${q.options
+            .map(
+              (opt, i) => `
+            <button class="option-btn" data-index="${i}">
+              <span class="option-letter">${LETTERS[i]}</span>
+              <span class="option-text">${esc(opt)}</span>
+            </button>`
+            )
+            .join("")}
+        </div>
+        ${
+          isMulti
+            ? `<div class="multi-actions">
+                <button class="btn btn-primary" data-action="confirm" disabled>Confirmar respuesta</button>
+              </div>`
+            : ""
+        }
+        <div class="feedback" data-el="feedback" hidden></div>
+      `;
+
+      const optionBtns = [...bodyEl.querySelectorAll(".option-btn")];
+
+      if (isMulti) {
+        const countEl = bodyEl.querySelector('[data-el="multi-count"]');
+        const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
+
+        optionBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (locked) return;
+            const idx = Number(btn.dataset.index);
+            if (selected.has(idx)) {
+              selected.delete(idx);
+              btn.classList.remove("selected");
+            } else {
+              if (selected.size >= required) return; // límite: solo N
+              selected.add(idx);
+              btn.classList.add("selected");
+            }
+            countEl.textContent = `${selected.size}/${required}`;
+            confirmBtn.disabled = selected.size !== required;
+          });
+        });
+
+        confirmBtn.addEventListener("click", () => handleAnswer([...selected], false));
+      } else {
+        optionBtns.forEach((btn) => {
+          btn.addEventListener("click", () => handleAnswer(Number(btn.dataset.index), false));
+        });
+      }
+
+      timer = createTimer({
+        seconds: level.timePerQuestion ?? 60,
+        onTick: (ratio) => {
+          timerEl.style.width = `${ratio * 100}%`;
+          timerEl.classList.toggle("low", ratio <= 0.25);
+        },
+        onEnd: () => handleAnswer(null, true),
+      });
+      timer.start();
+    }
+
+    /* ---------- Respuesta ---------- */
+    function handleAnswer(selection, timedOut) {
+      if (locked) return;
+      locked = true;
+      timer?.stop();
+
+      const result = game.submit(selection, { timedOut });
+
+      if (combat && combatScene && result) {
+        const event = result.isCorrect ? combat.hit() : combat.miss();
+        combatScene.play(event);
+        combatScene.setEnemyHp(combat.enemyHpRatio());
+        if (getSetting("sound") !== false) playSfxEvent(event.type);
+      }
+
+      const q = game.current();
+      const chosen = timedOut || selection == null ? [] : Array.isArray(selection) ? selection : [selection];
+
+      bodyEl.querySelectorAll(".option-btn").forEach((btn, i) => {
+        btn.disabled = true;
+        btn.classList.remove("selected");
+        if (q.correctIndexes.includes(i)) btn.classList.add("correct");
+        else if (chosen.includes(i)) btn.classList.add("wrong");
+      });
+
+      const confirmBtn = bodyEl.querySelector('[data-action="confirm"]');
+      if (confirmBtn) confirmBtn.disabled = true;
+
+      paintHud();
+      showFeedback(result, q);
+    }
+
+    /* ---------- Feedback inmediato ---------- */
+    function showFeedback(result, q) {
+      const fb = bodyEl.querySelector('[data-el="feedback"]');
+      const willEnd = game.lives <= 0 || game.isLast();
+
+      fb.hidden = false;
+      fb.className = `feedback card ${result.isCorrect ? "feedback-ok" : "feedback-bad"}`;
+
+      let html = "";
+      if (result.isCorrect) {
+        const hot =
+          game.streak >= 3
+            ? ` <span class="feedback-streak">${icon("flame", { size: 15, fill: true })} x${game.streak} ¡En llamas!</span>`
+            : "";
+        html += `<p class="feedback-head">${icon("circle-check", { size: 16 })} ¡Correcto!${hot}</p>`;
+        html += `<p>${esc(q.explanation)}</p>`;
+        html += `<p>${icon("lightbulb", { size: 16 })} <strong>Ejemplo:</strong> ${esc(q.example)}</p>`;
+        html += `<p>${icon("wrench", { size: 16 })} <strong>Caso de uso:</strong> ${esc(q.useCase)}</p>`;
+      } else {
+        const letters = q.correctIndexes.map((i) => LETTERS[i]).join(" y ");
+        const texts = q.correctIndexes.map((i) => esc(q.options[i])).join(" · ");
+        const label = q.correctIndexes.length > 1 ? "Las respuestas correctas eran" : "La respuesta correcta era";
+        html += `<p class="feedback-head">${result.timedOut ? `${icon("alarm-clock", { size: 16 })} ¡Se acabó el tiempo!` : `${icon("circle-x", { size: 16 })} Incorrecto`}</p>`;
+        html += `<p class="answer-reveal">${label} ${letters}: ${texts}</p>`;
+        html += `<p>${esc(q.explanation)}</p>`;
+        html += `<p>${icon("pin", { size: 16 })} <strong>Recuerda:</strong> ${esc(q.mistake)}</p>`;
+        html += `<p class="syllabus">${icon("book-open", { size: 16 })} Te recomendamos repasar: ${esc(q.syllabusRef)}</p>`;
+      }
+
+      const nextLabel = willEnd ? "Ver resultado" : "Siguiente →";
+      html += `<button class="btn btn-primary" data-action="next">${nextLabel}</button>`;
+
+      fb.innerHTML = html;
+      fb.querySelector('[data-action="next"]').addEventListener("click", handleNext);
+      fb.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    /* ---------- Avance ---------- */
+    function handleNext() {
+      if (finished) return; // evita doble finalización por doble clic
+      const status = game.advance();
+      if (status === "lost") return finish(false);
+      if (status === "won") return finish(true);
+      renderQuestion();
+    }
+
+    function finish(won) {
+      if (finished) return;
+      finished = true;
+      timer?.stop();
+
+      const stars = starsFor(game.lives, won);
+      recordLevelResult(level.id, {
+        stars,
+        bestStreak: game.bestStreak,
+        correct: game.correct,
+        wrong: game.wrong,
+      });
+      refreshGoldPending();
+      const newAchievements = checkAchievements();
+
+      const goToResults = () => {
+        combatScene?.destroy();
+        navigate("results", {
+          levelId: level.id,
+          won,
+          stars,
+          correct: game.correct,
+          total: game.total,
+          wrong: game.wrong,
+          bestStreak: game.bestStreak,
+          topic: level.topic,
+          newAchievements,
+        });
+      };
+
+      if (goldStarTimer) {
+        clearTimeout(goldStarTimer);
+        goldStarTimer = null;
+      }
+
+      const afterFinishAnimation = () => {
+        if (goldPending) openGoldModal({ atEnd: true, onLater: goToResults });
+        else goToResults();
+      };
+
+      if (combat && combatScene) {
+        const event = combat.finish(won);
+        combatScene.play(event);
+        if (getSetting("sound") !== false) playSfxEvent(event.type);
+        const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+        if (reduced) afterFinishAnimation();
+        else setTimeout(afterFinishAnimation, 950);
+      } else {
+        afterFinishAnimation();
+      }
+    }
+
+    /* ---------- Salir ---------- */
+    el.querySelector('[data-action="exit"]').addEventListener("click", () => {
+      const ok = confirm("¿Seguro que quieres salir del nivel? Este intento no se guardará.");
+      if (!ok) return;
+      timer?.stop();
+      if (goldStarTimer) clearTimeout(goldStarTimer);
+      combatScene?.destroy();
+      navigate("map");
+    });
+
+    renderQuestion();
+    scheduleGoldStar();
   }
 
-  /* ---------- Salir ---------- */
-  el.querySelector('[data-action="exit"]').addEventListener("click", () => {
-    const ok = confirm("¿Seguro que quieres salir del nivel? Este intento no se guardará.");
-    if (!ok) return;
-    timer?.stop();
-    combatScene?.destroy();
-    navigate("map");
-  });
+  if (isGold) renderGoldIntro();
+  else startGame();
 
-  renderQuestion();
   return el;
 }

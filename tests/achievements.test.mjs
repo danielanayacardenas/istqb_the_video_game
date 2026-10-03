@@ -37,8 +37,8 @@ beforeEach(() => {
 });
 
 describe("definiciones de logros", () => {
-  test("hay 8 logros con datos completos", () => {
-    expect(ACHIEVEMENTS.length).toBe(8);
+  test("hay 9 logros con datos completos", () => {
+    expect(ACHIEVEMENTS.length).toBe(9);
     const ids = ACHIEVEMENTS.map((a) => a.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const a of ACHIEVEMENTS) {

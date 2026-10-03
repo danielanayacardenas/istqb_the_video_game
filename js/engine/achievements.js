@@ -67,6 +67,13 @@ export const ACHIEVEMENTS = [
     description: "Consigue al menos el 90 % en el Boss Final (36/40).",
     check: (_progress, stats) => (stats.bossBest ?? 0) >= 36,
   },
+  {
+    id: "golden-legend",
+    icon: "star",
+    name: "Leyenda dorada",
+    description: "Supera el Reto Dorado.",
+    check: (progress) => progress["gold-l1"]?.completed === true,
+  },
 ];
 
 /** Ids de los logros que cumple el estado dado (comprobación pura). */
